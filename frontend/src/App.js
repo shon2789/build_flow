@@ -1,24 +1,23 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router } from 'react-router-dom'
+import { Route, Switch } from 'react-router';
+import { EditorPage } from "./pages/EditorPage";
+import { HomePage } from "./pages/HomePage";
+import { TemplatePage } from "./pages/TemplatePage";
+import { UserPage } from "./pages/UserPage";
 
-function App() {
+
+
+export const App = () => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <Switch>
+        <Route path="/user" component={UserPage} />
+        <Route path="/template" component={TemplatePage} />
+        <Route path="/editor" component={EditorPage} />
+        <Route path="/" component={HomePage} />
+      </Switch>
+    </Router>
+  )
 }
-
-export default App;
