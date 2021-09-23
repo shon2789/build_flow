@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Screen } from '../components/Screen'
 import { useInView } from "react-intersection-observer"
 import { Header } from '../components/home-page/Header'
+import { AuthModal } from '../components/AuthModal'
 
 
 export const HomePage = () => {

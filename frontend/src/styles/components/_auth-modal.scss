@@ -1,0 +1,11 @@
+.auth-form-txt{
+    margin-top: 2rem;
+    color: rgb(100, 100, 100);
+
+    span{
+        color: $main-dark-color;
+        cursor: pointer;
+        margin-left: 0.5rem;
+        text-decoration: underline;
+    }
+}
