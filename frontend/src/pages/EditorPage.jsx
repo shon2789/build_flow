@@ -3,13 +3,15 @@ import { cloneDeep } from 'lodash';
 import { DragDropContext } from "react-beautiful-dnd";
 import { utilService } from '../services/util.service';
 import { useEffect, useState } from 'react';
-import { webAppService } from '../services/web-app.service';
+import { cmpService } from '../services/cmps.service';
 import { Screen } from '../components/Screen';
 import { MainEditor } from '../components/editor/MainEditor';
 import { WebAppContainer } from '../components/editor/WebAppContainer';
+import { DynamicCmp } from '../components/DynamicCmp';
 
 
-let itemsFromBackend = webAppService.getCmps()
+
+let itemsFromBackend = cmpService.getCmps()
 itemsFromBackend.map((item, idx) => item.idx = idx)
 
 
@@ -27,6 +29,9 @@ const columnsFromBackend = {
 const onDragEnd = (result, columns, setColumns) => {
     if (!result.destination) return;
 
+    const cmp = cmpService.getById(result.draggableId)
+
+
     const { source, destination } = result;
 
     // Dragging from editor to the page editing
@@ -36,8 +41,9 @@ const onDragEnd = (result, columns, setColumns) => {
         const sourceItems = [...sourceColumn.items];
         const destItems = [...destColumn.items];
 
-        const item = sourceItems[source.index]
-        destItems.splice(destination.index, 0, { ...item, id: utilService.makeId(), content: cloneDeep(item.content) });
+        const item = <DynamicCmp cmp={cmp} />
+        // const item = sourceItems[source.index]
+        destItems.splice(destination.index, 0, { ...item, id: utilService.makeId(), content: cloneDeep(item) });
         setColumns({
             ...columns,
             [source.droppableId]: {

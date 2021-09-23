@@ -45,43 +45,43 @@ export const EditorAccordion = ({ droppableId, itemsFromBackend }) => {
             id: "panel1",
             heading: "Navigation Bars",
             secondaryHeading: "this is panel 1",
-            details: [itemsFromBackend[0]]
+            details: itemsFromBackend.filter(cmp => cmp.type === 'nav-bar')
         },
         {
             id: "panel3",
-            heading: "Main",
+            heading: "Headers",
             secondaryHeading: "this is panel 2",
-            details: [itemsFromBackend[1], itemsFromBackend[2]]
+            details: itemsFromBackend.filter(cmp => cmp.type === 'header')
         },
         {
             id: "panel4",
             heading: "Cards",
             secondaryHeading: "this is panel 2",
-            details: [itemsFromBackend[3]]
+            details: itemsFromBackend.filter(cmp => cmp.type === 'card')
         },
         {
             id: "panel5",
             heading: "Contacts",
             secondaryHeading: "this is panel 2",
-            details: [itemsFromBackend[4]]
+            details: itemsFromBackend.filter(cmp => cmp.type === 'contact')
         },
         {
             id: "panel6",
             heading: "Images",
             secondaryHeading: "this is panel 2",
-            details: [itemsFromBackend[5]]
+            details: itemsFromBackend.filter(cmp => cmp.type === 'img')
         },
         {
             id: "panel7",
             heading: "Text",
             secondaryHeading: "this is panel 2",
-            details: [itemsFromBackend[6]]
+            details: itemsFromBackend.filter(cmp => cmp.type === 'txt')
         },
         {
             id: "panel8",
             heading: "Footer",
             secondaryHeading: "this is panel 2",
-            details: [itemsFromBackend[7], itemsFromBackend[8]]
+            details: itemsFromBackend.filter(cmp => cmp.type === 'footer')
         },
     ];
     const style = {
