@@ -41,8 +41,9 @@ const onDragEnd = (result, columns, setColumns) => {
         const sourceItems = [...sourceColumn.items];
         const destItems = [...destColumn.items];
 
+        //returns the web-app component part
         const item = <DynamicCmp cmp={cmp} />
-        // const item = sourceItems[source.index]
+
         destItems.splice(destination.index, 0, { ...item, id: utilService.makeId(), content: cloneDeep(item) });
         setColumns({
             ...columns,
