@@ -16,3 +16,16 @@
         display: none;
     }
 }
+
+.icon-btn {
+    cursor: pointer;
+    transition: transform 0.5s;
+    animation: opcaity 0.5s ease-in-out;
+
+    &:hover {
+        transform: translateY(-3px) scale(1.05);
+    }
+    &:active {
+        transform: translateY(3px) scale(0.9);
+    }
+}
