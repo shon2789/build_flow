@@ -14,7 +14,7 @@ const cmps = [
 
         "info": {
             title: "hiiiiiiiii",
-            shatz: "byeeeee"
+            subtitle: "byeeeee"
         },
 
         "attributes": {
