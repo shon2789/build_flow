@@ -40,48 +40,49 @@ export const EditorAccordion = ({ droppableId, itemsFromBackend }) => {
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
+
     const data = [
         {
             id: "panel1",
             heading: "Navigation Bars",
             secondaryHeading: "this is panel 1",
-            details: itemsFromBackend.filter(cmp => cmp.type === 'nav-bar')
+            details: itemsFromBackend.filter(cmp => cmp.sectionType === 'navbar')
         },
         {
             id: "panel3",
             heading: "Headers",
             secondaryHeading: "this is panel 2",
-            details: itemsFromBackend.filter(cmp => cmp.type === 'header')
+            details: itemsFromBackend.filter(cmp => cmp.sectionType === 'header')
         },
         {
             id: "panel4",
             heading: "Cards",
             secondaryHeading: "this is panel 2",
-            details: itemsFromBackend.filter(cmp => cmp.type === 'card')
+            details: itemsFromBackend.filter(cmp => cmp.sectionType === 'card')
         },
         {
             id: "panel5",
             heading: "Contacts",
             secondaryHeading: "this is panel 2",
-            details: itemsFromBackend.filter(cmp => cmp.type === 'contact')
+            details: itemsFromBackend.filter(cmp => cmp.sectionType === 'contact')
         },
         {
             id: "panel6",
             heading: "Images",
             secondaryHeading: "this is panel 2",
-            details: itemsFromBackend.filter(cmp => cmp.type === 'img')
+            details: itemsFromBackend.filter(cmp => cmp.sectionType === 'img')
         },
         {
             id: "panel7",
             heading: "Text",
             secondaryHeading: "this is panel 2",
-            details: itemsFromBackend.filter(cmp => cmp.type === 'txt')
+            details: itemsFromBackend.filter(cmp => cmp.sectionType === 'txt')
         },
         {
             id: "panel8",
             heading: "Footer",
             secondaryHeading: "this is panel 2",
-            details: itemsFromBackend.filter(cmp => cmp.type === 'footer')
+            details: itemsFromBackend.filter(cmp => cmp.sectionType === 'footer')
         },
     ];
     const style = {
