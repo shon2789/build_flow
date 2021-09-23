@@ -1,9 +1,10 @@
 import React from 'react'
+import { SideNav } from '../components/SideNav'
 
 export const EditorPage = () => {
     return (
         <div>
-            Editor Page
+            <SideNav />
         </div>
     )
 }
