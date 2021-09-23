@@ -1,11 +1,18 @@
+// Setup
 @import "setup/variables";
 @import "setup/fonts";
 @import "setup/functions";
+@import "setup/mixin";
 
 //Basics
 @import "basics/base";
+@import "basics/buttons";
+@import "basics/layout";
 
 //Pages
 @import "pages/home-page";
 
 //Components
+@import "components/screen";
+@import "components/home-page/header";
+
