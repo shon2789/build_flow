@@ -20,9 +20,7 @@ export const MainEditor = ({ droppableId, itemsFromBackend, onChangeEditorSize, 
                     <IoMdAddCircle className="icon-btn" />
                 </div>
                 <div className="editor-elements-container">
-
                     <EditorAccordion droppableId={droppableId} itemsFromBackend={itemsFromBackend} />
-
                 </div>
                 <div className="bottom-editor-toolbar">
                     <div className="bottom-editor-icons-container">

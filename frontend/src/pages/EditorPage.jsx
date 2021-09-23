@@ -7,7 +7,7 @@ import { cmpService } from '../services/cmps.service';
 import { Screen } from '../components/Screen';
 import { MainEditor } from '../components/editor/MainEditor';
 import { WebAppContainer } from '../components/editor/WebAppContainer';
-import { DynamicCmp } from '../components/DynamicCmp';
+import { DynamicCmp } from '../dynamic-cmps/DynamicCmp';
 
 
 

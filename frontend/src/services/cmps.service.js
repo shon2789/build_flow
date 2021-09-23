@@ -5,93 +5,213 @@ export const cmpService = {
     getById
 }
 
+utilService.makeId()
+
 const cmps = [
     {
         "id": utilService.makeId(),
-        "type": "header",
+        "type": "section",
+        "sectionType": "header",
         "isDroppable": true,
-        "img": "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-
-        "info": {
-            title: "hiiiiiiiii",
-            subtitle: "byeeeee"
-        },
-
+        "img": "https://i.ibb.co/tMSFKPq/header1.jpg",
         "attributes": {
-            "className": "web-app-header",
+            "className": "",
             "style": {
-                "height": "90px",
                 "display": "flex",
-                "flexWrap": "wrap",
+                "justifyContent": "space-between",
                 "alignItems": "center",
-                "paddingLeft": "10px",
-                "paddingRight": "10px",
-                "fontFamily": "Montserrat",
-                "fontWeight": "300",
-                "color": "blue",
-                "gap": "10px",
-                "backgroundColor": "white"
+                "padding": "0 30px",
+                "backgroundColor": "white",
+                "height": "60px"
             }
         },
-
         "children": [
             {
-                "id": "IsdR32dsfl",
-                "type": "header",
+                "id": utilService.makeId(),
+                "type": "txt",
                 "isDroppable": false,
-
                 "info": {
-                    "title": "Cool Website",
-                    "subtitle": "hello"
+                  "txt": "Rettro"
                 },
-
+    
                 "attributes": {
-                    "className": "web-app-header",
+                    "className": "rettro-logo",
                     "style": {
-                        "height": "90px",
-                        "display": "flex",
-                        "alignItems": "center",
-                        "paddingLeft": "10px",
-                        "paddingRight": "10px",
-                        "fontFamily": "Montserrat",
-                        "fontWeight": "300",
-                        "color": "blue",
-                        "gap": "10px",
-                        "backgroundColor": "white"
+                      "fontSize": "1.8rem",
+                      "fontWeight": "bold",
+                      "color": "#292929"
                     }
                 },
-
-                "children": [
-                    {
-                        "id": "IsdR32dsfl",
-                        "type": "header",
-                        "isDroppable": false,
-
-                        "info": {
-                            "title": "Cool Shmulik",
-                            "subtitle": "hello"
-                        },
-
-                        "attributes": {
-                            "className": "web-app-header",
-                            "style": {
-                                "height": "90px",
-                                "display": "flex",
-                                "alignItems": "center",
-                                "paddingLeft": "10px",
-                                "paddingRight": "10px",
-                                "fontFamily": "Montserrat",
-                                "fontWeight": "300",
-                                "color": "blue",
-                                "gap": "10px",
-                                "backgroundColor": "white"
-                            }
-                        },
-
-                        "children": null
+                "children": []
+            },
+            {
+              "id": utilService.makeId(),
+              "type": "navbar",
+              "isDroppable": false,
+          
+              "attributes": {
+                "className": "web-app-navbar",
+                "style": {
+                  "display": "flex",
+                  "gap": "1.5rem",
+                  "width": "fit-content"
+                }
+              },
+              "children": [
+                {
+                  "id": utilService.makeId(),
+                  "type": "btn",
+                  "isDroppable": false,
+                  "info": {
+                      "txt": "Home",
+                      "action": {"link": "www.google.com"}
+                  },
+              
+                  "attributes": {
+                    "className": "web-app-btn",
+                    "style": {
+                      "backgroundColor": "transparent",
+                      "border": "none",
+                      "color": "#071112",
+                      "fontSize": "1.15rem",
+                      "cursor": "pointer"
                     }
-                ]
+                  },
+                  "children": []
+                },
+                {
+                  "id": utilService.makeId(),
+                  "type": "btn",
+                  "isDroppable": false,
+                  "info": {
+                      "txt": "About",
+                      "action": {"link": "www.google.com"}
+                  },
+              
+                  "attributes": {
+                    "className": "web-app-btn",
+                    "style": {
+                      "backgroundColor": "transparent",
+                      "border": "none",
+                      "color": "#071112",
+                      "fontSize": "1.15rem",
+                      "cursor": "pointer"
+                    }
+                  },
+                  "children": []
+                },
+                {
+                  "id": utilService.makeId(),
+                  "type": "btn",
+                  "isDroppable": false,
+                  "info": {
+                      "txt": "Portfolio",
+                      "action": {"link": "www.google.com"}
+                  },
+              
+                  "attributes": {
+                    "className": "web-app-btn",
+                    "style": {
+                      "backgroundColor": "transparent",
+                      "border": "none",
+                      "color": "#071112",
+                      "fontSize": "1.15rem",
+                      "cursor": "pointer"
+                    }
+                  },
+                  "children": []
+                }
+              ]
             }
+            
+        ]
+    },
+    {
+        "id": utilService.makeId(),
+        "type": "section",
+        "sectionType": "navbar",
+        "isDroppable": true,
+        "img": "https://egghead.io/_next/image?url=https%3A%2F%2Fd2eip9sf3oo6c2.cloudfront.net%2Fplaylists%2Fsquare_covers%2F000%2F432%2F519%2Fsquare_480%2FReact_Dnd_Final.png&w=640&q=100",
+        "attributes": {
+            "className": "",
+            "style": {
+                "display": "flex",
+                "justifyContent": "space-between",
+                "alignItems": "center",
+                "padding": "0 30px",
+                "backgroundColor": "white",
+                "height": "60px"
+            }
+        },
+        "children": [
+            {
+                "id": utilService.makeId(),
+                "type": "btn",
+                "isDroppable": false,
+                "info": {
+                    "txt": "btn3",
+                    "action": {"link": "www.google.com"}
+                },
+            
+                "attributes": {
+                  "className": "web-app-btn",
+                  "style": {
+                    "backgroundColor": "royalblue"
+                  }
+                },
+                "children": []
+              },
+              {
+                "id": utilService.makeId(),
+                "type": "btn",
+                "isDroppable": false,
+                "info": {
+                    "txt": "btn3",
+                    "action": {"link": "www.google.com"}
+                },
+            
+                "attributes": {
+                  "className": "web-app-btn",
+                  "style": {
+                    "backgroundColor": "royalblue"
+                  }
+                },
+                "children": []
+              },
+              {
+                "id": utilService.makeId(),
+                "type": "btn",
+                "isDroppable": false,
+                "info": {
+                    "txt": "btn3",
+                    "action": {"link": "www.google.com"}
+                },
+            
+                "attributes": {
+                  "className": "web-app-btn",
+                  "style": {
+                    "backgroundColor": "royalblue"
+                  }
+                },
+                "children": []
+              },
+              {
+                "id": utilService.makeId(),
+                "type": "btn",
+                "isDroppable": false,
+                "info": {
+                    "txt": "btn3",
+                    "action": {"link": "www.google.com"}
+                },
+            
+                "attributes": {
+                  "className": "web-app-btn",
+                  "style": {
+                    "backgroundColor": "royalblue"
+                  }
+                },
+                "children": []
+              }
         ]
     }
 ]
@@ -103,6 +223,7 @@ function getMinifiedCmps() {
         return {
             id: cmp.id,
             type: cmp.type,
+            sectionType: cmp.sectionType,
             content: <img width="100%" src={cmp.img} />
         }
     })
