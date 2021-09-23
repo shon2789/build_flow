@@ -29,3 +29,31 @@
         transform: translateY(3px) scale(0.9);
     }
 }
+
+.editor-publish-btn {
+    @include main-btn($main-dark-color, $main-light-color);
+    @include flex-center;
+    margin: 3rem auto;
+    font-size: 1.2rem;
+    width: 10rem;
+    height: 3rem;
+}
+
+@keyframes in-and-out {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+@keyframes opcaity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

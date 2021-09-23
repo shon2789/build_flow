@@ -11,9 +11,15 @@
 
 //Pages
 @import "pages/home-page";
+@import "pages/editor-page";
 
-//Components
+//COMPONENTS
 @import "components/auth-modal";
 @import "components/screen";
 @import "components/side-nav";
+
+//home page components
 @import "components/home-page/header";
+
+//editor page components
+@import "components/editor-page/main-editor";
