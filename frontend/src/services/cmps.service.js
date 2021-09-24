@@ -760,7 +760,7 @@ const cmps = [
             "attributes": {
               "className": "",
               "style": {
-                "fontSize": "1.5rem"
+                "fontSize": "2rem"
               }
             },
             "children": []
@@ -775,6 +775,8 @@ const cmps = [
             "attributes": {
               "className": "",
               "style": {
+                "lineHeight": "1.75",
+                "fontsize": "1.4rem",
                 "letterSpacing": "1.5px",
                 "fontFamily": "Lato light"
               }
@@ -794,13 +796,14 @@ const cmps = [
             "attributes": {
               "className": "",
               "style": {
-                "width": "7.5rem",
-                "height": "2.5rem",
+                "width": "9rem",
+                "height": "2.8rem",
                 "background": "none",
                 "color": "#fff",
                 "borderHeight": "1.5px",
                 "borderStyle": "solid",
-                "borderColor": "#fff"
+                "borderColor": "#fff",
+                "fontSize": "1rem"
               }
             },
             "children": [
@@ -817,7 +820,7 @@ const cmps = [
           "className": "retro-section-black-photography-right",
           "style": {
             "minWidth": "50%",
-            "objectFit": "bottom",
+            "objectFit": "cover",
             "Width": "100%",
             "Height": "100%"
           },
