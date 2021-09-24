@@ -215,6 +215,84 @@ const cmps = [
         "children": []
       }
     ]
+  },
+  {
+    "id": utilService.makeId(),
+    "type": "section",
+    "sectionType": "section",
+    "isDroppable": true,
+    "img": "https://i.ibb.co/DQtPm2Z/section1.jpg",
+    "attributes": {
+      "className": "rettro-main-section",
+      "style": {
+        "display": "flex",
+        "flexDirection": "column",
+        "justifyContent": "center",
+        "backgroundImage": "url('https://preview.colorlib.com/theme/rettro/assets/img/hero/xh1_hero1.png.pagespeed.ic.iM0zmOGvvG.webp')",
+        "backgroundSize": "cover",
+        "minHeight": "70vh",
+        "color": "white",
+        "maxWidth": "100%",
+
+      }
+    },
+    "children": [
+      {
+        "id": utilService.makeId(),
+        "type": "txt",
+        "isDroppable": false,
+        "info": {
+          "txt": "Photography"
+        },
+
+        "attributes": {
+          "className": "rettro-photography-txt",
+          "style": {
+            "fontFamily": "Lato regular",
+            "transform": "translateY(40px)",
+
+          }
+        },
+        "children": []
+      },
+      {
+        "id": utilService.makeId(),
+        "type": "txt",
+        "isDroppable": false,
+        "info": {
+          "txt": "01 Travel pro"
+        },
+
+        "attributes": {
+          "className": "photography-txt",
+          "style": {
+            "marginTop": "4rem",
+            "fontSize": "2rem",
+            "fontFamily": "Lato regular",
+          }
+        },
+        "children": []
+      },
+      {
+        "id": utilService.makeId(),
+        "type": "txt",
+        "isDroppable": false,
+        "info": {
+          "txt": "I'm a text, change me!"
+        },
+
+        "attributes": {
+          "className": "photography-txt",
+          "style": {
+            "marginTop": "1rem",
+            "fontSize": "1.5rem",
+            "fontFamily": "Lato regular"
+          }
+        },
+        "children": []
+      },
+
+    ]
   }
 ]
 

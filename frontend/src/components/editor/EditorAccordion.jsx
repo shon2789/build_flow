@@ -52,7 +52,7 @@ export const EditorAccordion = ({ droppableId, itemsFromBackend }) => {
             id: "panel2",
             heading: "Main Sections",
             secondaryHeading: "this is panel 2",
-            details: itemsFromBackend.filter(cmp => cmp.type === 'section')
+            details: itemsFromBackend.filter(cmp => cmp.sectionType === 'section')
         },
         {
             id: "panel3",
@@ -90,7 +90,7 @@ export const EditorAccordion = ({ droppableId, itemsFromBackend }) => {
             secondaryHeading: "this is panel 2",
             details: itemsFromBackend.filter(cmp => cmp.sectionType === 'footer')
         },
-        
+
     ];
     const style = {
         backgroundColor: '#2b3039',
