@@ -4,7 +4,8 @@ import { cloneDeep } from 'lodash';
 export const cmpService = {
   getCmps,
   getById,
-  deepCloneCmp
+  deepCloneCmp,
+  deleteCmp
 }
 
 utilService.makeId()
@@ -603,7 +604,8 @@ const cmps = [
                       "style": {
                       },
                       "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services1.svg"
-                    }
+                    },
+                    "children": []
                   },
                   {
                     "id": utilService.makeId(),
@@ -621,7 +623,8 @@ const cmps = [
                         "fontSize": "1.3rem",
                         "margin-top": "1rem"
                       }
-                    }
+                    },
+                    "children": []
                   }
                 ]
               },
@@ -650,7 +653,8 @@ const cmps = [
                       "style": {
                       },
                       "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services2.svg"
-                    }
+                    },
+                    "children": []
                   },
                   {
                     "id": utilService.makeId(),
@@ -668,7 +672,8 @@ const cmps = [
                         "fontSize": "1.3rem",
                         "margin-top": "1rem"
                       }
-                    }
+                    },
+                    "children": []
                   }
                 ]
               },
@@ -717,7 +722,8 @@ const cmps = [
 
                       },
                       "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services3.svg"
-                    }
+                    },
+                    "children": []
                   },
                   {
                     "id": utilService.makeId(),
@@ -735,7 +741,8 @@ const cmps = [
                         "fontSize": "1.3rem",
                         "margin-top": "1rem"
                       }
-                    }
+                    },
+                    "children": []
                   }
                 ]
               },
@@ -764,7 +771,8 @@ const cmps = [
                       "style": {
                       },
                       "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services4.svg"
-                    }
+                    },
+                    "children": []
                   },
                   {
                     "id": utilService.makeId(),
@@ -782,7 +790,8 @@ const cmps = [
                         "fontSize": "1.3rem",
                         "margin-top": "1rem"
                       }
-                    }
+                    },
+                    "children": []
                   }
                 ]
               }
@@ -936,7 +945,7 @@ function getCmps() {
 }
 
 // Deep cloning the cmp, and recursively changing all the id's and inner id's
-function deepCloneCmp(cmpId){
+function deepCloneCmp(cmpId) {
   const cmp = getById(cmpId);
   const coppiedCmp = cloneDeep(cmp);
 
@@ -945,12 +954,26 @@ function deepCloneCmp(cmpId){
 }
 
 // Recursively going through an cmp and changing the id's
-function _changeCmpIds(cmp){
+function _changeCmpIds(cmp) {
   cmp.id = utilService.makeId();
-  if(cmp.children.length > 0){
+  if (cmp.children.length > 0) {
     cmp.children.forEach(child => {
       child.id = utilService.makeId();
       _changeCmpIds(child)
     })
   }
+}
+
+function deleteCmp(cmpId, webAppCmps) {
+  webAppCmps.forEach((cmp, idx) => {
+    if (cmp.id === cmpId) {
+      webAppCmps.splice(idx, 1)
+      console.log('deleted')
+      return
+    } else {
+      if (cmp.children.length > 0) {
+        deleteCmp(cmpId, cmp.children)
+      }
+    }
+  })
 }

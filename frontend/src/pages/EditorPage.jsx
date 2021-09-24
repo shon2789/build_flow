@@ -33,7 +33,6 @@ const onDragEnd = (result, columns, setColumns) => {
 
     const { source, destination } = result;
 
-    const cmp = cmpService.deepCloneCmp(result.draggableId)
 
     // Dragging from editor to the page editing
     if (source.droppableId !== destination.droppableId) {
@@ -41,8 +40,9 @@ const onDragEnd = (result, columns, setColumns) => {
         const destColumn = columns[destination.droppableId];
         const sourceItems = [...sourceColumn.items];
         const destItems = [...destColumn.items];
+        const cmp = cmpService.deepCloneCmp(result.draggableId)
 
-        destItems.splice(destination.index, 0, {id: utilService.makeId(), cmp});
+        destItems.splice(destination.index, 0, { id: utilService.makeId(), cmp });
         setColumns({
             ...columns,
             [source.droppableId]: {
@@ -54,7 +54,7 @@ const onDragEnd = (result, columns, setColumns) => {
                 items: destItems
             }
         });
-    // Reordering items in the page editing
+        // Reordering items in the page editing
     } else {
         const column = columns[source.droppableId];
         const copiedItems = [...column.items];
@@ -103,9 +103,8 @@ export const EditorPage = () => {
     }
 
     const onDeleteCmp = (cmpId) => {
-        console.log('delete:', cmpId)
         const webAppCmps = editing[1].items;
-        console.log(webAppCmps)
+        cmpService.deleteCmp(cmpId, webAppCmps.map(section => section.cmp))
     }
 
     return (
@@ -118,7 +117,7 @@ export const EditorPage = () => {
                 </div>
 
                 <WebAppContainer editorWidth={editorWidth} onToggleEditorMenu={onToggleEditorMenu} itemsFromBackend={editing[1].items} droppableId={editing[0]}
-                                 onDeleteCmp={onDeleteCmp}
+                    onDeleteCmp={onDeleteCmp}
                 />
             </main>
 
