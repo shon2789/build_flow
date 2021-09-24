@@ -1,5 +1,4 @@
 import React from 'react'
-import { cloneDeep } from 'lodash';
 import { DragDropContext } from "react-beautiful-dnd";
 import { utilService } from '../services/util.service';
 import { useEffect, useState } from 'react';
@@ -7,14 +6,16 @@ import { cmpService } from '../services/cmps.service';
 import { Screen } from '../components/Screen';
 import { MainEditor } from '../components/editor/MainEditor';
 import { WebAppContainer } from '../components/editor/WebAppContainer';
-import { DynamicCmp } from '../dynamic-cmps/DynamicCmp';
 
 
 
+
+
+// Draggable Components from backend, rendered into the accordion
 let itemsFromBackend = cmpService.getCmps()
 itemsFromBackend.map((item, idx) => item.idx = idx)
 
-
+// Drag&Drop columns (Editor components && webApp builder)
 const columnsFromBackend = {
     [utilService.makeId()]: {
         name: "Editor",
@@ -26,13 +27,13 @@ const columnsFromBackend = {
     }
 };
 
+// Drag&Drop onDragEnd function, reordering the dragged elements and trigger other functions
 const onDragEnd = (result, columns, setColumns) => {
     if (!result.destination) return;
 
-    const cmp = cmpService.getById(result.draggableId)
-
-
     const { source, destination } = result;
+
+    const cmp = cmpService.deepCloneCmp(result.draggableId)
 
     // Dragging from editor to the page editing
     if (source.droppableId !== destination.droppableId) {
@@ -41,10 +42,7 @@ const onDragEnd = (result, columns, setColumns) => {
         const sourceItems = [...sourceColumn.items];
         const destItems = [...destColumn.items];
 
-        //returns the web-app component part
-        const item = <DynamicCmp cmp={cmp} />
-
-        destItems.splice(destination.index, 0, { ...item, id: utilService.makeId(), content: cloneDeep(item) });
+        destItems.splice(destination.index, 0, {id: utilService.makeId(), cmp});
         setColumns({
             ...columns,
             [source.droppableId]: {
@@ -56,7 +54,7 @@ const onDragEnd = (result, columns, setColumns) => {
                 items: destItems
             }
         });
-        // Reordering items in the page editing
+    // Reordering items in the page editing
     } else {
         const column = columns[source.droppableId];
         const copiedItems = [...column.items];
@@ -104,6 +102,12 @@ export const EditorPage = () => {
         setEditorWidth(width)
     }
 
+    const onDeleteCmp = (cmpId) => {
+        console.log('delete:', cmpId)
+        const webAppCmps = editing[1].items;
+        console.log(webAppCmps)
+    }
+
     return (
         <DragDropContext onDragStart={onDragStart} onDragEnd={result => onDragEnd(result, columns, setColumns)}>
 
@@ -113,7 +117,9 @@ export const EditorPage = () => {
                     <MainEditor windowWidth={windowWidth} onChangeEditorSize={onChangeEditorSize} editorWidth={editorWidth} onToggleEditorMenu={onToggleEditorMenu} itemsFromBackend={editor[1].items} droppableId={editor[0]} />
                 </div>
 
-                <WebAppContainer editorWidth={editorWidth} onToggleEditorMenu={onToggleEditorMenu} itemsFromBackend={editing[1].items} droppableId={editing[0]} />
+                <WebAppContainer editorWidth={editorWidth} onToggleEditorMenu={onToggleEditorMenu} itemsFromBackend={editing[1].items} droppableId={editing[0]}
+                                 onDeleteCmp={onDeleteCmp}
+                />
             </main>
 
         </DragDropContext>

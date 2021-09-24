@@ -1,8 +1,10 @@
 import { utilService } from './util.service'
+import { cloneDeep } from 'lodash';
 
 export const cmpService = {
   getCmps,
-  getById
+  getById,
+  deepCloneCmp
 }
 
 utilService.makeId()
@@ -924,24 +926,31 @@ function getMinifiedCmps() {
 }
 
 function getById(cmpId) {
-
   return cmps.find(cmp => {
     return cmp.id === cmpId
   })
 }
 
-const gWebAppCmps = [
-  { id: utilService.makeId(), type: "nav-bar", content: <img width="100%" src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg" alt="bla" /> },
-  { id: utilService.makeId(), type: "header", content: <img width="100%" src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg" alt="bla" /> },
-  { id: utilService.makeId(), type: "footer", content: <img width="100%" src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg" alt="bla" /> },
-  { id: utilService.makeId(), type: "card", content: <img width="100%" src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg" alt="bla" /> },
-  { id: utilService.makeId(), type: "contact", content: <img width="100%" src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg" alt="bla" /> },
-  { id: utilService.makeId(), type: "txt", content: <img width="100%" src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg" alt="bla" /> },
-  { id: utilService.makeId(), type: "img", content: <img width="100%" src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg" alt="bla" /> },
-  { id: utilService.makeId(), type: "footer", content: <img width="100%" src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg" alt="bla" /> },
-  { id: utilService.makeId(), type: "header", content: <img width="100%" src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg" alt="bla" /> }
-];
-
 function getCmps() {
   return getMinifiedCmps()
+}
+
+// Deep cloning the cmp, and recursively changing all the id's and inner id's
+function deepCloneCmp(cmpId){
+  const cmp = getById(cmpId);
+  const coppiedCmp = cloneDeep(cmp);
+
+  _changeCmpIds(coppiedCmp);
+  return coppiedCmp;
+}
+
+// Recursively going through an cmp and changing the id's
+function _changeCmpIds(cmp){
+  cmp.id = utilService.makeId();
+  if(cmp.children.length > 0){
+    cmp.children.forEach(child => {
+      child.id = utilService.makeId();
+      _changeCmpIds(child)
+    })
+  }
 }
