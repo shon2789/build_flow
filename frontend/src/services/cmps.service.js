@@ -9,9 +9,6 @@ utilService.makeId()
 
 const cmps = [
     {
-      "raz": "hello"
-    },
-    {
         "id": utilService.makeId(),
         "type": "section",
         "sectionType": "header",
