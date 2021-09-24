@@ -95,7 +95,7 @@ export const EditorAccordion = ({ droppableId, itemsFromBackend }) => {
     const style = {
         backgroundColor: '#2b3039',
         boxShadow: 'none',
-        padding: '0.5rem',
+        padding: '3px 0.5rem',
         color: '#f2efe7',
 
     }
