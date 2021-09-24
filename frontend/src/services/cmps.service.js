@@ -496,7 +496,7 @@ const cmps = [
         "justifyContent": "space-around",
         "alignItems": "center",
         "backgroundColor": "white",
-        "height": "100vh",
+        "minHeight": "50vh",
         "width": "100%"
       }
     },
@@ -512,9 +512,11 @@ const cmps = [
           "attributes": {
             "className": "",
             "style": {
+              "fontFamily": "'Playfair Display', serif",
               "color": "black",
               "fontSize": "3rem",
               "textAlign": "center",
+              "padding": "3rem 4.5rem"
             }
           },
           "children": []
@@ -526,13 +528,16 @@ const cmps = [
           "info": {
             "txt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
           },
-  
+          
           "attributes": {
             "className": "",
             "style": {
+              "fontFamily": "system-ui",
+              "fontWeight": "200",
               "color": "gray",
-              "fontSize": "1.5rem",
+              "fontSize": "1.3rem",
               "textAlign": "center",
+              "padding": "1rem 4rem"
             }
           },
           "children": []
@@ -546,10 +551,29 @@ const cmps = [
             "className": "",
             "style": {
               "display": "flex",
-              "width": "90%",
+              "flexWrap": "wrap",
+              "width": "100%",
               "justifyContent": "space-around",
               "alignItems": "center",
+              "padding": "4rem 0"
             }
+          },
+          "children": [
+            {
+              "id": utilService.makeId(),
+              "type": "section",
+              "isDroppable": true,
+
+              "attributes": {
+                "className": "",
+                "style": {
+                  "display": "flex",
+                  "flex": "20rem",
+                  "width": "50%",
+                  "justifyContent": "space-around",
+                  "alignItems": "center",
+                  "padding": "4rem 0"
+              }
           },
           "children": [
             {
@@ -564,6 +588,7 @@ const cmps = [
                   "flexDirection": "column",
                   "justifyContent": "space-around",
                   "alignItems": "center",
+                  "width": "150px"
                 }
               },
               "children": [
@@ -585,11 +610,15 @@ const cmps = [
                    "isDroppable": "false",
  
                    "info": {
-                     "txt": "hello"
+                     "txt": "your text here"
                    },
                    "attributes": {
                      "className": "",
                      "style": {
+                       "textAlign": "center",
+                       "fontFamily": "'Playfair Display', serif",
+                       "fontSize": "1.3rem",
+                       "margin-top": "1rem"
                      }
                    }
                  }
@@ -607,6 +636,7 @@ const cmps = [
                   "flexDirection": "column",
                   "justifyContent": "space-around",
                   "alignItems": "center",
+                  "width": "150px"
                 }
               },
               "children": [
@@ -628,16 +658,39 @@ const cmps = [
                    "isDroppable": "false",
  
                    "info": {
-                     "txt": "hello"
+                     "txt": "your text here"
                    },
                    "attributes": {
                      "className": "",
                      "style": {
+                       "textAlign": "center",
+                       "fontFamily": "'Playfair Display', serif",
+                       "fontSize": "1.3rem",
+                       "margin-top": "1rem"
                      }
                    }
                  }
               ]
             },
+          ]
+            },
+            {
+              "id": utilService.makeId(),
+              "type": "section",
+              "isDroppable": true,
+
+              "attributes": {
+                "className": "",
+                "style": {
+                  "display": "flex",
+                  "flex": "20rem",
+                  "width": "50%",
+                  "justifyContent": "space-around",
+                  "alignItems": "center",
+                  "padding": "4rem 0"
+              }
+          },
+          "children": [
             {
               "id": utilService.makeId(),
               "type": "section",
@@ -650,6 +703,7 @@ const cmps = [
                   "flexDirection": "column",
                   "justifyContent": "space-around",
                   "alignItems": "center",
+                  "width": "150px"
                 }
               },
               "children": [
@@ -657,7 +711,7 @@ const cmps = [
                    "id": utilService.makeId(),
                    "type": "img",
                    "isDroppable": "false",
-
+  
                    "attributes": {
                      "className": "",
                      "style": {
@@ -669,13 +723,17 @@ const cmps = [
                    "id": utilService.makeId(),
                    "type": "txt",
                    "isDroppable": "false",
- 
+  
                    "info": {
-                     "txt": "hello"
+                     "txt": "your text here"
                    },
                    "attributes": {
                      "className": "",
                      "style": {
+                       "textAlign": "center",
+                       "fontFamily": "'Playfair Display', serif",
+                       "fontSize": "1.3rem",
+                       "margin-top": "1rem"
                      }
                    }
                  }
@@ -693,6 +751,7 @@ const cmps = [
                   "flexDirection": "column",
                   "justifyContent": "space-around",
                   "alignItems": "center",
+                  "width": "150px"
                 }
               },
               "children": [
@@ -700,7 +759,7 @@ const cmps = [
                    "id": utilService.makeId(),
                    "type": "img",
                    "isDroppable": "false",
-
+  
                    "attributes": {
                      "className": "",
                      "style": {
@@ -712,18 +771,25 @@ const cmps = [
                    "id": utilService.makeId(),
                    "type": "txt",
                    "isDroppable": "false",
- 
+  
                    "info": {
-                     "txt": "hello"
+                     "txt": "your text here"
                    },
                    "attributes": {
                      "className": "",
                      "style": {
+                       "textAlign": "center",
+                       "fontFamily": "'Playfair Display', serif",
+                       "fontSize": "1.3rem",
+                       "margin-top": "1rem"
                      }
                    }
                  }
               ]
             }
+          ]
+            }
+
           ]
         }
     ]
