@@ -293,7 +293,196 @@ const cmps = [
       },
 
     ]
+  },
+  {
+    "id": utilService.makeId(),
+    "type": "section",
+    "sectionType": "footer",
+    "isDroppable": true,
+    "img": "https://preview.colorlib.com/theme/rettro/assets/img/hero/xh1_hero1.png.pagespeed.ic.iM0zmOGvvG.webp",
+    "attributes": {
+      "className": "rettro-footer",
+      "style": {
+        "display": "flex",
+        "flexDirection": "column",
+        "justifyContent": "center",
+        "alignItems": "center",
+        "paddingTop": "5rem",
+
+        "backgroundColor": "#071112",
+
+        "minHeight": "35vh",
+        "color": "white",
+
+      }
+    },
+    "children": [
+      {
+        "id": utilService.makeId(),
+        "type": "txt",
+        "isDroppable": false,
+        "info": {
+          "txt": "Rettro"
+        },
+
+        "attributes": {
+          "className": "rettro-footer-logo",
+          "style": {
+            "fontFamily": "Lato regular",
+            "fontSize": "3rem",
+            "marginBottom": "3rem",
+          }
+        },
+        "children": []
+      },
+      {
+        "id": utilService.makeId(),
+        "type": "section",
+        "isDroppable": true,
+
+
+        "attributes": {
+          "className": "rettro-footer-links",
+          "style": {
+
+            "fontSize": "1.2rem",
+            "fontFamily": "Lato regular",
+            "color": "gray",
+            "display": "flex",
+            "alignItems": "center",
+            "gap": "30px",
+          }
+        },
+        "children": [
+          {
+            "id": utilService.makeId(),
+            "type": "btn",
+            "isDroppable": false,
+            "info": {
+              "txt": "Home",
+              "action": {
+                "link": "google.com"
+              }
+            },
+
+            "attributes": {
+              "className": "rettro-footer-link",
+              "style": {
+                "border": "none",
+                "backgroundColor": "transparent",
+                "cursor": "pointer",
+                "color": "gray",
+                "fontSize": "1.3rem"
+
+              }
+            },
+            "children": []
+          },
+          {
+            "id": utilService.makeId(),
+            "type": "btn",
+            "isDroppable": false,
+            "info": {
+              "txt": "About",
+              "action": {
+                "link": "google.com"
+              }
+            },
+
+            "attributes": {
+              "className": "rettro-footer-link",
+              "style": {
+                "border": "none",
+                "backgroundColor": "transparent",
+                "cursor": "pointer",
+                "color": "gray",
+                "fontSize": "1.3rem"
+
+              }
+            },
+            "children": []
+          },
+          {
+            "id": utilService.makeId(),
+            "type": "btn",
+            "isDroppable": false,
+            "info": {
+              "txt": "Portfolio",
+              "action": {
+                "link": "google.com"
+              }
+            },
+
+            "attributes": {
+              "className": "rettro-footer-link",
+              "style": {
+                "border": "none",
+                "backgroundColor": "transparent",
+                "cursor": "pointer",
+                "color": "gray",
+                "fontSize": "1.3rem"
+
+              }
+            },
+            "children": []
+          },
+          {
+            "id": utilService.makeId(),
+            "type": "btn",
+            "isDroppable": false,
+            "info": {
+              "txt": "Blog",
+              "action": {
+                "link": "google.com"
+              }
+            },
+
+            "attributes": {
+              "className": "rettro-footer-link",
+              "style": {
+                "border": "none",
+                "backgroundColor": "transparent",
+                "cursor": "pointer",
+                "color": "gray",
+                "fontSize": "1.3rem"
+
+              }
+            },
+            "children": []
+          },
+        ]
+      },
+      {
+        "id": utilService.makeId(),
+        "type": "txt",
+        "isDroppable": false,
+        "info": {
+          "txt": "@All rights reserved | This template is made with 🤍 by BuildFlow",
+
+        },
+
+        "attributes": {
+          "className": "rettro-rights",
+          "style": {
+
+
+
+            "color": "gray",
+            "fontSize": "1.3rem",
+            "marginTop": "5rem",
+            "marginBottom": "4rem",
+            "fontSize": "0.85rem",
+            "textAlign": "center",
+
+          }
+        },
+        "children": []
+      }
+
+
+    ]
   }
+
 ]
 
 
