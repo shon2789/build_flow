@@ -88,4 +88,8 @@
             }
         }
     }
+
+    @include for-large-tablet {
+        width: 22rem;
+    }
 }

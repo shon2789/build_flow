@@ -236,7 +236,6 @@ const cmps = [
         "minHeight": "70vh",
         "color": "white",
         "maxWidth": "100%",
-
       }
     },
     "children": [

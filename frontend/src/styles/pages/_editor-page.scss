@@ -23,6 +23,10 @@
             position: static;
             z-index: unset;
         }
+
+        @include for-large-tablet {
+            width: 22rem;
+        }
     }
 
     .web-app-container {
