@@ -8,7 +8,6 @@ export const cmpService = {
 utilService.makeId()
 
 const cmps = [
-  { "shon": "bye" },
   {
     "id": utilService.makeId(),
     "type": "section",
@@ -28,6 +27,8 @@ const cmps = [
     },
     "children": [
       {
+
+
         "id": utilService.makeId(),
         "type": "txt",
         "isDroppable": false,
@@ -225,7 +226,7 @@ function getMinifiedCmps() {
       id: cmp.id,
       type: cmp.type,
       sectionType: cmp.sectionType,
-      content: <img width="100%" src={cmp.img} />
+      content: <img alt="accordion-section-img" width="100%" src={cmp.img} />
     }
   })
 }
