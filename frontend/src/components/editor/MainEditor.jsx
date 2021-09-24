@@ -19,6 +19,7 @@ export const MainEditor = ({ droppableId, itemsFromBackend, onChangeEditorSize, 
                     <FaEdit className="icon-btn" />
                     <IoMdAddCircle className="icon-btn" />
                 </div>
+
                 <div className="editor-elements-container">
                     <EditorAccordion droppableId={droppableId} itemsFromBackend={itemsFromBackend} />
                 </div>
@@ -30,6 +31,8 @@ export const MainEditor = ({ droppableId, itemsFromBackend, onChangeEditorSize, 
                     </div>
                     <div className="editor-publish-btn">Publish</div>
                 </div>
+
+
             </div>
         </div>
     )
