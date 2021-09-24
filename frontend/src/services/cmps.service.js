@@ -221,9 +221,9 @@ const cmps = [
         "flexDirection": "column",
         "justifyContent": "center",
         "alignItems": "center",
-        "paddingTop": "5rem",
 
         "backgroundColor": "#071112",
+        "paddingTop": "5rem",
 
         "minHeight": "35vh",
         "color": "white",
@@ -380,11 +380,11 @@ const cmps = [
           "style": {
 
 
-
+            "marginBottom": "5rem",
+            "padding": "0 1rem",
             "color": "gray",
             "fontSize": "1.3rem",
             "marginTop": "5rem",
-            "marginBottom": "4rem",
             "fontSize": "0.85rem",
             "textAlign": "center",
 
