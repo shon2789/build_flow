@@ -44,15 +44,21 @@ export const EditorAccordion = ({ droppableId, itemsFromBackend }) => {
     const data = [
         {
             id: "panel1",
-            heading: "Navigation Bars",
-            secondaryHeading: "this is panel 1",
-            details: itemsFromBackend.filter(cmp => cmp.sectionType === 'navbar')
-        },
-        {
-            id: "panel3",
             heading: "Headers",
             secondaryHeading: "this is panel 2",
             details: itemsFromBackend.filter(cmp => cmp.sectionType === 'header')
+        },
+        {
+            id: "panel2",
+            heading: "Main Sections",
+            secondaryHeading: "this is panel 2",
+            details: itemsFromBackend.filter(cmp => cmp.type === 'section')
+        },
+        {
+            id: "panel3",
+            heading: "Navigation Bars",
+            secondaryHeading: "this is panel 1",
+            details: itemsFromBackend.filter(cmp => cmp.sectionType === 'navbar')
         },
         {
             id: "panel4",
@@ -84,6 +90,7 @@ export const EditorAccordion = ({ droppableId, itemsFromBackend }) => {
             secondaryHeading: "this is panel 2",
             details: itemsFromBackend.filter(cmp => cmp.sectionType === 'footer')
         },
+        
     ];
     const style = {
         backgroundColor: '#2b3039',
