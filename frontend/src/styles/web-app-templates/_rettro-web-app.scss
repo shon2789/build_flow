@@ -1,20 +1,24 @@
-
-.rettro-main-section{
+.rettro-main-section {
     align-items: center;
     padding: 0;
-    
-    @include for-tablet{
-        align-items: unset;      
+
+    @include for-tablet {
+        align-items: unset;
         padding: 3.5rem;
     }
 
-    .rettro-photography-txt{
-        
+    .rettro-photography-txt {
         font-size: 3rem;
-        @include for-tablet{
-            
+        @include for-tablet {
             font-size: 3.5rem;
         }
-      
+    }
+}
+
+.retro-section-black-photography {
+    flex-direction: column;
+
+    @include for-large-tablet {
+        flex-direction: row;
     }
 }

@@ -485,7 +485,7 @@ const cmps = [
   {
     "id": utilService.makeId(),
     "type": "section",
-    "sectionType": "header",
+    "sectionType": "section",
     "isDroppable": true,
     "img": "https://i.ibb.co/tMSFKPq/header1.jpg",
     "attributes": {
@@ -501,299 +501,412 @@ const cmps = [
       }
     },
     "children": [
-        {
-          "id": utilService.makeId(),
-          "type": "txt",
-          "isDroppable": false,
-          "info": {
-            "txt": "Life is about Creating Experiences",
-          },
-  
-          "attributes": {
-            "className": "",
-            "style": {
-              "fontFamily": "'Playfair Display', serif",
-              "color": "black",
-              "fontSize": "3rem",
-              "textAlign": "center",
-              "padding": "3rem 4.5rem"
-            }
-          },
-          "children": []
+      {
+        "id": utilService.makeId(),
+        "type": "txt",
+        "isDroppable": false,
+        "info": {
+          "txt": "Life is about Creating Experiences",
         },
-        {
-          "id": utilService.makeId(),
-          "type": "txt",
-          "isDroppable": false,
-          "info": {
-            "txt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
-          },
-          
-          "attributes": {
-            "className": "",
-            "style": {
-              "fontFamily": "system-ui",
-              "fontWeight": "200",
-              "color": "gray",
-              "fontSize": "1.3rem",
-              "textAlign": "center",
-              "padding": "1rem 4rem"
-            }
-          },
-          "children": []
+
+        "attributes": {
+          "className": "",
+          "style": {
+            "fontFamily": "'Playfair Display', serif",
+            "color": "black",
+            "fontSize": "3rem",
+            "textAlign": "center",
+            "padding": "3rem"
+          }
         },
-        {
-          "id": utilService.makeId(),
-          "type": "section",
-          "isDroppable": true,
+        "children": []
+      },
+      {
+        "id": utilService.makeId(),
+        "type": "txt",
+        "isDroppable": false,
+        "info": {
+          "txt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
+        },
 
-          "attributes": {
-            "className": "",
-            "style": {
-              "display": "flex",
-              "flexWrap": "wrap",
-              "width": "100%",
-              "justifyContent": "space-around",
-              "alignItems": "center",
-              "padding": "4rem 0"
-            }
-          },
-          "children": [
-            {
-              "id": utilService.makeId(),
-              "type": "section",
-              "isDroppable": true,
+        "attributes": {
+          "className": "",
+          "style": {
+            "fontFamily": "system-ui",
+            "fontWeight": "200",
+            "color": "gray",
+            "fontSize": "1.3rem",
+            "textAlign": "center",
+            "padding": "1rem 4rem"
+          }
+        },
+        "children": []
+      },
+      {
+        "id": utilService.makeId(),
+        "type": "section",
+        "isDroppable": true,
 
-              "attributes": {
-                "className": "",
-                "style": {
-                  "display": "flex",
-                  "flex": "20rem",
-                  "width": "50%",
-                  "justifyContent": "space-around",
-                  "alignItems": "center",
-                  "padding": "4rem 0"
+        "attributes": {
+          "className": "",
+          "style": {
+            "display": "flex",
+            "flexWrap": "wrap",
+            "width": "100%",
+            "justifyContent": "space-around",
+            "alignItems": "center",
+            "padding": "4rem 0"
+          }
+        },
+        "children": [
+          {
+            "id": utilService.makeId(),
+            "type": "section",
+            "isDroppable": true,
+
+            "attributes": {
+              "className": "",
+              "style": {
+                "display": "flex",
+                "flex": "20rem",
+                "width": "50%",
+                "justifyContent": "space-around",
+                "alignItems": "center",
+                "padding": "4rem 0"
               }
+            },
+            "children": [
+              {
+                "id": utilService.makeId(),
+                "type": "section",
+                "isDroppable": true,
+
+                "attributes": {
+                  "className": "",
+                  "style": {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "justifyContent": "space-around",
+                    "alignItems": "center",
+                  }
+                },
+                "children": [
+                  {
+                    "id": utilService.makeId(),
+                    "type": "img",
+                    "isDroppable": "false",
+
+                    "attributes": {
+                      "className": "",
+                      "style": {
+                      },
+                      "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services1.svg"
+                    }
+                  },
+                  {
+                    "id": utilService.makeId(),
+                    "type": "txt",
+                    "isDroppable": "false",
+
+                    "info": {
+                      "txt": "your text here"
+                    },
+                    "attributes": {
+                      "className": "",
+                      "style": {
+                        "textAlign": "center",
+                        "fontFamily": "'Playfair Display', serif",
+                        "fontSize": "1.3rem",
+                        "margin-top": "1rem"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "id": utilService.makeId(),
+                "type": "section",
+                "isDroppable": true,
+
+                "attributes": {
+                  "className": "",
+                  "style": {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "justifyContent": "space-around",
+                    "alignItems": "center",
+                  }
+                },
+                "children": [
+                  {
+                    "id": utilService.makeId(),
+                    "type": "img",
+                    "isDroppable": "false",
+
+                    "attributes": {
+                      "className": "",
+                      "style": {
+                      },
+                      "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services2.svg"
+                    }
+                  },
+                  {
+                    "id": utilService.makeId(),
+                    "type": "txt",
+                    "isDroppable": "false",
+
+                    "info": {
+                      "txt": "your text here"
+                    },
+                    "attributes": {
+                      "className": "",
+                      "style": {
+                        "textAlign": "center",
+                        "fontFamily": "'Playfair Display', serif",
+                        "fontSize": "1.3rem",
+                        "margin-top": "1rem"
+                      }
+                    }
+                  }
+                ]
+              },
+            ]
           },
-          "children": [
-            {
-              "id": utilService.makeId(),
-              "type": "section",
-              "isDroppable": true,
-    
-              "attributes": {
-                "className": "",
-                "style": {
-                  "display": "flex",
-                  "flexDirection": "column",
-                  "justifyContent": "space-around",
-                  "alignItems": "center",
-                  "width": "150px"
-                }
-              },
-              "children": [
-                 {
-                   "id": utilService.makeId(),
-                   "type": "img",
-                   "isDroppable": "false",
+          {
+            "id": utilService.makeId(),
+            "type": "section",
+            "isDroppable": true,
 
-                   "attributes": {
-                     "className": "",
-                     "style": {
-                     },
-                     "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services1.svg"
-                   }
-                  },
-                  {
-                   "id": utilService.makeId(),
-                   "type": "txt",
-                   "isDroppable": "false",
- 
-                   "info": {
-                     "txt": "your text here"
-                   },
-                   "attributes": {
-                     "className": "",
-                     "style": {
-                       "textAlign": "center",
-                       "fontFamily": "'Playfair Display', serif",
-                       "fontSize": "1.3rem",
-                       "margin-top": "1rem"
-                     }
-                   }
-                 }
-              ]
-            },
-            {
-              "id": utilService.makeId(),
-              "type": "section",
-              "isDroppable": true,
-    
-              "attributes": {
-                "className": "",
-                "style": {
-                  "display": "flex",
-                  "flexDirection": "column",
-                  "justifyContent": "space-around",
-                  "alignItems": "center",
-                  "width": "150px"
-                }
-              },
-              "children": [
-                 {
-                   "id": utilService.makeId(),
-                   "type": "img",
-                   "isDroppable": "false",
-
-                   "attributes": {
-                     "className": "",
-                     "style": {
-                     },
-                     "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services2.svg"
-                   }
-                  },
-                  {
-                   "id": utilService.makeId(),
-                   "type": "txt",
-                   "isDroppable": "false",
- 
-                   "info": {
-                     "txt": "your text here"
-                   },
-                   "attributes": {
-                     "className": "",
-                     "style": {
-                       "textAlign": "center",
-                       "fontFamily": "'Playfair Display', serif",
-                       "fontSize": "1.3rem",
-                       "margin-top": "1rem"
-                     }
-                   }
-                 }
-              ]
-            },
-          ]
-            },
-            {
-              "id": utilService.makeId(),
-              "type": "section",
-              "isDroppable": true,
-
-              "attributes": {
-                "className": "",
-                "style": {
-                  "display": "flex",
-                  "flex": "20rem",
-                  "width": "50%",
-                  "justifyContent": "space-around",
-                  "alignItems": "center",
-                  "padding": "4rem 0"
+            "attributes": {
+              "className": "",
+              "style": {
+                "display": "flex",
+                "flex": "20rem",
+                "width": "50%",
+                "justifyContent": "space-around",
+                "alignItems": "center",
+                "padding": "4rem 0"
               }
-          },
-          "children": [
-            {
-              "id": utilService.makeId(),
-              "type": "section",
-              "isDroppable": true,
-    
-              "attributes": {
-                "className": "",
-                "style": {
-                  "display": "flex",
-                  "flexDirection": "column",
-                  "justifyContent": "space-around",
-                  "alignItems": "center",
-                  "width": "150px"
-                }
-              },
-              "children": [
-                 {
-                   "id": utilService.makeId(),
-                   "type": "img",
-                   "isDroppable": "false",
-  
-                   "attributes": {
-                     "className": "",
-                     "style": {
-                     },
-                     "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services3.svg"
-                   }
-                  },
-                  {
-                   "id": utilService.makeId(),
-                   "type": "txt",
-                   "isDroppable": "false",
-  
-                   "info": {
-                     "txt": "your text here"
-                   },
-                   "attributes": {
-                     "className": "",
-                     "style": {
-                       "textAlign": "center",
-                       "fontFamily": "'Playfair Display', serif",
-                       "fontSize": "1.3rem",
-                       "margin-top": "1rem"
-                     }
-                   }
-                 }
-              ]
             },
-            {
-              "id": utilService.makeId(),
-              "type": "section",
-              "isDroppable": true,
-    
-              "attributes": {
-                "className": "",
-                "style": {
-                  "display": "flex",
-                  "flexDirection": "column",
-                  "justifyContent": "space-around",
-                  "alignItems": "center",
-                  "width": "150px"
-                }
-              },
-              "children": [
-                 {
-                   "id": utilService.makeId(),
-                   "type": "img",
-                   "isDroppable": "false",
-  
-                   "attributes": {
-                     "className": "",
-                     "style": {
-                     },
-                     "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services4.svg"
-                   }
+            "children": [
+              {
+                "id": utilService.makeId(),
+                "type": "section",
+                "isDroppable": true,
+
+                "attributes": {
+                  "className": "",
+                  "style": {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "justifyContent": "space-around",
+                    "alignItems": "center",
+                  }
+                },
+                "children": [
+                  {
+                    "id": utilService.makeId(),
+                    "type": "img",
+                    "isDroppable": "false",
+
+                    "attributes": {
+                      "className": "",
+                      "style": {
+                      },
+                      "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services3.svg"
+                    }
                   },
                   {
-                   "id": utilService.makeId(),
-                   "type": "txt",
-                   "isDroppable": "false",
-  
-                   "info": {
-                     "txt": "your text here"
-                   },
-                   "attributes": {
-                     "className": "",
-                     "style": {
-                       "textAlign": "center",
-                       "fontFamily": "'Playfair Display', serif",
-                       "fontSize": "1.3rem",
-                       "margin-top": "1rem"
-                     }
-                   }
-                 }
-              ]
-            }
-          ]
-            }
+                    "id": utilService.makeId(),
+                    "type": "txt",
+                    "isDroppable": "false",
 
-          ]
-        }
+                    "info": {
+                      "txt": "your text here"
+                    },
+                    "attributes": {
+                      "className": "",
+                      "style": {
+                        "textAlign": "center",
+                        "fontFamily": "'Playfair Display', serif",
+                        "fontSize": "1.3rem",
+                        "margin-top": "1rem"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "id": utilService.makeId(),
+                "type": "section",
+                "isDroppable": true,
+
+                "attributes": {
+                  "className": "",
+                  "style": {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "justifyContent": "space-around",
+                    "alignItems": "center",
+                  }
+                },
+                "children": [
+                  {
+                    "id": utilService.makeId(),
+                    "type": "img",
+                    "isDroppable": "false",
+
+                    "attributes": {
+                      "className": "",
+                      "style": {
+                      },
+                      "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services4.svg"
+                    }
+                  },
+                  {
+                    "id": utilService.makeId(),
+                    "type": "txt",
+                    "isDroppable": "false",
+
+                    "info": {
+                      "txt": "your text here"
+                    },
+                    "attributes": {
+                      "className": "",
+                      "style": {
+                        "textAlign": "center",
+                        "fontFamily": "'Playfair Display', serif",
+                        "fontSize": "1.3rem",
+                        "margin-top": "1rem"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+
+        ]
+      }
+    ]
+  },
+  {
+    "id": utilService.makeId(),
+    "type": "section",
+    "sectionType": "section",
+    "img": "https://i.ibb.co/fvRvR0j/retro-section.png",
+    "isDroppable": false,
+    "attributes": {
+      "className": "retro-section-black-photography",
+      "style": {
+        "width": "100%",
+        "display": "flex",
+        "height": "fit-content",
+        "maxHeight": "40rem"
+      }
+    },
+    "children": [
+      {
+        "id": utilService.makeId(),
+        "type": "section",
+        "isDroppable": false,
+        "attributes": {
+          "className": "retro-section-black-photography-left",
+          "style": {
+            "backgroundColor": "#071112",
+            "fontFamily": "Lato regular",
+            "display": "flex",
+            "color": "#fff",
+            "flexDirection": "column",
+            "justifyContent": "center",
+            "textAlign": "left",
+            "padding": "3rem",
+            "gap": "4rem",
+            "minWidth": "50%",
+            "wordWrap": "break-word"
+          }
+        },
+        "children": [
+          {
+            "id": utilService.makeId(),
+            "type": "txt",
+            "isDroppable": false,
+            "info": {
+              "txt": "I'm Ready to Exceed Expectations"
+            },
+            "attributes": {
+              "className": "",
+              "style": {
+                "fontSize": "1.5rem"
+              }
+            },
+            "children": []
+          },
+          {
+            "id": utilService.makeId(),
+            "type": "txt",
+            "isDroppable": false,
+            "info": {
+              "txt": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, cupiditate! Nesciunt nostrum inventore maxime fugit. Odio quisquam autem, maiores rem quos error dignissimos consectetur hic. Iusto maxime optio suscipit fuga?"
+            },
+            "attributes": {
+              "className": "",
+              "style": {
+                "letterSpacing": "1.5px",
+                "fontFamily": "Lato light"
+              }
+            },
+            "children": []
+          },
+          {
+            "id": utilService.makeId(),
+            "type": "btn",
+            "isDroppable": false,
+            "info": {
+              "txt": "About Me",
+              "action": {
+                "link": "www.google.com"
+              }
+            },
+            "attributes": {
+              "className": "",
+              "style": {
+                "width": "7.5rem",
+                "height": "2.5rem",
+                "background": "none",
+                "color": "#fff",
+                "borderHeight": "1.5px",
+                "borderStyle": "solid",
+                "borderColor": "#fff"
+              }
+            },
+            "children": [
+
+            ]
+          }
+        ]
+      },
+      {
+        "id": utilService.makeId(),
+        "type": "img",
+        "isDroppable": false,
+        "attributes": {
+          "className": "retro-section-black-photography-right",
+          "style": {
+            "minWidth": "50%",
+            "objectFit": "bottom",
+            "Width": "100%",
+            "Height": "100%"
+          },
+          "src": "https://preview.colorlib.com/theme/rettro/assets/img/gallery/startup_bg.png.webp"
+        },
+        "children": [
+
+        ]
+      }
     ]
   }
+
 ]
 
 
