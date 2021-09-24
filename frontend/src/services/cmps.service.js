@@ -481,8 +481,253 @@ const cmps = [
 
 
     ]
-  }
+  },
+  {
+    "id": utilService.makeId(),
+    "type": "section",
+    "sectionType": "header",
+    "isDroppable": true,
+    "img": "https://i.ibb.co/tMSFKPq/header1.jpg",
+    "attributes": {
+      "className": "rettro-cards-section",
+      "style": {
+        "display": "flex",
+        "flex-direction": "column",
+        "justifyContent": "space-around",
+        "alignItems": "center",
+        "backgroundColor": "white",
+        "height": "100vh",
+        "width": "100%"
+      }
+    },
+    "children": [
+        {
+          "id": utilService.makeId(),
+          "type": "txt",
+          "isDroppable": false,
+          "info": {
+            "txt": "Life is about Creating Experiences",
+          },
+  
+          "attributes": {
+            "className": "",
+            "style": {
+              "color": "black",
+              "fontSize": "3rem",
+              "textAlign": "center",
+            }
+          },
+          "children": []
+        },
+        {
+          "id": utilService.makeId(),
+          "type": "txt",
+          "isDroppable": false,
+          "info": {
+            "txt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
+          },
+  
+          "attributes": {
+            "className": "",
+            "style": {
+              "color": "gray",
+              "fontSize": "1.5rem",
+              "textAlign": "center",
+            }
+          },
+          "children": []
+        },
+        {
+          "id": utilService.makeId(),
+          "type": "section",
+          "isDroppable": true,
 
+          "attributes": {
+            "className": "",
+            "style": {
+              "display": "flex",
+              "width": "90%",
+              "justifyContent": "space-around",
+              "alignItems": "center",
+            }
+          },
+          "children": [
+            {
+              "id": utilService.makeId(),
+              "type": "section",
+              "isDroppable": true,
+    
+              "attributes": {
+                "className": "",
+                "style": {
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "justifyContent": "space-around",
+                  "alignItems": "center",
+                }
+              },
+              "children": [
+                 {
+                   "id": utilService.makeId(),
+                   "type": "img",
+                   "isDroppable": "false",
+
+                   "attributes": {
+                     "className": "",
+                     "style": {
+                     },
+                     "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services1.svg"
+                   }
+                  },
+                  {
+                   "id": utilService.makeId(),
+                   "type": "txt",
+                   "isDroppable": "false",
+ 
+                   "info": {
+                     "txt": "hello"
+                   },
+                   "attributes": {
+                     "className": "",
+                     "style": {
+                     }
+                   }
+                 }
+              ]
+            },
+            {
+              "id": utilService.makeId(),
+              "type": "section",
+              "isDroppable": true,
+    
+              "attributes": {
+                "className": "",
+                "style": {
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "justifyContent": "space-around",
+                  "alignItems": "center",
+                }
+              },
+              "children": [
+                 {
+                   "id": utilService.makeId(),
+                   "type": "img",
+                   "isDroppable": "false",
+
+                   "attributes": {
+                     "className": "",
+                     "style": {
+                     },
+                     "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services2.svg"
+                   }
+                  },
+                  {
+                   "id": utilService.makeId(),
+                   "type": "txt",
+                   "isDroppable": "false",
+ 
+                   "info": {
+                     "txt": "hello"
+                   },
+                   "attributes": {
+                     "className": "",
+                     "style": {
+                     }
+                   }
+                 }
+              ]
+            },
+            {
+              "id": utilService.makeId(),
+              "type": "section",
+              "isDroppable": true,
+    
+              "attributes": {
+                "className": "",
+                "style": {
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "justifyContent": "space-around",
+                  "alignItems": "center",
+                }
+              },
+              "children": [
+                 {
+                   "id": utilService.makeId(),
+                   "type": "img",
+                   "isDroppable": "false",
+
+                   "attributes": {
+                     "className": "",
+                     "style": {
+                     },
+                     "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services3.svg"
+                   }
+                  },
+                  {
+                   "id": utilService.makeId(),
+                   "type": "txt",
+                   "isDroppable": "false",
+ 
+                   "info": {
+                     "txt": "hello"
+                   },
+                   "attributes": {
+                     "className": "",
+                     "style": {
+                     }
+                   }
+                 }
+              ]
+            },
+            {
+              "id": utilService.makeId(),
+              "type": "section",
+              "isDroppable": true,
+    
+              "attributes": {
+                "className": "",
+                "style": {
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "justifyContent": "space-around",
+                  "alignItems": "center",
+                }
+              },
+              "children": [
+                 {
+                   "id": utilService.makeId(),
+                   "type": "img",
+                   "isDroppable": "false",
+
+                   "attributes": {
+                     "className": "",
+                     "style": {
+                     },
+                     "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services4.svg"
+                   }
+                  },
+                  {
+                   "id": utilService.makeId(),
+                   "type": "txt",
+                   "isDroppable": "false",
+ 
+                   "info": {
+                     "txt": "hello"
+                   },
+                   "attributes": {
+                     "className": "",
+                     "style": {
+                     }
+                   }
+                 }
+              ]
+            }
+          ]
+        }
+    ]
+  }
 ]
 
 
