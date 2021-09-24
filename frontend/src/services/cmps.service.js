@@ -299,7 +299,7 @@ const cmps = [
     "type": "section",
     "sectionType": "footer",
     "isDroppable": true,
-    "img": "https://preview.colorlib.com/theme/rettro/assets/img/hero/xh1_hero1.png.pagespeed.ic.iM0zmOGvvG.webp",
+    "img": "https://i.ibb.co/88SwnXf/footer.jpg",
     "attributes": {
       "className": "rettro-footer",
       "style": {
@@ -487,7 +487,7 @@ const cmps = [
     "type": "section",
     "sectionType": "section",
     "isDroppable": true,
-    "img": "https://i.ibb.co/tMSFKPq/header1.jpg",
+    "img": "https://i.ibb.co/1MmXdcN/anothersection.png",
     "attributes": {
       "className": "rettro-cards-section",
       "style": {
@@ -512,7 +512,7 @@ const cmps = [
         "attributes": {
           "className": "",
           "style": {
-            "fontFamily": "'Playfair Display', serif",
+            "fontFamily": "Lato regular, sans-serif",
             "color": "black",
             "fontSize": "3rem",
             "textAlign": "center",
@@ -615,7 +615,7 @@ const cmps = [
                       "className": "",
                       "style": {
                         "textAlign": "center",
-                        "fontFamily": "'Playfair Display', serif",
+                        "fontFamily": "Lato regular, sans-serif",
                         "fontSize": "1.3rem",
                         "margin-top": "1rem"
                       }
@@ -662,7 +662,7 @@ const cmps = [
                       "className": "",
                       "style": {
                         "textAlign": "center",
-                        "fontFamily": "'Playfair Display', serif",
+                        "fontFamily": "Lato regular, sans-serif",
                         "fontSize": "1.3rem",
                         "margin-top": "1rem"
                       }
@@ -712,6 +712,7 @@ const cmps = [
                     "attributes": {
                       "className": "",
                       "style": {
+
                       },
                       "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services3.svg"
                     }
@@ -728,7 +729,7 @@ const cmps = [
                       "className": "",
                       "style": {
                         "textAlign": "center",
-                        "fontFamily": "'Playfair Display', serif",
+                        "fontFamily": "Lato regular, sans-serif",
                         "fontSize": "1.3rem",
                         "margin-top": "1rem"
                       }
@@ -775,7 +776,7 @@ const cmps = [
                       "className": "",
                       "style": {
                         "textAlign": "center",
-                        "fontFamily": "'Playfair Display', serif",
+                        "fontFamily": "Lato regular, sans-serif",
                         "fontSize": "1.3rem",
                         "margin-top": "1rem"
                       }
@@ -802,7 +803,7 @@ const cmps = [
         "width": "100%",
         "display": "flex",
         "height": "fit-content",
-        "maxHeight": "40rem"
+        "maxHeight": "40rem",
       }
     },
     "children": [
