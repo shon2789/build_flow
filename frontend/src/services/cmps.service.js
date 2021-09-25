@@ -386,7 +386,6 @@ const cmps = [
             "marginBottom": "5rem",
             "padding": "0 1rem",
             "color": "gray",
-            "fontSize": "1.3rem",
             "marginTop": "5rem",
             "fontSize": "0.85rem",
             "textAlign": "center",

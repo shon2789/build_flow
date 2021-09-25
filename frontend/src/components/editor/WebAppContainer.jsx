@@ -2,7 +2,6 @@ import React from 'react'
 import { Draggable, Droppable } from 'react-beautiful-dnd'
 import { SaveWebAppBtn } from './SaveWebAppBtn'
 import { GiHamburgerMenu } from "react-icons/gi";
-import { cmpService } from '../../services/cmps.service';
 import { DynamicCmp } from '../../dynamic-cmps/DynamicCmp';
 
 

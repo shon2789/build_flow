@@ -23,6 +23,10 @@ export const TemplateList = () => {
                     <TemplatePreview />
                     <TemplatePreview />
                     <TemplatePreview />
+                    <TemplatePreview />
+                    <TemplatePreview />
+                    <TemplatePreview />
+                    <TemplatePreview />
                 </div>
             </div>
         </section>
