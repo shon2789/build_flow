@@ -78,6 +78,9 @@ export const EditorPage = () => {
     const [editorWidth, setEditorWidth] = useState('100%')
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
+    //Cmp States
+    const [currCmp, setCurrCmp] = useState(null)
+
 
     useEffect(() => {
         window.addEventListener('resize', () => {
@@ -113,6 +116,11 @@ export const EditorPage = () => {
         //     }})
     }
 
+    const onSetCurrCmp = (ev, cmp) => {
+        ev.stopPropagation()
+        setCurrCmp(cmp)
+    }
+
     return (
         <DragDropContext onDragStart={onDragStart} onDragEnd={result => onDragEnd(result, columns, setColumns)}>
 
@@ -123,7 +131,7 @@ export const EditorPage = () => {
                 </div>
 
                 <WebAppContainer editorWidth={editorWidth} onToggleEditorMenu={onToggleEditorMenu} itemsFromBackend={editing[1].items} droppableId={editing[0]}
-                    onDeleteCmp={onDeleteCmp}
+                    onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} currCmp={currCmp}
                 />
             </main>
 

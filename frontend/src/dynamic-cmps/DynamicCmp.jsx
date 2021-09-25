@@ -5,19 +5,21 @@ import { WebAppNavbarCmp } from "./WebAppNavbarCmp.jsx"
 import { WebAppBtnCmp } from "./WebAppBtnCmp.jsx"
 import { WebAppImgCmp } from "./WebAppImgCmp.jsx"
 
-export function DynamicCmp({ cmp, onDeleteCmp }) {
+export function DynamicCmp({ cmp, currCmp, onDeleteCmp, onSetCurrCmp }) {
+
+
     function getCmp(type) {
         switch (type) {
             case 'section':
-                return <WebAppSectionCmp cmp={cmp} onDeleteCmp={onDeleteCmp} />
+                return <WebAppSectionCmp cmp={cmp} currCmp={currCmp} onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} />
             case 'txt':
-                return <WebAppTxtCmp cmp={cmp} onDeleteCmp={onDeleteCmp} />
+                return <WebAppTxtCmp cmp={cmp} currCmp={currCmp} onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} />
             case 'navbar':
-                return <WebAppNavbarCmp cmp={cmp} onDeleteCmp={onDeleteCmp} />
+                return <WebAppNavbarCmp cmp={cmp} currCmp={currCmp} onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} />
             case 'btn':
-                return <WebAppBtnCmp cmp={cmp} onDeleteCmp={onDeleteCmp} />
+                return <WebAppBtnCmp cmp={cmp} currCmp={currCmp} onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} />
             case 'img':
-                return <WebAppImgCmp cmp={cmp} onDeleteCmp={onDeleteCmp} />
+                return <WebAppImgCmp cmp={cmp} currCmp={currCmp} onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} />
             default:
                 console.log('if U got here, things got messed up')
         }
