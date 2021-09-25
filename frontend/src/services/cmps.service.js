@@ -1001,32 +1001,10 @@ function deleteCmp(cmpId, webAppCmps) {
   webAppCmps.forEach((cmp, idx) => {
     if (cmp.id === cmpId) {
       webAppCmps.splice(idx, 1)
-      // if(webAppCmps.length === 0){
-      //   console.log('webAppCmps.length = 0')
-      //   return true;
-      // }
-      // return false;
     } else {
       if (cmp.children.length > 0) {
         deleteCmp(cmpId, cmp.children)
-        // const res = deleteCmp(cmpId, cmp.children)
-        // console.log(res)
-        // if(res){
-        //   console.log("delete array")
-        //   const idx = cmp.children.findIndex(cmp => cmpId === cmp.id)
-        //   cmp.children.splice(idx, 1)
-        // }
       }
     }
   })
-}
-
-function isEmptyCmp(cmp) {
-  if (cmp.children.length > 0) {
-    cmp.children.forEach(child => {
-
-    })
-  } else {
-    return true;
-  }
 }
