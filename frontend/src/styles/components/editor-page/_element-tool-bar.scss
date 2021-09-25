@@ -59,4 +59,9 @@
 .nuetral-div {
     position: relative;
     display: inline-block;
+
+    margin: 0;
+    padding: 0;
+    width: fit-content !important;
+    max-height: min-content !important;
 }
