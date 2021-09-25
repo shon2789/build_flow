@@ -109,11 +109,13 @@ export const EditorPage = () => {
         const webAppCmps = editing[1].items;
         cmpService.deleteCmp(cmpId, webAppCmps.map(section => section.cmp))
 
-        // setColumns( {...columns,
-        //     [editing[0]]: {
-        //         ...destColumn,
-        //         items: destItems
-        //     }})
+        setColumns({
+            ...columns,
+            [editing[0]]: {
+                ...editing[1],
+                items: editing[1].items
+            }
+        })
     }
 
     const onSetCurrCmp = (ev, cmp) => {
