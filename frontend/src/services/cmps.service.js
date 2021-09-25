@@ -838,7 +838,7 @@ const cmps = [
     "type": "section",
     "sectionType": "section",
     "isDroppable": true,
-    "img": "https://www.moevenpick-icecream.com/sites/default/files/styles/product_background/public/2021-03/FL-15315BwithoutLOGO_2.jpg?itok=ED_FBX18",
+    "img": "https://i.ibb.co/vmxjSq5/icecream.png",
     "attributes": {
       "className": "portfolio-main-section",
       "style": {
@@ -1008,7 +1008,7 @@ function deleteCmp(cmpId, webAppCmps) {
       // return false;
     } else {
       if (cmp.children.length > 0) {
-       deleteCmp(cmpId, cmp.children)
+        deleteCmp(cmpId, cmp.children)
         // const res = deleteCmp(cmpId, cmp.children)
         // console.log(res)
         // if(res){
@@ -1021,8 +1021,8 @@ function deleteCmp(cmpId, webAppCmps) {
   })
 }
 
-function isEmptyCmp(cmp){
-  if(cmp.children.length > 0){
+function isEmptyCmp(cmp) {
+  if (cmp.children.length > 0) {
     cmp.children.forEach(child => {
 
     })
