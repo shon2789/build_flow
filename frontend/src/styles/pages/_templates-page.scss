@@ -1,0 +1,58 @@
+.templates-list{
+    display: flex;
+    .templates-content-container{
+        
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        flex-direction: column;
+
+        align-items: center;
+        flex: 1;
+        gap: 4rem;;
+        margin: 1rem 0;
+
+
+        .templates-page-title{
+            padding: 0 1rem;
+            font-size: 2rem;
+            text-align: center;
+           
+            
+            @include for-tablet{
+                font-size: 3rem;
+            }
+        }
+
+
+        .templates-preview-container{
+            display: grid;
+            gap: 2.3rem;
+     
+
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            grid-template-rows: repeat(1, 1fr);
+            
+            @include for-tablet{
+                
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+            }
+            @include for-large-tablet{
+                
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+            }
+
+
+        }
+        
+
+      
+        @include for-tablet{
+        margin: 3rem 0;
+
+        }
+    }
+}
