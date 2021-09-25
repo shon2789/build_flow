@@ -1017,7 +1017,8 @@ function deleteCmp(cmpId, webAppCmps) {
 function getParentElement(element, mappedWebAppCmps, webAppCmps) {
   mappedWebAppCmps.forEach((cmp, idx) => {
     //Case duplicating an entire section (Part of the webApp array):
-    if (cmp.id === element.id && element.type === 'section') {
+    //(element?.sectionType) means if no sectionType got to else if
+    if (cmp.id === element.id && element?.sectionType) {
       const duplicatedElement = cloneDeep(element)
       changeCmpIds(duplicatedElement)
       //webAppCmps is the parent of the section
