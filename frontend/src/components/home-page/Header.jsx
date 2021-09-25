@@ -14,7 +14,7 @@ export const Header = ({ isMenuToggled, toggleMenu }) => {
                     <div onClick={() => toggleMenu(false)} className="nav-btn-container"><a className="header-hww-btn" href="#how-we-work">How we work</a></div>
                     <div onClick={() => toggleMenu(false)} className="nav-btn-container"><a className="header-templates-btn" href="#home-page-templates">Templates</a></div>
                 </nav>
-                <Link to="/editor"> <div className="get-started-btn">Get started</div></Link>
+                <Link to="/template"> <div className="get-started-btn">Get started</div></Link>
                 <GiHamburgerMenu onClick={() => toggleMenu(true)} className="header-hamburger-btn" />
             </div>
         </header>

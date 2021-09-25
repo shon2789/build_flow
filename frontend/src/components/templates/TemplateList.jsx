@@ -1,6 +1,7 @@
 import { SideNav } from "../SideNav"
 import { TemplatePreview } from "./TemplatePreview"
 import { BsPlusCircle } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 export const TemplateList = () => {
     return (
@@ -10,13 +11,14 @@ export const TemplateList = () => {
             <div className="templates-content-container">
                 <h2 className="templates-page-title">Choose one and start building now!</h2>
                 <div className="templates-preview-container">
-                    <div className="create-template-preview">
-
-                        <div className="create-template-preview-upper">
-                            <BsPlusCircle />
+                    <Link to="/editor">
+                        <div className="create-template-preview">
+                            <div className="create-template-preview-upper">
+                                <BsPlusCircle />
+                            </div>
+                            <div className="create-template-preview-lower">Start a new project</div>
                         </div>
-                        <div className="create-template-preview-lower">Start a new project</div>
-                    </div>
+                    </Link>
                     <TemplatePreview />
                     <TemplatePreview />
                     <TemplatePreview />

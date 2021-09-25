@@ -9,8 +9,8 @@ export const SideNav = () => {
     return (
         <div className="side-nav">
             <div className="side-nav-icons-container">
-                <Link to="/"><IoHome className="icon-btn" /></Link>
-                <HiTemplate className="icon-btn" />
+                <Link to="/"><IoHome className="icon-btn icon-home" /></Link>
+                <Link to="/template"> <HiTemplate className="icon-btn" /></Link>
                 <FaUser className="icon-btn" />
             </div>
         </div>
