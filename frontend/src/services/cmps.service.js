@@ -998,11 +998,14 @@ function _changeCmpIds(cmp) {
 }
 
 function deleteCmp(cmpId, webAppCmps) {
+  console.log(webAppCmps)
+  if(webAppCmps[0] === null) return true;
   webAppCmps.forEach((cmp, idx) => {
     if (cmp.id === cmpId) {
       webAppCmps.splice(idx, 1)
-      console.log('deleted')
-      return
+      if(webAppCmps.length === 0){
+        webAppCmps = null;
+      }
     } else {
       if (cmp.children.length > 0) {
         deleteCmp(cmpId, cmp.children)
