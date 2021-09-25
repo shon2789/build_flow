@@ -113,17 +113,19 @@ export const EditorPage = () => {
         }
         const res = cmpService.deleteCmp(cmpId, mappedWebAppCmps)
 
-        if(res){
+        if (res) {
             console.log('deleting section')
             // const idx = webAppCmps.findIndex(cmp => cmpId === cmp.id)
             // webAppCmps.splice(idx, 1)
         }
 
-        setColumns( {...columns,
+        setColumns({
+            ...columns,
             [editing[0]]: {
                 ...editing[1],
                 items: editing[1].items
-            }})
+            }
+        })
     }
 
     const onSetCurrCmp = (ev, cmp) => {
