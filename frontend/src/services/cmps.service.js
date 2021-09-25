@@ -430,7 +430,7 @@ const cmps = [
             "color": "black",
             "fontSize": "3rem",
             "textAlign": "center",
-            "padding": "3rem"
+            "padding": "3rem 1rem"
           }
         },
         "children": []
@@ -451,7 +451,8 @@ const cmps = [
             "color": "gray",
             "fontSize": "1.3rem",
             "textAlign": "center",
-            "padding": "1rem 4rem"
+            "padding": "1rem 1rem",
+            "width": "90%"
           }
         },
         "children": []
@@ -725,7 +726,6 @@ const cmps = [
         "width": "100%",
         "display": "flex",
         "height": "fit-content",
-        "maxHeight": "40rem",
       }
     },
     "children": [
@@ -820,6 +820,7 @@ const cmps = [
           "className": "retro-section-black-photography-right",
           "style": {
             "minWidth": "50%",
+            "maxHeight": "40rem",
             "objectFit": "cover",
             "Width": "100%",
             "Height": "100%"

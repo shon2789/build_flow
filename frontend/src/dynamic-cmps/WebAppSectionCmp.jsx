@@ -9,7 +9,7 @@ export const WebAppSectionCmp = ({ cmp, currCmp, onDeleteCmp, onSetCurrCmp }) =>
 
     if (currCmp && currCmp.id === cmp.id) {
         return (
-            <section id={cmp.id} style={{ ...cmp.attributes.style, position: 'relative', outline: '2px dashed #c6c6c6' }} className={cmp.attributes.className} onClick={(ev) => { onSetCurrCmp(ev, cmp) }} >
+            <section id={cmp.id} style={{ ...cmp.attributes.style, position: 'relative', outline: '2px dashed #c6c6c6', outlineOffset: '-2px' }} className={cmp.attributes.className} onClick={(ev) => { onSetCurrCmp(ev, cmp) }} >
                 <ElementToolBar />
                 {cmp.children && cmp.children.map((child, idx) => <DynamicCmp key={idx} cmp={child} currCmp={currCmp} onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} />)}
             </section>
