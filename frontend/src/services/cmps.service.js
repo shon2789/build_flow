@@ -832,6 +832,124 @@ const cmps = [
         ]
       }
     ]
+  },
+  {
+    "id": utilService.makeId(),
+    "type": "section",
+    "sectionType": "section",
+    "isDroppable": true,
+    "img": "https://www.moevenpick-icecream.com/sites/default/files/styles/product_background/public/2021-03/FL-15315BwithoutLOGO_2.jpg?itok=ED_FBX18",
+    "attributes": {
+      "className": "portfolio-main-section",
+      "style": {
+        "display": "flex",
+        "flexDirection": "column",
+        "alignItems": "center",
+        "minHeight": "75vh",
+        "backgroundImage": "url('https://www.moevenpick-icecream.com/sites/default/files/styles/product_background/public/2021-03/FL-15315BwithoutLOGO_2.jpg?itok=ED_FBX18')",
+        "backgroundSize": "cover",
+        "backgroundRepeat": "no-repeat",
+        "width": "100%",
+
+      }
+    },
+    "children": [
+
+
+
+      {
+        "id": utilService.makeId(),
+        "type": "txt",
+        "isDroppable": false,
+        "info": {
+          "txt": "Discover",
+
+        },
+
+
+
+        "attributes": {
+          "className": "portfolio-main-txt",
+          "style": {
+
+
+            "fontSize": "3.5rem",
+            "textShadow": "3px 4px 7px rgba(81,67,21,0.8)",
+            "marginBottom": "1.3rem",
+            "marginTop": "7rem",
+            "textAlign": "center",
+            "color": "white",
+            "fontFamily": "Lato regular,sans-serif",
+
+          }
+        },
+        "children": []
+      },
+      {
+        "id": utilService.makeId(),
+        "type": "txt",
+        "isDroppable": false,
+        "info": {
+          "txt": "Yummy yummy Icecreams",
+
+        },
+
+
+
+        "attributes": {
+          "className": "portfolio-main-txt",
+          "style": {
+
+
+            "fontSize": "3.5rem",
+            "marginBottom": "5rem",
+            "textAlign": "center",
+            "color": "white",
+            "fontFamily": "Lato regular,sans-serif",
+            "textShadow": "3px 4px 7px rgba(81,67,21,0.8)"
+
+          }
+        },
+        "children": []
+      },
+      {
+        "id": utilService.makeId(),
+        "type": "btn",
+        "isDroppable": false,
+        "info": {
+          "txt": "Discover more",
+
+        },
+
+
+
+        "attributes": {
+          "className": "portfolio-main-txt",
+          "style": {
+
+
+            "fontSize": "1.3rem",
+            "border": "none",
+
+            "textAlign": "center",
+            "color": "#292929",
+            "fontFamily": "Lato regular,sans-serif",
+            "backgroundColor": "white",
+            "padding": "0.7rem",
+            "display": "flex",
+            "alignItems": "center",
+            "justifyContent": "center",
+            "minWidth": "10rem",
+            "boxShadow": "rgba(0, 0, 0, 0.35) 0px 5px 15px"
+
+          }
+        },
+        "children": []
+      },
+
+
+
+    ]
   }
 
 ]
