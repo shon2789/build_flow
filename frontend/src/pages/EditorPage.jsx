@@ -107,7 +107,11 @@ export const EditorPage = () => {
 
     const onDeleteCmp = (cmpId) => {
         const webAppCmps = editing[1].items;
-        const res = cmpService.deleteCmp(cmpId, webAppCmps.map(section => section.cmp))
+        const mappedWebAppCmps = webAppCmps.map(section => section.cmp)
+        if(mappedWebAppCmps.length === 0) {
+            
+        }
+        const res = cmpService.deleteCmp(cmpId, mappedWebAppCmps)
 
         if(res){
             console.log('deleting section')
