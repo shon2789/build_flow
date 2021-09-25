@@ -6,6 +6,7 @@ import { cmpService } from '../services/cmps.service';
 import { Screen } from '../components/Screen';
 import { MainEditor } from '../components/editor/MainEditor';
 import { WebAppContainer } from '../components/editor/WebAppContainer';
+import { cloneDeep } from 'lodash';
 
 
 
@@ -105,16 +106,19 @@ export const EditorPage = () => {
         setEditorWidth(width)
     }
 
+
+    //Editor functions:
+
     const onDeleteCmp = (cmpId) => {
         const webAppCmps = editing[1].items;
         const mappedWebAppCmps = webAppCmps.map(section => section.cmp)
         console.log(mappedWebAppCmps)
 
-        if(currCmp.type === 'section'){
+        if (currCmp) {
             const idx = mappedWebAppCmps.findIndex(section => currCmp.id === section.id)
-            if(idx === -1){
+            if (idx === -1) {
                 cmpService.deleteCmp(cmpId, mappedWebAppCmps)
-            } else{
+            } else {
                 webAppCmps.splice(idx, 1)
             }
         } else {
@@ -135,6 +139,21 @@ export const EditorPage = () => {
         setCurrCmp(cmp)
     }
 
+
+    const onDuplicateCmp = (element) => {
+        const webAppCmps = editing[1].items;
+        const mappedWebAppCmps = webAppCmps.map(section => section.cmp)
+        cmpService.getParentElement(element, mappedWebAppCmps, webAppCmps)
+
+        setColumns({
+            ...columns,
+            [editing[0]]: {
+                ...webAppCmps,
+                items: webAppCmps
+            }
+        })
+    }
+
     return (
         <DragDropContext onDragStart={onDragStart} onDragEnd={result => onDragEnd(result, columns, setColumns)}>
 
@@ -145,7 +164,7 @@ export const EditorPage = () => {
                 </div>
 
                 <WebAppContainer editorWidth={editorWidth} onToggleEditorMenu={onToggleEditorMenu} itemsFromBackend={editing[1].items} droppableId={editing[0]}
-                    onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} currCmp={currCmp}
+                    onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} onDuplicateCmp={onDuplicateCmp} currCmp={currCmp}
                 />
             </main>
 

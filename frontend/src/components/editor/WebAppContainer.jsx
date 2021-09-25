@@ -6,7 +6,7 @@ import { cmpService } from '../../services/cmps.service';
 import { DynamicCmp } from '../../dynamic-cmps/DynamicCmp';
 
 
-export const WebAppContainer = ({ droppableId, itemsFromBackend, onToggleEditorMenu, editorWidth, onDeleteCmp, onSetCurrCmp, currCmp }) => {
+export const WebAppContainer = ({ droppableId, itemsFromBackend, onToggleEditorMenu, editorWidth, onDeleteCmp, onSetCurrCmp, currCmp, onDuplicateCmp }) => {
     return (
         <div className="web-app-container">
             <GiHamburgerMenu onClick={() => onToggleEditorMenu(true)} className="editor-menu-hamburger" />
@@ -25,7 +25,7 @@ export const WebAppContainer = ({ droppableId, itemsFromBackend, onToggleEditorM
                                                     {...provided.draggableProps}
                                                     {...provided.dragHandleProps}
                                                 >
-                                                    <DynamicCmp cmp={item.cmp} currCmp={currCmp} onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} />
+                                                    <DynamicCmp cmp={item.cmp} currCmp={currCmp} onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} onDuplicateCmp={onDuplicateCmp} />
                                                 </div>
                                             )
                                         }}

@@ -4,11 +4,11 @@ import { FaCopy } from "react-icons/fa";
 
 
 
-export const ElementToolBar = ({ cmpId, onDeleteCmp }) => {
+export const ElementToolBar = ({ cmp, onDeleteCmp, onDuplicateCmp }) => {
     return (
         <div className="element-tool-bar">
-            <div className="element-tool"><FaCopy className="copy-tool" /></div>
-            <div className="element-tool" onClick={() => {onDeleteCmp(cmpId)}}><FaTrashAlt className="delete-tool" /></div>
+            <div className="element-tool" onClick={() => { onDuplicateCmp(cmp) }}><FaCopy className="copy-tool" /></div>
+            <div className="element-tool" onClick={() => { onDeleteCmp(cmp.id) }}><FaTrashAlt className="delete-tool" /></div>
         </div>
     )
 }

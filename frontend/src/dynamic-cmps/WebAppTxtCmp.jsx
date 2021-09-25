@@ -1,12 +1,12 @@
 import React from 'react'
 import { ElementToolBar } from '../components/editor/ElementToolBar'
 
-export const WebAppTxtCmp = ({ cmp, currCmp, onDeleteCmp, onSetCurrCmp }) => {
+export const WebAppTxtCmp = ({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDuplicateCmp }) => {
 
     if (currCmp && currCmp.id === cmp.id) {
         return (
             <span id={cmp.id} style={{ ...cmp.attributes.style, position: 'relative', outline: '2px dashed #c6c6c6', outlineOffset: '-2px' }} className={cmp.attributes.className} onClick={(ev) => { onSetCurrCmp(ev, cmp) }} >
-                <ElementToolBar cmpId={cmp.id} onDeleteCmp={onDeleteCmp} />
+                <ElementToolBar cmp={cmp} onDeleteCmp={onDeleteCmp} onDuplicateCmp={onDuplicateCmp} />
                 {cmp.info.txt}
             </span>
         )

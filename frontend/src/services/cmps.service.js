@@ -5,7 +5,9 @@ export const cmpService = {
   getCmps,
   getById,
   deepCloneCmp,
-  deleteCmp
+  deleteCmp,
+  changeCmpIds,
+  getParentElement
 }
 
 utilService.makeId()
@@ -25,7 +27,8 @@ const cmps = [
         "alignItems": "center",
         "padding": "0 30px",
         "backgroundColor": "white",
-        "height": "60px"
+        "minHeight": "60px",
+        "flexWrap": "wrap"
       }
     },
     "children": [
@@ -726,6 +729,9 @@ const cmps = [
         "width": "100%",
         "display": "flex",
         "height": "fit-content",
+        "minHeight": "30rem",
+        "backgroundColor": "#071112"
+
       }
     },
     "children": [
@@ -979,21 +985,22 @@ function deepCloneCmp(cmpId) {
   const cmp = getById(cmpId);
   const coppiedCmp = cloneDeep(cmp);
 
-  _changeCmpIds(coppiedCmp);
+  changeCmpIds(coppiedCmp);
   return coppiedCmp;
 }
 
 // Recursively going through an cmp and changing the id's
-function _changeCmpIds(cmp) {
+function changeCmpIds(cmp) {
   cmp.id = utilService.makeId();
   if (cmp.children.length > 0) {
     cmp.children.forEach(child => {
       child.id = utilService.makeId();
-      _changeCmpIds(child)
+      changeCmpIds(child)
     })
   }
 }
 
+// Recursively going through an cmp and deleting an element by its id.
 function deleteCmp(cmpId, webAppCmps) {
   webAppCmps.forEach((cmp, idx) => {
     if (cmp.id === cmpId) {
@@ -1002,6 +1009,43 @@ function deleteCmp(cmpId, webAppCmps) {
       if (cmp.children.length > 0) {
         deleteCmp(cmpId, cmp.children)
       }
+    }
+  })
+}
+
+// Recursively going through an cmp and targeting element's parent, and pushing to his children the duplicated cmp
+function getParentElement(element, mappedWebAppCmps, webAppCmps) {
+  mappedWebAppCmps.forEach((cmp, idx) => {
+    //Case duplicating an entire section (Part of the webApp array):
+    if (cmp.id === element.id && element.type === 'section') {
+      const duplicatedElement = cloneDeep(element)
+      changeCmpIds(duplicatedElement)
+      //webAppCmps is the parent of the section
+      webAppCmps.splice(idx + 1, 0, { id: utilService.makeId(), cmp: duplicatedElement })
+      //Case duplicating any other type of an element:
+    } else if (cmp.id === element.id) {
+      const duplicatedElement = cloneDeep(element)
+      changeCmpIds(duplicatedElement)
+      //mappedWebAppCmps is a parent of an element
+      mappedWebAppCmps.splice(idx + 1, 0, duplicatedElement)
+    }
+    //Case element has children:
+    if (cmp.children.length > 0) {
+      cmp.children.forEach((child, idx) => {
+        //Case the child is the one being duplicated:
+        if (child.id === element.id) {
+          const duplicatedElement = cloneDeep(element)
+          changeCmpIds(duplicatedElement)
+          //Cmp is the parent of the child
+          cmp.children.splice(idx + 1, 0, duplicatedElement)
+          return
+        } else {
+          //Recursively calling the function again on it's children:
+          if (child.children.length > 0) {
+            getParentElement(element, child.children, webAppCmps)
+          }
+        }
+      })
     }
   })
 }
