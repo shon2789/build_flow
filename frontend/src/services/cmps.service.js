@@ -854,9 +854,6 @@ const cmps = [
       }
     },
     "children": [
-
-
-
       {
         "id": utilService.makeId(),
         "type": "txt",
