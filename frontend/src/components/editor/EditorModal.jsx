@@ -47,7 +47,6 @@ export const EditorModal = ({ isEditing, cmp, onUpdateCmpStyle, event }) => {
                     <FaBold className={isBold ? 'active' : ''} onClick={() => { isBold ? updateCmpStyle({ target: { name: "fontWeight", value: "200" } }) : updateCmpStyle({ target: { name: "fontWeight", value: "700" } }) }} />
                     <FaUnderline className={isUnderLine ? 'active' : ''} onClick={() => { isUnderLine ? updateCmpStyle({ target: { name: "textDecoration", value: "unset" } }) : updateCmpStyle({ target: { name: "textDecoration", value: "underline" } }) }} />
                     <FaItalic className={isItalic ? 'active' : ''} onClick={() => { isItalic ? updateCmpStyle({ target: { name: "fontStyle", value: "normal" } }) : updateCmpStyle({ target: { name: "fontStyle", value: "italic" } }) }} />
-
                 </div>
             </div>
             <div className="font-type-container editing-container">

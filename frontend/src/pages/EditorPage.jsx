@@ -166,11 +166,9 @@ export const EditorPage = () => {
 
         cmpService.updateCmp(currCmpCopy, mappedWebAppCmps)
 
-        
         webAppCmps.forEach((item, idx) => {
             item.cmp = mappedWebAppCmps[idx]
         })
-
 
         setColumns({
             ...columns,
