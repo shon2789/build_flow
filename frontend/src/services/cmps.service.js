@@ -1023,25 +1023,13 @@ const cmps = [
       }
     },
     "children": [
-
-
-
       {
         "id": utilService.makeId(),
         "type": "section",
         "isDroppable": false,
-
-
-
-
         "attributes": {
           "className": "web-app-form-container",
           "style": {
-
-
-
-
-
             "backgroundColor": "#B8E6E1",
             "maxWidth": "60rem",
             "fontFamily": "Lato regular,sans-serif",
@@ -1049,13 +1037,10 @@ const cmps = [
             "alignItems": "center",
             "flexDirection": "column",
             "padding": "5rem 3rem",
-
             "borderRadius": "14px",
-
           }
         },
         "children": [
-
           {
             "id": utilService.makeId(),
             "type": "txt",
@@ -1063,23 +1048,13 @@ const cmps = [
             "info": {
               "txt": "Get started with 14 days trial"
             },
-
-
-
-
             "attributes": {
               "className": "web-app-form-txt",
               "style": {
-
-
-
-
-
                 "color": "#292929",
                 "marginBottom": "2rem",
                 "textAlign": "center",
                 "fontSize": "2.5rem",
-
               }
             },
             "children": []
@@ -1091,11 +1066,6 @@ const cmps = [
             "info": {
               "txt": "If you want to take your cooking skills up another notch then it might be time to look at changing to a gas stove."
             },
-
-
-
-
-
             "attributes": {
               "className": "web-app-form-txt",
               "style": {
@@ -1103,7 +1073,6 @@ const cmps = [
                 "color": "gray",
                 "marginBottom": "2rem",
                 "textAlign": "center",
-
               }
             },
             "children": []
@@ -1112,19 +1081,14 @@ const cmps = [
             "id": utilService.makeId(),
             "type": "section",
             "isDroppable": true,
-
-
-
-
-
-
             "attributes": {
               "className": "web-app-form-signup",
               "style": {
                 "color": "gray",
                 "display": "flex",
                 "alignItems": "center",
-
+                "flexWrap": "wrap",
+                "gap": "1.2rem"
               }
             },
             "children": [
