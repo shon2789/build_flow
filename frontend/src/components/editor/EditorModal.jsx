@@ -26,7 +26,6 @@ export const EditorModal = ({ isEditing, cmp, onUpdateCmpStyle, event }) => {
 
     useEffect(() => {
         setEditorPosition(ref.current.getBoundingClientRect())
-
     }, [])
 
 
@@ -34,6 +33,9 @@ export const EditorModal = ({ isEditing, cmp, onUpdateCmpStyle, event }) => {
     const isUnderLine = cmpStyle.textDecoration === 'underline';
     const isItalic = cmpStyle.fontStyle === 'italic';
 
+    // const style = {
+    //     top: editorPosition.bottom < editorPosition.height 
+    // }
 
 
     return (
