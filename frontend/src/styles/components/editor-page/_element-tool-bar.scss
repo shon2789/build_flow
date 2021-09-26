@@ -77,7 +77,7 @@
 
 //Hovering over an editable element won't trigger dashed border for the following:
 .element-edit-hover {
-    &:hover:not(.element-tool, .element-tool-bar, .tool, .nuetral-div, .MuiTooltip-tooltipPlacementTop, .MuiTooltip-popperInteractive, .MuiTooltip-tooltip, .MuiTooltip-popper, .MuiTooltip-popperArrow) {
+    &:hover:not(.element-tool, .element-tool-bar, .tool, .nuetral-div, .MuiTooltip-tooltipPlacementTop, .MuiTooltip-popperInteractive, .MuiTooltip-tooltip, .MuiTooltip-popper, .MuiTooltip-popperArrow, svg, path) {
         outline: 2px dashed #c6c6c6;
         outline-offset: -2px;
     }
