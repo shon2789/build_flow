@@ -26,9 +26,9 @@ const cmps = [
         "display": "flex",
         "justifyContent": "space-between",
         "alignItems": "center",
-        "padding": "0 30px",
+        "padding": "0 1.875rem",
         "backgroundColor": "white",
-        "minHeight": "60px",
+        "minHeight": "3.75rem",
         "flexWrap": "wrap"
       }
     },
@@ -167,7 +167,7 @@ const cmps = [
           "className": "rettro-photography-txt",
           "style": {
             "fontFamily": "Lato regular",
-            "transform": "translateY(40px)",
+            "transform": "translateY(2.5rem)",
 
           }
         },
@@ -268,7 +268,7 @@ const cmps = [
             "color": "gray",
             "display": "flex",
             "alignItems": "center",
-            "gap": "30px",
+            "gap": "2rem",
           }
         },
         "children": [
@@ -783,7 +783,7 @@ const cmps = [
               "style": {
                 "lineHeight": "1.75",
                 "fontsize": "1.4rem",
-                "letterSpacing": "1.5px",
+                "letterSpacing": "0.09375rem",
                 "fontFamily": "Lato light"
               }
             },
@@ -806,7 +806,7 @@ const cmps = [
                 "height": "2.8rem",
                 "background": "none",
                 "color": "#fff",
-                "borderHeight": "1.5px",
+                "borderHeight": "0.09375rem",
                 "borderStyle": "solid",
                 "borderColor": "#fff",
                 "fontSize": "1rem"
@@ -877,7 +877,7 @@ const cmps = [
 
 
             "fontSize": "3.5rem",
-            "textShadow": "3px 4px 7px rgba(81,67,21,0.8)",
+            "textShadow": "0.1875rem 0.25rem 0.4375rem rgba(81,67,21,0.8)",
             "marginBottom": "1.3rem",
             "marginTop": "7rem",
             "textAlign": "center",
@@ -909,7 +909,7 @@ const cmps = [
             "textAlign": "center",
             "color": "white",
             "fontFamily": "Lato regular,sans-serif",
-            "textShadow": "3px 4px 7px rgba(81,67,21,0.8)"
+            "textShadow": "0.1875rem 0.25rem 0.4375rem rgba(81,67,21,0.8)"
 
           }
         },
@@ -943,7 +943,7 @@ const cmps = [
             "alignItems": "center",
             "justifyContent": "center",
             "minWidth": "10rem",
-            "boxShadow": "rgba(0, 0, 0, 0.35) 0px 5px 15px"
+            "boxShadow": "rgba(0, 0, 0, 0.35) 0rem 0.3125rem 0.9375rem"
 
           }
         },

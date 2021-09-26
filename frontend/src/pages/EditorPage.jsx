@@ -158,20 +158,23 @@ export const EditorPage = () => {
     const onUpdateCmpStyle = (cmpStyle) => {
         const webAppCmps = editing[1].items;
         const mappedWebAppCmps = webAppCmps.map(section => section.cmp)
-        // webAppCmps.forEach((item, idx) => {
-        //     item.cmp = mappedWebAppCmps[idx]
-        // })
+        webAppCmps.forEach((item, idx) => {
+            item.cmp = mappedWebAppCmps[idx]
+        })
+
         setCurrCmp({ ...currCmp, attributes: { ...currCmp.attributes, style: cmpStyle } });
         cmpService.updateCmp(currCmp, mappedWebAppCmps)
 
-        // setColumns({
-        //     ...columns,
-        //     [editing[0]]: {
-        //         ...webAppCmps,
-        //         items: webAppCmps
-        //     }
-        // })
+        setColumns({
+            ...columns,
+            [editing[0]]: {
+                ...webAppCmps,
+                items: webAppCmps
+            }
+        })
     }
+
+
 
     return (
         <DragDropContext onDragStart={onDragStart} onDragEnd={result => onDragEnd(result, columns, setColumns)}>

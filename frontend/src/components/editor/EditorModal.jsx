@@ -8,34 +8,45 @@ export const EditorModal = ({ isEditing, cmp, onUpdateCmpStyle, event }) => {
     const [cmpStyle, setCmpStyle] = useState(cmp.attributes.style);
 
     const updateCmpStyle = ({ target }) => {
-        const { value, name } = target
-        setCmpStyle({ ...cmpStyle, [name]: value })
-        onUpdateCmpStyle(cmpStyle)
+        let { value, name } = target
+        console.log('target', target)
+        if (name === 'fontSize' || name === 'letterSpacing') {
+            setCmpStyle({ ...cmpStyle, [name]: value + 'rem' })
+            onUpdateCmpStyle(cmpStyle)
+
+        } else {
+
+            setCmpStyle({ ...cmpStyle, [name]: value })
+            onUpdateCmpStyle(cmpStyle)
+        }
     }
 
 
-    console.log(cmp.attributes.style.fontSize.split('rem')[0])
+
+
 
     return (
-        <div className="editor-modal" style={{ top: event?.target.offsetTop, left: '50%', transform: 'translate(-50%, -120%)' }}>
+        <div className="editor-modal" style={{ top: event?.target.offsetTop, left: event?.target.offSetLeft, transform: 'translate(50%, -120%)' }}>
             <div className="font-size-container editing-container">
                 <label id="font-size" htmlFor="fontSize">Font size</label>
-                <input defaultValue={cmp.attributes.style.fontSize.split('rem')[0]} step="0.05" name="fontSize" onChange={(ev) => { updateCmpStyle(ev) }} id="font-size" type="range" max='3' min='0.5' />
+                <input defaultValue={cmp.attributes.style.fontSize?.split('rem')[0]} step="0.01" name="fontSize" onChange={(ev) => { updateCmpStyle(ev) }} id="font-size" type="range" max='3.3' min='0.8' />
             </div>
             <div className="letter-spacing-container editing-container">
                 <label id="letter-spacing" htmlFor="letterSpacing">Letter spacing</label>
-                <input name="letterSpacing" id="letter-spacing" type="range" step="0.2" max='3' min='1' defaultValue="1" />
+                <input onChange={(ev) => { updateCmpStyle(ev) }} name="letterSpacing" id="letter-spacing" type="range" step="0.05" max='2' min='0.1' defaultValue="1" />
             </div>
             <div className="line-height-container editing-container">
-                <label id="line-height" htmlFor="">Line height</label>
-                <input id="line-height" type="range" max='20' min='0' />
+                <label id="line-height" htmlFor="lineHeight">Line height</label>
+                <input onChange={(ev) => { updateCmpStyle(ev) }} name="lineHeight" id="line-height" type="range" step="0.05" max='5' min='1' defaultValue="1" />
             </div>
             <div className="style-container editing-container">
                 <label id="style" htmlFor="">Style</label>
                 <div className="bui-container">
-                    <FaBold className="active" />
-                    <FaUnderline />
+                    <FaBold className="active" onClick={(ev) => { updateCmpStyle({ target: { name: "fontWeight", value: "700" } }) }} />
+                    {/* <FaUnderline onClick={(ev) => { updateCmpStyle(ev) }} /> */}
+                    <FaUnderline onClick={(ev) => { updateCmpStyle({ target: { name: "textDecoration", value: "underline" } }) }} />
                     <FaItalic />
+
                 </div>
             </div>
             <div className="font-type-container editing-container">

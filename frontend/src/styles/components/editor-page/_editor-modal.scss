@@ -1,4 +1,5 @@
 .editor-modal {
+    all: initial;
     background: rgba(20, 25, 35, 0.97);
     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.4);
     border-radius: 9px;
@@ -29,7 +30,6 @@
         gap: 2rem;
         align-items: center;
         outline: none;
-        font-size: initial;
 
         & input {
             width: 5rem;
