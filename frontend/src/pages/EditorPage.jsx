@@ -6,6 +6,7 @@ import { cmpService } from '../services/cmps.service';
 import { Screen } from '../components/Screen';
 import { MainEditor } from '../components/editor/MainEditor';
 import { WebAppContainer } from '../components/editor/WebAppContainer';
+import { cloneDeep } from 'lodash';
 
 
 
@@ -111,7 +112,6 @@ export const EditorPage = () => {
     const onDeleteCmp = (cmpId) => {
         const webAppCmps = editing[1].items;
         const mappedWebAppCmps = webAppCmps.map(section => section.cmp)
-        console.log(mappedWebAppCmps)
 
         if (currCmp) {
             const idx = mappedWebAppCmps.findIndex(section => currCmp.id === section.id)
@@ -158,12 +158,19 @@ export const EditorPage = () => {
     const onUpdateCmpStyle = (cmpStyle) => {
         const webAppCmps = editing[1].items;
         const mappedWebAppCmps = webAppCmps.map(section => section.cmp)
+
+        const currCmpCopy = cloneDeep(currCmp);
+        currCmpCopy.attributes.style = cmpStyle;
+        
+        setCurrCmp(currCmpCopy);
+
+        cmpService.updateCmp(currCmpCopy, mappedWebAppCmps)
+
+        
         webAppCmps.forEach((item, idx) => {
             item.cmp = mappedWebAppCmps[idx]
         })
 
-        setCurrCmp({ ...currCmp, attributes: { ...currCmp.attributes, style: cmpStyle } });
-        cmpService.updateCmp(currCmp, mappedWebAppCmps)
 
         setColumns({
             ...columns,

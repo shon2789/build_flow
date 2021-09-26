@@ -1,3 +1,4 @@
+import { cloneDeep } from 'lodash';
 import React, { useState } from 'react'
 
 import { FaBold, FaUnderline, FaItalic } from "react-icons/fa";
@@ -9,16 +10,15 @@ export const EditorModal = ({ isEditing, cmp, onUpdateCmpStyle, event }) => {
 
     const updateCmpStyle = ({ target }) => {
         let { value, name } = target
-        console.log('target', target)
+        const cmpStyleCopy = cloneDeep(cmpStyle);
         if (name === 'fontSize' || name === 'letterSpacing') {
-            setCmpStyle({ ...cmpStyle, [name]: value + 'rem' })
-            onUpdateCmpStyle(cmpStyle)
-
+            cmpStyleCopy[name] = value + 'rem';
+            setCmpStyle({ ...cmpStyleCopy, [name]: value + 'rem' })
         } else {
-
-            setCmpStyle({ ...cmpStyle, [name]: value })
-            onUpdateCmpStyle(cmpStyle)
+            cmpStyleCopy[name] = value;
+            setCmpStyle({ ...cmpStyleCopy, [name]: value })
         }
+        onUpdateCmpStyle(cmpStyleCopy)
     }
 
 
@@ -42,10 +42,9 @@ export const EditorModal = ({ isEditing, cmp, onUpdateCmpStyle, event }) => {
             <div className="style-container editing-container">
                 <label id="style" htmlFor="">Style</label>
                 <div className="bui-container">
-                    <FaBold className="active" onClick={(ev) => { updateCmpStyle({ target: { name: "fontWeight", value: "700" } }) }} />
-                    {/* <FaUnderline onClick={(ev) => { updateCmpStyle(ev) }} /> */}
-                    <FaUnderline onClick={(ev) => { updateCmpStyle({ target: { name: "textDecoration", value: "underline" } }) }} />
-                    <FaItalic />
+                    <FaBold className="active" onClick={() => { updateCmpStyle({ target: { name: "fontWeight", value: "700" } }) }} />
+                    <FaUnderline onClick={() => { updateCmpStyle({ target: { name: "textDecoration", value: "underline" } }) }} />
+                    <FaItalic onClick={() => { updateCmpStyle({ target: { name: "textDecoration", value: "underline" } }) }} />
 
                 </div>
             </div>
