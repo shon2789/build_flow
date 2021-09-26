@@ -953,6 +953,217 @@ const cmps = [
 
 
     ]
+  },
+  {
+    "id": utilService.makeId(),
+    "type": "section",
+    "sectionType": "footer",
+    "isDroppable": true,
+    "img": "https://i.ibb.co/L9hNS84/dvfdxcfvdsvds.png",
+    "attributes": {
+      "className": "ice-cream-footer",
+      "style": {
+        "display": "flex",
+        "justifyContent": "center",
+        "alignItems": "center",
+        "min-height": "60px",
+        "backgroundColor": "#292929",
+        "width": "100%",
+
+      }
+    },
+    "children": [
+
+
+
+      {
+        "id": utilService.makeId(),
+        "type": "txt",
+        "isDroppable": false,
+        "info": {
+          "txt": "@All rights reserved | Yummy",
+
+        },
+
+
+
+        "attributes": {
+          "className": "icecream-footer-txt",
+          "style": {
+
+
+            "fontSize": "1rem",
+            "textAlign": "center",
+            "color": "white",
+            "fontFamily": "Lato regular,sans-serif",
+
+          }
+        },
+        "children": []
+      },
+
+    ]
+  },
+  {
+    "id": utilService.makeId(),
+    "type": "section",
+    "sectionType": "card",
+    "isDroppable": true,
+    "img": "https://i.ibb.co/8sTvCp2/card.png",
+    "attributes": {
+      "className": "web-app-form1",
+      "style": {
+        "display": "flex",
+        "justifyContent": "center",
+        "alignItems": "center",
+        "min-height": "35rem",
+        "backgroundColor": "white",
+        "width": "100%",
+
+      }
+    },
+    "children": [
+
+
+
+      {
+        "id": utilService.makeId(),
+        "type": "section",
+        "isDroppable": false,
+
+
+
+
+        "attributes": {
+          "className": "web-app-form-container",
+          "style": {
+
+
+
+
+
+            "backgroundColor": "#B8E6E1",
+            "maxWidth": "60rem",
+            "fontFamily": "Lato regular,sans-serif",
+            "display": "flex",
+            "alignItems": "center",
+            "flexDirection": "column",
+            "padding": "5rem 3rem",
+
+            "borderRadius": "14px",
+
+          }
+        },
+        "children": [
+
+          {
+            "id": utilService.makeId(),
+            "type": "txt",
+            "isDroppable": false,
+            "info": {
+              "txt": "Get started with 14 days trial"
+            },
+
+
+
+
+            "attributes": {
+              "className": "web-app-form-txt",
+              "style": {
+
+
+
+
+
+                "color": "#292929",
+                "marginBottom": "2rem",
+                "textAlign": "center",
+                "fontSize": "2.5rem",
+
+              }
+            },
+            "children": []
+          },
+          {
+            "id": utilService.makeId(),
+            "type": "txt",
+            "isDroppable": false,
+            "info": {
+              "txt": "If you want to take your cooking skills up another notch then it might be time to look at changing to a gas stove."
+            },
+
+
+
+
+
+            "attributes": {
+              "className": "web-app-form-txt",
+              "style": {
+                "fontSize": "1.4rem",
+                "color": "gray",
+                "marginBottom": "2rem",
+                "textAlign": "center",
+
+              }
+            },
+            "children": []
+          },
+          {
+            "id": utilService.makeId(),
+            "type": "section",
+            "isDroppable": true,
+
+
+
+
+
+
+            "attributes": {
+              "className": "web-app-form-signup",
+              "style": {
+                "color": "gray",
+                "display": "flex",
+                "alignItems": "center",
+
+              }
+            },
+            "children": [
+
+
+              {
+                "id": utilService.makeId(),
+                "type": "btn",
+                "isDroppable": true,
+                "info": {
+                  "txt": "Download Free Trial"
+                },
+
+                "attributes": {
+                  "className": "web-app-form-btn",
+                  "style": {
+                    "backgroundColor": "#292929",
+                    "min-width": "12rem",
+                    "padding": "1rem",
+                    "color": "white",
+                    "fontSize": "1.5rem",
+                    "marginTop": "1.5rem",
+                    "border": "none",
+
+
+
+
+                  }
+                },
+                "children": []
+              },
+
+            ]
+          },
+
+        ]
+      },
+
+    ]
   }
 
 ]
