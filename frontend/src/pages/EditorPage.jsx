@@ -135,6 +135,7 @@ export const EditorPage = () => {
 
     const onSetCurrCmp = (ev, cmp) => {
         ev.stopPropagation()
+
         setCurrCmp(cmp)
 
     }
@@ -154,6 +155,24 @@ export const EditorPage = () => {
         })
     }
 
+    const onUpdateCmpStyle = (cmpStyle) => {
+        const webAppCmps = editing[1].items;
+        const mappedWebAppCmps = webAppCmps.map(section => section.cmp)
+        // webAppCmps.forEach((item, idx) => {
+        //     item.cmp = mappedWebAppCmps[idx]
+        // })
+        setCurrCmp({ ...currCmp, attributes: { ...currCmp.attributes, style: cmpStyle } });
+        cmpService.updateCmp(currCmp, mappedWebAppCmps)
+
+        // setColumns({
+        //     ...columns,
+        //     [editing[0]]: {
+        //         ...webAppCmps,
+        //         items: webAppCmps
+        //     }
+        // })
+    }
+
     return (
         <DragDropContext onDragStart={onDragStart} onDragEnd={result => onDragEnd(result, columns, setColumns)}>
 
@@ -164,7 +183,7 @@ export const EditorPage = () => {
                 </div>
 
                 <WebAppContainer editorWidth={editorWidth} onToggleEditorMenu={onToggleEditorMenu} itemsFromBackend={editing[1].items} droppableId={editing[0]}
-                    onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} onDuplicateCmp={onDuplicateCmp} currCmp={currCmp}
+                    onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} onDuplicateCmp={onDuplicateCmp} currCmp={currCmp} onUpdateCmpStyle={onUpdateCmpStyle}
                 />
             </main>
 

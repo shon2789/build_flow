@@ -8,10 +8,10 @@
     animation: opacity 0.3s;
 
     @include for-tablet {
-        // right: -10px;
         position: absolute;
         right: 0px;
         top: -2rem;
+
         transform: translate(0, 0);
     }
 
@@ -31,8 +31,6 @@
 
         &:hover {
             color: #ff4040;
-
-            // opacity: 1;
         }
     }
 

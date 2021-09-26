@@ -1,18 +1,30 @@
-import React from 'react'
-import { EditorSlider } from './EditorSlider'
+import React, { useState } from 'react'
+
 import { FaBold, FaUnderline, FaItalic } from "react-icons/fa";
 
 
-export const EditorModal = () => {
+export const EditorModal = ({ isEditing, cmp, onUpdateCmpStyle, event }) => {
+
+    const [cmpStyle, setCmpStyle] = useState(cmp.attributes.style);
+
+    const updateCmpStyle = ({ target }) => {
+        const { value, name } = target
+        setCmpStyle({ ...cmpStyle, [name]: value })
+        onUpdateCmpStyle(cmpStyle)
+    }
+
+
+    console.log(cmp.attributes.style.fontSize.split('rem')[0])
+
     return (
-        <div className="editor-modal">
+        <div className="editor-modal" style={{ top: event?.target.offsetTop, left: '50%', transform: 'translate(-50%, -120%)' }}>
             <div className="font-size-container editing-container">
-                <label id="font-size" htmlFor="">Font size</label>
-                <input id="font-size" type="range" max='20' min='0' />
+                <label id="font-size" htmlFor="fontSize">Font size</label>
+                <input defaultValue={cmp.attributes.style.fontSize.split('rem')[0]} step="0.05" name="fontSize" onChange={(ev) => { updateCmpStyle(ev) }} id="font-size" type="range" max='3' min='0.5' />
             </div>
             <div className="letter-spacing-container editing-container">
-                <label id="letter-spacing" htmlFor="">Letter spacing</label>
-                <input id="letter-spacing" type="range" max='20' min='0' />
+                <label id="letter-spacing" htmlFor="letterSpacing">Letter spacing</label>
+                <input name="letterSpacing" id="letter-spacing" type="range" step="0.2" max='3' min='1' defaultValue="1" />
             </div>
             <div className="line-height-container editing-container">
                 <label id="line-height" htmlFor="">Line height</label>

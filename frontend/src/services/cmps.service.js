@@ -7,7 +7,8 @@ export const cmpService = {
   deepCloneCmp,
   deleteCmp,
   changeCmpIds,
-  getParentElement
+  getParentElement,
+  updateCmp
 }
 
 utilService.makeId()
@@ -1046,6 +1047,21 @@ function getParentElement(element, mappedWebAppCmps, webAppCmps) {
           }
         }
       })
+    }
+  })
+}
+
+function updateCmp(currCmp, webAppCmps) {
+  webAppCmps.forEach(cmp => {
+    if (cmp.id === currCmp.id) {
+      console.log('old cmp', cmp)
+      cmp.attributes.style = currCmp.attributes.style
+      console.log('new cmp', cmp)
+      return
+    } else {
+      if (cmp.children.length > 0) {
+        updateCmp(currCmp, cmp.children)
+      }
     }
   })
 }
