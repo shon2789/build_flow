@@ -122,12 +122,12 @@ export const EditorAccordion = ({ droppableId, itemsFromBackend }) => {
                                         aria-controls="panel1bh-content"
                                         id="panel1bh-header"
                                     >
-                                        <Typography className={classes.heading}>{heading}</Typography>
+                                        <Typography component={'span'} className={classes.heading}>{heading}</Typography>
 
                                     </AccordionSummary>
                                     <AccordionDetails>
 
-                                        <Typography >
+                                        <Typography component={'span'} >
 
                                             {details.map(item => {
 
