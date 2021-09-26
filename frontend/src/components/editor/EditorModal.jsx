@@ -23,7 +23,9 @@ export const EditorModal = ({ isEditing, cmp, onUpdateCmpStyle, event }) => {
 
 
 
-
+    const isBold = cmpStyle.fontWeight === '700';
+    const isUnderLine = cmpStyle.textDecoration === 'underline';
+    const isItalic = cmpStyle.fontStyle === 'italic';
 
     return (
         <div className="editor-modal" style={{ top: event?.target.offsetTop, left: event?.target.offSetLeft, transform: 'translate(50%, -120%)' }}>
@@ -42,9 +44,9 @@ export const EditorModal = ({ isEditing, cmp, onUpdateCmpStyle, event }) => {
             <div className="style-container editing-container">
                 <label id="style" htmlFor="">Style</label>
                 <div className="bui-container">
-                    <FaBold className="active" onClick={() => { updateCmpStyle({ target: { name: "fontWeight", value: "700" } }) }} />
-                    <FaUnderline onClick={() => { updateCmpStyle({ target: { name: "textDecoration", value: "underline" } }) }} />
-                    <FaItalic onClick={() => { updateCmpStyle({ target: { name: "textDecoration", value: "underline" } }) }} />
+                    <FaBold className={isBold ? 'active' : ''} onClick={() => { isBold ? updateCmpStyle({ target: { name: "fontWeight", value: "200" } }) : updateCmpStyle({ target: { name: "fontWeight", value: "700" } }) }} />
+                    <FaUnderline className={isUnderLine ? 'active' : ''} onClick={() => { isUnderLine ? updateCmpStyle({ target: { name: "textDecoration", value: "unset" } }) : updateCmpStyle({ target: { name: "textDecoration", value: "underline" } }) }} />
+                    <FaItalic className={isItalic ? 'active' : ''} onClick={() => { isItalic ? updateCmpStyle({ target: { name: "fontStyle", value: "normal" } }) : updateCmpStyle({ target: { name: "fontStyle", value: "italic" } }) }} />
 
                 </div>
             </div>
