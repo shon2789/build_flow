@@ -136,6 +136,7 @@ export const EditorPage = () => {
     const onSetCurrCmp = (ev, cmp) => {
         ev.stopPropagation()
         setCurrCmp(cmp)
+
     }
 
 

@@ -1,27 +1,21 @@
 .element-tool-bar {
     display: flex;
-    position: absolute;
-    right: 0px;
-    top: -2rem;
+    position: fixed;
+    right: 50%;
+    transform: translate(50%, 50%);
+    top: 0px;
     gap: 0.4rem;
     animation: opacity 0.3s;
 
     @include for-tablet {
-        right: -10px;
-    }
-    .delete-tool {
-        color: #ff4f4f;
-        opacity: 0.7;
-        transition: opacity 0.3s, color 0.3s;
-
-        &:hover {
-            color: #ff4040;
-
-            opacity: 1;
-        }
+        // right: -10px;
+        position: absolute;
+        right: 0px;
+        top: -2rem;
+        transform: translate(0, 0);
     }
 
-    .copy-tool {
+    .tool {
         color: $main-dark-color;
         opacity: 0.7;
         transition: opacity 0.3s, color 0.3s;
@@ -30,6 +24,34 @@
             color: black;
             opacity: 1;
         }
+    }
+
+    .delete-tool {
+        color: #ff4f4f;
+
+        &:hover {
+            color: #ff4040;
+
+            // opacity: 1;
+        }
+    }
+
+    .color-tool {
+        font-size: 1.3rem;
+    }
+
+    .text-tool {
+        font-size: 1.3rem;
+    }
+
+    .size-tool {
+        font-size: 1rem;
+    }
+    .image-tool {
+        font-size: 1.15rem;
+    }
+    .link-tool {
+        font-size: 1.25rem;
     }
 
     .element-tool {
@@ -53,8 +75,9 @@
     }
 }
 
+//Hovering over an editable element won't trigger dashed border for the following:
 .element-edit-hover {
-    &:hover:not(.element-tool, .element-tool-bar, .copy-tool, .delete-tool, .nuetral-div) {
+    &:hover:not(.element-tool, .element-tool-bar, .tool, .nuetral-div, .MuiTooltip-tooltipPlacementTop, .MuiTooltip-popperInteractive, .MuiTooltip-tooltip, .MuiTooltip-popper, .MuiTooltip-popperArrow) {
         outline: 2px dashed #c6c6c6;
         outline-offset: -2px;
     }
