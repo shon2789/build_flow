@@ -1,5 +1,5 @@
 import { cloneDeep } from 'lodash';
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { FaBold, FaUnderline, FaItalic } from "react-icons/fa";
 
@@ -21,21 +21,30 @@ export const EditorModal = ({ isEditing, cmp, onUpdateCmpStyle, event }) => {
         onUpdateCmpStyle(cmpStyleCopy)
     }
 
+    const [editorPosition, setEditorPosition] = useState(null)
+    const ref = useRef()
+
+    useEffect(() => {
+        setEditorPosition(ref.current.getBoundingClientRect())
+
+    }, [])
 
 
     const isBold = cmpStyle.fontWeight === '700';
     const isUnderLine = cmpStyle.textDecoration === 'underline';
     const isItalic = cmpStyle.fontStyle === 'italic';
 
+
+
     return (
-        <div className="editor-modal" style={{ top: event?.target.offsetTop, left: event?.target.offSetLeft, transform: 'translate(50%, -120%)' }}>
+        <div ref={ref} className="editor-modal" style={{ top: (event?.clientY - editorPosition?.height - 20), left: event?.clientX, zIndex: '1000' }}>
             <div className="font-size-container editing-container">
                 <label id="font-size" htmlFor="fontSize">Font size</label>
                 <input defaultValue={cmp.attributes.style.fontSize?.split('rem')[0]} step="0.01" name="fontSize" onChange={(ev) => { updateCmpStyle(ev) }} id="font-size" type="range" max='3.3' min='0.8' />
             </div>
             <div className="letter-spacing-container editing-container">
                 <label id="letter-spacing" htmlFor="letterSpacing">Letter spacing</label>
-                <input onChange={(ev) => { updateCmpStyle(ev) }} name="letterSpacing" id="letter-spacing" type="range" step="0.05" max='2' min='0.1' defaultValue="1" />
+                <input onChange={(ev) => { updateCmpStyle(ev) }} name="letterSpacing" id="letter-spacing" type="range" step="0.05" max='1' min='0.1' defaultValue="1" />
             </div>
             <div className="line-height-container editing-container">
                 <label id="line-height" htmlFor="lineHeight">Line height</label>
@@ -47,6 +56,7 @@ export const EditorModal = ({ isEditing, cmp, onUpdateCmpStyle, event }) => {
                     <FaBold className={isBold ? 'active' : ''} onClick={() => { isBold ? updateCmpStyle({ target: { name: "fontWeight", value: "200" } }) : updateCmpStyle({ target: { name: "fontWeight", value: "700" } }) }} />
                     <FaUnderline className={isUnderLine ? 'active' : ''} onClick={() => { isUnderLine ? updateCmpStyle({ target: { name: "textDecoration", value: "unset" } }) : updateCmpStyle({ target: { name: "textDecoration", value: "underline" } }) }} />
                     <FaItalic className={isItalic ? 'active' : ''} onClick={() => { isItalic ? updateCmpStyle({ target: { name: "fontStyle", value: "normal" } }) : updateCmpStyle({ target: { name: "fontStyle", value: "italic" } }) }} />
+
                 </div>
             </div>
             <div className="font-type-container editing-container">

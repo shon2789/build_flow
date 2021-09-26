@@ -27,8 +27,8 @@ export const ElementToolBar = ({ cmp, onDeleteCmp, onDuplicateCmp, onUpdateCmpSt
 
     return (
         <>
-            <div className="element-tool-bar">
             {isEditing && <EditorModal event={event} cmp={cmp} onUpdateCmpStyle={onUpdateCmpStyle} />}
+            <div className="element-tool-bar">
                 {cmp.type === 'btn' &&
                     <>
                         <Tooltip title="Text" arrow placement="top"><div className="element-tool" onClick={(ev) => { onToggleEditing(ev) }}><BsFonts className="text-tool tool" /></div></Tooltip>
