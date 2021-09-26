@@ -5,15 +5,17 @@ import { BsFonts, BsBoundingBoxCircles, BsImage } from "react-icons/bs";
 import { IoMdColorPalette } from "react-icons/io";
 
 import Tooltip from '@mui/material/Tooltip';
+import { EditorModal } from './EditorModal';
 
 
 
 export const ElementToolBar = ({ cmp, onDeleteCmp, onDuplicateCmp }) => {
     return (
         <div className="element-tool-bar">
+            <EditorModal />
             {cmp.type === 'btn' &&
                 <>
-                    <Tooltip title="Text" arrow placement="top"><div className="element-tool" onClick={() => { onDeleteCmp(cmp.id) }}><BsFonts className="text-tool tool" /></div></Tooltip>
+                    <Tooltip title="Text" arrow placement="top"><div className="element-tool" onClick={() => { console.log('text') }}><BsFonts className="text-tool tool" /></div></Tooltip>
                     <Tooltip title="Link" arrow placement="top"><div className="element-tool" onClick={() => { onDeleteCmp(cmp.id) }}><FiLink className="link-tool tool" /></div></Tooltip>
                     <Tooltip title="Color" arrow placement="top"><div className="element-tool" onClick={() => { onDeleteCmp(cmp.id) }}><IoMdColorPalette className="color-tool tool" /></div></Tooltip>
                 </>
@@ -24,7 +26,7 @@ export const ElementToolBar = ({ cmp, onDeleteCmp, onDuplicateCmp }) => {
 
             {cmp.type === 'txt' &&
                 <>
-                    <Tooltip title="Text" arrow placement="top"><div className="element-tool" onClick={() => { onDeleteCmp(cmp.id) }}><BsFonts className="text-tool tool" /></div></Tooltip>
+                    <Tooltip title="Text" arrow placement="top"><div className="element-tool" onClick={() => { console.log('text') }}><BsFonts className="text-tool tool" /></div></Tooltip>
                     <Tooltip title="Color" arrow placement="top"><div className="element-tool" onClick={() => { onDeleteCmp(cmp.id) }}><IoMdColorPalette className="color-tool tool" /></div></Tooltip>
                 </>
             }
