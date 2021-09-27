@@ -135,7 +135,6 @@ export const EditorPage = () => {
 
     const onSetCurrCmp = (ev, cmp) => {
         ev.stopPropagation()
-
         setCurrCmp(cmp)
 
     }
@@ -161,7 +160,7 @@ export const EditorPage = () => {
 
         const currCmpCopy = cloneDeep(currCmp);
         currCmpCopy.attributes.style = cmpStyle;
-        
+
         setCurrCmp(currCmpCopy);
 
         cmpService.updateCmp(currCmpCopy, mappedWebAppCmps)

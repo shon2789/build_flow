@@ -47,6 +47,7 @@ export const ElementToolBar = ({ cmp, onDeleteCmp, onDuplicateCmp, onUpdateCmpSt
     }, [])
 
     const onToggleEditing = (ev, tool) => {
+        ev.stopPropagation()
         setEvent(ev)
         setIsEditing(!isEditing)
         setChoosenTool(tool)
