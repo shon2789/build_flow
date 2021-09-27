@@ -7,12 +7,13 @@ export const SvgAnimation = ({ windowWidth }) => {
         if (windowWidth < 450) {
             return windowWidth + 'px'
         }
-        else if (windowWidth > 1500) {
+        else if (windowWidth > 1920) {
             return 1000 + 'px'
         } else {
-            return (windowWidth / 1.9) + 'px'
+            return (windowWidth / 2.2) + 'px'
         }
     }
+
 
     return (
         <div className="home-page-main-svg-container">
