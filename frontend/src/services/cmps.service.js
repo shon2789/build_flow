@@ -167,7 +167,7 @@ const cmps = [
           "className": "rettro-photography-txt",
           "style": {
             "fontFamily": "Lato regular",
-            "transform": "translateY(2.5rem)",
+            "marginTop": "12rem",
 
           }
         },
