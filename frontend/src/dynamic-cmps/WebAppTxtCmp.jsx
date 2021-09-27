@@ -1,13 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { ElementToolBar } from '../components/editor/ElementToolBar'
 
-export const WebAppTxtCmp = ({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDuplicateCmp, onUpdateCmpStyle }) => {
+export const WebAppTxtCmp = ({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDuplicateCmp, onUpdateCmp }) => {
 
 
     if (currCmp && currCmp.id === cmp.id) {
         return (
             <span id={cmp.id} style={{ ...cmp.attributes.style, position: 'relative', outline: '2px dashed #c6c6c6', outlineOffset: '-2px' }} className={cmp.attributes.className} onClick={(ev) => { onSetCurrCmp(ev, cmp) }} >
-                <ElementToolBar cmp={cmp} onDeleteCmp={onDeleteCmp} onDuplicateCmp={onDuplicateCmp} onUpdateCmpStyle={onUpdateCmpStyle} />
+                <ElementToolBar cmp={cmp} onDeleteCmp={onDeleteCmp} onDuplicateCmp={onDuplicateCmp} onUpdateCmp={onUpdateCmp} />
                 {cmp.info.txt}
             </span>
 

@@ -1479,14 +1479,18 @@ function getParentElement(element, mappedWebAppCmps, webAppCmps) {
   })
 }
 
-function updateCmp(currCmp, webAppCmps) {
+function updateCmp(currCmp, webAppCmps, type) {
   webAppCmps.forEach(cmp => {
     if (cmp.id === currCmp.id) {
-      cmp.attributes.style = currCmp.attributes.style
+      if (type === 'style') {
+        cmp.attributes.style = currCmp.attributes.style
+      } else if (type === 'info') {
+        cmp.info = currCmp.info
+      }
       return
     } else {
       if (cmp.children.length > 0) {
-        updateCmp(currCmp, cmp.children)
+        updateCmp(currCmp, cmp.children, type)
       }
     }
   })

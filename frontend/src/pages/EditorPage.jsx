@@ -154,16 +154,20 @@ export const EditorPage = () => {
         })
     }
 
-    const onUpdateCmpStyle = (cmpStyle) => {
+    const onUpdateCmp = (updatedProperty, type) => {
         const webAppCmps = editing[1].items;
         const mappedWebAppCmps = webAppCmps.map(section => section.cmp)
 
         const currCmpCopy = cloneDeep(currCmp);
-        currCmpCopy.attributes.style = cmpStyle;
 
+        if (type === 'style') {
+            currCmpCopy.attributes.style = updatedProperty;
+        } else if (type === 'info') {
+            currCmpCopy.info = updatedProperty;
+
+        }
         setCurrCmp(currCmpCopy);
-
-        cmpService.updateCmp(currCmpCopy, mappedWebAppCmps)
+        cmpService.updateCmp(currCmpCopy, mappedWebAppCmps, type)
 
         webAppCmps.forEach((item, idx) => {
             item.cmp = mappedWebAppCmps[idx]
@@ -190,7 +194,7 @@ export const EditorPage = () => {
                 </div>
 
                 <WebAppContainer editorWidth={editorWidth} onToggleEditorMenu={onToggleEditorMenu} itemsFromBackend={editing[1].items} droppableId={editing[0]}
-                    onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} onDuplicateCmp={onDuplicateCmp} currCmp={currCmp} onUpdateCmpStyle={onUpdateCmpStyle}
+                    onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} onDuplicateCmp={onDuplicateCmp} currCmp={currCmp} onUpdateCmp={onUpdateCmp}
                 />
             </main>
 

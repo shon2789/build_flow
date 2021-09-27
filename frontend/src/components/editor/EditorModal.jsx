@@ -2,12 +2,16 @@ import { cloneDeep } from 'lodash';
 import React, { useEffect, useRef, useState } from 'react'
 
 import { FaBold, FaUnderline, FaItalic } from "react-icons/fa";
+import { IoEnterOutline } from "react-icons/io5";
 
 
 
-export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdateCmpStyle, event }) => {
+export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdateCmp, event }) => {
+
     const [cmpStyle, setCmpStyle] = useState(cmp.attributes.style);
     const [editorPosition, setEditorPosition] = useState(null)
+    const [cmpInfo, setCmpInfo] = useState(cmp?.info)
+
     const ref = useRef()
     const isRightSpace = elCmpPos.right + 230 < window.innerWidth
 
@@ -29,7 +33,7 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
         }
     }
 
-    const rems = ['fontSize', 'letterSpacing', 'paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight', 'width']
+    const rems = ['fontSize', 'letterSpacing', 'paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight', 'width', 'height']
 
     const updateCmpStyle = ({ target }) => {
         let { value, name } = target
@@ -41,8 +45,13 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
             cmpStyleCopy[name] = value;
             setCmpStyle({ ...cmpStyleCopy, [name]: value })
         }
-        onUpdateCmpStyle(cmpStyleCopy)
+        onUpdateCmp(cmpStyleCopy, 'style')
     }
+
+    const updateCmpInfo = () => {
+        onUpdateCmp(cmpInfo, 'info')
+    }
+
 
     useEffect(() => {
         setEditorPosition(ref.current.getBoundingClientRect())
@@ -76,29 +85,55 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
 
     return (
         <div ref={ref} className="editor-modal" style={style}>
+
+
+            {choosenTool === 'img' &&
+                <>
+                    <div className="link-container editing-container">
+                        <label id="img-link" htmlFor="src">Link</label>
+                        <input name="src" onChange={(ev) => { setCmpInfo({ ...cmpInfo, action: { ...cmpInfo.action, link: ev.target.value } }) }} id="img-link" type="input" />
+                        <IoEnterOutline onClick={() => { updateCmpInfo() }} className="editing-submit-btn" />
+                    </div>
+                    <div className="upload-container editing-container">
+                        <label id="upload" htmlFor="src">Upload</label>
+                        <input name="file" onChange={(ev) => { setCmpInfo({ ...cmpInfo, action: { ...cmpInfo.action, link: ev.target.value } }) }} id="upload" type="file" />
+                    </div>
+                </>
+            }
+
+            {choosenTool === 'link' &&
+                <div className="link-container editing-container">
+
+                    <label id="link" htmlFor="src">Link</label>
+                    <input name="src" onChange={(ev) => { setCmpInfo({ ...cmpInfo, action: { ...cmpInfo.action, link: ev.target.value } }) }} id="link" type="input" />
+                    <IoEnterOutline onClick={() => { updateCmpInfo() }} className="editing-submit-btn" />
+
+                </div>
+            }
+
             {choosenTool === 'size' &&
                 <>
-                    <div className="font-size-container editing-container">
+                    <div className="width-container editing-container">
                         <label id="width" htmlFor="width">Width</label>
                         <input step="1" name="width" onChange={(ev) => { updateCmpStyle(ev) }} id="width" type="range" max='30' min='5' />
                     </div>
-                    <div className="letter-spacing-container editing-container">
+                    <div className="height-container editing-container">
                         <label id="height" htmlFor="height">Height</label>
-                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="letterSpacing" id="height" type="range" step="0.05" max='1' min='0.1' defaultValue="1" />
+                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="height" id="height" type="range" step="1" max='30' min='1' defaultValue={cmp.attributes.style?.width} />
                     </div>
-                    <div className="line-height-container editing-container">
+                    <div className="padding-top-container editing-container">
                         <label id="padding-top" htmlFor="paddingTop">Top spacing</label>
                         <input onChange={(ev) => { updateCmpStyle(ev) }} name="paddingTop" id="padding-top" type="range" step="0.01" max='4' min='0' defaultValue="1" />
                     </div>
-                    <div className="line-height-container editing-container">
+                    <div className="padding-bottom-container editing-container">
                         <label id="padding-bottom" htmlFor="paddingBottom">Bottom spacing </label>
                         <input onChange={(ev) => { updateCmpStyle(ev) }} name="paddingBottom" id="padding-bottom" type="range" step="0.01" max='4' min='0' defaultValue="1" />
                     </div>
-                    <div className="line-height-container editing-container">
+                    <div className="padding-right-container editing-container">
                         <label id="padding-left" htmlFor="paddingLeft">Left spacing</label>
                         <input onChange={(ev) => { updateCmpStyle(ev) }} name="paddingLeft" id="padding-left" type="range" step="0.01" max='4' min='0' defaultValue="1" />
                     </div>
-                    <div className="line-height-container editing-container">
+                    <div className="padding-left-container editing-container">
                         <label id="padding-right" htmlFor="paddingRight">Right spacing</label>
                         <input onChange={(ev) => { updateCmpStyle(ev) }} name="paddingRight" id="padding-right" type="range" step="0.01" max='4' min='0' defaultValue="1" />
                     </div>
@@ -128,8 +163,16 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
                     </div>
                     <div className="font-type-container editing-container">
                         <label id="font-type" htmlFor="">Font</label>
-                        <select className="font-type-selector" id="font-type">
-                            <option value="lato">Lato</option>
+                        <select onChange={(ev) => { updateCmpStyle(ev) }} name="fontFamily" className="font-type-selector" id="font-type">
+                            <option style={{ fontFamily: "lato regular" }} value="lato regular">Lato</option>
+                            <option style={{ fontFamily: "lato light" }} value="lato light">Lato light</option>
+                            <option style={{ fontFamily: "Birthstone regular" }} value="Birthstone regular">Birthstone</option>
+                            <option style={{ fontFamily: "Bree serif" }} value="Bree serif">Bree Serif</option>
+                            <option style={{ fontFamily: "kalam regular" }} value="kalam regular">kalam</option>
+                            <option style={{ fontFamily: "Pacifico regular" }} value="Pacifico regular">Pacifico</option>
+                            <option style={{ fontFamily: "Roboto regular" }} value="Roboto regular">Roboto</option>
+                            <option style={{ fontFamily: "Roboto light" }} value="Roboto light">Roboto light</option>
+                            <option style={{ fontFamily: "sncl" }} value="sncl">Seoul</option>
                         </select>
                     </div>
                 </>

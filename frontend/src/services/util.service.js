@@ -1,6 +1,7 @@
 
 export const utilService = {
-    makeId
+    makeId,
+    resolve
 }
 
 
@@ -13,4 +14,11 @@ function makeId(length = 6) {
     }
 
     return txt;
+}
+
+
+function resolve(path, obj) {
+    return path.split('.').reduce(function (prev, curr) {
+        return prev ? prev[curr] : null
+    }, obj)
 }

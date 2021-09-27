@@ -15,13 +15,6 @@
     top: 50%;
     right: 50%;
     transform: translate(50%, -50%);
-
-    // top: -13.8rem;
-    // top: 0;
-    // transform: translate(50%, -102%);
-    // bottom: 0;
-    // transform: translate(50%, 102%);
-    // right: 50%;
     animation: opcaity 0.5s;
 
     & > * {
@@ -34,6 +27,25 @@
         gap: 2rem;
         align-items: center;
         outline: none;
+        position: relative;
+
+        &.link-container {
+            & input {
+                width: 10rem;
+                height: 1.4rem;
+                outline: none;
+                padding: 0.6rem 0;
+                padding-right: 1.8rem;
+            }
+
+            & .editing-submit-btn {
+                position: absolute;
+                right: 5px;
+                font-size: 1.2rem;
+                color: $main-dark-color;
+                cursor: pointer;
+            }
+        }
 
         & input {
             width: 5rem;
