@@ -173,6 +173,8 @@ export const EditorPage = () => {
             item.cmp = mappedWebAppCmps[idx]
         })
 
+
+
         setColumns({
             ...columns,
             [editing[0]]: {
