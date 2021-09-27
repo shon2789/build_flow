@@ -9,24 +9,25 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
     const [cmpStyle, setCmpStyle] = useState(cmp.attributes.style);
     const [editorPosition, setEditorPosition] = useState(null)
     const ref = useRef()
+    const isRightSpace = elCmpPos.right + 230 < window.innerWidth
 
     let style = {};
-    if(window.innerWidth > 768){
-        if(elCmpPos.top < 230){
+    if (window.innerWidth > 768) {
+        if (elCmpPos.top < 230) {
             style = {
                 top: `${elCmpPos.bottom + 35}px`,
-                transform: 'translateX(-25%)',
+                transform: isRightSpace ? 'translateX(-25%)' : 'translateX(-55%)',
                 left: event?.clientX
             }
-    } else {
-        style = {
-            top: (event?.clientY - editorPosition?.height - 20),
-            transform: 'translateX(-25%)',
-            left: event?.clientX,
-            zIndex: '1000'
+        } else {
+            style = {
+                top: (event?.clientY - editorPosition?.height - 20),
+                transform: isRightSpace ? 'translateX(-25%)' : 'translateX(-55%)',
+                left: event?.clientX,
+                zIndex: '1000'
+            }
         }
     }
-}
 
     const updateCmpStyle = ({ target }) => {
         let { value, name } = target
@@ -40,7 +41,7 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
         }
         onUpdateCmpStyle(cmpStyleCopy)
     }
- 
+
     useEffect(() => {
         setEditorPosition(ref.current.getBoundingClientRect())
         document.addEventListener("mousedown", handleClick);
@@ -101,12 +102,12 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
                 <>
                     <div className="background-color-picker-container editing-container">
                         <label id="font-type" htmlFor="backgroundColor">Background Color</label>
-                        <input name="backgroundColor" onChange={(ev) => { updateCmpStyle(ev) }} type="color" />
+                        <input defaultValue={cmp.attributes.style?.backgroundColor} name="backgroundColor" onChange={(ev) => { updateCmpStyle(ev) }} type="color" />
                     </div>
 
                     <div className="color-picker-container editing-container">
                         <label id="font-type" htmlFor="color">Color</label>
-                        <input name="color" onChange={(ev) => { updateCmpStyle(ev) }} type="color" />
+                        <input defaultValue={cmp.attributes.style?.color} name="color" onChange={(ev) => { updateCmpStyle(ev) }} type="color" />
                     </div>
                 </>
             }

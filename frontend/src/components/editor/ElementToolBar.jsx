@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { FaTrashAlt, FaCopy } from "react-icons/fa";
 import { FiLink } from "react-icons/fi";
 import { BsFonts, BsBoundingBoxCircles, BsImage } from "react-icons/bs";
 import { IoMdColorPalette } from "react-icons/io";
 import Tooltip from '@mui/material/Tooltip';
 import { EditorModal } from './EditorModal';
-import useComponentVisible from '../UseComponentVisible';
+
 
 
 
@@ -15,29 +15,38 @@ export const ElementToolBar = ({ cmp, onDeleteCmp, onDuplicateCmp, onUpdateCmpSt
     const [isEditing, setIsEditing] = useState(false)
     const [event, setEvent] = useState(null)
     const [choosenTool, setChoosenTool] = useState(null)
+    const [toolBarPosition, setToolBarPosition] = useState()
+
+    const ref = useRef(null)
 
     // Setting the position of the toolbar (Bottom / Top - depends on the available space)
     const elCmpPos = document.getElementById(cmp.id).getBoundingClientRect();
+
+    // const isLeftSpace = elCmpPos.left < 440
+
     let style = {};
-    if(window.innerWidth > 768){
-        if(elCmpPos.top < 230){
+    if (window.innerWidth > 768) {
+        if (elCmpPos.top < 230) {
             style = {
                 bottom: `-30px`,
-                top: 'unset'
+                top: 'unset',
+                transform: `${toolBarPosition?.left <= 420 ? 'translate(50%, 0)' : 'translate(0, 0)'}`
             }
-    } else {
-        style = 
-        {
-            top: '-2rem'
+        } else {
+            style =
+            {
+                top: '-2rem',
+                transform: `${toolBarPosition?.left <= 420 ? 'translate(50%, 0)' : 'translate(0, 0)'}`
+            }
         }
     }
-}
-    
+
 
     useEffect(() => {
+        setToolBarPosition(ref.current.getBoundingClientRect())
+    }, [])
 
-    }, [isEditing])
-
+    console.log(toolBarPosition?.left)
     const onToggleEditing = (ev, tool) => {
         setEvent(ev)
         setIsEditing(!isEditing)
@@ -48,7 +57,7 @@ export const ElementToolBar = ({ cmp, onDeleteCmp, onDuplicateCmp, onUpdateCmpSt
         <>
             {isEditing && <EditorModal setIsEditing={setIsEditing} event={event} cmp={cmp} elCmpPos={elCmpPos} onUpdateCmpStyle={onUpdateCmpStyle} choosenTool={choosenTool} />}
 
-            <div className="element-tool-bar" style={style}>
+            <div ref={ref} className="element-tool-bar" style={style}>
                 {cmp.type === 'btn' &&
                     <>
                         <Tooltip type="button" title="Text" arrow placement="top"><div className="element-tool" onClick={(ev) => { onToggleEditing(ev, 'txt') }}><BsFonts className="text-tool tool" /></div></Tooltip>
