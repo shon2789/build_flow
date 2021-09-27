@@ -5,6 +5,7 @@ import cardImg3 from '../../assets/images/teamwork.png'
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useInView } from 'react-intersection-observer'
+import { Link } from 'react-router-dom'
 
 export const HowWeWork = ({ windowWidth }) => {
 
@@ -98,7 +99,7 @@ export const HowWeWork = ({ windowWidth }) => {
                 </div>
             </div>
 
-            <div className="try-it-out-btn">Try it out!</div>
+            <Link to="/template"><div className="try-it-out-btn">Try it out!</div></Link>
 
         </section>
 

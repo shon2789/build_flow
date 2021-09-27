@@ -10,7 +10,7 @@ export const SvgAnimation = ({ windowWidth }) => {
         else if (windowWidth > 1500) {
             return 1000 + 'px'
         } else {
-            return (windowWidth / 1.5) + 'px'
+            return (windowWidth / 1.9) + 'px'
         }
     }
 
