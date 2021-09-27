@@ -155,6 +155,7 @@ export const EditorPage = () => {
     }
 
     const onUpdateCmp = (updatedProperty, type) => {
+
         const webAppCmps = editing[1].items;
         const mappedWebAppCmps = webAppCmps.map(section => section.cmp)
 
@@ -182,6 +183,7 @@ export const EditorPage = () => {
                 items: webAppCmps
             }
         })
+
     }
 
 

@@ -1480,6 +1480,7 @@ function getParentElement(element, mappedWebAppCmps, webAppCmps) {
 }
 
 function updateCmp(currCmp, webAppCmps, type) {
+
   webAppCmps.forEach(cmp => {
     if (cmp.id === currCmp.id) {
       if (type === 'style') {

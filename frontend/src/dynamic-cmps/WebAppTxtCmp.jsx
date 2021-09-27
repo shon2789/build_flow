@@ -1,22 +1,27 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { ElementToolBar } from '../components/editor/ElementToolBar'
+import ContentEditable from "react-contenteditable";
 
 export const WebAppTxtCmp = ({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDuplicateCmp, onUpdateCmp }) => {
 
-    const updateCmpTxt = (ev) => {
-        const txt = ev.target.innerText
-        const newCmpInfo = { ...currCmp.info, txt }
 
+
+
+
+    const handleChange = ev => {
+        const txt = ev.target.innerText;
+        const newCmpInfo = { ...currCmp.info, txt }
         onUpdateCmp(newCmpInfo, 'info')
-    }
+    };
+
+
 
     if (currCmp && currCmp.id === cmp.id) {
         return (
-            <span contentEditable suppressContentEditableWarning onKeyUp={(ev) => { updateCmpTxt(ev) }} id={cmp.id} style={{ ...cmp.attributes.style, position: 'relative', outline: '2px dashed #c6c6c6', outlineOffset: '-2px' }} className={cmp.attributes.className} onClick={(ev) => { onSetCurrCmp(ev, cmp) }} >
+            <span id={cmp.id} style={{ ...cmp.attributes.style, position: 'relative', outline: '2px dashed #c6c6c6', outlineOffset: '-2px' }} className={cmp.attributes.className} onClick={(ev) => { onSetCurrCmp(ev, cmp) }} >
                 <ElementToolBar cmp={cmp} onDeleteCmp={onDeleteCmp} onDuplicateCmp={onDuplicateCmp} onUpdateCmp={onUpdateCmp} />
-                {cmp.info.txt}
+                <ContentEditable html={currCmp.info.txt} onKeyUp={handleChange} />
             </span>
-
         )
     }
 
