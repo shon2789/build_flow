@@ -13,47 +13,47 @@ export const ElementToolBar = ({ cmp, onDeleteCmp, onDuplicateCmp, onUpdateCmpSt
 
     const [isEditing, setIsEditing] = useState(false)
     const [event, setEvent] = useState(null)
+    const [choosenTool, setChoosenTool] = useState(null)
 
     useEffect(() => {
 
     }, [isEditing])
 
-    const onToggleEditing = (ev) => {
+    const onToggleEditing = (ev, tool) => {
         setEvent(ev)
         setIsEditing(!isEditing)
+        setChoosenTool(tool)
     }
-
-    console.log(event)
 
     return (
         <>
-            {isEditing && <EditorModal event={event} cmp={cmp} onUpdateCmpStyle={onUpdateCmpStyle} />}
+            {isEditing && <EditorModal event={event} cmp={cmp} onUpdateCmpStyle={onUpdateCmpStyle} choosenTool={choosenTool} />}
             <div className="element-tool-bar">
                 {cmp.type === 'btn' &&
                     <>
-                        <Tooltip title="Text" arrow placement="top"><div className="element-tool" onClick={(ev) => { onToggleEditing(ev) }}><BsFonts className="text-tool tool" /></div></Tooltip>
-                        <Tooltip title="Link" arrow placement="top"><div className="element-tool" onClick={() => { onDeleteCmp(cmp.id) }}><FiLink className="link-tool tool" /></div></Tooltip>
-                        <Tooltip title="Color" arrow placement="top"><div className="element-tool" onClick={() => { onDeleteCmp(cmp.id) }}><IoMdColorPalette className="color-tool tool" /></div></Tooltip>
+                        <Tooltip title="Text" arrow placement="top"><div className="element-tool" onClick={(ev) => { onToggleEditing(ev, 'txt') }}><BsFonts className="text-tool tool" /></div></Tooltip>
+                        <Tooltip title="Link" arrow placement="top"><div className="element-tool" onClick={(ev) => { onToggleEditing(ev, 'link') }}><FiLink className="link-tool tool" /></div></Tooltip>
+                        <Tooltip title="Color" arrow placement="top"><div className="element-tool" onClick={(ev) => { onToggleEditing(ev, 'color') }}><IoMdColorPalette className="color-tool tool" /></div></Tooltip>
                     </>
                 }
                 {cmp.type === 'img' &&
-                    <Tooltip title="Image" arrow placement="top"><div className="element-tool" onClick={() => { onDeleteCmp(cmp.id) }}><BsImage className="image-tool tool" /></div></Tooltip>
+                    <Tooltip title="Image" arrow placement="top"><div className="element-tool" onClick={(ev) => { onToggleEditing(ev, 'img') }}><BsImage className="image-tool tool" /></div></Tooltip>
                 }
 
                 {cmp.type === 'txt' &&
                     <>
-                        <Tooltip title="Text" arrow placement="top"><div className="element-tool" onClick={(ev) => { onToggleEditing(ev) }}><BsFonts className="text-tool tool" /></div></Tooltip>
-                        <Tooltip title="Color" arrow placement="top"><div className="element-tool" onClick={() => { onDeleteCmp(cmp.id) }}><IoMdColorPalette className="color-tool tool" /></div></Tooltip>
+                        <Tooltip title="Text" arrow placement="top"><div className="element-tool" onClick={(ev) => { onToggleEditing(ev, 'txt') }}><BsFonts className="text-tool tool" /></div></Tooltip>
+                        <Tooltip title="Color" arrow placement="top"><div className="element-tool" onClick={(ev) => { onToggleEditing(ev, 'color') }}><IoMdColorPalette className="color-tool tool" /></div></Tooltip>
                     </>
                 }
 
                 {cmp.type === 'section' &&
                     <>
-                        <Tooltip title="Image" arrow placement="top"><div className="element-tool" onClick={() => { onDeleteCmp(cmp.id) }}><BsImage className="image-tool tool" /></div></Tooltip>
-                        <Tooltip title="Color" arrow placement="top"><div className="element-tool" onClick={() => { onDeleteCmp(cmp.id) }}><IoMdColorPalette className="color-tool tool" /></div></Tooltip>
+                        <Tooltip title="Image" arrow placement="top"><div className="element-tool" onClick={(ev) => { onToggleEditing(ev, 'img') }}><BsImage className="image-tool tool" /></div></Tooltip>
+                        <Tooltip title="Color" arrow placement="top"><div className="element-tool" onClick={(ev) => { onToggleEditing(ev, 'color') }}><IoMdColorPalette className="color-tool tool" /></div></Tooltip>
                     </>
                 }
-                <Tooltip title="Size" arrow placement="top"><div className="element-tool" onClick={() => { onDeleteCmp(cmp.id) }}><BsBoundingBoxCircles className="size-tool tool" /></div></Tooltip>
+                <Tooltip title="Size" arrow placement="top"><div className="element-tool" onClick={(ev) => { onToggleEditing(ev, 'size') }}><BsBoundingBoxCircles className="size-tool tool" /></div></Tooltip>
                 <Tooltip title="Copy" arrow placement="top"><div className="element-tool" onClick={() => { onDuplicateCmp(cmp) }}><FaCopy className="copy-tool tool" /></div></Tooltip>
                 <Tooltip title="Delete" arrow placement="top"><div className="element-tool" onClick={() => { onDeleteCmp(cmp.id) }}><FaTrashAlt className="delete-tool tool" /></div></Tooltip>
             </div>
