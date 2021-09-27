@@ -4,8 +4,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import { FaBold, FaUnderline, FaItalic } from "react-icons/fa";
 
 
-export const EditorModal = ({ choosenTool, cmp, onUpdateCmpStyle, event }) => {
 
+export const EditorModal = ({ setIsEditing, choosenTool, cmp, onUpdateCmpStyle, event }) => {
     const [cmpStyle, setCmpStyle] = useState(cmp.attributes.style);
 
     const updateCmpStyle = ({ target }) => {
@@ -26,7 +26,21 @@ export const EditorModal = ({ choosenTool, cmp, onUpdateCmpStyle, event }) => {
 
     useEffect(() => {
         setEditorPosition(ref.current.getBoundingClientRect())
+        document.addEventListener("mousedown", handleClick);
+        return () => {
+            document.removeEventListener("mousedown", handleClick);
+        };
     }, [])
+
+    const handleClick = e => {
+        if (ref.current.contains(e.target)) {
+            // inside click
+            setIsEditing(true)
+            return;
+        }
+        // outside click 
+        setIsEditing(false)
+    };
 
 
     const isBold = cmpStyle.fontWeight === '700';

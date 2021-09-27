@@ -3,9 +3,10 @@ import { FaTrashAlt, FaCopy } from "react-icons/fa";
 import { FiLink } from "react-icons/fi";
 import { BsFonts, BsBoundingBoxCircles, BsImage } from "react-icons/bs";
 import { IoMdColorPalette } from "react-icons/io";
-
 import Tooltip from '@mui/material/Tooltip';
 import { EditorModal } from './EditorModal';
+import useComponentVisible from '../UseComponentVisible';
+
 
 
 
@@ -27,11 +28,12 @@ export const ElementToolBar = ({ cmp, onDeleteCmp, onDuplicateCmp, onUpdateCmpSt
 
     return (
         <>
-            {isEditing && <EditorModal event={event} cmp={cmp} onUpdateCmpStyle={onUpdateCmpStyle} choosenTool={choosenTool} />}
+            {isEditing && <EditorModal setIsEditing={setIsEditing} event={event} cmp={cmp} onUpdateCmpStyle={onUpdateCmpStyle} choosenTool={choosenTool} />}
+
             <div className="element-tool-bar">
                 {cmp.type === 'btn' &&
                     <>
-                        <Tooltip title="Text" arrow placement="top"><div className="element-tool" onClick={(ev) => { onToggleEditing(ev, 'txt') }}><BsFonts className="text-tool tool" /></div></Tooltip>
+                        <Tooltip type="button" title="Text" arrow placement="top"><div className="element-tool" onClick={(ev) => { onToggleEditing(ev, 'txt') }}><BsFonts className="text-tool tool" /></div></Tooltip>
                         <Tooltip title="Link" arrow placement="top"><div className="element-tool" onClick={(ev) => { onToggleEditing(ev, 'link') }}><FiLink className="link-tool tool" /></div></Tooltip>
                         <Tooltip title="Color" arrow placement="top"><div className="element-tool" onClick={(ev) => { onToggleEditing(ev, 'color') }}><IoMdColorPalette className="color-tool tool" /></div></Tooltip>
                     </>
