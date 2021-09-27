@@ -1264,7 +1264,7 @@ const cmps = [
                 "display": "flex",
                 "alignItems": "center",
                 "justifyContent": "center",
-                "flexWrap": "warp",
+                "flexWrap": "wrap",
                 "gap": "20px",
 
 
@@ -1283,7 +1283,7 @@ const cmps = [
                   "className": "web-app-imgs-img",
                   "style": {
 
-                    "maxWidth": "15rem",
+                    "width": "15rem",
                     "height": "16rem",
                     "objectFit": "cover",
 
@@ -1303,7 +1303,7 @@ const cmps = [
                   "src": "https://a-cloud.b-cdn.net/media/iW=263&iH=any/d03-Img-Guy-Shirt.jpg",
                   "style": {
 
-                    "maxWidth": "15rem",
+                    "width": "15rem",
                     "height": "16rem",
                     "objectFit": "cover",
 
@@ -1344,7 +1344,7 @@ const cmps = [
                   "src": "https://a-cloud.b-cdn.net/media/iW=263&iH=any/d03-Img-Girl-Blonde-Curly.jpg",
                   "style": {
 
-                    "maxWidth": "15rem",
+                    "width": "15rem",
                     "height": "16rem",
                     "objectFit": "cover",
 
@@ -1364,7 +1364,7 @@ const cmps = [
 
                   "style": {
 
-                    "maxWidth": "15rem",
+                    "width": "15rem",
                     "height": "16rem",
                     "objectFit": "cover",
 
