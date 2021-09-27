@@ -5,8 +5,28 @@ import { FaBold, FaUnderline, FaItalic } from "react-icons/fa";
 
 
 
-export const EditorModal = ({ setIsEditing, choosenTool, cmp, onUpdateCmpStyle, event }) => {
+export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdateCmpStyle, event }) => {
     const [cmpStyle, setCmpStyle] = useState(cmp.attributes.style);
+    const [editorPosition, setEditorPosition] = useState(null)
+    const ref = useRef()
+
+    let style = {};
+    if(window.innerWidth > 768){
+        if(elCmpPos.top < 230){
+            style = {
+                top: `${elCmpPos.bottom + 35}px`,
+                transform: 'translateX(-25%)',
+                left: event?.clientX
+            }
+    } else {
+        style = {
+            top: (event?.clientY - editorPosition?.height - 20),
+            transform: 'translateX(-25%)',
+            left: event?.clientX,
+            zIndex: '1000'
+        }
+    }
+}
 
     const updateCmpStyle = ({ target }) => {
         let { value, name } = target
@@ -20,13 +40,11 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, onUpdateCmpStyle, 
         }
         onUpdateCmpStyle(cmpStyleCopy)
     }
-
-    const [editorPosition, setEditorPosition] = useState(null)
-    const ref = useRef()
-
+ 
     useEffect(() => {
         setEditorPosition(ref.current.getBoundingClientRect())
         document.addEventListener("mousedown", handleClick);
+
         return () => {
             document.removeEventListener("mousedown", handleClick);
         };
@@ -42,18 +60,13 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, onUpdateCmpStyle, 
         setIsEditing(false)
     };
 
-
+    // Text B U I toggeling
     const isBold = cmpStyle.fontWeight === '700';
     const isUnderLine = cmpStyle.textDecoration === 'underline';
     const isItalic = cmpStyle.fontStyle === 'italic';
 
-    // const style = {
-    //     top: editorPosition.bottom < editorPosition.height 
-    // }
-
-
     return (
-        <div ref={ref} className="editor-modal" style={{ top: (event?.clientY - editorPosition?.height - 20), left: event?.clientX, zIndex: '1000' }}>
+        <div ref={ref} className="editor-modal" style={style}>
             {choosenTool === 'txt' &&
                 <>
                     <div className="font-size-container editing-container">

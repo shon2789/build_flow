@@ -12,8 +12,9 @@
     font-family: Lato regular;
     outline: none;
     position: fixed;
-    top: 0;
-    right: 0;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
 
     // top: -13.8rem;
     // top: 0;

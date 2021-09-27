@@ -16,6 +16,24 @@ export const ElementToolBar = ({ cmp, onDeleteCmp, onDuplicateCmp, onUpdateCmpSt
     const [event, setEvent] = useState(null)
     const [choosenTool, setChoosenTool] = useState(null)
 
+    // Setting the position of the toolbar (Bottom / Top - depends on the available space)
+    const elCmpPos = document.getElementById(cmp.id).getBoundingClientRect();
+    let style = {};
+    if(window.innerWidth > 768){
+        if(elCmpPos.top < 230){
+            style = {
+                bottom: `-30px`,
+                top: 'unset'
+            }
+    } else {
+        style = 
+        {
+            top: '-2rem'
+        }
+    }
+}
+    
+
     useEffect(() => {
 
     }, [isEditing])
@@ -28,9 +46,9 @@ export const ElementToolBar = ({ cmp, onDeleteCmp, onDuplicateCmp, onUpdateCmpSt
 
     return (
         <>
-            {isEditing && <EditorModal setIsEditing={setIsEditing} event={event} cmp={cmp} onUpdateCmpStyle={onUpdateCmpStyle} choosenTool={choosenTool} />}
+            {isEditing && <EditorModal setIsEditing={setIsEditing} event={event} cmp={cmp} elCmpPos={elCmpPos} onUpdateCmpStyle={onUpdateCmpStyle} choosenTool={choosenTool} />}
 
-            <div className="element-tool-bar">
+            <div className="element-tool-bar" style={style}>
                 {cmp.type === 'btn' &&
                     <>
                         <Tooltip type="button" title="Text" arrow placement="top"><div className="element-tool" onClick={(ev) => { onToggleEditing(ev, 'txt') }}><BsFonts className="text-tool tool" /></div></Tooltip>
