@@ -46,7 +46,6 @@ export const ElementToolBar = ({ cmp, onDeleteCmp, onDuplicateCmp, onUpdateCmpSt
         setToolBarPosition(ref.current.getBoundingClientRect())
     }, [])
 
-    console.log(toolBarPosition?.left)
     const onToggleEditing = (ev, tool) => {
         setEvent(ev)
         setIsEditing(!isEditing)
@@ -56,7 +55,6 @@ export const ElementToolBar = ({ cmp, onDeleteCmp, onDuplicateCmp, onUpdateCmpSt
     return (
         <>
             {isEditing && <EditorModal setIsEditing={setIsEditing} event={event} cmp={cmp} elCmpPos={elCmpPos} onUpdateCmpStyle={onUpdateCmpStyle} choosenTool={choosenTool} />}
-
             <div ref={ref} className="element-tool-bar" style={style}>
                 {cmp.type === 'btn' &&
                     <>
@@ -68,14 +66,12 @@ export const ElementToolBar = ({ cmp, onDeleteCmp, onDuplicateCmp, onUpdateCmpSt
                 {cmp.type === 'img' &&
                     <Tooltip title="Image" arrow placement="top"><div className="element-tool" onClick={(ev) => { onToggleEditing(ev, 'img') }}><BsImage className="image-tool tool" /></div></Tooltip>
                 }
-
                 {cmp.type === 'txt' &&
                     <>
                         <Tooltip title="Text" arrow placement="top"><div className="element-tool" onClick={(ev) => { onToggleEditing(ev, 'txt') }}><BsFonts className="text-tool tool" /></div></Tooltip>
                         <Tooltip title="Color" arrow placement="top"><div className="element-tool" onClick={(ev) => { onToggleEditing(ev, 'color') }}><IoMdColorPalette className="color-tool tool" /></div></Tooltip>
                     </>
                 }
-
                 {cmp.type === 'section' &&
                     <>
                         <Tooltip title="Image" arrow placement="top"><div className="element-tool" onClick={(ev) => { onToggleEditing(ev, 'img') }}><BsImage className="image-tool tool" /></div></Tooltip>

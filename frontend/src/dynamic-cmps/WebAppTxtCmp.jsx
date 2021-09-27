@@ -3,15 +3,6 @@ import { ElementToolBar } from '../components/editor/ElementToolBar'
 
 export const WebAppTxtCmp = ({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDuplicateCmp, onUpdateCmpStyle }) => {
 
-    // const [elCmp, setElCmp] = useState(null);
-
-    // const ref = useRef();
-    
-    // useEffect(() => {
-    //     console.log(ref.current)
-    //     setElCmp(ref.current)
-    // }, [])
-
 
     if (currCmp && currCmp.id === cmp.id) {
         return (
