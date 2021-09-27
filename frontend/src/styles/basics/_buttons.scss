@@ -7,6 +7,16 @@
     }
 }
 
+.get-started-btn-mobile {
+    display: inline-block;
+    margin-bottom: 3rem;
+    @include main-btn($main-light-color, $main-dark-color);
+
+    @include for-tablet {
+        display: none;
+    }
+}
+
 .header-hamburger-btn {
     cursor: pointer;
     font-size: 1.5rem;
@@ -15,6 +25,25 @@
     @include for-tablet {
         display: none;
     }
+}
+
+.check-out-btn {
+    @include main-btn($main-light-color, $main-dark-color);
+    @include flex-center;
+    margin: 3rem auto;
+    font-size: 1.2rem;
+    width: 10rem;
+    height: 3rem;
+}
+
+.try-it-out-btn,
+.editor-publish-btn {
+    @include main-btn($main-dark-color, $main-light-color);
+    @include flex-center;
+    margin: 3rem auto;
+    font-size: 1.2rem;
+    width: 10rem;
+    height: 3rem;
 }
 
 .icon-btn {
@@ -37,6 +66,41 @@
     font-size: 1.2rem;
     width: 10rem;
     height: 3rem;
+}
+
+.page-up-container {
+    background-color: $main-light-color;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 30px;
+    right: 10px;
+    z-index: 100;
+    animation: in-and-out 0.5s ease-in-out;
+    padding: 0.4rem;
+    border: 3px solid $main-dark-color;
+    cursor: pointer;
+    transition: transform 0.5s;
+    @include flex-center;
+
+    @include for-tablet {
+        right: 30px;
+    }
+
+    .page-up {
+        font-size: 1.8rem;
+        color: $main-dark-color;
+
+        @include for-tablet {
+            font-size: 2.5rem;
+        }
+    }
+
+    &:hover {
+        transform: translateY(-5px) scale(1.1);
+    }
+    &:active {
+        transform: translateY(5px) scale(0.9);
+    }
 }
 
 @keyframes in-and-out {

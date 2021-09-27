@@ -1,0 +1,56 @@
+.home-page-templates-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+
+    .home-page-templates-top-container {
+        display: flex;
+        flex-direction: column;
+        flex: 2;
+        width: 95%;
+    }
+
+    .home-page-templates-txt-container {
+        flex-direction: column;
+        @include flex-center;
+    }
+
+    .home-page-templates-title {
+        color: $main-dark-color;
+        font-size: 2rem;
+        margin-top: 3rem;
+        text-align: center;
+
+        @include for-tablet {
+            font-size: 3rem;
+        }
+    }
+
+    .home-page-templates-sub-title {
+        font-family: Lato regular;
+        margin-top: 1rem;
+        letter-spacing: 1.75px;
+        font-size: 0.9rem;
+        text-align: center;
+
+        @include for-tablet {
+            font-size: 1.2rem;
+        }
+    }
+}
+
+.home-page-slider-container {
+    align-self: center;
+    margin-top: 8rem;
+    width: 100%;
+
+    @include for-large-tablet {
+        width: 950px;
+    }
+    @include for-desktop {
+        width: 1250px;
+    }
+}

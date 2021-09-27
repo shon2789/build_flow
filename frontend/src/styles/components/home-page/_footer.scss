@@ -1,0 +1,47 @@
+.footer-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: $main-dark-color;
+    color: $main-light-color;
+    gap: 1.5rem;
+    font-family: Lato light, sans-serif;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    height: 7rem;
+
+    .us-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 3rem;
+        text-align: center;
+
+        .master-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            font-size: 0.8rem;
+            justify-content: space-between;
+
+            @include for-large-tablet {
+                font-size: 1.2rem;
+            }
+
+            .footer-icons-container {
+                align-self: center;
+                font-size: 1.2rem;
+                display: flex;
+                gap: 1rem;
+
+                @include for-large-tablet {
+                    font-size: 1.4rem;
+                }
+            }
+        }
+    }
+
+    @include for-large-tablet {
+        height: 10rem;
+    }
+}
