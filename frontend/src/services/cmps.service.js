@@ -1184,6 +1184,201 @@ const cmps = [
 
 
     ]
+  },
+  {
+    "id": utilService.makeId(),
+    "type": "section",
+    "sectionType": "img",
+    "isDroppable": true,
+    "img": "https://i.ibb.co/QMbDGXn/wowow.png",
+    "attributes": {
+      "className": "web-app-img1",
+      "style": {
+        "display": "flex",
+        "justifyContent": "center",
+        "flexDirection": "column",
+        "alignItems": "center",
+        "min-height": "35rem",
+        "backgroundColor": "#292929",
+        "width": "100%",
+        "padding": "3rem",
+
+      }
+
+    },
+    "children": [
+      {
+        "id": utilService.makeId(),
+        "type": "txt",
+        "isDroppable": false,
+        "info": {
+          "txt": "Meet our team"
+        },
+        "attributes": {
+          "className": "web-app-img-txt",
+          "style": {
+            "color": "white",
+            "fontFamily": "Lato regular,sans-serif",
+            "textAlign": "center",
+            "fontSize": "2.3rem",
+            "marginBottom": "3rem",
+
+
+          }
+        },
+        "children": [
+        ]
+      },
+
+
+      {
+        "id": utilService.makeId(),
+        "type": "section",
+        "isDroppable": true,
+
+        "attributes": {
+          "className": "web-app-img-imgs-container",
+          "style": {
+            "display": "flex",
+            "alignItems": "center",
+            "justifyContent": "center",
+            "gap": "20px",
+            "flexWrap": "wrap",
+
+
+
+          }
+        },
+        "children": [
+
+
+
+          {
+            "id": utilService.makeId(),
+            "type": "section",
+            "isDroppable": true,
+
+            "attributes": {
+              "className": "web-app-img-imgs-inner-container-left",
+              "style": {
+                "display": "flex",
+                "alignItems": "center",
+                "justifyContent": "center",
+                "flexWrap": "warp",
+                "gap": "20px",
+
+
+
+              }
+            },
+            "children": [
+              {
+                "id": utilService.makeId(),
+                "type": "img",
+                "isDroppable": false,
+
+
+                "attributes": {
+                  "src": "https://a-cloud.b-cdn.net/media/iW=263&iH=any/d03-Img-Guy-Beanie.jpg",
+                  "className": "web-app-imgs-img",
+                  "style": {
+
+                    "maxWidth": "15rem",
+                    "height": "16rem",
+                    "objectFit": "cover",
+
+                  }
+                },
+                "children": [
+                ]
+              },
+              {
+                "id": utilService.makeId(),
+                "type": "img",
+                "isDroppable": false,
+
+
+                "attributes": {
+                  "className": "web-app-imgs-img",
+                  "src": "https://a-cloud.b-cdn.net/media/iW=263&iH=any/d03-Img-Guy-Shirt.jpg",
+                  "style": {
+
+                    "maxWidth": "15rem",
+                    "height": "16rem",
+                    "objectFit": "cover",
+
+                  }
+                },
+                "children": [
+                ]
+              },
+            ]
+          },
+
+          {
+            "id": utilService.makeId(),
+            "type": "section",
+            "isDroppable": true,
+
+            "attributes": {
+              "className": "web-app-img-imgs-inner-container-left",
+              "style": {
+                "display": "flex",
+                "alignItems": "center",
+                "justifyContent": "center",
+                "gap": "20px",
+                "flexWrap": "wrap",
+
+
+
+              }
+            },
+            "children": [
+              {
+                "id": utilService.makeId(),
+                "type": "img",
+                "isDroppable": false,
+
+                "attributes": {
+                  "className": "web-app-imgs-img",
+                  "src": "https://a-cloud.b-cdn.net/media/iW=263&iH=any/d03-Img-Girl-Blonde-Curly.jpg",
+                  "style": {
+
+                    "maxWidth": "15rem",
+                    "height": "16rem",
+                    "objectFit": "cover",
+
+                  }
+                },
+                "children": [
+                ]
+              },
+              {
+                "id": utilService.makeId(),
+                "type": "img",
+                "isDroppable": false,
+
+                "attributes": {
+                  "className": "web-app-imgs-img",
+                  "src": "https://a-cloud.b-cdn.net/media/iW=264&iH=any/d03-Img-Girl-Locks.jpg",
+
+                  "style": {
+
+                    "maxWidth": "15rem",
+                    "height": "16rem",
+                    "objectFit": "cover",
+
+                  }
+                },
+                "children": [
+                ]
+              },
+            ]
+          },
+        ]
+      },
+
+    ]
   }
 
 
