@@ -409,7 +409,7 @@ const cmps = [
       "className": "rettro-cards-section",
       "style": {
         "display": "flex",
-        "flex-direction": "column",
+        "flexDirection": "column",
         "justifyContent": "space-around",
         "alignItems": "center",
         "backgroundColor": "white",
@@ -536,7 +536,7 @@ const cmps = [
                         "textAlign": "center",
                         "fontFamily": "Lato regular, sans-serif",
                         "fontSize": "1.3rem",
-                        "margin-top": "1rem"
+                        "marginTop": "1rem"
                       }
                     },
                     "children": []
@@ -585,7 +585,7 @@ const cmps = [
                         "textAlign": "center",
                         "fontFamily": "Lato regular, sans-serif",
                         "fontSize": "1.3rem",
-                        "margin-top": "1rem"
+                        "marginTop": "1rem"
                       }
                     },
                     "children": []
@@ -654,7 +654,7 @@ const cmps = [
                         "textAlign": "center",
                         "fontFamily": "Lato regular, sans-serif",
                         "fontSize": "1.3rem",
-                        "margin-top": "1rem"
+                        "marginTop": "1rem"
                       }
                     },
                     "children": []
@@ -703,7 +703,7 @@ const cmps = [
                         "textAlign": "center",
                         "fontFamily": "Lato regular, sans-serif",
                         "fontSize": "1.3rem",
-                        "margin-top": "1rem"
+                        "marginTop": "1rem"
                       }
                     },
                     "children": []
@@ -876,13 +876,13 @@ const cmps = [
           "style": {
 
 
-            "fontSize": "3.5rem",
+            "fontSize": "4.3rem",
             "textShadow": "0.1875rem 0.25rem 0.4375rem rgba(81,67,21,0.8)",
             "marginBottom": "1.3rem",
             "marginTop": "7rem",
             "textAlign": "center",
             "color": "white",
-            "fontFamily": "Lato regular,sans-serif",
+            "fontFamily": "Birthstone regular,sans-serif",
 
           }
         },
@@ -904,11 +904,11 @@ const cmps = [
           "style": {
 
 
-            "fontSize": "3.5rem",
+            "fontSize": "5rem",
             "marginBottom": "5rem",
             "textAlign": "center",
             "color": "white",
-            "fontFamily": "Lato regular,sans-serif",
+            "fontFamily": "Birthstone regular,sans-serif",
             "textShadow": "0.1875rem 0.25rem 0.4375rem rgba(81,67,21,0.8)"
 
           }
@@ -931,18 +931,18 @@ const cmps = [
           "style": {
 
 
-            "fontSize": "1.3rem",
+            "fontSize": "1.4rem",
             "border": "none",
 
             "textAlign": "center",
             "color": "#292929",
-            "fontFamily": "Lato regular,sans-serif",
+            "fontFamily": "Roboto regular,sans-serif",
             "backgroundColor": "white",
             "padding": "0.7rem",
             "display": "flex",
             "alignItems": "center",
             "justifyContent": "center",
-            "minWidth": "10rem",
+            "minWidth": "13rem",
             "boxShadow": "rgba(0, 0, 0, 0.35) 0rem 0.3125rem 0.9375rem"
 
           }
@@ -992,10 +992,11 @@ const cmps = [
           "style": {
 
 
-            "fontSize": "1rem",
+            "fontSize": "1.5rem",
             "textAlign": "center",
             "color": "white",
-            "fontFamily": "Lato regular,sans-serif",
+            "fontFamily": "Birthstone regular,sans-serif",
+
 
           }
         },
@@ -1128,7 +1129,64 @@ const cmps = [
       },
 
     ]
+  },
+  {
+    "id": utilService.makeId(),
+    "type": "section",
+    "sectionType": "header",
+    "isDroppable": true,
+    "img": "https://i.ibb.co/bsn57Wk/haed.png",
+    "attributes": {
+      "className": "ice-cream-navbar",
+      "style": {
+        "display": "flex",
+        "justifyContent": "center",
+        "alignItems": "center",
+        "minHeight": "60px",
+        "backgroundColor": "white",
+        "width": "100%",
+        "flexWrap": "wrap",
+        "gap": "25px",
+
+
+      }
+    },
+    "children": [
+
+
+
+      {
+        "id": utilService.makeId(),
+        "type": "txt",
+        "isDroppable": false,
+        "info": {
+          "txt": "Yummy in my tummy",
+
+        },
+
+
+
+        "attributes": {
+          "className": "icecream-header-txt",
+          "style": {
+
+
+            "fontSize": "2.5rem",
+            "textAlign": "center",
+            "color": "#292929",
+            "fontFamily": "Birthstone regular,sans-serif",
+
+
+          }
+        },
+        "children": []
+      },
+
+
+    ]
   }
+
+
 
 ]
 
