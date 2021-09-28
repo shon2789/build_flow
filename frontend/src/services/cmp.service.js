@@ -1521,14 +1521,428 @@ const cmps = [
       }
     ]
   },
+  {
+    "id": utilService.makeId(),
+    "type": "section",
+    "sectionType": "header",
+    "isDroppable": true,
+    "img": "https://i.ibb.co/41RvS0K/xszcxzsccxzxzcxzc.png",
+    "attributes": {
+      "className": "",
+      "style": {
+        "display": "flex",
+        "justifyContent": "space-between",
+        "alignItems": "center",
+        "padding": "0 1.875rem",
+        "backgroundColor": "white",
+        "minHeight": "6rem",
+        "flexWrap": "wrap",
+        "width": "100%",
+      }
+    },
+    "children": [
+      {
+
+
+        "id": utilService.makeId(),
+        "type": "txt",
+        "isDroppable": false,
+        "info": {
+          "txt": "Beauty"
+        },
+
+        "attributes": {
+          "className": "beauty-logo",
+          "style": {
+            "fontSize": "3.2rem",
+            "fontFamily": "Birthstone regular,sans-serif",
+            "color": "#db6260"
+          }
+        },
+        "children": []
+      },
+      {
+        "id": utilService.makeId(),
+        "type": "navbar",
+        "isDroppable": false,
+
+        "attributes": {
+          "className": "web-app-beauty-navbar",
+          "style": {
+            "display": "flex",
+            "gap": "1.5rem",
+            "width": "fit-content"
+          }
+        },
+        "children": [
+          {
+            "id": utilService.makeId(),
+            "type": "btn",
+            "isDroppable": false,
+            "info": {
+              "txt": "Gallery",
+              "action": { "link": "www.google.com" }
+            },
+
+            "attributes": {
+              "className": "web-app-btn",
+              "style": {
+                "backgroundColor": "transparent",
+                "border": "none",
+                "color": "#071112",
+                "fontSize": "1.4rem",
+                "cursor": "pointer"
+              }
+            },
+            "children": []
+          },
+          {
+            "id": utilService.makeId(),
+            "type": "btn",
+            "isDroppable": false,
+            "info": {
+              "txt": "Skin-Care",
+              "action": { "link": "www.google.com" }
+            },
+
+            "attributes": {
+              "className": "web-app-btn",
+              "style": {
+                "backgroundColor": "transparent",
+                "border": "none",
+                "color": "#071112",
+                "fontSize": "1.4rem",
+                "cursor": "pointer"
+              }
+            },
+            "children": []
+          },
+          {
+            "id": utilService.makeId(),
+            "type": "btn",
+            "isDroppable": false,
+            "info": {
+              "txt": "Get in touch",
+              "action": { "link": "www.google.com" }
+            },
+
+            "attributes": {
+              "className": "web-app-btn",
+              "style": {
+                "backgroundColor": "#db6260",
+                "border": "none",
+                "color": "white",
+                "fontSize": "1.1rem",
+                "cursor": "pointer",
+                "padding": "0.75rem",
+                "borderRadius": "30px",
+                "borderColor": "#db6260"
+              }
+            },
+            "children": []
+          }
+        ]
+      }
+
+    ]
+  },
+  {
+    "id": utilService.makeId(),
+    "type": "section",
+    "sectionType": "footer",
+    "isDroppable": true,
+    "img": "https://i.ibb.co/xm9Y51g/Untssssitled.png",
+    "attributes": {
+      "className": "beauty-footer",
+      "style": {
+        "display": "flex",
+        "justifyContent": "center",
+        "alignItems": "center",
+        "min-height": "17rem",
+        "backgroundColor": "#f9e2e2",
+        "width": "100%",
+
+      }
+    },
+    "children": [
+
+
+
+      {
+        "id": utilService.makeId(),
+        "type": "txt",
+        "isDroppable": false,
+        "info": {
+          "txt": "©2021 made with love by team BuildFlow",
+
+        },
+
+
+
+        "attributes": {
+          "className": "beaury-footer-txt",
+          "style": {
+
+
+            "fontSize": "1.04rem",
+            "textAlign": "center",
+            "color": "#db6260",
+            "fontFamily": "Lato regular,sans-serif",
+
+          }
+        },
+        "children": []
+      },
+
+    ]
+  },
+  {
+    "id": utilService.makeId(),
+    "type": "section",
+    "sectionType": "img",
+    "isDroppable": true,
+    "img": "https://i.ibb.co/9NcndgZ/skiins.png",
+    "attributes": {
+      "className": "web-app-img1",
+      "style": {
+        "display": "flex",
+        "justifyContent": "center",
+        "flexDirection": "column",
+        "alignItems": "center",
+        "min-height": "35rem",
+        "backgroundColor": "white",
+        "width": "100%",
+        "padding": "3rem",
+
+      }
+
+    },
+    "children": [
+      {
+        "id": utilService.makeId(),
+        "type": "txt",
+        "isDroppable": false,
+        "info": {
+          "txt": "We love skin care"
+        },
+        "attributes": {
+          "className": "web-app-img-txt",
+          "style": {
+            "color": "#ababab",
+            "fontFamily": "Lato regular,sans-serif",
+            "textAlign": "center",
+            "fontSize": "1.3rem",
+            "marginBottom": "0.6rem",
+
+
+          }
+        },
+        "children": [
+        ]
+      },
+      {
+        "id": utilService.makeId(),
+        "type": "txt",
+        "isDroppable": false,
+        "info": {
+          "txt": "Skin Care Gallery"
+        },
+        "attributes": {
+          "className": "web-app-img-txt",
+          "style": {
+            "color": "#292929",
+            "fontFamily": "Roboto medium,sans-serif",
+            "textAlign": "center",
+            "fontSize": "2.75rem",
+            "marginBottom": "1rem",
+          }
+        },
+        "children": [
+        ]
+      },
+      {
+        "id": utilService.makeId(),
+        "type": "txt",
+        "isDroppable": false,
+        "info": {
+          "txt": "Skin Care / Face Care / Skin Scars Treatment"
+        },
+        "attributes": {
+          "className": "web-app-img-txt",
+          "style": {
+            "color": "#292929",
+            "fontFamily": "Lato regular,sans-serif",
+            "textAlign": "center",
+            "fontSize": "1.3rem",
+            "marginBottom": "1.4rem",
+          }
+        },
+        "children": [
+        ]
+      },
+
+
+      {
+        "id": utilService.makeId(),
+        "type": "section",
+        "isDroppable": true,
+
+        "attributes": {
+          "className": "web-app-img-imgs-container",
+          "style": {
+            "display": "flex",
+            "alignItems": "center",
+            "justifyContent": "center",
+            "gap": "20px",
+            "flexWrap": "wrap",
+
+
+
+          }
+        },
+        "children": [
+
+
+
+          {
+            "id": utilService.makeId(),
+            "type": "section",
+            "isDroppable": true,
+
+            "attributes": {
+              "className": "web-app-img-imgs-inner-container-left",
+              "style": {
+                "display": "flex",
+                "alignItems": "center",
+                "justifyContent": "center",
+                "flexWrap": "wrap",
+                "gap": "20px",
+
+
+
+              }
+            },
+            "children": [
+              {
+                "id": utilService.makeId(),
+                "type": "img",
+                "isDroppable": false,
+
+
+                "attributes": {
+                  "src": "https://themes.abusayedshuvo.xyz/most_one/skincare/skincare/img/work-2.jpg",
+                  "className": "web-app-imgs-img",
+                  "style": {
+
+                    "width": "15rem",
+                    "height": "16rem",
+                    "objectFit": "cover",
+
+                  }
+                },
+                "children": [
+                ]
+              },
+              {
+                "id": utilService.makeId(),
+                "type": "img",
+                "isDroppable": false,
+
+
+                "attributes": {
+                  "className": "web-app-imgs-img",
+                  "src": "https://themes.abusayedshuvo.xyz/most_one/skincare/skincare/img/work-3.jpg",
+                  "style": {
+
+                    "width": "15rem",
+                    "height": "16rem",
+                    "objectFit": "cover",
+
+                  }
+                },
+                "children": [
+                ]
+              },
+            ]
+          },
+
+          {
+            "id": utilService.makeId(),
+            "type": "section",
+            "isDroppable": true,
+
+            "attributes": {
+              "className": "web-app-img-imgs-inner-container-left",
+              "style": {
+                "display": "flex",
+                "alignItems": "center",
+                "justifyContent": "center",
+                "gap": "20px",
+                "flexWrap": "wrap",
+
+
+
+              }
+            },
+            "children": [
+              {
+                "id": utilService.makeId(),
+                "type": "img",
+                "isDroppable": false,
+
+                "attributes": {
+                  "className": "web-app-imgs-img",
+                  "src": "https://themes.abusayedshuvo.xyz/most_one/skincare/skincare/img/work-7.jpg",
+                  "style": {
+
+                    "width": "15rem",
+                    "height": "16rem",
+                    "objectFit": "cover",
+
+                  }
+                },
+                "children": [
+                ]
+              },
+              {
+                "id": utilService.makeId(),
+                "type": "img",
+                "isDroppable": false,
+
+                "attributes": {
+                  "className": "web-app-imgs-img",
+                  "src": "https://themes.abusayedshuvo.xyz/most_one/skincare/skincare/img/work-8.jpg",
+
+                  "style": {
+
+                    "width": "15rem",
+                    "height": "16rem",
+                    "objectFit": "cover",
+
+                  }
+                },
+                "children": [
+                ]
+              },
+            ]
+          },
+        ]
+      },
+
+    ]
+  }
+
+
+
+
 ]
 
 loadItemsToStorgae()
 function loadItemsToStorgae() {
   const cmpsStorage = JSON.parse(localStorage.getItem('cmp')) || localStorage.setItem("cmp", JSON.stringify(cmps));
-  
+
   console.log(cmpsStorage)
-  
+
 }
 
 
