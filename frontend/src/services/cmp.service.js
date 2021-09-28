@@ -1396,7 +1396,8 @@ const cmps = [
         "alignItems": 'center',
         "backgroundColor": '#f9e2e2',
         "paddingRight": '2rem',
-        "paddingLeft": '2rem'
+        "paddingLeft": '2rem',
+        "gap": '2rem'
       }
     },
     "children": [
@@ -1410,31 +1411,11 @@ const cmps = [
             "fontFamily": 'Lato',
             "display": "flex",
             "flexDirection": 'column',
-            "flexWrap": 'wrap',
             "justifyContent": "center",
             "height": "20rem"
           }
         },
         "children": [
-          {
-            "id": utilService.makeId(),
-            "type": "txt",
-            "isDroppable": false,
-            "info": {
-              'txt': 'Proin gravida nibh vel velit.'
-            },
-
-            "attributes": {
-              "className": "beauty-main-inner-section-txt",
-              "style": {
-                "paddingBottom": '1rem',
-                "fontFamily": 'Lato',
-                "fontSize": '1rem',
-                "color": 'black'
-              }
-            },
-            "children": []
-          },
           {
             "id": utilService.makeId(),
             "type": "txt",
@@ -1467,7 +1448,7 @@ const cmps = [
               "className": "beauty-main-inner-section-txt",
               "style": {
                 "paddingTop": '1rem',
-                "paddingBottom": '1rem',
+                "paddingBottom": '1.5rem',
                 "fontFamily": 'Lato',
                 "fontSize": '1rem',
                 "color": 'black'
@@ -1489,10 +1470,13 @@ const cmps = [
             "attributes": {
               "className": "beauty-main-inner-section-btn",
               "style": {
+                "paddingRight": '3rem',
+                "paddingLeft": '3rem',
+                "paddingTop": '0.5rem',
+                "paddingBottom": '0.5rem',
                 "fontFamily": 'Lato',
-                "fontSize": '1rem',
-                "width": "6.5rem",
-                "height": "2.5rem",
+                "fontSize": '1.2rem',
+                "width": 'fit-content',
                 "background": "none",
                 "borderRadius": "30px",
                 "color": "#db6260",
@@ -1512,8 +1496,8 @@ const cmps = [
         "attributes": {
           "className": "beauty-main-section-img",
           "style": {
+            "width": '28.125rem',
             "maxWidth": '100%',
-            "maxHeight": '100%'
           },
           "src": "https://themes.abusayedshuvo.xyz/most_one/skincare/skincare/img/banner-img.png"
         },
