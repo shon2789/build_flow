@@ -7,6 +7,8 @@ import { WebAppImgCmp } from "./WebAppImgCmp.jsx"
 
 export function DynamicCmp({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDuplicateCmp, onUpdateCmp }) {
 
+
+
     function getCmp(type) {
         switch (type) {
             case 'section':

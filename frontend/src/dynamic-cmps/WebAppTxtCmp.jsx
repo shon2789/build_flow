@@ -1,20 +1,14 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React from 'react'
 import { ElementToolBar } from '../components/editor/ElementToolBar'
 import ContentEditable from "react-contenteditable";
 
 export const WebAppTxtCmp = ({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDuplicateCmp, onUpdateCmp }) => {
-
-
-
-
 
     const handleChange = ev => {
         const txt = ev.target.innerText;
         const newCmpInfo = { ...currCmp.info, txt }
         onUpdateCmp(newCmpInfo, 'info')
     };
-
-
 
     if (currCmp && currCmp.id === cmp.id) {
         return (
