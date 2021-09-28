@@ -1386,7 +1386,7 @@ const cmps = [
     "type": "section",
     "sectionType": "section",
     "isDroppable": true,
-    "img": "https://i.ibb.co/DQtPm2Z/section1.jpg",
+    "img": "https://i.ibb.co/YRxsL99/xzcxccccccd.png",
     "attributes": {
       "className": "beauty-main-section",
       "style": {
