@@ -1381,14 +1381,14 @@ const cmps = [
 
     ]
   }
-
-
-
 ]
 
-// loadItemsToStorgae()
+loadItemsToStorgae()
 function loadItemsToStorgae() {
-  localStorage.setItem("cmp", JSON.stringify(cmps))
+  const cmpsStorage = JSON.parse(localStorage.getItem('cmp')) || localStorage.setItem("cmp", JSON.stringify(cmps));
+  
+  console.log(cmpsStorage)
+  
 }
 
 

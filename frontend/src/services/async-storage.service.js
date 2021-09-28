@@ -8,14 +8,12 @@ export const storageService = {
     remove,
 }
 
-function query(entityType, delay = 0) {
+function query(entityType) {
 
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
 
     return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(entities)
-        }, delay)
+        resolve(entities)
     })
 }
 
@@ -32,7 +30,6 @@ function post(entityType, newEntity) {
     // newEntity.id = _makeId()
     return query(entityType)
         .then(entities => {
-            console.log("entities", entities);
             entities.push(newEntity)
             _save(entityType, entities)
             return newEntity
