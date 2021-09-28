@@ -2,10 +2,17 @@
     cursor: pointer;
     width: 18rem;
     height: 10.8rem;
-    background-color: rgb(255, 255, 255);
+    background-color: #f0eeee;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
     font-family: Lato regular,sans-serif;
+
     
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+   
     @include for-large-phone{
         width: 23rem;
         height: 13.8rem;
@@ -23,7 +30,51 @@
 
     }
 
+    .create-template-preview-img{
+        width: 100%;
+        height: 68.6%;
+        object-fit:cover;
+
+        transition:opacity .5s ;
+
+        &:hover{
+            opacity:0.5
+        }
+        
+
+        @include for-large-phone{
+            height: 74.3%;
     
+        }
+        @include for-tablet{
+            height: 73.3%;
+    
+        }
+        @include for-large-tablet{
+            height:68.5%;
+    
+        }
+        @include for-desktop{
+            height:75%;
+    
+        }
+
+    }
+
+     .create-template-preview-lower{
+        padding: 1rem 0;
+        font-size: 1.4rem;
+        width: 100%;
+        text-align: center;
+      
+    }
+
+    .create-template-preview-upper{
+        width: 100%;
+         flex:1;
+
+
+        }    
 }
 
 .create-template-preview{
@@ -60,7 +111,7 @@
     }
 
     
-
+  
     .create-template-preview-upper{
    
        width: 100%;

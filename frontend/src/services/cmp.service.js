@@ -1369,130 +1369,6 @@ const cmps = [
   {
     "id": utilService.makeId(),
     "type": "section",
-    "sectionType": "section",
-    "isDroppable": true,
-    "img": "https://i.ibb.co/YRxsL99/xzcxccccccd.png",
-    "attributes": {
-      "className": "beauty-main-section",
-      "style": {
-        "display": "flex",
-        "flexWrap": 'wrap',
-        "justifyContent": "center",
-        "alignItems": 'center',
-        "backgroundColor": '#f9e2e2',
-        "paddingRight": '2rem',
-        "paddingLeft": '2rem',
-        "gap": '2rem'
-      }
-    },
-    "children": [
-      {
-        "id": utilService.makeId(),
-        "type": "section",
-        "isDroppable": true,
-        "attributes": {
-          "className": "beauty-main-inner-section",
-          "style": {
-            "fontFamily": 'Lato',
-            "display": "flex",
-            "flexDirection": 'column',
-            "justifyContent": "center",
-            "height": "20rem"
-          }
-        },
-        "children": [
-          {
-            "id": utilService.makeId(),
-            "type": "txt",
-            "isDroppable": false,
-            "info": {
-              'txt': 'Beauty & Skin Care'
-            },
-
-            "attributes": {
-              "className": "beauty-main-inner-section-txt",
-              "style": {
-                "paddingBottom": '1rem',
-                "fontFamily": 'Lato',
-                "fontWeight": '700',
-                "fontSize": '4rem',
-                "color": '#db6260'
-              }
-            },
-            "children": []
-          },
-          {
-            "id": utilService.makeId(),
-            "type": "txt",
-            "isDroppable": false,
-            "info": {
-              'txt': `This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.`
-            },
-
-            "attributes": {
-              "className": "beauty-main-inner-section-txt",
-              "style": {
-                "paddingTop": '1rem',
-                "paddingBottom": '1.5rem',
-                "fontFamily": 'Lato',
-                "fontSize": '1rem',
-                "color": 'black'
-              }
-            },
-            "children": []
-          },
-          {
-            "id": utilService.makeId(),
-            "type": "btn",
-            "isDroppable": false,
-            "info": {
-              'txt': 'See More',
-              'action': {
-                'link': 'www.google.com'
-              }
-            },
-
-            "attributes": {
-              "className": "beauty-main-inner-section-btn",
-              "style": {
-                "paddingRight": '3rem',
-                "paddingLeft": '3rem',
-                "paddingTop": '0.5rem',
-                "paddingBottom": '0.5rem',
-                "fontFamily": 'Lato',
-                "fontSize": '1.2rem',
-                "width": 'fit-content',
-                "background": "none",
-                "borderRadius": "30px",
-                "color": "#db6260",
-                "borderHeight": "1.5px",
-                "borderStyle": "solid",
-                "borderColor": "#db6260"
-              }
-            },
-            "children": []
-          }
-        ]
-      },
-      {
-        "id": utilService.makeId(),
-        "type": "img",
-        "isDroppable": false,
-        "attributes": {
-          "className": "beauty-main-section-img",
-          "style": {
-            "width": '28.125rem',
-            "maxWidth": '100%',
-          },
-          "src": "https://themes.abusayedshuvo.xyz/most_one/skincare/skincare/img/banner-img.png"
-        },
-        'children': []
-      }
-    ]
-  },
-  {
-    "id": utilService.makeId(),
-    "type": "section",
     "sectionType": "header",
     "isDroppable": true,
     "img": "https://i.ibb.co/41RvS0K/xszcxzsccxzxzcxzc.png",
@@ -1618,51 +1494,125 @@ const cmps = [
   {
     "id": utilService.makeId(),
     "type": "section",
-    "sectionType": "footer",
+    "sectionType": "section",
     "isDroppable": true,
-    "img": "https://i.ibb.co/xm9Y51g/Untssssitled.png",
+    "img": "https://i.ibb.co/YRxsL99/xzcxccccccd.png",
     "attributes": {
-      "className": "beauty-footer",
+      "className": "beauty-main-section",
       "style": {
         "display": "flex",
+        "flexWrap": 'wrap',
         "justifyContent": "center",
-        "alignItems": "center",
-        "min-height": "17rem",
-        "backgroundColor": "#f9e2e2",
-        "width": "100%",
-
+        "alignItems": 'center',
+        "backgroundColor": '#f9e2e2',
+        "paddingRight": '2rem',
+        "paddingLeft": '2rem',
+        "gap": '2rem'
       }
     },
     "children": [
-
-
-
       {
         "id": utilService.makeId(),
-        "type": "txt",
-        "isDroppable": false,
-        "info": {
-          "txt": "©2021 made with love by team BuildFlow",
-
-        },
-
-
-
+        "type": "section",
+        "isDroppable": true,
         "attributes": {
-          "className": "beaury-footer-txt",
+          "className": "beauty-main-inner-section",
           "style": {
-
-
-            "fontSize": "1.04rem",
-            "textAlign": "center",
-            "color": "#db6260",
-            "fontFamily": "Lato regular,sans-serif",
-
+            "fontFamily": 'Lato',
+            "display": "flex",
+            "flexDirection": 'column',
+            "justifyContent": "center",
+            "height": "20rem"
           }
         },
-        "children": []
-      },
+        "children": [
+          {
+            "id": utilService.makeId(),
+            "type": "txt",
+            "isDroppable": false,
+            "info": {
+              'txt': 'Beauty & Skin Care'
+            },
 
+            "attributes": {
+              "className": "beauty-main-inner-section-txt",
+              "style": {
+                "paddingBottom": '1rem',
+                "fontFamily": 'Lato',
+                "fontWeight": '700',
+                "fontSize": '4rem',
+                "color": '#db6260'
+              }
+            },
+            "children": []
+          },
+          {
+            "id": utilService.makeId(),
+            "type": "txt",
+            "isDroppable": false,
+            "info": {
+              'txt': `This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.`
+            },
+
+            "attributes": {
+              "className": "beauty-main-inner-section-txt",
+              "style": {
+                "paddingTop": '1rem',
+                "paddingBottom": '1.5rem',
+                "fontFamily": 'Lato regular,sans-serif',
+                "fontSize": '1rem',
+                "color": 'black'
+              }
+            },
+            "children": []
+          },
+          {
+            "id": utilService.makeId(),
+            "type": "btn",
+            "isDroppable": false,
+            "info": {
+              'txt': 'See More',
+              'action': {
+                'link': 'www.google.com'
+              }
+            },
+
+            "attributes": {
+              "className": "beauty-main-inner-section-btn",
+              "style": {
+                "paddingRight": '3rem',
+                "paddingLeft": '3rem',
+                "paddingTop": '0.5rem',
+                "paddingBottom": '0.5rem',
+                "fontFamily": 'Lato',
+                "fontSize": '1.2rem',
+                "width": 'fit-content',
+                "background": "none",
+                "borderRadius": "30px",
+                "color": "#db6260",
+                "borderHeight": "1.5px",
+                "borderStyle": "solid",
+                "borderColor": "#db6260"
+              }
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": utilService.makeId(),
+        "type": "img",
+        "isDroppable": false,
+        "attributes": {
+          "className": "beauty-main-section-img",
+          "style": {
+            "width": '28.125rem',
+            "maxWidth": '100%',
+          },
+          "src": "https://themes.abusayedshuvo.xyz/most_one/skincare/skincare/img/banner-img.png"
+        },
+        'children': []
+      }
     ]
   },
   {
@@ -1966,11 +1916,13 @@ const cmps = [
           "style": {
             "display": "flex",
             "flexDirection": "column",
+            "color": "white",
             "padding-top": "2rem",
             "padding-bottom": "2rem",
             "padding-left": "2rem",
             "padding-right": "2rem",
-            "gap": "2rem"
+            "gap": "2rem",
+            "fontFamily": "Lato regular,sans-serif",
           }
         },
         "children": [
@@ -2035,20 +1987,75 @@ const cmps = [
             "attributes": {
               "className": "",
               "style": {
-                "width": "6.5rem",
-                "height": "2.5rem",
+
                 "background": "none",
+                "width": "fit-content",
                 "borderRadius": "30px",
                 "color": "#fff",
                 "borderHeight": "1.5px",
                 "borderStyle": "solid",
-                "borderColor": "#fff"
+                "borderColor": "#fff",
+                "paddingTop": "0.5rem",
+                "fontSize": "1.2rem",
+                "paddingBottom": "0.5rem",
+                "paddingRight": "3rem",
+                "paddingLeft": "3rem",
               }
             },
             "children": []
           }
         ]
       }
+    ]
+  },
+  {
+    "id": utilService.makeId(),
+    "type": "section",
+    "sectionType": "footer",
+    "isDroppable": true,
+    "img": "https://i.ibb.co/xm9Y51g/Untssssitled.png",
+    "attributes": {
+      "className": "beauty-footer",
+      "style": {
+        "display": "flex",
+        "justifyContent": "center",
+        "alignItems": "center",
+        "min-height": "17rem",
+        "backgroundColor": "#f9e2e2",
+        "width": "100%",
+
+      }
+    },
+    "children": [
+
+
+
+      {
+        "id": utilService.makeId(),
+        "type": "txt",
+        "isDroppable": false,
+        "info": {
+          "txt": "©2021 made with love by team BuildFlow",
+
+        },
+
+
+
+        "attributes": {
+          "className": "beaury-footer-txt",
+          "style": {
+
+
+            "fontSize": "1.04rem",
+            "textAlign": "center",
+            "color": "#db6260",
+            "fontFamily": "Lato regular,sans-serif",
+
+          }
+        },
+        "children": []
+      },
+
     ]
   }
 ]
