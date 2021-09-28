@@ -22,7 +22,7 @@ export const EditorPage = () => {
     const dispatch = useDispatch()
     const cmps = useSelector(state => state.cmpModule.cmps)
     const currWebApp = useSelector(state => state.webAppModule.currWebApp)
-    
+
     const { webAppId } = useParams();
 
     // Drag&Drop columns (Editor components && webApp builder)
@@ -46,22 +46,22 @@ export const EditorPage = () => {
 
 
     useEffect(() => {
-        if(webAppId){
-            if(currWebApp.length === 0){
+        if (webAppId) {
+            if (currWebApp.length === 0) {
                 dispatch(loadWebApp(webAppId))
-                .then((webApp) => {
-                    // console.log('webApp', webApp)
-                    const clonnedWebApp = cloneDeep(webApp);
-                    cmpService.changeCmpIds(clonnedWebApp);
-                    // console.log(clonnedWebApp.children.map(section => {return {id: utilService.makeId(), cmp: section}}))
-                    setColumns({
-                        ...columns,
-                        [editing[0]]: {
-                            name: 'Editing',
-                            items: clonnedWebApp.children.map(section => {return {id: utilService.makeId(), cmp: section}})
-                    }
+                    .then((webApp) => {
+                        // console.log('webApp', webApp)
+                        const clonnedWebApp = cloneDeep(webApp);
+                        cmpService.changeCmpIds(clonnedWebApp);
+                        // console.log(clonnedWebApp.children.map(section => {return {id: utilService.makeId(), cmp: section}}))
+                        setColumns({
+                            ...columns,
+                            [editing[0]]: {
+                                name: 'Editing',
+                                items: clonnedWebApp.children.map(section => { return { id: utilService.makeId(), cmp: section } })
+                            }
+                        })
                     })
-                })
             }
         } else {
             setColumns({
@@ -69,17 +69,17 @@ export const EditorPage = () => {
                 [editing[0]]: {
                     name: 'Editing',
                     items: []
-            }
+                }
             })
         }
-         return () => {
-             dispatch(clearCurrWebApp())
-         }
+        return () => {
+            dispatch(clearCurrWebApp())
+        }
     }, [])
 
 
     // STATES
-    
+
     const [isEditorMenuToggled, setIsEditorMenuToggled] = useState(false)
     const [editorWidth, setEditorWidth] = useState('100%')
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
@@ -100,7 +100,7 @@ export const EditorPage = () => {
         dispatch(loadCmps())
     }, [columns])
 
-  
+
     // Drag&Drop onDragEnd function, reordering the dragged elements and trigger other functions
     const onDragEnd = async (result, columns, setColumns) => {
         if (!result.destination) return;
@@ -237,12 +237,12 @@ export const EditorPage = () => {
         })
     }
 
-    
-    if(webAppId && (!currWebApp || currWebApp.length === 0)){
+
+    if (webAppId && (!currWebApp || currWebApp.length === 0)) {
         console.log('loading')
         return <h1>loading</h1>
     }
-    
+
     return (
         <DragDropContext onDragStart={onDragStart} onDragEnd={result => onDragEnd(result, columns, setColumns)}>
             <main className="editor-page-container">

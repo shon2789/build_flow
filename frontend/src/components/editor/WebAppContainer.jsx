@@ -11,6 +11,7 @@ export const WebAppContainer = ({ setCurrCmp, droppableId, webAppCmps, onToggleE
 
     //When clicking on anything other than the editable component
     const handleClickAway = (ev) => {
+        if (ev.type === 'touchend') return
         setCurrCmp(null)
     };
 
