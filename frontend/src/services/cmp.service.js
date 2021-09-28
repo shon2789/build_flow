@@ -167,8 +167,9 @@ const cmps = [
         "attributes": {
           "className": "rettro-photography-txt",
           "style": {
-            "fontFamily": "Lato regular",
+            "fontFamily": "Birthstone regular,sans-serif",
             "marginTop": "12rem",
+            "fontSize": "5.6rem",
 
           }
         },
@@ -179,37 +180,21 @@ const cmps = [
         "type": "txt",
         "isDroppable": false,
         "info": {
-          "txt": "01 Travel pro"
+          "txt": "01 Best gallery"
         },
 
         "attributes": {
           "className": "photography-txt",
           "style": {
             "marginTop": "4rem",
-            "fontSize": "2rem",
-            "fontFamily": "Lato regular",
+            "fontSize": "2.6rem",
+            "fontFamily": "Birthstone regular,sans-serif",
+            "letterSpacing": "0.45rem",
           }
         },
         "children": []
       },
-      {
-        "id": utilService.makeId(),
-        "type": "txt",
-        "isDroppable": false,
-        "info": {
-          "txt": "I'm a text, change me!"
-        },
 
-        "attributes": {
-          "className": "photography-txt",
-          "style": {
-            "marginTop": "1rem",
-            "fontSize": "1.5rem",
-            "fontFamily": "Lato regular"
-          }
-        },
-        "children": []
-      },
 
     ]
   },
@@ -403,7 +388,7 @@ const cmps = [
   {
     "id": utilService.makeId(),
     "type": "section",
-    "sectionType": "section",
+    "sectionType": "card",
     "isDroppable": true,
     "img": "https://i.ibb.co/1MmXdcN/anothersection.png",
     "attributes": {
@@ -1136,7 +1121,7 @@ const cmps = [
     "type": "section",
     "sectionType": "header",
     "isDroppable": true,
-    "img": "https://i.ibb.co/bsn57Wk/haed.png",
+    "img": "https://i.ibb.co/zG1FVTd/pinkheader.png",
     "attributes": {
       "className": "ice-cream-navbar",
       "style": {
@@ -1919,7 +1904,7 @@ const cmps = [
     "id": utilService.makeId(),
     "type": "section",
     "sectionType": "section",
-    "img": "https://i.ibb.co/RCMrbR2/Screen-Shot-2021-09-28-at-18-51-21.png",
+    "img": "https://i.ibb.co/pZB2GfN/Untitlecvcxvccccccccccccccd.png",
     "isDroppable": false,
     "attributes": {
       "className": "",

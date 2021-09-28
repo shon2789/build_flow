@@ -60,12 +60,7 @@ export const EditorAccordion = ({ droppableId }) => {
             secondaryHeading: "this is panel 2",
             details: cmps.filter(cmp => cmp.sectionType === 'section')
         },
-        {
-            id: "panel3",
-            heading: "Navigation Bars",
-            secondaryHeading: "this is panel 1",
-            details: cmps.filter(cmp => cmp.sectionType === 'navbar')
-        },
+
         {
             id: "panel4",
             heading: "Cards",
@@ -80,7 +75,7 @@ export const EditorAccordion = ({ droppableId }) => {
         },
         {
             id: "panel6",
-            heading: "Images",
+            heading: "Galleries",
             secondaryHeading: "this is panel 2",
             details: cmps.filter(cmp => cmp.sectionType === 'img')
         },
@@ -92,7 +87,7 @@ export const EditorAccordion = ({ droppableId }) => {
         },
         {
             id: "panel8",
-            heading: "Footer",
+            heading: "Footers",
             secondaryHeading: "this is panel 2",
             details: cmps.filter(cmp => cmp.sectionType === 'footer')
         },
