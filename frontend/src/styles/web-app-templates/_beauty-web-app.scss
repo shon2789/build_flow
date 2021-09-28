@@ -1,0 +1,10 @@
+.beauty-main-inner-section {
+
+    text-align: center;
+    align-items: center;
+    
+    @include for-large-tablet {
+        text-align: left;
+        align-items: unset;
+    }
+}
