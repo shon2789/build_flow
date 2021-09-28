@@ -57,7 +57,17 @@
         margin-top: -15rem;
 
         @include for-tablet {
+            margin-top: -8rem;
+        }
+        @include for-desktop {
+            margin-top: -1rem;
+        }
+        @include for-large-desktop {
             margin-top: -10rem;
+        }
+        @media screen and (max-height: 800px)  {
+            margin-top: -3rem;
+            justify-content: flex-start;
         }
     }
 }
