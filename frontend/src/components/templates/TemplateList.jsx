@@ -3,7 +3,16 @@ import { TemplatePreview } from "./TemplatePreview"
 import { BsPlusCircle } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-export const TemplateList = () => {
+export const TemplateList = ({templates}) => {
+
+    const miniTemplates = templates.map(template => {
+        return {
+            id: template.id,
+            title: template.title,
+            image: template.image,
+        }
+    })
+
     return (
         <section className="templates-list">
             <SideNav />
@@ -19,14 +28,9 @@ export const TemplateList = () => {
                             <div className="create-template-preview-lower">Start a new project</div>
                         </div>
                     </Link>
-                    <TemplatePreview />
-                    <TemplatePreview />
-                    <TemplatePreview />
-                    <TemplatePreview />
-                    <TemplatePreview />
-                    <TemplatePreview />
-                    <TemplatePreview />
-                    <TemplatePreview />
+                    {miniTemplates && miniTemplates.map(template => {
+                        return <TemplatePreview key={template.id} template={template}/>
+                    })}
                 </div>
             </div>
         </section>

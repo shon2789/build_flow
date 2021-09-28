@@ -7,8 +7,10 @@ import { MainEditor } from '../components/editor/MainEditor';
 import { WebAppContainer } from '../components/editor/WebAppContainer';
 import { cloneDeep } from 'lodash';
 import { loadCmps } from '../store/actions/cmp.action'
+import { loadWebApp, clearCurrWebApp } from '../store/actions/web-app.action'
 import { useDispatch, useSelector } from 'react-redux';
 import { webAppService } from '../services/web-app.service';
+import { useParams } from 'react-router';
 
 
 
@@ -19,18 +21,9 @@ export const EditorPage = () => {
 
     const dispatch = useDispatch()
     const cmps = useSelector(state => state.cmpModule.cmps)
-    const [currWebApp, setCurrWebApp] = useState(null)
-
-
-    useEffect(() => {
-        webAppService.query()
-            .then(webApp => {
-                setCurrWebApp(webApp)
-            })
-
-
-    }, [])
-
+    const currWebApp = useSelector(state => state.webAppModule.currWebApp)
+    
+    const { webAppId } = useParams();
 
     // Drag&Drop columns (Editor components && webApp builder)
     const dndColumns = {
@@ -44,8 +37,49 @@ export const EditorPage = () => {
         }
     };
 
-    // STATES
     const [columns, setColumns] = useState(dndColumns);
+
+    // Seperating the dnd columns for convinience
+    const dndAreas = Object.entries(columns);
+    const editor = dndAreas[0];
+    const editing = dndAreas[1];
+
+
+    useEffect(() => {
+        if(webAppId){
+            if(currWebApp.length === 0){
+                dispatch(loadWebApp(webAppId))
+                .then((webApp) => {
+                    // console.log('webApp', webApp)
+                    const clonnedWebApp = cloneDeep(webApp);
+                    cmpService.changeCmpIds(clonnedWebApp);
+                    // console.log(clonnedWebApp.children.map(section => {return {id: utilService.makeId(), cmp: section}}))
+                    setColumns({
+                        ...columns,
+                        [editing[0]]: {
+                            name: 'Editing',
+                            items: clonnedWebApp.children.map(section => {return {id: utilService.makeId(), cmp: section}})
+                    }
+                    })
+                })
+            }
+        } else {
+            setColumns({
+                ...columns,
+                [editing[0]]: {
+                    name: 'Editing',
+                    items: []
+            }
+            })
+        }
+         return () => {
+             dispatch(clearCurrWebApp())
+         }
+    }, [])
+
+
+    // STATES
+    
     const [isEditorMenuToggled, setIsEditorMenuToggled] = useState(false)
     const [editorWidth, setEditorWidth] = useState('100%')
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
@@ -66,11 +100,7 @@ export const EditorPage = () => {
         dispatch(loadCmps())
     }, [columns])
 
-    // Seperating the dnd columns for convinience
-    const dndAreas = Object.entries(columns);
-    const editor = dndAreas[0];
-    const editing = dndAreas[1];
-
+  
     // Drag&Drop onDragEnd function, reordering the dragged elements and trigger other functions
     const onDragEnd = async (result, columns, setColumns) => {
         if (!result.destination) return;
@@ -101,7 +131,6 @@ export const EditorPage = () => {
                 }
             });
 
-            saveWebApp(destItems)
 
             // Reordering items in the page editing
         } else {
@@ -208,11 +237,12 @@ export const EditorPage = () => {
         })
     }
 
-    const saveWebApp = (webApp) => {
-        console.log(webApp, "webApp");
-        webAppService.save(...webApp)
+    
+    if(webAppId && (!currWebApp || currWebApp.length === 0)){
+        console.log('loading')
+        return <h1>loading</h1>
     }
-
+    
     return (
         <DragDropContext onDragStart={onDragStart} onDragEnd={result => onDragEnd(result, columns, setColumns)}>
             <main className="editor-page-container">

@@ -2055,10 +2055,7 @@ const cmps = [
 
 loadItemsToStorgae()
 function loadItemsToStorgae() {
-  const cmpsStorage = JSON.parse(localStorage.getItem('cmp')) || localStorage.setItem("cmp", JSON.stringify(cmps));
-
-  console.log(cmpsStorage)
-
+  const cmpsFromStorage = JSON.parse(localStorage.getItem('cmp')) || localStorage.setItem("cmp", JSON.stringify(cmps));
 }
 
 
