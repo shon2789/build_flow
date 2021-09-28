@@ -151,7 +151,6 @@ export const EditorAccordion = ({ droppableId, itemsFromBackend }) => {
                     </div>
                 )
             }}
-
         </Droppable>
     )
 }
