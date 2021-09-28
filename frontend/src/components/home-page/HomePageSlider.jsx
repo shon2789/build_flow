@@ -63,8 +63,8 @@ export const HomePageSlider = ({ windowWidth }) => {
         <>
             <div ref={sliderContainer} className={`${inView ? 'opacity-animation' : ''} navigation-wrapper`}>
                 <div ref={sliderRef} className="keen-slider">
-                    <div className="keen-slider__slide number-slide1">1</div>
-                    <div className="keen-slider__slide number-slide2">2</div>
+                    <div className="keen-slider__slide number-slide1"><img width="100%" style={{ objectFit: 'contain' }} src="https://i.ibb.co/NCrnCTQ/Rettro.jpg" alt="" /></div>
+                    <div className="keen-slider__slide number-slide2"><img width="100%" style={{ objectFit: 'contain' }} src="https://i.ibb.co/30PtWLB/beauty-carosel.jpg" alt="" /></div>
                     <div className="keen-slider__slide number-slide3">3</div>
                     <div className="keen-slider__slide number-slide4">4</div>
                     <div className="keen-slider__slide number-slide5">5</div>

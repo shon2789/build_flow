@@ -11,7 +11,7 @@ export const HomePageTemplates = ({ windowWidth }) => {
             <div className="home-page-templates-top-container">
                 <div className="home-page-templates-txt-container">
                     <h1 className="home-page-templates-title">Templates</h1>
-                    <h3 className="home-page-templates-sub-title">Choose from our costumazible website templates</h3>
+                    <h3 className="home-page-templates-sub-title">Choose from our customizable website templates</h3>
                 </div>
                 <div className="home-page-slider-container">
                     <HomePageSlider windowWidth={windowWidth} />
