@@ -1914,11 +1914,158 @@ const cmps = [
       },
 
     ]
+  },
+  {
+    "id": utilService.makeId(),
+    "type": "section",
+    "sectionType": "section",
+    "img": "https://i.ibb.co/RCMrbR2/Screen-Shot-2021-09-28-at-18-51-21.png",
+    "isDroppable": false,
+    "attributes": {
+      "className": "",
+      "style": {
+        "backgroundColor": "#db6260",
+        "width": "100%",
+        "display": "flex",
+        "flexWrap": "wrap",
+        "height": "fit-content",
+        "padding-top": "1rem",
+        "padding-bottom": "1rem",
+        "padding-left": "1rem",
+        "padding-right": "1rem",
+      }
+    },
+    "children": [
+      {
+        "id": utilService.makeId(),
+        "type": "section",
+        "isDroppable": false,
+        "attributes": {
+          "className": "beauty-section-skin-care-img",
+          "style": {
+            "display": "flex",
+            "color": "#fff",
+            "justifyContent": "center",
+            "alignItems": "center",
+            "padding-top": "2rem",
+            "padding-bottom": "2rem",
+            "padding-left": "2rem",
+            "padding-right": "2rem",
+          }
+        },
+        "children": [
+          {
+            "id": utilService.makeId(),
+            "type": "img",
+            "isDroppable": false,
+            "attributes": {
+              "className": "",
+              "style": {
+                "objectFit": "bottom",
+                "width": "20rem",
+                "border": "20px solid #f6f6f6",
+                "background": "white"
+              },
+              "src": "https://themes.abusayedshuvo.xyz/most_one/skincare/skincare/img/treatment.jpg"
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": utilService.makeId(),
+        "type": "section",
+        "isDroppable": false,
+        "attributes": {
+          "className": "beauty-section-skin-care-text",
+          "style": {
+            "display": "flex",
+            "flexDirection": "column",
+            "padding-top": "2rem",
+            "padding-bottom": "2rem",
+            "padding-left": "2rem",
+            "padding-right": "2rem",
+            "gap": "2rem"
+          }
+        },
+        "children": [
+          {
+            "id": utilService.makeId(),
+            "type": "txt",
+            "isDroppable": false,
+            "info": {
+              "txt": "Skin Care & Treatments"
+            },
+            "attributes": {
+              "className": "",
+              "style": {
+                "fontSize": "2.5rem"
+              }
+            },
+            "children": []
+          },
+          {
+            "id": utilService.makeId(),
+            "type": "txt",
+            "isDroppable": false,
+            "info": {
+              "txt": "Curabitur mollis bibendum luctus. Duis suscipit vitae dui sed suscipit. Vestibulum auctor nunc vitae diam eleifend, in maximus metus sollicitudin. Quisque vitae sodales lectus. Nam porttitor justo sed mi finibus, vel tristique risus faucibus."
+            },
+            "attributes": {
+              "className": "",
+              "style": {
+                "letterSpacing": "1.5px",
+                "fontFamily": "Lato light"
+              }
+            },
+            "children": []
+          },
+          {
+            "id": utilService.makeId(),
+            "type": "txt",
+            "isDroppable": false,
+            "info": {
+              "txt": "Curabitur mollis bibendum luctus. Duis suscipit vitae dui sed suscipit. Vestibulum auctor nunc vitae diam eleifend."
+            },
+            "attributes": {
+              "className": "",
+              "style": {
+                "fontSize": "1rem",
+                "letterSpacing": "1.5px",
+                "fontFamily": "Lato light"
+              }
+            },
+            "children": []
+          },
+          {
+            "id": utilService.makeId(),
+            "type": "btn",
+            "isDroppable": false,
+            "info": {
+              "txt": "Learn More",
+              "action": {
+                "link": "www.google.com"
+              }
+            },
+            "attributes": {
+              "className": "",
+              "style": {
+                "width": "6.5rem",
+                "height": "2.5rem",
+                "background": "none",
+                "borderRadius": "30px",
+                "color": "#fff",
+                "borderHeight": "1.5px",
+                "borderStyle": "solid",
+                "borderColor": "#fff"
+              }
+            },
+            "children": []
+          }
+        ]
+      }
+    ]
   }
-
-
-
-
 ]
 
 loadItemsToStorgae()

@@ -1,10 +1,18 @@
 .beauty-main-inner-section {
-
     text-align: center;
     align-items: center;
-    
+
     @include for-large-tablet {
         text-align: left;
         align-items: unset;
+    }
+}
+
+.beauty-section-skin-care-text,
+.beauty-section-skin-care-img {
+    width: 100%;
+
+    @include for-tablet {
+        width: 50%;
     }
 }
