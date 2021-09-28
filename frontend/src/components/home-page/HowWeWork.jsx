@@ -88,13 +88,14 @@ export const HowWeWork = ({ windowWidth }) => {
                 <div ref={card2} onMouseOver={onHover} onMouseLeave={onStopHover} className={`${windowWidth < 1130 ? 'active' : ''}  ${inView ? 'opacity-animation' : ''} home-page-card`}>
                     <h3 className="card-num">02</h3>
                     <h2 className="card-title">Responsive</h2>
-                    <p className="card-description">Build your website using our designers best and most popular templates</p>
+                    <p className="card-description">Don’t worry about fitting your website to all platforms,
+                        we already got that for you</p>
                     <div><img src={cardImg2} alt="" /></div>
                 </div>
                 <div ref={card3} onMouseOver={onHover} onMouseLeave={onStopHover} className={` ${windowWidth < 1130 ? 'active' : ''} ${inView ? 'opacity-animation' : ''} home-page-card`}>
                     <h3 className="card-num">03</h3>
                     <h2 className="card-title">Team Work</h2>
-                    <p className="card-description">Build your website using our designers best and most popular templates</p>
+                    <p className="card-description">Harness the power of your team by working  together on the same project</p>
                     <div><img src={cardImg3} alt="" /></div>
                 </div>
             </div>
