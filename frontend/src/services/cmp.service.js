@@ -1380,7 +1380,147 @@ const cmps = [
       },
 
     ]
-  }
+  },
+  {
+    "id": utilService.makeId(),
+    "type": "section",
+    "sectionType": "section",
+    "isDroppable": true,
+    "img": "https://i.ibb.co/DQtPm2Z/section1.jpg",
+    "attributes": {
+      "className": "beauty-main-section",
+      "style": {
+        "display": "flex",
+        "flexWrap": 'wrap',
+        "justifyContent": "center",
+        "alignItems": 'center',
+        "backgroundColor": '#f9e2e2',
+        "paddingRight": '2rem',
+        "paddingLeft": '2rem'
+      }
+    },
+    "children": [
+      {
+        "id": utilService.makeId(),
+        "type": "section",
+        "isDroppable": true,
+        "attributes": {
+          "className": "beauty-main-inner-section",
+          "style": {
+            "fontFamily": 'Lato',
+            "display": "flex",
+            "flexDirection": 'column',
+            "flexWrap": 'wrap',
+            "justifyContent": "center",
+            "height": "20rem"
+          }
+        },
+        "children": [
+          {
+            "id": utilService.makeId(),
+            "type": "txt",
+            "isDroppable": false,
+            "info": {
+              'txt': 'Proin gravida nibh vel velit.'
+            },
+
+            "attributes": {
+              "className": "beauty-main-inner-section-txt",
+              "style": {
+                "paddingBottom": '1rem',
+                "fontFamily": 'Lato',
+                "fontSize": '1rem',
+                "color": 'black'
+              }
+            },
+            "children": []
+          },
+          {
+            "id": utilService.makeId(),
+            "type": "txt",
+            "isDroppable": false,
+            "info": {
+              'txt': 'Beauty & Skin Care'
+            },
+
+            "attributes": {
+              "className": "beauty-main-inner-section-txt",
+              "style": {
+                "paddingBottom": '1rem',
+                "fontFamily": 'Lato',
+                "fontWeight": '700',
+                "fontSize": '4rem',
+                "color": '#db6260'
+              }
+            },
+            "children": []
+          },
+          {
+            "id": utilService.makeId(),
+            "type": "txt",
+            "isDroppable": false,
+            "info": {
+              'txt': `This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.`
+            },
+
+            "attributes": {
+              "className": "beauty-main-inner-section-txt",
+              "style": {
+                "paddingTop": '1rem',
+                "paddingBottom": '1rem',
+                "fontFamily": 'Lato',
+                "fontSize": '1rem',
+                "color": 'black'
+              }
+            },
+            "children": []
+          },
+          {
+            "id": utilService.makeId(),
+            "type": "btn",
+            "isDroppable": false,
+            "info": {
+              'txt': 'See More',
+              'action': {
+                'link': 'www.google.com'
+              }
+            },
+
+            "attributes": {
+              "className": "beauty-main-inner-section-btn",
+              "style": {
+                "fontFamily": 'Lato',
+                "fontSize": '1rem',
+                "width": "6.5rem",
+                "height": "2.5rem",
+                "background": "none",
+                "borderRadius": "30px",
+                "color": "#db6260",
+                "borderHeight": "1.5px",
+                "borderStyle": "solid",
+                "borderColor": "#db6260"
+              }
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": utilService.makeId(),
+        "type": "img",
+        "isDroppable": false,
+        "attributes": {
+          "className": "beauty-main-section-img",
+          "style": {
+            "maxWidth": '100%',
+            "maxHeight": '100%'
+          },
+          "src": "https://themes.abusayedshuvo.xyz/most_one/skincare/skincare/img/banner-img.png"
+        },
+        'children': []
+      }
+    ]
+  },
 ]
 
 loadItemsToStorgae()
