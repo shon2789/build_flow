@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import { Draggable, Droppable } from "react-beautiful-dnd";
+import { useSelector } from "react-redux";
 
 
 
@@ -33,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export const EditorAccordion = ({ droppableId, itemsFromBackend }) => {
+export const EditorAccordion = ({ droppableId }) => {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
 
@@ -41,65 +42,69 @@ export const EditorAccordion = ({ droppableId, itemsFromBackend }) => {
         setExpanded(isExpanded ? panel : false);
     };
 
+    const cmps = useSelector(state => state.cmpModule.cmps)
+
+    // Adding idx for the DND library
+    cmps.map((item, idx) => item.idx = idx)
+
     const data = [
         {
             id: "panel1",
             heading: "Headers",
             secondaryHeading: "this is panel 2",
-            details: itemsFromBackend.filter(cmp => cmp.sectionType === 'header')
+            details: cmps.filter(cmp => cmp.sectionType === 'header')
         },
         {
             id: "panel2",
             heading: "Main Sections",
             secondaryHeading: "this is panel 2",
-            details: itemsFromBackend.filter(cmp => cmp.sectionType === 'section')
+            details: cmps.filter(cmp => cmp.sectionType === 'section')
         },
         {
             id: "panel3",
             heading: "Navigation Bars",
             secondaryHeading: "this is panel 1",
-            details: itemsFromBackend.filter(cmp => cmp.sectionType === 'navbar')
+            details: cmps.filter(cmp => cmp.sectionType === 'navbar')
         },
         {
             id: "panel4",
             heading: "Cards",
             secondaryHeading: "this is panel 2",
-            details: itemsFromBackend.filter(cmp => cmp.sectionType === 'card')
+            details: cmps.filter(cmp => cmp.sectionType === 'card')
         },
         {
             id: "panel5",
             heading: "Contacts",
             secondaryHeading: "this is panel 2",
-            details: itemsFromBackend.filter(cmp => cmp.sectionType === 'contact')
+            details: cmps.filter(cmp => cmp.sectionType === 'contact')
         },
         {
             id: "panel6",
             heading: "Images",
             secondaryHeading: "this is panel 2",
-            details: itemsFromBackend.filter(cmp => cmp.sectionType === 'img')
+            details: cmps.filter(cmp => cmp.sectionType === 'img')
         },
         {
             id: "panel7",
             heading: "Text",
             secondaryHeading: "this is panel 2",
-            details: itemsFromBackend.filter(cmp => cmp.sectionType === 'txt')
+            details: cmps.filter(cmp => cmp.sectionType === 'txt')
         },
         {
             id: "panel8",
             heading: "Footer",
             secondaryHeading: "this is panel 2",
-            details: itemsFromBackend.filter(cmp => cmp.sectionType === 'footer')
+            details: cmps.filter(cmp => cmp.sectionType === 'footer')
         },
 
     ];
+
     const style = {
         backgroundColor: '#2b3039',
         boxShadow: 'none',
         padding: '3px 0.5rem',
         color: '#f2efe7',
-
     }
-
 
     return (
         <Droppable isDropDisabled={true} droppableId={droppableId} key={droppableId}>

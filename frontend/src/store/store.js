@@ -1,9 +1,15 @@
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 import thunk from 'redux-thunk'
+import { cmpReducer } from './reducers/cmp.reducer';
+import { webAppReducer } from './reducers/web-app.reducer';
+
 
 
 
 const rootReducer = combineReducers({
+
+    webAppModule: webAppReducer,
+    cmpModule: cmpReducer,
 
 })
 

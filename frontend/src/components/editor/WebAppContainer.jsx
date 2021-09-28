@@ -5,7 +5,8 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { DynamicCmp } from '../../dynamic-cmps/DynamicCmp';
 
 
-export const WebAppContainer = ({ droppableId, itemsFromBackend, onToggleEditorMenu, editorWidth, onDeleteCmp, onSetCurrCmp, currCmp, onDuplicateCmp, onUpdateCmp }) => {
+export const WebAppContainer = ({ droppableId, webAppCmps, onToggleEditorMenu, editorWidth, onDeleteCmp, onSetCurrCmp, currCmp, onDuplicateCmp, onUpdateCmp }) => {
+
     return (
         <div className="web-app-container">
             <GiHamburgerMenu onClick={() => onToggleEditorMenu(true)} className="editor-menu-hamburger" />
@@ -15,7 +16,7 @@ export const WebAppContainer = ({ droppableId, itemsFromBackend, onToggleEditorM
                         <div style={{ width: `${editorWidth}` }} className="web-app-builder" provided={provided} {...provided.droppableProps}
                             ref={provided.innerRef}  >
 
-                            {itemsFromBackend.map((item, idx) => {
+                            {webAppCmps.map((item, idx) => {
                                 return (
                                     <Draggable key={item.id} draggableId={item.id} index={idx}>
                                         {provided => {

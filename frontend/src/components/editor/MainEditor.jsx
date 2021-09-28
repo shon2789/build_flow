@@ -10,7 +10,7 @@ import { SideNav } from '../SideNav';
 
 
 
-export const MainEditor = ({ droppableId, itemsFromBackend, onChangeEditorSize, windowWidth }) => {
+export const MainEditor = ({ droppableId, onChangeEditorSize, windowWidth }) => {
     return (
         <div className="main-editor ">
             <SideNav />
@@ -21,7 +21,7 @@ export const MainEditor = ({ droppableId, itemsFromBackend, onChangeEditorSize, 
                 </div>
 
                 <div className="editor-elements-container">
-                    <EditorAccordion droppableId={droppableId} itemsFromBackend={itemsFromBackend} />
+                    <EditorAccordion droppableId={droppableId} />
                 </div>
                 <div className="bottom-editor-toolbar">
                     <div className="bottom-editor-icons-container">

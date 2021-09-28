@@ -1,34 +1,38 @@
 
+
 export const storageService = {
     query,
     get,
     post,
     put,
     remove,
-    postMany
 }
 
-function query(entityType, delay = 1200) {
+function query(entityType, delay = 0) {
+
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
 
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            // reject('OOOOPs')
             resolve(entities)
         }, delay)
     })
-    // return Promise.resolve(entities)
 }
 
 
 function get(entityType, entityId) {
+
     return query(entityType)
-        .then(entities => entities.find(entity => entity._id === entityId))
+        .then(entities => entities.find(entity => entityId === entity.id))
+
 }
+
+
 function post(entityType, newEntity) {
-    newEntity._id = _makeId()
+    // newEntity.id = _makeId()
     return query(entityType)
         .then(entities => {
+            console.log("entities", entities);
             entities.push(newEntity)
             _save(entityType, entities)
             return newEntity
@@ -38,7 +42,7 @@ function post(entityType, newEntity) {
 function put(entityType, updatedEntity) {
     return query(entityType)
         .then(entities => {
-            const idx = entities.findIndex(entity => entity._id === updatedEntity._id)
+            const idx = entities.findIndex(entity => entity.id === updatedEntity.id)
             entities.splice(idx, 1, updatedEntity)
             _save(entityType, entities)
             return updatedEntity
@@ -66,14 +70,4 @@ function _makeId(length = 5) {
         text += possible.charAt(Math.floor(Math.random() * possible.length))
     }
     return text
-}
-
-function postMany(entityType, newEntities) {
-    return query(entityType)
-        .then(entities => {
-            newEntities = newEntities.map(entity => ({ ...entity, _id: _makeId() }))
-            entities.push(...newEntities)
-            _save(entityType, entities)
-            return entities
-        })
 }

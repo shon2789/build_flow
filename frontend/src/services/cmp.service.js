@@ -1,5 +1,6 @@
 import { utilService } from './util.service'
 import { cloneDeep } from 'lodash';
+import { storageService } from './async-storage.service';
 
 export const cmpService = {
   getCmps,
@@ -1385,9 +1386,16 @@ const cmps = [
 
 ]
 
+// loadItemsToStorgae()
+function loadItemsToStorgae() {
+  localStorage.setItem("cmp", JSON.stringify(cmps))
+}
 
 
-function getMinifiedCmps() {
+
+async function getMinifiedCmps() {
+
+  const cmps = await storageService.query("cmp")
   return cmps.map(cmp => {
     return {
       id: cmp.id,
@@ -1396,12 +1404,13 @@ function getMinifiedCmps() {
       content: <img alt="accordion-section-img" width="100%" src={cmp.img} />
     }
   })
+
+
 }
 
-function getById(cmpId) {
-  return cmps.find(cmp => {
-    return cmp.id === cmpId
-  })
+async function getById(cmpId) {
+  return await storageService.get("cmp", cmpId)
+
 }
 
 function getCmps() {
@@ -1409,8 +1418,8 @@ function getCmps() {
 }
 
 // Deep cloning the cmp, and recursively changing all the id's and inner id's
-function deepCloneCmp(cmpId) {
-  const cmp = getById(cmpId);
+async function deepCloneCmp(cmpId) {
+  const cmp = await getById(cmpId);
   const coppiedCmp = cloneDeep(cmp);
 
   changeCmpIds(coppiedCmp);
