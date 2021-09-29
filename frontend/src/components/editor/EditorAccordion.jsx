@@ -47,11 +47,11 @@ export const EditorAccordion = ({ droppableId }) => {
         window.addEventListener('touchend', () => {
             setIsMobile(false);
         })
-        
-        
+
+
         return () => {
-            window.removeEventListener('touchstart', () => {console.log('bye bye')}, false)   
-            window.removeEventListener('touchend', () => {console.log('bye bye')}, false)   
+            window.removeEventListener('touchstart', () => { console.log('bye bye') }, false)
+            window.removeEventListener('touchend', () => { console.log('bye bye') }, false)
         };
     }, [])
 
@@ -154,8 +154,8 @@ export const EditorAccordion = ({ droppableId }) => {
                                                     {(provided, snapshot) => {
                                                         // Compenstate mobile wrong dragging offset position
                                                         const coppiedProps = provided.draggableProps;
-                                                        if(snapshot.isDragging && (isMobile || window.innerWidth < 850)){
-                                                            coppiedProps.style = {...coppiedProps.style, left: 350}
+                                                        if (snapshot.isDragging && (isMobile || window.innerWidth < 850)) {
+                                                            coppiedProps.style = { ...coppiedProps.style, left: window.innerWidth < 450 ? 350 : 90 }
                                                         }
 
                                                         return <div ref={provided.innerRef}
