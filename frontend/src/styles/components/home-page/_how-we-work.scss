@@ -170,11 +170,10 @@
     }
 
     @include for-desktop {
-        margin-top: 6rem;
         min-height: 460px;
     }
     @include for-large-desktop {
-        margin-top: 8rem;
+        margin-top: 5rem;
         min-height: 500px;
     }
 }

@@ -9,6 +9,7 @@
     .home-page-templates-top-container {
         display: flex;
         flex-direction: column;
+        justify-content: space-around;
         flex: 2;
         width: 95%;
     }
@@ -40,6 +41,10 @@
             font-size: 1.2rem;
         }
     }
+
+    @include for-desktop {
+        justify-content: space-between;
+    }
 }
 
 .home-page-slider-container {
@@ -49,8 +54,14 @@
 
     @include for-large-tablet {
         width: 950px;
+        margin-top: 3rem;
     }
     @include for-desktop {
+        // margin-top: 3rem;
+        width: 1250px;
+    }
+    @include for-large-desktop {
+        margin-top: 5rem;
         width: 1250px;
     }
 }
