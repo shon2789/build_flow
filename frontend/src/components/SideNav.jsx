@@ -10,9 +10,9 @@ export const SideNav = () => {
     return (
         <div className="side-nav">
             <div className="side-nav-icons-container">
-                <Link to="/"><Tooltip type="button" title="Home" arrow placement="right"><IoHome className="icon-btn icon-home" /></Tooltip></Link>
-                <Link to="/template"> <HiTemplate className="icon-btn" /></Link>
-                <FaUser className="icon-btn" />
+                <Link to="/"><div className="icon-btn icon-home"><Tooltip type="button" title="Home" arrow placement="right"><div><IoHome /></div></Tooltip></div></Link>
+                <Link to="/template"> <Tooltip className="test-tooltip" title="Templates" arrow placement="right"><div><HiTemplate className="icon-btn" /></div></Tooltip></Link>
+                <Tooltip type="button" title="Profile" arrow placement="right"><div><FaUser className="icon-btn" /></div></Tooltip>
             </div>
         </div>
     )
