@@ -99,7 +99,6 @@ export const EditorPage = () => {
     const onDragEnd = async (result, columns, setColumns) => {
         if (!result.destination) return;
 
-
         const { source, destination } = result;
 
         // Dragging from editor to the page editing
@@ -151,7 +150,7 @@ export const EditorPage = () => {
     const onDragStart = () => {
         onToggleEditorMenu(false)
     }
-
+    
     const onChangeEditorSize = (width) => {
         setEditorWidth(width)
     }
@@ -237,7 +236,7 @@ export const EditorPage = () => {
     }
 
     return (
-        <DragDropContext onDragStart={onDragStart} onDragEnd={result => onDragEnd(result, columns, setColumns)}>
+        <DragDropContext onDragStart={result => onDragStart()} onDragEnd={result => onDragEnd(result, columns, setColumns)}>
             <main className="editor-page-container">
                 <Screen isOpen={isEditorMenuToggled} exitScreen={onToggleEditorMenu} />
                 <div className={`${isEditorMenuToggled ? 'side-editor-mobile-active' : ''} side-editor-container`}>
