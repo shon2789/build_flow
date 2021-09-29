@@ -2,6 +2,13 @@
     min-height: 100vh;
     background-color: $main-dark-color;
     color: $main-light-color;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @include for-desktop {
+        justify-content: space-around;
+    }
 }
 
 .how-we-work-txt-container {
@@ -101,8 +108,8 @@
         }
 
         @include for-large-tablet {
-            width: rem(481px);
-            height: rem(540px);
+            width: rem(340px);
+            height: rem(400px);
 
             &:hover img,
             &:hover .card-description {
@@ -111,14 +118,41 @@
 
             &:hover {
                 background-color: #055572;
-                height: 600px;
-                width: 500px;
+                height: 440px;
+                width: 380px;
                 cursor: default;
             }
             &.active {
                 background-color: #055572;
-                height: 600px;
-                width: 500px;
+                height: 440px;
+                width: 380px;
+            }
+        }
+
+        @include for-desktop {
+            width: rem(360px);
+            height: rem(420px);
+
+            &:hover {
+                height: 460px;
+                width: 400px;
+            }
+            &.active {
+                height: 460px;
+                width: 400px;
+            }
+        }
+        @include for-large-desktop {
+            width: rem(400px);
+            height: rem(460px);
+
+            &:hover {
+                height: 500px;
+                width: 440px;
+            }
+            &.active {
+                height: 500px;
+                width: 440px;
             }
         }
     }
@@ -128,11 +162,20 @@
     }
 
     @include for-large-tablet {
-        margin-top: 8rem;
+        margin-top: 3rem;
         flex-direction: row;
         align-items: flex-end;
         gap: 0;
-        min-height: 600px;
+        min-height: 440px;
+    }
+
+    @include for-desktop {
+        margin-top: 6rem;
+        min-height: 460px;
+    }
+    @include for-large-desktop {
+        margin-top: 8rem;
+        min-height: 500px;
     }
 }
 

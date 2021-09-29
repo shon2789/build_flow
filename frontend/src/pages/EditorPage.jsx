@@ -9,11 +9,7 @@ import { cloneDeep } from 'lodash';
 import { loadCmps } from '../store/actions/cmp.action'
 import { loadWebApp, clearCurrWebApp } from '../store/actions/web-app.action'
 import { useDispatch, useSelector } from 'react-redux';
-import { webAppService } from '../services/web-app.service';
 import { useParams } from 'react-router';
-
-
-
 
 
 // Draggable Components from backend, rendered into the accordion
@@ -50,10 +46,8 @@ export const EditorPage = () => {
             if (currWebApp.length === 0) {
                 dispatch(loadWebApp(webAppId))
                     .then((webApp) => {
-                        // console.log('webApp', webApp)
                         const clonnedWebApp = cloneDeep(webApp);
                         cmpService.changeCmpIds(clonnedWebApp);
-                        // console.log(clonnedWebApp.children.map(section => {return {id: utilService.makeId(), cmp: section}}))
                         setColumns({
                             ...columns,
                             [editing[0]]: {
@@ -239,7 +233,6 @@ export const EditorPage = () => {
 
 
     if (webAppId && (!currWebApp || currWebApp.length === 0)) {
-        console.log('loading')
         return <h1>loading</h1>
     }
 
