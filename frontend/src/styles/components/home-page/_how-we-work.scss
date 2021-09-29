@@ -18,7 +18,7 @@
 
     .how-we-work-top-txt {
         color: $main-light-color;
-        margin-top: 3rem;
+        margin-top: 2rem;
         font-size: 2rem;
         text-align: center;
 
@@ -108,8 +108,8 @@
         }
 
         @include for-large-tablet {
-            width: rem(340px);
-            height: rem(400px);
+            width: rem(300px);
+            height: rem(360px);
 
             &:hover img,
             &:hover .card-description {
@@ -118,28 +118,28 @@
 
             &:hover {
                 background-color: #055572;
-                height: 440px;
-                width: 380px;
+                height: 400px;
+                width: 340px;
                 cursor: default;
             }
             &.active {
                 background-color: #055572;
-                height: 440px;
-                width: 380px;
+                height: 400px;
+                width: 340px;
             }
         }
 
         @include for-desktop {
-            width: rem(360px);
-            height: rem(420px);
+            width: rem(320px);
+            height: rem(380px);
 
             &:hover {
-                height: 460px;
-                width: 400px;
+                height: 420px;
+                width: 360px;
             }
             &.active {
-                height: 460px;
-                width: 400px;
+                height: 420px;
+                width: 360px;
             }
         }
         @include for-large-desktop {
@@ -162,7 +162,7 @@
     }
 
     @include for-large-tablet {
-        margin-top: 3rem;
+        margin-top: 1rem;
         flex-direction: row;
         align-items: flex-end;
         gap: 0;
@@ -170,6 +170,7 @@
     }
 
     @include for-desktop {
+        margin-top: 0rem;
         min-height: 460px;
     }
     @include for-large-desktop {
