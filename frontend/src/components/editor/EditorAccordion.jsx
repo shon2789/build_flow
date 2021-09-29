@@ -154,8 +154,12 @@ export const EditorAccordion = ({ droppableId }) => {
                                                     {(provided, snapshot) => {
                                                         // Compenstate mobile wrong dragging offset position
                                                         const coppiedProps = provided.draggableProps;
-                                                        if (snapshot.isDragging && (isMobile || window.innerWidth < 850)) {
-                                                            coppiedProps.style = { ...coppiedProps.style, left: window.innerWidth < 450 ? 350 : 90 }
+                                                        if (snapshot.isDragging) {
+                                                            if (isMobile || window.innerWidth < 850) {
+                                                                if (window.innerWidth < 850) {
+                                                                    coppiedProps.style = { ...coppiedProps.style, left: 350 }
+                                                                }
+                                                            }
                                                         }
 
                                                         return <div ref={provided.innerRef}
