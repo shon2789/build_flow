@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
@@ -37,6 +37,23 @@ const useStyles = makeStyles((theme) => ({
 export const EditorAccordion = ({ droppableId }) => {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
+
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        window.addEventListener('touchstart', () => {
+            setIsMobile(true);
+        })
+        window.addEventListener('touchend', () => {
+            setIsMobile(false);
+        })
+        
+        
+        return () => {
+            window.removeEventListener('touchstart', () => {console.log('bye bye')}, false)   
+            window.removeEventListener('touchend', () => {console.log('bye bye')}, false)   
+        };
+    }, [])
 
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
@@ -134,10 +151,15 @@ export const EditorAccordion = ({ droppableId }) => {
                                                 return (<Draggable key={item.id}
                                                     draggableId={item.id}
                                                     index={item.idx}>
-                                                    {provided => {
+                                                    {(provided, snapshot) => {
+                                                        // Compenstate mobile wrong dragging offset position
+                                                        const coppiedProps = provided.draggableProps;
+                                                        if(snapshot.isDragging && (isMobile || window.innerWidth < 850)){
+                                                            coppiedProps.style = {...coppiedProps.style, left: 350}
+                                                        }
 
                                                         return <div ref={provided.innerRef}
-                                                            {...provided.draggableProps}
+                                                            {...coppiedProps}
                                                             {...provided.dragHandleProps}>{item.content}</div>
                                                     }}
                                                 </Draggable>)
