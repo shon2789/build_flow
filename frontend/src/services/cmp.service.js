@@ -23,6 +23,12 @@ const cmps = [
     "img": "https://i.ibb.co/tMSFKPq/header1.jpg",
     "attributes": {
       "className": "",
+      "style-mobile": {
+        "backgroundColor": "red"
+      },
+      "style-tablet":{
+        "backgroundColor": "royal-blue"
+      },
       "style": {
         "display": "flex",
         "justifyContent": "space-between",
@@ -46,6 +52,12 @@ const cmps = [
 
         "attributes": {
           "className": "rettro-logo",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
             "fontSize": "1.8rem",
             "fontWeight": "bold",
@@ -61,6 +73,12 @@ const cmps = [
 
         "attributes": {
           "className": "web-app-navbar",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
             "display": "flex",
             "gap": "1.5rem",
@@ -79,6 +97,12 @@ const cmps = [
 
             "attributes": {
               "className": "web-app-btn",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "backgroundColor": "transparent",
                 "border": "none",
@@ -100,6 +124,12 @@ const cmps = [
 
             "attributes": {
               "className": "web-app-btn",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "backgroundColor": "transparent",
                 "border": "none",
@@ -121,6 +151,12 @@ const cmps = [
 
             "attributes": {
               "className": "web-app-btn",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "backgroundColor": "transparent",
                 "border": "none",
@@ -144,6 +180,12 @@ const cmps = [
     "img": "https://i.ibb.co/DQtPm2Z/section1.jpg",
     "attributes": {
       "className": "rettro-main-section",
+      "style-mobile": {
+        "backgroundColor": "red"
+      },
+      "style-tablet":{
+        "backgroundColor": "royal-blue"
+      },
       "style": {
         "display": "flex",
         "flexDirection": "column",
@@ -166,6 +208,12 @@ const cmps = [
 
         "attributes": {
           "className": "rettro-photography-txt",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
             "fontFamily": "Birthstone regular,sans-serif",
             "marginTop": "12rem",
@@ -185,6 +233,12 @@ const cmps = [
 
         "attributes": {
           "className": "photography-txt",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
             "marginTop": "4rem",
             "fontSize": "2.6rem",
@@ -206,6 +260,12 @@ const cmps = [
     "img": "https://i.ibb.co/88SwnXf/footer.jpg",
     "attributes": {
       "className": "rettro-footer",
+      "style-mobile": {
+        "backgroundColor": "red"
+      },
+      "style-tablet":{
+        "backgroundColor": "royal-blue"
+      },
       "style": {
         "display": "flex",
         "flexDirection": "column",
@@ -231,6 +291,12 @@ const cmps = [
 
         "attributes": {
           "className": "rettro-footer-logo",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
             "fontFamily": "Lato regular",
             "fontSize": "3rem",
@@ -247,6 +313,12 @@ const cmps = [
 
         "attributes": {
           "className": "rettro-footer-links",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
 
             "fontSize": "1.2rem",
@@ -271,6 +343,12 @@ const cmps = [
 
             "attributes": {
               "className": "rettro-footer-link",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "border": "none",
                 "backgroundColor": "transparent",
@@ -295,6 +373,12 @@ const cmps = [
 
             "attributes": {
               "className": "rettro-footer-link",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "border": "none",
                 "backgroundColor": "transparent",
@@ -319,6 +403,12 @@ const cmps = [
 
             "attributes": {
               "className": "rettro-footer-link",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "border": "none",
                 "backgroundColor": "transparent",
@@ -343,6 +433,12 @@ const cmps = [
 
             "attributes": {
               "className": "rettro-footer-link",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "border": "none",
                 "backgroundColor": "transparent",
@@ -367,6 +463,12 @@ const cmps = [
 
         "attributes": {
           "className": "rettro-rights",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
 
 
@@ -393,6 +495,12 @@ const cmps = [
     "img": "https://i.ibb.co/1MmXdcN/anothersection.png",
     "attributes": {
       "className": "rettro-cards-section",
+      "style-mobile": {
+        "backgroundColor": "red"
+      },
+      "style-tablet":{
+        "backgroundColor": "royal-blue"
+      },
       "style": {
         "display": "flex",
         "flexDirection": "column",
@@ -414,6 +522,12 @@ const cmps = [
 
         "attributes": {
           "className": "",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
             "fontFamily": "Lato regular, sans-serif",
             "color": "black",
@@ -434,6 +548,12 @@ const cmps = [
 
         "attributes": {
           "className": "",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
             "fontFamily": "system-ui",
             "fontWeight": "200",
@@ -453,6 +573,12 @@ const cmps = [
 
         "attributes": {
           "className": "",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
             "display": "flex",
             "flexWrap": "wrap",
@@ -470,6 +596,12 @@ const cmps = [
 
             "attributes": {
               "className": "",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "display": "flex",
                 "flex": "20rem",
@@ -487,6 +619,12 @@ const cmps = [
 
                 "attributes": {
                   "className": "",
+                  "style-mobile": {
+                    "backgroundColor": "red"
+                  },
+                  "style-tablet":{
+                    "backgroundColor": "royal-blue"
+                  },
                   "style": {
                     "display": "flex",
                     "flexDirection": "column",
@@ -502,6 +640,12 @@ const cmps = [
 
                     "attributes": {
                       "className": "",
+                      "style-mobile": {
+                        "backgroundColor": "red"
+                      },
+                      "style-tablet":{
+                        "backgroundColor": "royal-blue"
+                      },
                       "style": {
                       },
                       "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services1.svg"
@@ -518,6 +662,12 @@ const cmps = [
                     },
                     "attributes": {
                       "className": "",
+                      "style-mobile": {
+                        "backgroundColor": "red"
+                      },
+                      "style-tablet":{
+                        "backgroundColor": "royal-blue"
+                      },
                       "style": {
                         "textAlign": "center",
                         "fontFamily": "Lato regular, sans-serif",
@@ -536,6 +686,12 @@ const cmps = [
 
                 "attributes": {
                   "className": "",
+                  "style-mobile": {
+                    "backgroundColor": "red"
+                  },
+                  "style-tablet":{
+                    "backgroundColor": "royal-blue"
+                  },
                   "style": {
                     "display": "flex",
                     "flexDirection": "column",
@@ -551,6 +707,12 @@ const cmps = [
 
                     "attributes": {
                       "className": "",
+                      "style-mobile": {
+                        "backgroundColor": "red"
+                      },
+                      "style-tablet":{
+                        "backgroundColor": "royal-blue"
+                      },
                       "style": {
                       },
                       "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services2.svg"
@@ -567,6 +729,12 @@ const cmps = [
                     },
                     "attributes": {
                       "className": "",
+                      "style-mobile": {
+                        "backgroundColor": "red"
+                      },
+                      "style-tablet":{
+                        "backgroundColor": "royal-blue"
+                      },
                       "style": {
                         "textAlign": "center",
                         "fontFamily": "Lato regular, sans-serif",
@@ -587,6 +755,12 @@ const cmps = [
 
             "attributes": {
               "className": "",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "display": "flex",
                 "flex": "20rem",
@@ -604,6 +778,12 @@ const cmps = [
 
                 "attributes": {
                   "className": "",
+                  "style-mobile": {
+                    "backgroundColor": "red"
+                  },
+                  "style-tablet":{
+                    "backgroundColor": "royal-blue"
+                  },
                   "style": {
                     "display": "flex",
                     "flexDirection": "column",
@@ -619,6 +799,12 @@ const cmps = [
 
                     "attributes": {
                       "className": "",
+                      "style-mobile": {
+                        "backgroundColor": "red"
+                      },
+                      "style-tablet":{
+                        "backgroundColor": "royal-blue"
+                      },
                       "style": {
 
                       },
@@ -636,6 +822,12 @@ const cmps = [
                     },
                     "attributes": {
                       "className": "",
+                      "style-mobile": {
+                        "backgroundColor": "red"
+                      },
+                      "style-tablet":{
+                        "backgroundColor": "royal-blue"
+                      },
                       "style": {
                         "textAlign": "center",
                         "fontFamily": "Lato regular, sans-serif",
@@ -654,6 +846,12 @@ const cmps = [
 
                 "attributes": {
                   "className": "",
+                  "style-mobile": {
+                    "backgroundColor": "red"
+                  },
+                  "style-tablet":{
+                    "backgroundColor": "royal-blue"
+                  },
                   "style": {
                     "display": "flex",
                     "flexDirection": "column",
@@ -669,6 +867,12 @@ const cmps = [
 
                     "attributes": {
                       "className": "",
+                      "style-mobile": {
+                        "backgroundColor": "red"
+                      },
+                      "style-tablet":{
+                        "backgroundColor": "royal-blue"
+                      },
                       "style": {
                       },
                       "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services4.svg"
@@ -685,6 +889,12 @@ const cmps = [
                     },
                     "attributes": {
                       "className": "",
+                      "style-mobile": {
+                        "backgroundColor": "red"
+                      },
+                      "style-tablet":{
+                        "backgroundColor": "royal-blue"
+                      },
                       "style": {
                         "textAlign": "center",
                         "fontFamily": "Lato regular, sans-serif",
@@ -711,6 +921,12 @@ const cmps = [
     "isDroppable": false,
     "attributes": {
       "className": "retro-section-black-photography",
+      "style-mobile": {
+        "flexDirection": "column"
+      },
+      "style-tablet":{
+
+      },
       "style": {
         "width": "100%",
         "display": "flex",
@@ -727,6 +943,12 @@ const cmps = [
         "isDroppable": false,
         "attributes": {
           "className": "retro-section-black-photography-left",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
             "backgroundColor": "#071112",
             "fontFamily": "Lato regular",
@@ -751,6 +973,12 @@ const cmps = [
             },
             "attributes": {
               "className": "",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "fontSize": "2rem"
               }
@@ -766,6 +994,12 @@ const cmps = [
             },
             "attributes": {
               "className": "",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "lineHeight": "1.75",
                 "fontsize": "1.4rem",
@@ -787,6 +1021,12 @@ const cmps = [
             },
             "attributes": {
               "className": "",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "width": "9rem",
                 "height": "2.8rem",
@@ -810,6 +1050,12 @@ const cmps = [
         "isDroppable": false,
         "attributes": {
           "className": "retro-section-black-photography-right",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
             "minWidth": "50%",
             "maxHeight": "40rem",
@@ -833,6 +1079,12 @@ const cmps = [
     "img": "https://i.ibb.co/vmxjSq5/icecream.png",
     "attributes": {
       "className": "portfolio-main-section",
+      "style-mobile": {
+        "backgroundColor": "red"
+      },
+      "style-tablet":{
+        "backgroundColor": "royal-blue"
+      },
       "style": {
         "display": "flex",
         "flexDirection": "column",
@@ -859,6 +1111,12 @@ const cmps = [
 
         "attributes": {
           "className": "portfolio-main-txt",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
 
 
@@ -887,6 +1145,12 @@ const cmps = [
 
         "attributes": {
           "className": "portfolio-main-txt",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
 
 
@@ -914,6 +1178,12 @@ const cmps = [
 
         "attributes": {
           "className": "portfolio-main-txt",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
 
 
@@ -948,6 +1218,12 @@ const cmps = [
     "img": "https://i.ibb.co/L9hNS84/dvfdxcfvdsvds.png",
     "attributes": {
       "className": "ice-cream-footer",
+      "style-mobile": {
+        "backgroundColor": "red"
+      },
+      "style-tablet":{
+        "backgroundColor": "royal-blue"
+      },
       "style": {
         "display": "flex",
         "justifyContent": "center",
@@ -975,6 +1251,12 @@ const cmps = [
 
         "attributes": {
           "className": "icecream-footer-txt",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
 
 
@@ -999,6 +1281,12 @@ const cmps = [
     "img": "https://i.ibb.co/8sTvCp2/card.png",
     "attributes": {
       "className": "web-app-form1",
+      "style-mobile": {
+        "backgroundColor": "red"
+      },
+      "style-tablet":{
+        "backgroundColor": "royal-blue"
+      },
       "style": {
         "display": "flex",
         "justifyContent": "center",
@@ -1016,6 +1304,12 @@ const cmps = [
         "isDroppable": false,
         "attributes": {
           "className": "web-app-form-container",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
             "backgroundColor": "#B8E6E1",
             "maxWidth": "60rem",
@@ -1037,6 +1331,12 @@ const cmps = [
             },
             "attributes": {
               "className": "web-app-form-txt",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "color": "#292929",
                 "marginBottom": "2rem",
@@ -1055,6 +1355,12 @@ const cmps = [
             },
             "attributes": {
               "className": "web-app-form-txt",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "fontSize": "1.4rem",
                 "color": "gray",
@@ -1070,6 +1376,12 @@ const cmps = [
             "isDroppable": true,
             "attributes": {
               "className": "web-app-form-signup",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "color": "gray",
                 "display": "flex",
@@ -1091,6 +1403,12 @@ const cmps = [
 
                 "attributes": {
                   "className": "web-app-form-btn",
+                  "style-mobile": {
+                    "backgroundColor": "red"
+                  },
+                  "style-tablet":{
+                    "backgroundColor": "royal-blue"
+                  },
                   "style": {
                     "backgroundColor": "#292929",
                     "min-width": "12rem",
@@ -1124,6 +1442,12 @@ const cmps = [
     "img": "https://i.ibb.co/zG1FVTd/pinkheader.png",
     "attributes": {
       "className": "ice-cream-navbar",
+      "style-mobile": {
+        "backgroundColor": "red"
+      },
+      "style-tablet":{
+        "backgroundColor": "royal-blue"
+      },
       "style": {
         "display": "flex",
         "justifyContent": "center",
@@ -1154,6 +1478,12 @@ const cmps = [
 
         "attributes": {
           "className": "icecream-header-txt",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
 
 
@@ -1179,6 +1509,12 @@ const cmps = [
     "img": "https://i.ibb.co/QMbDGXn/wowow.png",
     "attributes": {
       "className": "web-app-img1",
+      "style-mobile": {
+        "backgroundColor": "red"
+      },
+      "style-tablet":{
+        "backgroundColor": "royal-blue"
+      },
       "style": {
         "display": "flex",
         "justifyContent": "center",
@@ -1202,6 +1538,12 @@ const cmps = [
         },
         "attributes": {
           "className": "web-app-img-txt",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
             "color": "white",
             "fontFamily": "Lato regular,sans-serif",
@@ -1224,6 +1566,12 @@ const cmps = [
 
         "attributes": {
           "className": "web-app-img-imgs-container",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
             "display": "flex",
             "alignItems": "center",
@@ -1246,6 +1594,12 @@ const cmps = [
 
             "attributes": {
               "className": "web-app-img-imgs-inner-container-left",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "display": "flex",
                 "alignItems": "center",
@@ -1267,6 +1621,12 @@ const cmps = [
                 "attributes": {
                   "src": "https://a-cloud.b-cdn.net/media/iW=263&iH=any/d03-Img-Guy-Beanie.jpg",
                   "className": "web-app-imgs-img",
+                  "style-mobile": {
+                    "backgroundColor": "red"
+                  },
+                  "style-tablet":{
+                    "backgroundColor": "royal-blue"
+                  },
                   "style": {
 
                     "width": "15rem",
@@ -1287,6 +1647,12 @@ const cmps = [
                 "attributes": {
                   "className": "web-app-imgs-img",
                   "src": "https://a-cloud.b-cdn.net/media/iW=263&iH=any/d03-Img-Guy-Shirt.jpg",
+                  "style-mobile": {
+                    "backgroundColor": "red"
+                  },
+                  "style-tablet":{
+                    "backgroundColor": "royal-blue"
+                  },
                   "style": {
 
                     "width": "15rem",
@@ -1308,6 +1674,12 @@ const cmps = [
 
             "attributes": {
               "className": "web-app-img-imgs-inner-container-left",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "display": "flex",
                 "alignItems": "center",
@@ -1328,6 +1700,12 @@ const cmps = [
                 "attributes": {
                   "className": "web-app-imgs-img",
                   "src": "https://a-cloud.b-cdn.net/media/iW=263&iH=any/d03-Img-Girl-Blonde-Curly.jpg",
+                  "style-mobile": {
+                    "backgroundColor": "red"
+                  },
+                  "style-tablet":{
+                    "backgroundColor": "royal-blue"
+                  },
                   "style": {
 
                     "width": "15rem",
@@ -1348,6 +1726,12 @@ const cmps = [
                   "className": "web-app-imgs-img",
                   "src": "https://a-cloud.b-cdn.net/media/iW=264&iH=any/d03-Img-Girl-Locks.jpg",
 
+                  "style-mobile": {
+                    "backgroundColor": "red"
+                  },
+                  "style-tablet":{
+                    "backgroundColor": "royal-blue"
+                  },
                   "style": {
 
                     "width": "15rem",
@@ -1374,6 +1758,12 @@ const cmps = [
     "img": "https://i.ibb.co/41RvS0K/xszcxzsccxzxzcxzc.png",
     "attributes": {
       "className": "",
+      "style-mobile": {
+        "backgroundColor": "red"
+      },
+      "style-tablet":{
+        "backgroundColor": "royal-blue"
+      },
       "style": {
         "display": "flex",
         "justifyContent": "space-between",
@@ -1398,6 +1788,12 @@ const cmps = [
 
         "attributes": {
           "className": "beauty-logo",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
             "fontSize": "3.2rem",
             "fontFamily": "Birthstone regular,sans-serif",
@@ -1413,6 +1809,12 @@ const cmps = [
 
         "attributes": {
           "className": "web-app-beauty-navbar",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
             "display": "flex",
             "gap": "1.5rem",
@@ -1431,6 +1833,12 @@ const cmps = [
 
             "attributes": {
               "className": "web-app-btn",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "backgroundColor": "transparent",
                 "border": "none",
@@ -1452,6 +1860,12 @@ const cmps = [
 
             "attributes": {
               "className": "web-app-btn",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "backgroundColor": "transparent",
                 "border": "none",
@@ -1473,6 +1887,12 @@ const cmps = [
 
             "attributes": {
               "className": "web-app-btn",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "backgroundColor": "#db6260",
                 "border": "none",
@@ -1499,9 +1919,14 @@ const cmps = [
     "img": "https://i.ibb.co/YRxsL99/xzcxccccccd.png",
     "attributes": {
       "className": "beauty-main-section",
+      "style-mobile": {
+        "flexDirection": "column",
+      },
+      "style-tablet":{
+        "backgroundColor": "royal-blue"
+      },
       "style": {
         "display": "flex",
-        "flexWrap": 'wrap',
         "justifyContent": "center",
         "alignItems": 'center',
         "backgroundColor": '#f9e2e2',
@@ -1517,6 +1942,12 @@ const cmps = [
         "isDroppable": true,
         "attributes": {
           "className": "beauty-main-inner-section",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
             "fontFamily": 'Lato',
             "display": "flex",
@@ -1536,6 +1967,12 @@ const cmps = [
 
             "attributes": {
               "className": "beauty-main-inner-section-txt",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "paddingBottom": '1rem',
                 "fontFamily": 'Lato',
@@ -1556,6 +1993,12 @@ const cmps = [
 
             "attributes": {
               "className": "beauty-main-inner-section-txt",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "paddingTop": '1rem',
                 "paddingBottom": '1.5rem',
@@ -1579,6 +2022,12 @@ const cmps = [
 
             "attributes": {
               "className": "beauty-main-inner-section-btn",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "paddingRight": '3rem',
                 "paddingLeft": '3rem',
@@ -1605,6 +2054,12 @@ const cmps = [
         "isDroppable": false,
         "attributes": {
           "className": "beauty-main-section-img",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
             "width": '28.125rem',
             "maxWidth": '100%',
@@ -1623,6 +2078,12 @@ const cmps = [
     "img": "https://i.ibb.co/9NcndgZ/skiins.png",
     "attributes": {
       "className": "web-app-img1",
+      "style-mobile": {
+        "backgroundColor": "red"
+      },
+      "style-tablet":{
+        "backgroundColor": "royal-blue"
+      },
       "style": {
         "display": "flex",
         "justifyContent": "center",
@@ -1646,6 +2107,12 @@ const cmps = [
         },
         "attributes": {
           "className": "web-app-img-txt",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
             "color": "#ababab",
             "fontFamily": "Lato regular,sans-serif",
@@ -1668,6 +2135,12 @@ const cmps = [
         },
         "attributes": {
           "className": "web-app-img-txt",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
             "color": "#292929",
             "fontFamily": "Roboto medium,sans-serif",
@@ -1688,6 +2161,12 @@ const cmps = [
         },
         "attributes": {
           "className": "web-app-img-txt",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
             "color": "#292929",
             "fontFamily": "Lato regular,sans-serif",
@@ -1708,6 +2187,12 @@ const cmps = [
 
         "attributes": {
           "className": "web-app-img-imgs-container",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
             "display": "flex",
             "alignItems": "center",
@@ -1730,6 +2215,12 @@ const cmps = [
 
             "attributes": {
               "className": "web-app-img-imgs-inner-container-left",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "display": "flex",
                 "alignItems": "center",
@@ -1751,6 +2242,12 @@ const cmps = [
                 "attributes": {
                   "src": "https://themes.abusayedshuvo.xyz/most_one/skincare/skincare/img/work-2.jpg",
                   "className": "web-app-imgs-img",
+                  "style-mobile": {
+                    "backgroundColor": "red"
+                  },
+                  "style-tablet":{
+                    "backgroundColor": "royal-blue"
+                  },
                   "style": {
 
                     "width": "15rem",
@@ -1771,6 +2268,12 @@ const cmps = [
                 "attributes": {
                   "className": "web-app-imgs-img",
                   "src": "https://themes.abusayedshuvo.xyz/most_one/skincare/skincare/img/work-3.jpg",
+                  "style-mobile": {
+                    "backgroundColor": "red"
+                  },
+                  "style-tablet":{
+                    "backgroundColor": "royal-blue"
+                  },
                   "style": {
 
                     "width": "15rem",
@@ -1792,6 +2295,12 @@ const cmps = [
 
             "attributes": {
               "className": "web-app-img-imgs-inner-container-left",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "display": "flex",
                 "alignItems": "center",
@@ -1812,6 +2321,12 @@ const cmps = [
                 "attributes": {
                   "className": "web-app-imgs-img",
                   "src": "https://themes.abusayedshuvo.xyz/most_one/skincare/skincare/img/work-7.jpg",
+                  "style-mobile": {
+                    "backgroundColor": "red"
+                  },
+                  "style-tablet":{
+                    "backgroundColor": "royal-blue"
+                  },
                   "style": {
 
                     "width": "15rem",
@@ -1832,6 +2347,12 @@ const cmps = [
                   "className": "web-app-imgs-img",
                   "src": "https://themes.abusayedshuvo.xyz/most_one/skincare/skincare/img/work-8.jpg",
 
+                  "style-mobile": {
+                    "backgroundColor": "red"
+                  },
+                  "style-tablet":{
+                    "backgroundColor": "royal-blue"
+                  },
                   "style": {
 
                     "width": "15rem",
@@ -1858,6 +2379,12 @@ const cmps = [
     "isDroppable": false,
     "attributes": {
       "className": "",
+      "style-mobile": {
+        "backgroundColor": "red"
+      },
+      "style-tablet":{
+        "backgroundColor": "royal-blue"
+      },
       "style": {
         "backgroundColor": "#db6260",
         "width": "100%",
@@ -1877,6 +2404,12 @@ const cmps = [
         "isDroppable": false,
         "attributes": {
           "className": "beauty-section-skin-care-img",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
             "display": "flex",
             "color": "#fff",
@@ -1895,6 +2428,12 @@ const cmps = [
             "isDroppable": false,
             "attributes": {
               "className": "",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "objectFit": "bottom",
                 "width": "20rem",
@@ -1913,6 +2452,12 @@ const cmps = [
         "isDroppable": false,
         "attributes": {
           "className": "beauty-section-skin-care-text",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
             "display": "flex",
             "flexDirection": "column",
@@ -1935,6 +2480,12 @@ const cmps = [
             },
             "attributes": {
               "className": "",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "fontSize": "2.5rem"
               }
@@ -1950,6 +2501,12 @@ const cmps = [
             },
             "attributes": {
               "className": "",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "letterSpacing": "1.5px",
                 "fontFamily": "Lato light"
@@ -1966,6 +2523,12 @@ const cmps = [
             },
             "attributes": {
               "className": "",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
                 "fontSize": "1rem",
                 "letterSpacing": "1.5px",
@@ -1986,6 +2549,12 @@ const cmps = [
             },
             "attributes": {
               "className": "",
+              "style-mobile": {
+                "backgroundColor": "red"
+              },
+              "style-tablet":{
+                "backgroundColor": "royal-blue"
+              },
               "style": {
 
                 "background": "none",
@@ -2016,6 +2585,12 @@ const cmps = [
     "img": "https://i.ibb.co/xm9Y51g/Untssssitled.png",
     "attributes": {
       "className": "beauty-footer",
+      "style-mobile": {
+        "backgroundColor": "red"
+      },
+      "style-tablet":{
+        "backgroundColor": "royal-blue"
+      },
       "style": {
         "display": "flex",
         "justifyContent": "center",
@@ -2043,6 +2618,12 @@ const cmps = [
 
         "attributes": {
           "className": "beaury-footer-txt",
+          "style-mobile": {
+            "backgroundColor": "red"
+          },
+          "style-tablet":{
+            "backgroundColor": "royal-blue"
+          },
           "style": {
 
 
@@ -2057,7 +2638,7 @@ const cmps = [
       },
 
     ]
-  }
+  },
 ]
 
 loadItemsToStorgae()

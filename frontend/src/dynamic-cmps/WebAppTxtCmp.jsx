@@ -2,7 +2,20 @@ import React from 'react'
 import { ElementToolBar } from '../components/editor/ElementToolBar'
 import ContentEditable from "react-contenteditable";
 
-export const WebAppTxtCmp = ({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDuplicateCmp, onUpdateCmp }) => {
+export const WebAppTxtCmp = ({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDuplicateCmp, onUpdateCmp, editorWidth}) => {
+
+    let cmpStyle = {...cmp.attributes.style}
+    if(editorWidth < 850){
+        const mobileStyle = cmp.attributes['style-mobile'];
+        for(const key in mobileStyle){
+            cmpStyle[key] = mobileStyle[key];
+        }
+    } else if(editorWidth < 1130) {
+        const tabletStyle = cmp.attributes['style-tablet'];
+        for(const key in tabletStyle){
+            cmpStyle[key] = tabletStyle[key];
+        }
+    }
 
     const handleChange = ev => {
         const txt = ev.target.innerText;

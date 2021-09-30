@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Draggable, Droppable } from 'react-beautiful-dnd'
 import { SaveWebAppBtn } from './SaveWebAppBtn'
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -7,14 +7,13 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
 
 
 
-export const WebAppContainer = ({ setCurrCmp, droppableId, webAppCmps, onToggleEditorMenu, editorWidth, onDeleteCmp, onSetCurrCmp, currCmp, onDuplicateCmp, onUpdateCmp }) => {
+export const WebAppContainer = ({ setCurrCmp, droppableId, webAppCmps, onToggleEditorMenu, editorWidth, onChangeEditorSize, onDeleteCmp, onSetCurrCmp, currCmp, onDuplicateCmp, onUpdateCmp }) => {
 
     //When clicking on anything other than the editable component
     const handleClickAway = (ev) => {
         if (ev.type === 'touchend') return
         setCurrCmp(null)
     };
-
 
     return (
 
@@ -36,7 +35,7 @@ export const WebAppContainer = ({ setCurrCmp, droppableId, webAppCmps, onToggleE
                                                         {...provided.draggableProps}
                                                         {...provided.dragHandleProps}
                                                     >
-                                                        <DynamicCmp cmp={item.cmp} currCmp={currCmp} onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} onDuplicateCmp={onDuplicateCmp} onUpdateCmp={onUpdateCmp} />
+                                                        <DynamicCmp cmp={item.cmp} currCmp={currCmp} onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} onDuplicateCmp={onDuplicateCmp} onUpdateCmp={onUpdateCmp} editorWidth={editorWidth} onChangeEditorSize={onChangeEditorSize} />
                                                     </div>
                                                 </ClickAwayListener>
                                             )

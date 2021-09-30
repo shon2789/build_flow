@@ -1,7 +1,20 @@
 import React from 'react'
 import { ElementToolBar } from '../components/editor/ElementToolBar'
 
-export const WebAppImgCmp = ({ cmp, currCmp, onSetCurrCmp, onDeleteCmp, onDuplicateCmp, onUpdateCmp }) => {
+export const WebAppImgCmp = ({ cmp, currCmp, onSetCurrCmp, onDeleteCmp, onDuplicateCmp, onUpdateCmp, editorWidth }) => {
+
+    let cmpStyle = {...cmp.attributes.style}
+    if(editorWidth < 850){
+        const mobileStyle = cmp.attributes['style-mobile'];
+        for(const key in mobileStyle){
+            cmpStyle[key] = mobileStyle[key];
+        }
+    } else if(editorWidth < 1130) {
+        const tabletStyle = cmp.attributes['style-tablet'];
+        for(const key in tabletStyle){
+            cmpStyle[key] = tabletStyle[key];
+        }
+    }
 
     if (currCmp && currCmp.id === cmp.id) {
         return (
