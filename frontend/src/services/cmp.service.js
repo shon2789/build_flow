@@ -247,8 +247,7 @@ const cmps = [
 
 
     ]
-  }
-  ,
+  },
   {
     "id": utilService.makeId(),
     "type": "section",
@@ -466,432 +465,6 @@ const cmps = [
       }
 
 
-    ]
-  },
-  {
-    "id": utilService.makeId(),
-    "type": "section",
-    "sectionType": "card",
-    "isDroppable": true,
-    "img": "https://i.ibb.co/1MmXdcN/anothersection.png",
-    "attributes": {
-      "className": "rettro-cards-section",
-      "style-mobile": {
-        "backgroundColor": "red"
-      },
-      "style-tablet": {
-        "backgroundColor": "royal-blue"
-      },
-      "style": {
-        "display": "flex",
-        "flexDirection": "column",
-        "justifyContent": "space-around",
-        "alignItems": "center",
-        "backgroundColor": "white",
-        "minHeight": "50vh",
-        "width": "100%"
-      }
-    },
-    "children": [
-      {
-        "id": utilService.makeId(),
-        "type": "txt",
-        "isDroppable": false,
-        "info": {
-          "txt": "Life is about Creating Experiences",
-        },
-
-        "attributes": {
-          "className": "",
-          "style-mobile": {
-            "backgroundColor": "red"
-          },
-          "style-tablet": {
-            "backgroundColor": "royal-blue"
-          },
-          "style": {
-            "fontFamily": "Lato regular, sans-serif",
-            "color": "black",
-            "fontSize": "3rem",
-            "textAlign": "center",
-            "padding": "3rem 1rem"
-          }
-        },
-        "children": []
-      },
-      {
-        "id": utilService.makeId(),
-        "type": "txt",
-        "isDroppable": false,
-        "info": {
-          "txt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
-        },
-
-        "attributes": {
-          "className": "",
-          "style-mobile": {
-            "backgroundColor": "red"
-          },
-          "style-tablet": {
-            "backgroundColor": "royal-blue"
-          },
-          "style": {
-            "fontFamily": "system-ui",
-            "fontWeight": "200",
-            "color": "gray",
-            "fontSize": "1.3rem",
-            "textAlign": "center",
-            "padding": "1rem 1rem",
-            "width": "90%"
-          }
-        },
-        "children": []
-      },
-      {
-        "id": utilService.makeId(),
-        "type": "section",
-        "isDroppable": true,
-
-        "attributes": {
-          "className": "",
-          "style-mobile": {
-            "backgroundColor": "red"
-          },
-          "style-tablet": {
-            "backgroundColor": "royal-blue"
-          },
-          "style": {
-            "display": "flex",
-            "flexWrap": "wrap",
-            "width": "100%",
-            "justifyContent": "space-around",
-            "alignItems": "center",
-            "padding": "4rem 0"
-          }
-        },
-        "children": [
-          {
-            "id": utilService.makeId(),
-            "type": "section",
-            "isDroppable": true,
-
-            "attributes": {
-              "className": "",
-              "style-mobile": {
-                "backgroundColor": "red"
-              },
-              "style-tablet": {
-                "backgroundColor": "royal-blue"
-              },
-              "style": {
-                "display": "flex",
-                "flex": "20rem",
-                "width": "50%",
-                "justifyContent": "space-around",
-                "alignItems": "center",
-                "padding": "4rem 0"
-              }
-            },
-            "children": [
-              {
-                "id": utilService.makeId(),
-                "type": "section",
-                "isDroppable": true,
-
-                "attributes": {
-                  "className": "",
-                  "style-mobile": {
-                    "backgroundColor": "red"
-                  },
-                  "style-tablet": {
-                    "backgroundColor": "royal-blue"
-                  },
-                  "style": {
-                    "display": "flex",
-                    "flexDirection": "column",
-                    "justifyContent": "space-around",
-                    "alignItems": "center",
-                  }
-                },
-                "children": [
-                  {
-                    "id": utilService.makeId(),
-                    "type": "img",
-                    "isDroppable": "false",
-
-                    "attributes": {
-                      "className": "",
-                      "style-mobile": {
-                        "backgroundColor": "red"
-                      },
-                      "style-tablet": {
-                        "backgroundColor": "royal-blue"
-                      },
-                      "style": {
-                      },
-                      "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services1.svg"
-                    },
-                    "children": []
-                  },
-                  {
-                    "id": utilService.makeId(),
-                    "type": "txt",
-                    "isDroppable": "false",
-
-                    "info": {
-                      "txt": "your text here"
-                    },
-                    "attributes": {
-                      "className": "",
-                      "style-mobile": {
-                        "backgroundColor": "red"
-                      },
-                      "style-tablet": {
-                        "backgroundColor": "royal-blue"
-                      },
-                      "style": {
-                        "textAlign": "center",
-                        "fontFamily": "Lato regular, sans-serif",
-                        "fontSize": "1.3rem",
-                        "marginTop": "1rem"
-                      }
-                    },
-                    "children": []
-                  }
-                ]
-              },
-              {
-                "id": utilService.makeId(),
-                "type": "section",
-                "isDroppable": true,
-
-                "attributes": {
-                  "className": "",
-                  "style-mobile": {
-                    "backgroundColor": "red"
-                  },
-                  "style-tablet": {
-                    "backgroundColor": "royal-blue"
-                  },
-                  "style": {
-                    "display": "flex",
-                    "flexDirection": "column",
-                    "justifyContent": "space-around",
-                    "alignItems": "center",
-                  }
-                },
-                "children": [
-                  {
-                    "id": utilService.makeId(),
-                    "type": "img",
-                    "isDroppable": "false",
-
-                    "attributes": {
-                      "className": "",
-                      "style-mobile": {
-                        "backgroundColor": "red"
-                      },
-                      "style-tablet": {
-                        "backgroundColor": "royal-blue"
-                      },
-                      "style": {
-                      },
-                      "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services2.svg"
-                    },
-                    "children": []
-                  },
-                  {
-                    "id": utilService.makeId(),
-                    "type": "txt",
-                    "isDroppable": "false",
-
-                    "info": {
-                      "txt": "your text here"
-                    },
-                    "attributes": {
-                      "className": "",
-                      "style-mobile": {
-                        "backgroundColor": "red"
-                      },
-                      "style-tablet": {
-                        "backgroundColor": "royal-blue"
-                      },
-                      "style": {
-                        "textAlign": "center",
-                        "fontFamily": "Lato regular, sans-serif",
-                        "fontSize": "1.3rem",
-                        "marginTop": "1rem"
-                      }
-                    },
-                    "children": []
-                  }
-                ]
-              },
-            ]
-          },
-          {
-            "id": utilService.makeId(),
-            "type": "section",
-            "isDroppable": true,
-
-            "attributes": {
-              "className": "",
-              "style-mobile": {
-                "backgroundColor": "red"
-              },
-              "style-tablet": {
-                "backgroundColor": "royal-blue"
-              },
-              "style": {
-                "display": "flex",
-                "flex": "20rem",
-                "width": "50%",
-                "justifyContent": "space-around",
-                "alignItems": "center",
-                "padding": "4rem 0"
-              }
-            },
-            "children": [
-              {
-                "id": utilService.makeId(),
-                "type": "section",
-                "isDroppable": true,
-
-                "attributes": {
-                  "className": "",
-                  "style-mobile": {
-                    "backgroundColor": "red"
-                  },
-                  "style-tablet": {
-                    "backgroundColor": "royal-blue"
-                  },
-                  "style": {
-                    "display": "flex",
-                    "flexDirection": "column",
-                    "justifyContent": "space-around",
-                    "alignItems": "center",
-                  }
-                },
-                "children": [
-                  {
-                    "id": utilService.makeId(),
-                    "type": "img",
-                    "isDroppable": "false",
-
-                    "attributes": {
-                      "className": "",
-                      "style-mobile": {
-                        "backgroundColor": "red"
-                      },
-                      "style-tablet": {
-                        "backgroundColor": "royal-blue"
-                      },
-                      "style": {
-
-                      },
-                      "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services3.svg"
-                    },
-                    "children": []
-                  },
-                  {
-                    "id": utilService.makeId(),
-                    "type": "txt",
-                    "isDroppable": "false",
-
-                    "info": {
-                      "txt": "your text here"
-                    },
-                    "attributes": {
-                      "className": "",
-                      "style-mobile": {
-                        "backgroundColor": "red"
-                      },
-                      "style-tablet": {
-                        "backgroundColor": "royal-blue"
-                      },
-                      "style": {
-                        "textAlign": "center",
-                        "fontFamily": "Lato regular, sans-serif",
-                        "fontSize": "1.3rem",
-                        "marginTop": "1rem"
-                      }
-                    },
-                    "children": []
-                  }
-                ]
-              },
-              {
-                "id": utilService.makeId(),
-                "type": "section",
-                "isDroppable": true,
-
-                "attributes": {
-                  "className": "",
-                  "style-mobile": {
-                    "backgroundColor": "red"
-                  },
-                  "style-tablet": {
-                    "backgroundColor": "royal-blue"
-                  },
-                  "style": {
-                    "display": "flex",
-                    "flexDirection": "column",
-                    "justifyContent": "space-around",
-                    "alignItems": "center",
-                  }
-                },
-                "children": [
-                  {
-                    "id": utilService.makeId(),
-                    "type": "img",
-                    "isDroppable": "false",
-
-                    "attributes": {
-                      "className": "",
-                      "style-mobile": {
-                        "backgroundColor": "red"
-                      },
-                      "style-tablet": {
-                        "backgroundColor": "royal-blue"
-                      },
-                      "style": {
-                      },
-                      "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services4.svg"
-                    },
-                    "children": []
-                  },
-                  {
-                    "id": utilService.makeId(),
-                    "type": "txt",
-                    "isDroppable": "false",
-
-                    "info": {
-                      "txt": "your text here"
-                    },
-                    "attributes": {
-                      "className": "",
-                      "style-mobile": {
-                        "backgroundColor": "red"
-                      },
-                      "style-tablet": {
-                        "backgroundColor": "royal-blue"
-                      },
-                      "style": {
-                        "textAlign": "center",
-                        "fontFamily": "Lato regular, sans-serif",
-                        "fontSize": "1.3rem",
-                        "marginTop": "1rem"
-                      }
-                    },
-                    "children": []
-                  }
-                ]
-              }
-            ]
-          }
-
-        ]
-      }
     ]
   },
   {
@@ -1845,165 +1418,6 @@ const cmps = [
   {
     "id": utilService.makeId(),
     "type": "section",
-    "sectionType": "section",
-    "isDroppable": true,
-    "img": "https://i.ibb.co/YRxsL99/xzcxccccccd.png",
-    "attributes": {
-      "className": "beauty-main-section",
-      "style-mobile": {
-        "flexDirection": "column",
-      },
-      "style-tablet": {
-        "backgroundColor": "royal-blue"
-      },
-      "style": {
-        "display": "flex",
-        "justifyContent": "center",
-        "alignItems": 'center',
-        "backgroundColor": '#f9e2e2',
-        "paddingRight": '2rem',
-        "paddingLeft": '2rem',
-        "gap": '2rem'
-      }
-    },
-    "children": [
-      {
-        "id": utilService.makeId(),
-        "type": "section",
-        "isDroppable": true,
-        "attributes": {
-          "className": "beauty-main-inner-section",
-          "style-mobile": {
-            "backgroundColor": "red"
-          },
-          "style-tablet": {
-            "backgroundColor": "royal-blue"
-          },
-          "style": {
-            "fontFamily": 'Lato',
-            "display": "flex",
-            "flexDirection": 'column',
-            "justifyContent": "center",
-            "height": "20rem"
-          }
-        },
-        "children": [
-          {
-            "id": utilService.makeId(),
-            "type": "txt",
-            "isDroppable": false,
-            "info": {
-              'txt': 'Beauty & Skin Care'
-            },
-
-            "attributes": {
-              "className": "beauty-main-inner-section-txt",
-              "style-mobile": {
-                "backgroundColor": "red"
-              },
-              "style-tablet": {
-                "backgroundColor": "royal-blue"
-              },
-              "style": {
-                "paddingBottom": '1rem',
-                "fontFamily": 'Lato',
-                "fontWeight": '700',
-                "fontSize": '4rem',
-                "color": '#db6260'
-              }
-            },
-            "children": []
-          },
-          {
-            "id": utilService.makeId(),
-            "type": "txt",
-            "isDroppable": false,
-            "info": {
-              'txt': `This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.`
-            },
-
-            "attributes": {
-              "className": "beauty-main-inner-section-txt",
-              "style-mobile": {
-                "backgroundColor": "red"
-              },
-              "style-tablet": {
-                "backgroundColor": "royal-blue"
-              },
-              "style": {
-                "paddingTop": '1rem',
-                "paddingBottom": '1.5rem',
-                "fontFamily": 'Lato regular,sans-serif',
-                "fontSize": '1rem',
-                "color": 'black'
-              }
-            },
-            "children": []
-          },
-          {
-            "id": utilService.makeId(),
-            "type": "btn",
-            "isDroppable": false,
-            "info": {
-              'txt': 'See More',
-              'action': {
-                'link': 'www.google.com'
-              }
-            },
-
-            "attributes": {
-              "className": "beauty-main-inner-section-btn",
-              "style-mobile": {
-                "backgroundColor": "red"
-              },
-              "style-tablet": {
-                "backgroundColor": "royal-blue"
-              },
-              "style": {
-                "paddingRight": '3rem',
-                "paddingLeft": '3rem',
-                "paddingTop": '0.5rem',
-                "paddingBottom": '0.5rem',
-                "fontFamily": 'Lato',
-                "fontSize": '1.2rem',
-                "width": 'fit-content',
-                "background": "none",
-                "borderRadius": "30px",
-                "color": "#db6260",
-                "borderHeight": "1.5px",
-                "borderStyle": "solid",
-                "borderColor": "#db6260"
-              }
-            },
-            "children": []
-          }
-        ]
-      },
-      {
-        "id": utilService.makeId(),
-        "type": "img",
-        "isDroppable": false,
-        "attributes": {
-          "className": "beauty-main-section-img",
-          "style-mobile": {
-            "backgroundColor": "red"
-          },
-          "style-tablet": {
-            "backgroundColor": "royal-blue"
-          },
-          "style": {
-            "width": '28.125rem',
-            "maxWidth": '100%',
-          },
-          "src": "https://themes.abusayedshuvo.xyz/most_one/skincare/skincare/img/banner-img.png"
-        },
-        'children': []
-      }
-    ]
-  },
-  {
-    "id": utilService.makeId(),
-    "type": "section",
     "sectionType": "img",
     "isDroppable": true,
     "img": "https://i.ibb.co/9NcndgZ/skiins.png",
@@ -2286,8 +1700,7 @@ const cmps = [
       },
 
     ]
-  }
-  ,
+  },
   {
     "id": utilService.makeId(),
     "type": "section",
@@ -2550,6 +1963,524 @@ const cmps = [
         "children": []
       },
 
+    ]
+  },
+  {
+    "id": utilService.makeId(),
+    "type": "section",
+    "sectionType": "card",
+    "isDroppable": true,
+    "img": "https://i.ibb.co/1MmXdcN/anothersection.png",
+    "attributes": {
+      "className": "rettro-cards-section",
+      "style-mobile": {},
+      "style-tablet":{},
+      "style": {
+        "display": "flex",
+        "flexDirection": "column",
+        "justifyContent": "space-around",
+        "alignItems": "center",
+        "backgroundColor": "white",
+        "minHeight": "50vh",
+        "width": "100%"
+      }
+    },
+    "children": [
+      {
+        "id": utilService.makeId(),
+        "type": "txt",
+        "isDroppable": false,
+        "info": {
+          "txt": "Life is about Creating Experiences",
+        },
+
+        "attributes": {
+          "className": "",
+          "style-mobile": {},
+          "style-tablet":{},
+          "style": {
+            "fontFamily": "Lato regular, sans-serif",
+            "color": "black",
+            "fontSize": "3rem",
+            "textAlign": "center",
+            "padding": "3rem 1rem"
+          }
+        },
+        "children": []
+      },
+      {
+        "id": utilService.makeId(),
+        "type": "txt",
+        "isDroppable": false,
+        "info": {
+          "txt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
+        },
+
+        "attributes": {
+          "className": "",
+          "style-mobile": {},
+          "style-tablet":{},
+          "style": {
+            "fontFamily": "system-ui",
+            "fontWeight": "200",
+            "color": "gray",
+            "fontSize": "1.3rem",
+            "textAlign": "center",
+            "padding": "1rem 1rem",
+            "width": "90%"
+          }
+        },
+        "children": []
+      },
+      {
+        "id": utilService.makeId(),
+        "type": "section",
+        "isDroppable": true,
+
+        "attributes": {
+          "className": "",
+          "style-mobile": {
+            "flexDirection": "column",
+            "paddingTop": "0.5rem",
+            "paddingBottom": "0.5rem",
+          },
+          "style-tablet":{
+            "flexDirection": "column"
+          },
+          "style": {
+            "display": "flex",
+            "flexDirection": "row",
+            "width": "100%",
+            "justifyContent": "space-around",
+            "alignItems": "center",
+            "paddingTop": "4rem",
+            "paddingBottom": "4rem",
+          }
+        },
+        "children": [
+          {
+            "id": utilService.makeId(),
+            "type": "section",
+            "isDroppable": true,
+
+            "attributes": {
+              "className": "",
+              "style-mobile": {
+                "gap": "1rem",
+                "width": "100%",
+                "paddingRight": "0.5rem",
+                "paddingLeft": "0.5rem"
+              },
+              "style-tablet":{
+                "gap": "1rem",
+                "width": "100%",
+                "paddingRight": "0.5rem",
+                "paddingLeft": "0.5rem"
+              },
+              "style": {
+                "display": "flex",
+                "width": "50%",
+                "justifyContent": "space-around",
+                "alignItems": "center",
+                "padding": "4rem 0"
+              }
+            },
+            "children": [
+              {
+                "id": utilService.makeId(),
+                "type": "section",
+                "isDroppable": true,
+
+                "attributes": {
+                  "className": "",
+                  "style-mobile": {},
+                  "style-tablet":{},
+                  "style": {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "justifyContent": "space-around",
+                    "alignItems": "center",
+                  }
+                },
+                "children": [
+                  {
+                    "id": utilService.makeId(),
+                    "type": "img",
+                    "isDroppable": "false",
+
+                    "attributes": {
+                      "className": "",
+                      "style-mobile": {},
+                      "style-tablet":{},
+                      "style": {},
+                      "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services1.svg"
+                    },
+                    "children": []
+                  },
+                  {
+                    "id": utilService.makeId(),
+                    "type": "txt",
+                    "isDroppable": "false",
+
+                    "info": {
+                      "txt": "your text here"
+                    },
+                    "attributes": {
+                      "className": "",
+                      "style-mobile": {},
+                      "style-tablet":{},
+                      "style": {
+                        "textAlign": "center",
+                        "fontFamily": "Lato regular, sans-serif",
+                        "fontSize": "1.3rem",
+                        "marginTop": "1rem"
+                      }
+                    },
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "id": utilService.makeId(),
+                "type": "section",
+                "isDroppable": true,
+
+                "attributes": {
+                  "className": "",
+                  "style-mobile": {},
+                  "style-tablet":{},
+                  "style": {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "justifyContent": "space-around",
+                    "alignItems": "center",
+                  }
+                },
+                "children": [
+                  {
+                    "id": utilService.makeId(),
+                    "type": "img",
+                    "isDroppable": "false",
+
+                    "attributes": {
+                      "className": "",
+                      "style-mobile": {},
+                      "style-tablet":{},
+                      "style": {
+                      },
+                      "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services2.svg"
+                    },
+                    "children": []
+                  },
+                  {
+                    "id": utilService.makeId(),
+                    "type": "txt",
+                    "isDroppable": "false",
+
+                    "info": {
+                      "txt": "your text here"
+                    },
+                    "attributes": {
+                      "className": "",
+                      "style-mobile": {},
+                      "style-tablet":{},
+                      "style": {
+                        "textAlign": "center",
+                        "fontFamily": "Lato regular, sans-serif",
+                        "fontSize": "1.3rem",
+                        "marginTop": "1rem"
+                      }
+                    },
+                    "children": []
+                  }
+                ]
+              },
+            ]
+          },
+          {
+            "id": utilService.makeId(),
+            "type": "section",
+            "isDroppable": true,
+
+            "attributes": {
+              "className": "",
+              "style-mobile": {
+                "gap": "1rem",
+                "width": "100%",
+                "paddingRight": "0.5rem",
+                "paddingLeft": "0.5rem"
+              },
+              "style-tablet":{
+                "gap": "1rem",
+                "width": "100%",
+                "paddingRight": "0.5rem",
+                "paddingLeft": "0.5rem"
+              },
+              "style": {
+                "display": "flex",
+                "width": "50%",
+                "justifyContent": "space-around",
+                "alignItems": "center",
+                "padding": "4rem 0"
+              }
+            },
+            "children": [
+              {
+                "id": utilService.makeId(),
+                "type": "section",
+                "isDroppable": true,
+
+                "attributes": {
+                  "className": "",
+                  "style-mobile": {},
+                  "style-tablet":{},
+                  "style": {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "justifyContent": "space-around",
+                    "alignItems": "center",
+                  }
+                },
+                "children": [
+                  {
+                    "id": utilService.makeId(),
+                    "type": "img",
+                    "isDroppable": "false",
+
+                    "attributes": {
+                      "className": "",
+                      "style-mobile": {},
+                      "style-tablet":{},
+                      "style": {
+
+                      },
+                      "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services3.svg"
+                    },
+                    "children": []
+                  },
+                  {
+                    "id": utilService.makeId(),
+                    "type": "txt",
+                    "isDroppable": "false",
+
+                    "info": {
+                      "txt": "your text here"
+                    },
+                    "attributes": {
+                      "className": "",
+                      "style-mobile": {},
+                      "style-tablet":{},
+                      "style": {
+                        "textAlign": "center",
+                        "fontFamily": "Lato regular, sans-serif",
+                        "fontSize": "1.3rem",
+                        "marginTop": "1rem"
+                      }
+                    },
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "id": utilService.makeId(),
+                "type": "section",
+                "isDroppable": true,
+
+                "attributes": {
+                  "className": "",
+                  "style-mobile": {},
+                  "style-tablet":{},
+                  "style": {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "justifyContent": "space-around",
+                    "alignItems": "center",
+                  }
+                },
+                "children": [
+                  {
+                    "id": utilService.makeId(),
+                    "type": "img",
+                    "isDroppable": "false",
+
+                    "attributes": {
+                      "className": "",
+                      "style-mobile": {},
+                      "style-tablet":{},
+                      "style": {
+                      },
+                      "src": "https://preview.colorlib.com/theme/rettro/assets/img/icon/services4.svg"
+                    },
+                    "children": []
+                  },
+                  {
+                    "id": utilService.makeId(),
+                    "type": "txt",
+                    "isDroppable": "false",
+
+                    "info": {
+                      "txt": "your text here"
+                    },
+                    "attributes": {
+                      "className": "",
+                      "style-mobile": {},
+                      "style-tablet":{},
+                      "style": {
+                        "textAlign": "center",
+                        "fontFamily": "Lato regular, sans-serif",
+                        "fontSize": "1.3rem",
+                        "marginTop": "1rem"
+                      }
+                    },
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": utilService.makeId(),
+    "type": "section",
+    "sectionType": "section",
+    "isDroppable": true,
+    "img": "https://i.ibb.co/YRxsL99/xzcxccccccd.png",
+    "attributes": {
+      "className": "beauty-main-section",
+      "style-mobile": {
+        "flexDirection": "column",
+      },
+      "style-tablet":{},
+      "style": {
+        "display": "flex",
+        "justifyContent": "center",
+        "alignItems": 'center',
+        "backgroundColor": '#f9e2e2',
+        "paddingRight": '2rem',
+        "paddingLeft": '2rem',
+        "gap": '2rem'
+      }
+    },
+    "children": [
+      {
+        "id": utilService.makeId(),
+        "type": "section",
+        "isDroppable": true,
+        "attributes": {
+          "className": "beauty-main-inner-section",
+          "style-mobile": {
+            "textAlign": "center",
+            "alignItems": "center"
+          },
+          "style-tablet":{},
+          "style": {
+            "textAlign": "left",
+            "fontFamily": 'Lato',
+            "display": "flex",
+            "flexDirection": 'column',
+            "justifyContent": "center",
+            "height": "20rem"
+          }
+        },
+        "children": [
+          {
+            "id": utilService.makeId(),
+            "type": "txt",
+            "isDroppable": false,
+            "info": {
+              'txt': 'Beauty & Skin Care'
+            },
+
+            "attributes": {
+              "className": "beauty-main-inner-section-txt",
+              "style-mobile": {},
+              "style-tablet":{},
+              "style": {
+                "paddingBottom": '1rem',
+                "fontFamily": 'Lato',
+                "fontWeight": '700',
+                "fontSize": '4rem',
+                "color": '#db6260'
+              }
+            },
+            "children": []
+          },
+          {
+            "id": utilService.makeId(),
+            "type": "txt",
+            "isDroppable": false,
+            "info": {
+              'txt': `This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.`
+            },
+
+            "attributes": {
+              "className": "beauty-main-inner-section-txt",
+              "style-mobile": {},
+              "style-tablet":{},
+              "style": {
+                "paddingTop": '1rem',
+                "paddingBottom": '1.5rem',
+                "fontFamily": 'Lato regular,sans-serif',
+                "fontSize": '1rem',
+                "color": 'black'
+              }
+            },
+            "children": []
+          },
+          {
+            "id": utilService.makeId(),
+            "type": "btn",
+            "isDroppable": false,
+            "info": {
+              'txt': 'See More',
+              'action': {
+                'link': 'www.google.com'
+              }
+            },
+
+            "attributes": {
+              "className": "beauty-main-inner-section-btn",
+              "style-mobile": {},
+              "style-tablet":{},
+              "style": {
+                "paddingRight": '3rem',
+                "paddingLeft": '3rem',
+                "paddingTop": '0.5rem',
+                "paddingBottom": '0.5rem',
+                "fontFamily": 'Lato',
+                "fontSize": '1.2rem',
+                "width": 'fit-content',
+                "background": "none",
+                "borderRadius": "30px",
+                "color": "#db6260",
+                "borderHeight": "1.5px",
+                "borderStyle": "solid",
+                "borderColor": "#db6260"
+              }
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": utilService.makeId(),
+        "type": "img",
+        "isDroppable": false,
+        "attributes": {
+          "className": "beauty-main-section-img",
+          "style-mobile": {},
+          "style-tablet":{},
+          "style": {
+            "width": '28.125rem',
+            "maxWidth": '100%',
+          },
+          "src": "https://themes.abusayedshuvo.xyz/most_one/skincare/skincare/img/banner-img.png"
+        },
+        'children': []
+      }
     ]
   },
 ]
