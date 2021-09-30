@@ -25,7 +25,7 @@ export const ElementToolBar = ({ cmp, onDeleteCmp, onDuplicateCmp, onUpdateCmp }
     // const isLeftSpace = elCmpPos.left < 440
 
     let style = {};
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > 850) {
         if (elCmpPos.top < 230) {
             style = {
                 bottom: `-30px`,
