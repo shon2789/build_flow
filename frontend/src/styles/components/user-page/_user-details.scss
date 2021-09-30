@@ -52,14 +52,11 @@
                 align-content: center;
             }
 
-            .saved-sites {
-                display: flex;
-                gap: 5px;
-            }
-
+            .saved-sites,
             .published-sites {
                 display: flex;
                 gap: 5px;
+                align-items: center;
             }
 
             @include for-large-tablet {
