@@ -25,6 +25,10 @@ export const HomePage = () => {
             setWindowWidth(window.innerWidth)
         })
 
+        return () => {
+            window.removeEventListener('resize', () => {console.log('remove home page window width resize event listener')}, false);
+        }
+
     }, [windowWidth])
 
     const toggleMenu = (boolean) => {
