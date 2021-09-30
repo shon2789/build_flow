@@ -10,25 +10,31 @@
         flex-direction: column;
 
     }
-
-    
     
     .user-profile-img{
+        position:relative;
         align-self: center;
-        width: 11rem;
+        width: 6rem;
         background-color: #fff;
-        height: 11rem;
+        height: 6rem;
         border-radius: 50%;
         margin-bottom: 1rem;
+        
+        @include for-large-tablet{
+            width: 11rem;
+            height: 11rem;
+        }
     }
 
     .user-profile-content{
 
 
         color: $main-dark-color;
-        text-align: center;
+        padding-left: 1.3rem;
         
         @include for-large-tablet{
+            padding-left: 0;
+            text-align: center;
             color: $main-light-color;
 
         }
@@ -45,7 +51,9 @@
 
 
         .user-stats{
-          
+            position: absolute;
+            left:0;
+            bottom: -2rem;
             margin-top: 1rem;
             display: flex;
             align-items: center;

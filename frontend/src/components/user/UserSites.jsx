@@ -3,10 +3,10 @@ import { UserDetails } from './UserDetails'
 import { UserSiteList } from './UserSiteList'
 import { UserTopNav } from './UserTopNav'
 
-export const UserSites = () => {
+export const UserSites = ({windowWidth}) => {
     return (
         <section className="user-sites">
-            <UserDetails />
+            {(windowWidth < 1130 ) && <UserDetails /> }
             <UserTopNav />
             <UserSiteList />
         </section>
