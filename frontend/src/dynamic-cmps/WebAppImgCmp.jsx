@@ -3,15 +3,15 @@ import { ElementToolBar } from '../components/editor/ElementToolBar'
 
 export const WebAppImgCmp = ({ cmp, currCmp, onSetCurrCmp, onDeleteCmp, onDuplicateCmp, onUpdateCmp, editorWidth }) => {
 
-    let cmpStyle = {...cmp.attributes.style}
-    if(editorWidth < 850){
+    let cmpStyle = { ...cmp.attributes.style }
+    if (editorWidth < 763) {
         const mobileStyle = cmp.attributes['style-mobile'];
-        for(const key in mobileStyle){
+        for (const key in mobileStyle) {
             cmpStyle[key] = mobileStyle[key];
         }
-    } else if(editorWidth < 1130) {
+    } else if (editorWidth < 1130) {
         const tabletStyle = cmp.attributes['style-tablet'];
-        for(const key in tabletStyle){
+        for (const key in tabletStyle) {
             cmpStyle[key] = tabletStyle[key];
         }
     }

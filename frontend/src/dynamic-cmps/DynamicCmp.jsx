@@ -8,7 +8,7 @@ import { WebAppImgCmp } from "./WebAppImgCmp.jsx"
 export function DynamicCmp({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDuplicateCmp, onUpdateCmp, editorWidth, onChangeEditorSize }) {
 
     const elWebAppBuilder = document.querySelector('.web-app-builder')
-    // console.log('builder width: ', elWebAppBuilder.clientWidth)
+    console.log('builder width: ', elWebAppBuilder.clientWidth)
     onChangeEditorSize(elWebAppBuilder.clientWidth)
 
     function getCmp(type) {

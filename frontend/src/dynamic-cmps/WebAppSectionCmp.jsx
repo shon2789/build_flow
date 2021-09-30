@@ -4,15 +4,15 @@ import { DynamicCmp } from './DynamicCmp'
 
 export const WebAppSectionCmp = ({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDuplicateCmp, onUpdateCmp, editorWidth, onChangeEditorSize }) => {
 
-    let cmpStyle = {...cmp.attributes.style}
-    if(editorWidth < 850){
+    let cmpStyle = { ...cmp.attributes.style }
+    if (editorWidth < 763) {
         const mobileStyle = cmp.attributes['style-mobile'];
-        for(const key in mobileStyle){
+        for (const key in mobileStyle) {
             cmpStyle[key] = mobileStyle[key];
         }
-    } else if(editorWidth < 1130) {
+    } else if (editorWidth < 1130) {
         const tabletStyle = cmp.attributes['style-tablet'];
-        for(const key in tabletStyle){
+        for (const key in tabletStyle) {
             cmpStyle[key] = tabletStyle[key];
         }
     }

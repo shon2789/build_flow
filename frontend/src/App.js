@@ -9,6 +9,9 @@ import { UserPage } from "./pages/UserPage";
 
 export const App = () => {
 
+  //Cancel the contextmenu
+  window.addEventListener('contextmenu', (ev) => { ev.preventDefault() })
+
   return (
     <Router>
       <Switch>
