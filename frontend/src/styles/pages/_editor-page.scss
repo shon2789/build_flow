@@ -30,9 +30,10 @@
     }
 
     .web-app-container {
-        height: 100vh;
+        height: 100%;
         width: 93vw;
         margin: auto;
+        overflow-y: hidden;
 
         .editor-menu-hamburger {
             cursor: pointer;
@@ -109,6 +110,10 @@
                 -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
                 background-color: #555;
             }
+        }
+
+        @include for-tablet {
+            height: 100vh;
         }
     }
 }
