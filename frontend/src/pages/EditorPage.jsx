@@ -16,6 +16,7 @@ import { webAppService } from '../services/web-app.service';
 // Draggable Components from backend, rendered into the accordion
 export const EditorPage = () => {
 
+    const history = useHistory();
     const dispatch = useDispatch()
     const cmps = useSelector(state => state.cmpModule.cmps)
     const currWebApp = useSelector(state => state.webAppModule.currWebApp)
@@ -42,7 +43,9 @@ export const EditorPage = () => {
     const editing = dndAreas[1]
 
 
+    // Initializing the webApp from the localStorage / loading from backend via ID / creates an empty webApp
     useEffect(() => {
+        // If a draft exist in the local storage
         const draftWebApp = JSON.parse(localStorage.getItem('draftWebApp'))
         if(draftWebApp){
             setWebApp(draftWebApp)
@@ -53,12 +56,17 @@ export const EditorPage = () => {
                     items: draftWebApp.children.map(section => { return { id: section.id, cmp: section } })
                 }
             })
+        // If a webAppId has been passed through the query params
         } else if(webAppId) {
             if (currWebApp.length === 0) {
                 dispatch(loadWebApp(webAppId))
                 .then((webApp) => {
-                    const clonnedWebApp = cloneDeep(webApp);
-                    cmpService.changeCmpIds(clonnedWebApp);
+                    let clonnedWebApp = webApp;
+                    if(webApp.isTemplate){
+                        clonnedWebApp = cloneDeep(webApp);
+                        cmpService.changeCmpIds(clonnedWebApp);
+                        history.push(`/editor`)
+                    }
                     setColumns({
                         ...columns,
                         [editing[0]]: {
@@ -68,6 +76,7 @@ export const EditorPage = () => {
                     })
             })
             }
+        // If initializing a new project
         } else {
             setColumns({
                 ...columns,
@@ -83,8 +92,31 @@ export const EditorPage = () => {
     }, [])
 
 
-    // STATES
+    // Only on create new project
+    const _createNewWebApp = () => {
+        return  {
+            "image": "",
+            "title": "new project",
+            "isTemplate": false,
+            "isPublished": false,
+            "children": []
+          }
+        }
 
+        
+        // Save changes to the local storage for every change in the DnD columns
+        // Todo: make Undo feature for WebApp editing
+    useEffect(() => {
+        const draftWebApp = JSON.parse(localStorage.getItem('draftWebApp')) || _createNewWebApp()
+
+        draftWebApp.children = editing[1].items.map(obj => obj.cmp);
+
+        localStorage.setItem('draftWebApp', JSON.stringify(draftWebApp));
+
+    }, [columns, currWebApp]) 
+
+
+    // STATES
     const [isEditorMenuToggled, setIsEditorMenuToggled] = useState(false)
     const [editorWidth, setEditorWidth] = useState('100%')
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
@@ -108,57 +140,25 @@ export const EditorPage = () => {
     useEffect(() => {
         dispatch(loadCmps())
 
-    }, []) //Deleted listening to columns, please notice (delete later)
+    }, []) // reminder: Raz Deleted listening to columns, please notice (delete later)
     
+    // On component unmount - ask the user weather or not to save the project
+    // Todo: make a great UI
     useEffect(() => {
         
         return () => {
-            const isSmart = window.confirm('Save your website U stupid russian??') // Dev only
+            const isSmart = window.confirm('Save your website ?') // Dev only
             if(isSmart) {
                 webAppService.save(JSON.parse(localStorage.getItem('draftWebApp')))
-                localStorage.removeItem('draftWebApp')
             }
 
             localStorage.removeItem('draftWebApp')
         }
     }, []) 
 
-
-
-    const _createNewWebApp = () => {
-        return  {
-            "image": "",
-            "title": "new project",
-            "isTemplate": false,
-            "isPublished": false,
-            "children": []
-          }
-    }
-    const history = useHistory();
-
-    // Save changes to the local storage 
-    // Todo: make Undo feature for WebApp editing
-    useEffect(() => {
-        const draftWebApp = JSON.parse(localStorage.getItem('draftWebApp')) || _createNewWebApp()
-
-        draftWebApp.children = editing[1].items.map(obj => obj.cmp);
-
-        localStorage.setItem('draftWebApp', JSON.stringify(draftWebApp));
-
-        history.push(`/editor`)
-
-    }, [columns]) 
-
-    
-
-
     // Drag&Drop onDragEnd function, reordering the dragged elements and trigger other functions
     const onDragEnd = async (result, setState) => {
-       
         if (!result.destination) return;
-
-
-
 
         const { source, destination } = result;
 
@@ -169,8 +169,6 @@ export const EditorPage = () => {
             const sourceItems = [...sourceColumn.items];
             const destItems = [...destColumn.items];
             const cmp = await cmpService.deepCloneCmp(result.draggableId)
-
-
 
             destItems.splice(destination.index, 0, { id: utilService.makeId(), cmp });
             setColumns({
@@ -184,7 +182,6 @@ export const EditorPage = () => {
                     items: destItems
                 }
             });
-
 
             // Reordering items in the page editing
         } else {
