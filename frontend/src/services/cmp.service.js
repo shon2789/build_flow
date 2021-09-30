@@ -24,10 +24,8 @@ const cmps = [
     "attributes": {
       "className": "",
       "style-mobile": {
-        "backgroundColor": "red"
       },
-      "style-tablet":{
-        "backgroundColor": "royal-blue"
+      "style-tablet": {
       },
       "style": {
         "display": "flex",
@@ -53,9 +51,8 @@ const cmps = [
         "attributes": {
           "className": "rettro-logo",
           "style-mobile": {
-            "backgroundColor": "red"
           },
-          "style-tablet":{
+          "style-tablet": {
             "backgroundColor": "royal-blue"
           },
           "style": {
@@ -74,10 +71,8 @@ const cmps = [
         "attributes": {
           "className": "web-app-navbar",
           "style-mobile": {
-            "backgroundColor": "red"
           },
-          "style-tablet":{
-            "backgroundColor": "royal-blue"
+          "style-tablet": {
           },
           "style": {
             "display": "flex",
@@ -98,10 +93,8 @@ const cmps = [
             "attributes": {
               "className": "web-app-btn",
               "style-mobile": {
-                "backgroundColor": "red"
               },
-              "style-tablet":{
-                "backgroundColor": "royal-blue"
+              "style-tablet": {
               },
               "style": {
                 "backgroundColor": "transparent",
@@ -125,10 +118,8 @@ const cmps = [
             "attributes": {
               "className": "web-app-btn",
               "style-mobile": {
-                "backgroundColor": "red"
               },
-              "style-tablet":{
-                "backgroundColor": "royal-blue"
+              "style-tablet": {
               },
               "style": {
                 "backgroundColor": "transparent",
@@ -152,10 +143,8 @@ const cmps = [
             "attributes": {
               "className": "web-app-btn",
               "style-mobile": {
-                "backgroundColor": "red"
               },
-              "style-tablet":{
-                "backgroundColor": "royal-blue"
+              "style-tablet": {
               },
               "style": {
                 "backgroundColor": "transparent",
@@ -181,10 +170,8 @@ const cmps = [
     "attributes": {
       "className": "rettro-main-section",
       "style-mobile": {
-        "backgroundColor": "red"
       },
-      "style-tablet":{
-        "backgroundColor": "royal-blue"
+      "style-tablet": {
       },
       "style": {
         "display": "flex",
@@ -209,15 +196,21 @@ const cmps = [
         "attributes": {
           "className": "rettro-photography-txt",
           "style-mobile": {
-            "backgroundColor": "red"
+            "fontSize": "5.6rem",
+            "textAlign": "center",
+            "marginTop": "10rem",
+            "marginLeft": "0",
           },
-          "style-tablet":{
-            "backgroundColor": "royal-blue"
+          "style-tablet": {
+            "fontSize": "7.3rem",
+            "textAlign": "center",
+            "marginLeft": "0",
           },
           "style": {
             "fontFamily": "Birthstone regular,sans-serif",
             "marginTop": "12rem",
-            "fontSize": "5.6rem",
+            "fontSize": "7.3rem",
+            "marginLeft": "10rem",
 
           }
         },
@@ -234,16 +227,19 @@ const cmps = [
         "attributes": {
           "className": "photography-txt",
           "style-mobile": {
-            "backgroundColor": "red"
+            "marginLeft": "0",
+            "textAlign": "center",
           },
-          "style-tablet":{
-            "backgroundColor": "royal-blue"
+          "style-tablet": {
+            "marginLeft": "0",
+            "textAlign": "center",
           },
           "style": {
             "marginTop": "4rem",
             "fontSize": "2.6rem",
             "fontFamily": "Birthstone regular,sans-serif",
             "letterSpacing": "0.45rem",
+            "marginLeft": "10rem",
           }
         },
         "children": []
@@ -251,7 +247,8 @@ const cmps = [
 
 
     ]
-  },
+  }
+  ,
   {
     "id": utilService.makeId(),
     "type": "section",
@@ -261,10 +258,8 @@ const cmps = [
     "attributes": {
       "className": "rettro-footer",
       "style-mobile": {
-        "backgroundColor": "red"
       },
-      "style-tablet":{
-        "backgroundColor": "royal-blue"
+      "style-tablet": {
       },
       "style": {
         "display": "flex",
@@ -292,10 +287,8 @@ const cmps = [
         "attributes": {
           "className": "rettro-footer-logo",
           "style-mobile": {
-            "backgroundColor": "red"
           },
-          "style-tablet":{
-            "backgroundColor": "royal-blue"
+          "style-tablet": {
           },
           "style": {
             "fontFamily": "Lato regular",
@@ -314,10 +307,8 @@ const cmps = [
         "attributes": {
           "className": "rettro-footer-links",
           "style-mobile": {
-            "backgroundColor": "red"
           },
-          "style-tablet":{
-            "backgroundColor": "royal-blue"
+          "style-tablet": {
           },
           "style": {
 
@@ -344,10 +335,8 @@ const cmps = [
             "attributes": {
               "className": "rettro-footer-link",
               "style-mobile": {
-                "backgroundColor": "red"
               },
-              "style-tablet":{
-                "backgroundColor": "royal-blue"
+              "style-tablet": {
               },
               "style": {
                 "border": "none",
@@ -374,10 +363,8 @@ const cmps = [
             "attributes": {
               "className": "rettro-footer-link",
               "style-mobile": {
-                "backgroundColor": "red"
               },
-              "style-tablet":{
-                "backgroundColor": "royal-blue"
+              "style-tablet": {
               },
               "style": {
                 "border": "none",
@@ -404,10 +391,8 @@ const cmps = [
             "attributes": {
               "className": "rettro-footer-link",
               "style-mobile": {
-                "backgroundColor": "red"
               },
-              "style-tablet":{
-                "backgroundColor": "royal-blue"
+              "style-tablet": {
               },
               "style": {
                 "border": "none",
@@ -434,10 +419,8 @@ const cmps = [
             "attributes": {
               "className": "rettro-footer-link",
               "style-mobile": {
-                "backgroundColor": "red"
               },
-              "style-tablet":{
-                "backgroundColor": "royal-blue"
+              "style-tablet": {
               },
               "style": {
                 "border": "none",
@@ -464,10 +447,8 @@ const cmps = [
         "attributes": {
           "className": "rettro-rights",
           "style-mobile": {
-            "backgroundColor": "red"
           },
-          "style-tablet":{
-            "backgroundColor": "royal-blue"
+          "style-tablet": {
           },
           "style": {
 
@@ -498,7 +479,7 @@ const cmps = [
       "style-mobile": {
         "backgroundColor": "red"
       },
-      "style-tablet":{
+      "style-tablet": {
         "backgroundColor": "royal-blue"
       },
       "style": {
@@ -525,7 +506,7 @@ const cmps = [
           "style-mobile": {
             "backgroundColor": "red"
           },
-          "style-tablet":{
+          "style-tablet": {
             "backgroundColor": "royal-blue"
           },
           "style": {
@@ -551,7 +532,7 @@ const cmps = [
           "style-mobile": {
             "backgroundColor": "red"
           },
-          "style-tablet":{
+          "style-tablet": {
             "backgroundColor": "royal-blue"
           },
           "style": {
@@ -576,7 +557,7 @@ const cmps = [
           "style-mobile": {
             "backgroundColor": "red"
           },
-          "style-tablet":{
+          "style-tablet": {
             "backgroundColor": "royal-blue"
           },
           "style": {
@@ -599,7 +580,7 @@ const cmps = [
               "style-mobile": {
                 "backgroundColor": "red"
               },
-              "style-tablet":{
+              "style-tablet": {
                 "backgroundColor": "royal-blue"
               },
               "style": {
@@ -622,7 +603,7 @@ const cmps = [
                   "style-mobile": {
                     "backgroundColor": "red"
                   },
-                  "style-tablet":{
+                  "style-tablet": {
                     "backgroundColor": "royal-blue"
                   },
                   "style": {
@@ -643,7 +624,7 @@ const cmps = [
                       "style-mobile": {
                         "backgroundColor": "red"
                       },
-                      "style-tablet":{
+                      "style-tablet": {
                         "backgroundColor": "royal-blue"
                       },
                       "style": {
@@ -665,7 +646,7 @@ const cmps = [
                       "style-mobile": {
                         "backgroundColor": "red"
                       },
-                      "style-tablet":{
+                      "style-tablet": {
                         "backgroundColor": "royal-blue"
                       },
                       "style": {
@@ -689,7 +670,7 @@ const cmps = [
                   "style-mobile": {
                     "backgroundColor": "red"
                   },
-                  "style-tablet":{
+                  "style-tablet": {
                     "backgroundColor": "royal-blue"
                   },
                   "style": {
@@ -710,7 +691,7 @@ const cmps = [
                       "style-mobile": {
                         "backgroundColor": "red"
                       },
-                      "style-tablet":{
+                      "style-tablet": {
                         "backgroundColor": "royal-blue"
                       },
                       "style": {
@@ -732,7 +713,7 @@ const cmps = [
                       "style-mobile": {
                         "backgroundColor": "red"
                       },
-                      "style-tablet":{
+                      "style-tablet": {
                         "backgroundColor": "royal-blue"
                       },
                       "style": {
@@ -758,7 +739,7 @@ const cmps = [
               "style-mobile": {
                 "backgroundColor": "red"
               },
-              "style-tablet":{
+              "style-tablet": {
                 "backgroundColor": "royal-blue"
               },
               "style": {
@@ -781,7 +762,7 @@ const cmps = [
                   "style-mobile": {
                     "backgroundColor": "red"
                   },
-                  "style-tablet":{
+                  "style-tablet": {
                     "backgroundColor": "royal-blue"
                   },
                   "style": {
@@ -802,7 +783,7 @@ const cmps = [
                       "style-mobile": {
                         "backgroundColor": "red"
                       },
-                      "style-tablet":{
+                      "style-tablet": {
                         "backgroundColor": "royal-blue"
                       },
                       "style": {
@@ -825,7 +806,7 @@ const cmps = [
                       "style-mobile": {
                         "backgroundColor": "red"
                       },
-                      "style-tablet":{
+                      "style-tablet": {
                         "backgroundColor": "royal-blue"
                       },
                       "style": {
@@ -849,7 +830,7 @@ const cmps = [
                   "style-mobile": {
                     "backgroundColor": "red"
                   },
-                  "style-tablet":{
+                  "style-tablet": {
                     "backgroundColor": "royal-blue"
                   },
                   "style": {
@@ -870,7 +851,7 @@ const cmps = [
                       "style-mobile": {
                         "backgroundColor": "red"
                       },
-                      "style-tablet":{
+                      "style-tablet": {
                         "backgroundColor": "royal-blue"
                       },
                       "style": {
@@ -892,7 +873,7 @@ const cmps = [
                       "style-mobile": {
                         "backgroundColor": "red"
                       },
-                      "style-tablet":{
+                      "style-tablet": {
                         "backgroundColor": "royal-blue"
                       },
                       "style": {
@@ -924,7 +905,7 @@ const cmps = [
       "style-mobile": {
         "flexDirection": "column"
       },
-      "style-tablet":{
+      "style-tablet": {
 
       },
       "style": {
@@ -946,7 +927,7 @@ const cmps = [
           "style-mobile": {
             "backgroundColor": "red"
           },
-          "style-tablet":{
+          "style-tablet": {
             "backgroundColor": "royal-blue"
           },
           "style": {
@@ -976,7 +957,7 @@ const cmps = [
               "style-mobile": {
                 "backgroundColor": "red"
               },
-              "style-tablet":{
+              "style-tablet": {
                 "backgroundColor": "royal-blue"
               },
               "style": {
@@ -997,7 +978,7 @@ const cmps = [
               "style-mobile": {
                 "backgroundColor": "red"
               },
-              "style-tablet":{
+              "style-tablet": {
                 "backgroundColor": "royal-blue"
               },
               "style": {
@@ -1024,7 +1005,7 @@ const cmps = [
               "style-mobile": {
                 "backgroundColor": "red"
               },
-              "style-tablet":{
+              "style-tablet": {
                 "backgroundColor": "royal-blue"
               },
               "style": {
@@ -1053,7 +1034,7 @@ const cmps = [
           "style-mobile": {
             "backgroundColor": "red"
           },
-          "style-tablet":{
+          "style-tablet": {
             "backgroundColor": "royal-blue"
           },
           "style": {
@@ -1080,10 +1061,8 @@ const cmps = [
     "attributes": {
       "className": "portfolio-main-section",
       "style-mobile": {
-        "backgroundColor": "red"
       },
-      "style-tablet":{
-        "backgroundColor": "royal-blue"
+      "style-tablet": {
       },
       "style": {
         "display": "flex",
@@ -1112,10 +1091,8 @@ const cmps = [
         "attributes": {
           "className": "portfolio-main-txt",
           "style-mobile": {
-            "backgroundColor": "red"
           },
-          "style-tablet":{
-            "backgroundColor": "royal-blue"
+          "style-tablet": {
           },
           "style": {
 
@@ -1146,10 +1123,8 @@ const cmps = [
         "attributes": {
           "className": "portfolio-main-txt",
           "style-mobile": {
-            "backgroundColor": "red"
           },
-          "style-tablet":{
-            "backgroundColor": "royal-blue"
+          "style-tablet": {
           },
           "style": {
 
@@ -1179,10 +1154,8 @@ const cmps = [
         "attributes": {
           "className": "portfolio-main-txt",
           "style-mobile": {
-            "backgroundColor": "red"
           },
-          "style-tablet":{
-            "backgroundColor": "royal-blue"
+          "style-tablet": {
           },
           "style": {
 
@@ -1219,10 +1192,8 @@ const cmps = [
     "attributes": {
       "className": "ice-cream-footer",
       "style-mobile": {
-        "backgroundColor": "red"
       },
-      "style-tablet":{
-        "backgroundColor": "royal-blue"
+      "style-tablet": {
       },
       "style": {
         "display": "flex",
@@ -1252,10 +1223,8 @@ const cmps = [
         "attributes": {
           "className": "icecream-footer-txt",
           "style-mobile": {
-            "backgroundColor": "red"
           },
-          "style-tablet":{
-            "backgroundColor": "royal-blue"
+          "style-tablet": {
           },
           "style": {
 
@@ -1282,10 +1251,8 @@ const cmps = [
     "attributes": {
       "className": "web-app-form1",
       "style-mobile": {
-        "backgroundColor": "red"
       },
-      "style-tablet":{
-        "backgroundColor": "royal-blue"
+      "style-tablet": {
       },
       "style": {
         "display": "flex",
@@ -1305,10 +1272,8 @@ const cmps = [
         "attributes": {
           "className": "web-app-form-container",
           "style-mobile": {
-            "backgroundColor": "red"
           },
-          "style-tablet":{
-            "backgroundColor": "royal-blue"
+          "style-tablet": {
           },
           "style": {
             "backgroundColor": "#B8E6E1",
@@ -1332,10 +1297,8 @@ const cmps = [
             "attributes": {
               "className": "web-app-form-txt",
               "style-mobile": {
-                "backgroundColor": "red"
               },
-              "style-tablet":{
-                "backgroundColor": "royal-blue"
+              "style-tablet": {
               },
               "style": {
                 "color": "#292929",
@@ -1356,10 +1319,8 @@ const cmps = [
             "attributes": {
               "className": "web-app-form-txt",
               "style-mobile": {
-                "backgroundColor": "red"
               },
-              "style-tablet":{
-                "backgroundColor": "royal-blue"
+              "style-tablet": {
               },
               "style": {
                 "fontSize": "1.4rem",
@@ -1377,10 +1338,8 @@ const cmps = [
             "attributes": {
               "className": "web-app-form-signup",
               "style-mobile": {
-                "backgroundColor": "red"
               },
-              "style-tablet":{
-                "backgroundColor": "royal-blue"
+              "style-tablet": {
               },
               "style": {
                 "color": "gray",
@@ -1404,10 +1363,8 @@ const cmps = [
                 "attributes": {
                   "className": "web-app-form-btn",
                   "style-mobile": {
-                    "backgroundColor": "red"
                   },
-                  "style-tablet":{
-                    "backgroundColor": "royal-blue"
+                  "style-tablet": {
                   },
                   "style": {
                     "backgroundColor": "#292929",
@@ -1443,10 +1400,8 @@ const cmps = [
     "attributes": {
       "className": "ice-cream-navbar",
       "style-mobile": {
-        "backgroundColor": "red"
       },
-      "style-tablet":{
-        "backgroundColor": "royal-blue"
+      "style-tablet": {
       },
       "style": {
         "display": "flex",
@@ -1479,10 +1434,8 @@ const cmps = [
         "attributes": {
           "className": "icecream-header-txt",
           "style-mobile": {
-            "backgroundColor": "red"
           },
-          "style-tablet":{
-            "backgroundColor": "royal-blue"
+          "style-tablet": {
           },
           "style": {
 
@@ -1510,10 +1463,8 @@ const cmps = [
     "attributes": {
       "className": "web-app-img1",
       "style-mobile": {
-        "backgroundColor": "red"
       },
-      "style-tablet":{
-        "backgroundColor": "royal-blue"
+      "style-tablet": {
       },
       "style": {
         "display": "flex",
@@ -1539,10 +1490,8 @@ const cmps = [
         "attributes": {
           "className": "web-app-img-txt",
           "style-mobile": {
-            "backgroundColor": "red"
           },
-          "style-tablet":{
-            "backgroundColor": "royal-blue"
+          "style-tablet": {
           },
           "style": {
             "color": "white",
@@ -1567,14 +1516,14 @@ const cmps = [
         "attributes": {
           "className": "web-app-img-imgs-container",
           "style-mobile": {
-            "backgroundColor": "red"
           },
-          "style-tablet":{
-            "backgroundColor": "royal-blue"
+          "style-tablet": {
+
           },
           "style": {
             "display": "flex",
             "alignItems": "center",
+            "flexDirection": "row",
             "justifyContent": "center",
             "gap": "20px",
             "flexWrap": "wrap",
@@ -1595,14 +1544,15 @@ const cmps = [
             "attributes": {
               "className": "web-app-img-imgs-inner-container-left",
               "style-mobile": {
-                "backgroundColor": "red"
+                "flexDirection": "column",
               },
-              "style-tablet":{
-                "backgroundColor": "royal-blue"
+              "style-tablet": {
+                "flexDirection": "row",
               },
               "style": {
                 "display": "flex",
                 "alignItems": "center",
+                "flexDirection": "row",
                 "justifyContent": "center",
                 "flexWrap": "wrap",
                 "gap": "20px",
@@ -1622,10 +1572,8 @@ const cmps = [
                   "src": "https://a-cloud.b-cdn.net/media/iW=263&iH=any/d03-Img-Guy-Beanie.jpg",
                   "className": "web-app-imgs-img",
                   "style-mobile": {
-                    "backgroundColor": "red"
                   },
-                  "style-tablet":{
-                    "backgroundColor": "royal-blue"
+                  "style-tablet": {
                   },
                   "style": {
 
@@ -1648,10 +1596,8 @@ const cmps = [
                   "className": "web-app-imgs-img",
                   "src": "https://a-cloud.b-cdn.net/media/iW=263&iH=any/d03-Img-Guy-Shirt.jpg",
                   "style-mobile": {
-                    "backgroundColor": "red"
                   },
-                  "style-tablet":{
-                    "backgroundColor": "royal-blue"
+                  "style-tablet": {
                   },
                   "style": {
 
@@ -1673,16 +1619,17 @@ const cmps = [
             "isDroppable": true,
 
             "attributes": {
-              "className": "web-app-img-imgs-inner-container-left",
+              "className": "web-app-img-imgs-inner-container-right",
               "style-mobile": {
-                "backgroundColor": "red"
+                "flexDirection": "column"
               },
-              "style-tablet":{
-                "backgroundColor": "royal-blue"
+              "style-tablet": {
+                "flexDirection": "row"
               },
               "style": {
                 "display": "flex",
                 "alignItems": "center",
+                "flexDirection": "row",
                 "justifyContent": "center",
                 "gap": "20px",
                 "flexWrap": "wrap",
@@ -1701,10 +1648,8 @@ const cmps = [
                   "className": "web-app-imgs-img",
                   "src": "https://a-cloud.b-cdn.net/media/iW=263&iH=any/d03-Img-Girl-Blonde-Curly.jpg",
                   "style-mobile": {
-                    "backgroundColor": "red"
                   },
-                  "style-tablet":{
-                    "backgroundColor": "royal-blue"
+                  "style-tablet": {
                   },
                   "style": {
 
@@ -1727,10 +1672,8 @@ const cmps = [
                   "src": "https://a-cloud.b-cdn.net/media/iW=264&iH=any/d03-Img-Girl-Locks.jpg",
 
                   "style-mobile": {
-                    "backgroundColor": "red"
                   },
-                  "style-tablet":{
-                    "backgroundColor": "royal-blue"
+                  "style-tablet": {
                   },
                   "style": {
 
@@ -1759,10 +1702,8 @@ const cmps = [
     "attributes": {
       "className": "",
       "style-mobile": {
-        "backgroundColor": "red"
       },
-      "style-tablet":{
-        "backgroundColor": "royal-blue"
+      "style-tablet": {
       },
       "style": {
         "display": "flex",
@@ -1789,10 +1730,8 @@ const cmps = [
         "attributes": {
           "className": "beauty-logo",
           "style-mobile": {
-            "backgroundColor": "red"
           },
-          "style-tablet":{
-            "backgroundColor": "royal-blue"
+          "style-tablet": {
           },
           "style": {
             "fontSize": "3.2rem",
@@ -1810,10 +1749,8 @@ const cmps = [
         "attributes": {
           "className": "web-app-beauty-navbar",
           "style-mobile": {
-            "backgroundColor": "red"
           },
-          "style-tablet":{
-            "backgroundColor": "royal-blue"
+          "style-tablet": {
           },
           "style": {
             "display": "flex",
@@ -1834,10 +1771,8 @@ const cmps = [
             "attributes": {
               "className": "web-app-btn",
               "style-mobile": {
-                "backgroundColor": "red"
               },
-              "style-tablet":{
-                "backgroundColor": "royal-blue"
+              "style-tablet": {
               },
               "style": {
                 "backgroundColor": "transparent",
@@ -1861,10 +1796,8 @@ const cmps = [
             "attributes": {
               "className": "web-app-btn",
               "style-mobile": {
-                "backgroundColor": "red"
               },
-              "style-tablet":{
-                "backgroundColor": "royal-blue"
+              "style-tablet": {
               },
               "style": {
                 "backgroundColor": "transparent",
@@ -1888,10 +1821,8 @@ const cmps = [
             "attributes": {
               "className": "web-app-btn",
               "style-mobile": {
-                "backgroundColor": "red"
               },
-              "style-tablet":{
-                "backgroundColor": "royal-blue"
+              "style-tablet": {
               },
               "style": {
                 "backgroundColor": "#db6260",
@@ -1922,7 +1853,7 @@ const cmps = [
       "style-mobile": {
         "flexDirection": "column",
       },
-      "style-tablet":{
+      "style-tablet": {
         "backgroundColor": "royal-blue"
       },
       "style": {
@@ -1945,7 +1876,7 @@ const cmps = [
           "style-mobile": {
             "backgroundColor": "red"
           },
-          "style-tablet":{
+          "style-tablet": {
             "backgroundColor": "royal-blue"
           },
           "style": {
@@ -1970,7 +1901,7 @@ const cmps = [
               "style-mobile": {
                 "backgroundColor": "red"
               },
-              "style-tablet":{
+              "style-tablet": {
                 "backgroundColor": "royal-blue"
               },
               "style": {
@@ -1996,7 +1927,7 @@ const cmps = [
               "style-mobile": {
                 "backgroundColor": "red"
               },
-              "style-tablet":{
+              "style-tablet": {
                 "backgroundColor": "royal-blue"
               },
               "style": {
@@ -2025,7 +1956,7 @@ const cmps = [
               "style-mobile": {
                 "backgroundColor": "red"
               },
-              "style-tablet":{
+              "style-tablet": {
                 "backgroundColor": "royal-blue"
               },
               "style": {
@@ -2057,7 +1988,7 @@ const cmps = [
           "style-mobile": {
             "backgroundColor": "red"
           },
-          "style-tablet":{
+          "style-tablet": {
             "backgroundColor": "royal-blue"
           },
           "style": {
@@ -2079,10 +2010,8 @@ const cmps = [
     "attributes": {
       "className": "web-app-img1",
       "style-mobile": {
-        "backgroundColor": "red"
       },
-      "style-tablet":{
-        "backgroundColor": "royal-blue"
+      "style-tablet": {
       },
       "style": {
         "display": "flex",
@@ -2108,10 +2037,8 @@ const cmps = [
         "attributes": {
           "className": "web-app-img-txt",
           "style-mobile": {
-            "backgroundColor": "red"
           },
-          "style-tablet":{
-            "backgroundColor": "royal-blue"
+          "style-tablet": {
           },
           "style": {
             "color": "#ababab",
@@ -2136,10 +2063,8 @@ const cmps = [
         "attributes": {
           "className": "web-app-img-txt",
           "style-mobile": {
-            "backgroundColor": "red"
           },
-          "style-tablet":{
-            "backgroundColor": "royal-blue"
+          "style-tablet": {
           },
           "style": {
             "color": "#292929",
@@ -2162,10 +2087,8 @@ const cmps = [
         "attributes": {
           "className": "web-app-img-txt",
           "style-mobile": {
-            "backgroundColor": "red"
           },
-          "style-tablet":{
-            "backgroundColor": "royal-blue"
+          "style-tablet": {
           },
           "style": {
             "color": "#292929",
@@ -2188,14 +2111,13 @@ const cmps = [
         "attributes": {
           "className": "web-app-img-imgs-container",
           "style-mobile": {
-            "backgroundColor": "red"
           },
-          "style-tablet":{
-            "backgroundColor": "royal-blue"
+          "style-tablet": {
           },
           "style": {
             "display": "flex",
             "alignItems": "center",
+            "flexDirection": "row",
             "justifyContent": "center",
             "gap": "20px",
             "flexWrap": "wrap",
@@ -2216,13 +2138,14 @@ const cmps = [
             "attributes": {
               "className": "web-app-img-imgs-inner-container-left",
               "style-mobile": {
-                "backgroundColor": "red"
+                "flexDirection": "column",
               },
-              "style-tablet":{
-                "backgroundColor": "royal-blue"
+              "style-tablet": {
+                "flexDirection": "row",
               },
               "style": {
                 "display": "flex",
+                "flexDirection": "row",
                 "alignItems": "center",
                 "justifyContent": "center",
                 "flexWrap": "wrap",
@@ -2243,10 +2166,8 @@ const cmps = [
                   "src": "https://themes.abusayedshuvo.xyz/most_one/skincare/skincare/img/work-2.jpg",
                   "className": "web-app-imgs-img",
                   "style-mobile": {
-                    "backgroundColor": "red"
                   },
-                  "style-tablet":{
-                    "backgroundColor": "royal-blue"
+                  "style-tablet": {
                   },
                   "style": {
 
@@ -2269,10 +2190,8 @@ const cmps = [
                   "className": "web-app-imgs-img",
                   "src": "https://themes.abusayedshuvo.xyz/most_one/skincare/skincare/img/work-3.jpg",
                   "style-mobile": {
-                    "backgroundColor": "red"
                   },
-                  "style-tablet":{
-                    "backgroundColor": "royal-blue"
+                  "style-tablet": {
                   },
                   "style": {
 
@@ -2294,15 +2213,16 @@ const cmps = [
             "isDroppable": true,
 
             "attributes": {
-              "className": "web-app-img-imgs-inner-container-left",
+              "className": "web-app-img-imgs-inner-container-right",
               "style-mobile": {
-                "backgroundColor": "red"
+                "flexDirection": "column",
               },
-              "style-tablet":{
-                "backgroundColor": "royal-blue"
+              "style-tablet": {
+                "flexDirection": "row",
               },
               "style": {
                 "display": "flex",
+                "flexDirection": "row",
                 "alignItems": "center",
                 "justifyContent": "center",
                 "gap": "20px",
@@ -2322,10 +2242,8 @@ const cmps = [
                   "className": "web-app-imgs-img",
                   "src": "https://themes.abusayedshuvo.xyz/most_one/skincare/skincare/img/work-7.jpg",
                   "style-mobile": {
-                    "backgroundColor": "red"
                   },
-                  "style-tablet":{
-                    "backgroundColor": "royal-blue"
+                  "style-tablet": {
                   },
                   "style": {
 
@@ -2348,10 +2266,8 @@ const cmps = [
                   "src": "https://themes.abusayedshuvo.xyz/most_one/skincare/skincare/img/work-8.jpg",
 
                   "style-mobile": {
-                    "backgroundColor": "red"
                   },
-                  "style-tablet":{
-                    "backgroundColor": "royal-blue"
+                  "style-tablet": {
                   },
                   "style": {
 
@@ -2370,7 +2286,8 @@ const cmps = [
       },
 
     ]
-  },
+  }
+  ,
   {
     "id": utilService.makeId(),
     "type": "section",
@@ -2382,7 +2299,7 @@ const cmps = [
       "style-mobile": {
         "backgroundColor": "red"
       },
-      "style-tablet":{
+      "style-tablet": {
         "backgroundColor": "royal-blue"
       },
       "style": {
@@ -2407,7 +2324,7 @@ const cmps = [
           "style-mobile": {
             "backgroundColor": "red"
           },
-          "style-tablet":{
+          "style-tablet": {
             "backgroundColor": "royal-blue"
           },
           "style": {
@@ -2431,7 +2348,7 @@ const cmps = [
               "style-mobile": {
                 "backgroundColor": "red"
               },
-              "style-tablet":{
+              "style-tablet": {
                 "backgroundColor": "royal-blue"
               },
               "style": {
@@ -2455,7 +2372,7 @@ const cmps = [
           "style-mobile": {
             "backgroundColor": "red"
           },
-          "style-tablet":{
+          "style-tablet": {
             "backgroundColor": "royal-blue"
           },
           "style": {
@@ -2483,7 +2400,7 @@ const cmps = [
               "style-mobile": {
                 "backgroundColor": "red"
               },
-              "style-tablet":{
+              "style-tablet": {
                 "backgroundColor": "royal-blue"
               },
               "style": {
@@ -2504,7 +2421,7 @@ const cmps = [
               "style-mobile": {
                 "backgroundColor": "red"
               },
-              "style-tablet":{
+              "style-tablet": {
                 "backgroundColor": "royal-blue"
               },
               "style": {
@@ -2526,7 +2443,7 @@ const cmps = [
               "style-mobile": {
                 "backgroundColor": "red"
               },
-              "style-tablet":{
+              "style-tablet": {
                 "backgroundColor": "royal-blue"
               },
               "style": {
@@ -2552,7 +2469,7 @@ const cmps = [
               "style-mobile": {
                 "backgroundColor": "red"
               },
-              "style-tablet":{
+              "style-tablet": {
                 "backgroundColor": "royal-blue"
               },
               "style": {
@@ -2586,10 +2503,8 @@ const cmps = [
     "attributes": {
       "className": "beauty-footer",
       "style-mobile": {
-        "backgroundColor": "red"
       },
-      "style-tablet":{
-        "backgroundColor": "royal-blue"
+      "style-tablet": {
       },
       "style": {
         "display": "flex",
@@ -2619,10 +2534,8 @@ const cmps = [
         "attributes": {
           "className": "beaury-footer-txt",
           "style-mobile": {
-            "backgroundColor": "red"
           },
-          "style-tablet":{
-            "backgroundColor": "royal-blue"
+          "style-tablet": {
           },
           "style": {
 
