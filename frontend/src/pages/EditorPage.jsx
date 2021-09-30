@@ -87,6 +87,10 @@ export const EditorPage = () => {
         window.addEventListener('resize', () => {
             setWindowWidth(window.innerWidth)
         })
+
+        return () => {
+            window.removeEventListener('resize', () => {console.log('remove editor page window width resize event listener')}, false);
+        }
     }, [windowWidth])
 
     // Dispatcher for loading the cmps
