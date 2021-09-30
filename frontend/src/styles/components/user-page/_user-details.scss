@@ -1,64 +1,42 @@
-.user-details{
-    position:relative;
+.user-details {
+    position: relative;
     display: flex;
-    // align-items: center;
-    font-family: Roboto regular,sans-serif;
+    font-family: Roboto regular, sans-serif;
     align-items: center;
     align-self: flex-start;
     margin-bottom: 1.5rem;
-    
-    // flex-direction: column;
-    
-    @include for-large-tablet{
-        position:static;
+
+    @include for-large-tablet {
+        position: static;
         color: $main-light-color;
         flex-direction: column;
-
     }
-    
-    .user-profile-img{
-       
+
+    .user-profile-img {
         align-self: center;
-        width: 4rem;
-        background-color: rgb(102, 102, 102);
-        height: 4rem;
-        border-radius: 50%;
         margin-bottom: 1rem;
         margin-top: 1rem;
-        
-     
-        @include for-large-tablet{
-          
-            width: 11rem;
-            height: 11rem;
-        }
     }
 
-    .user-profile-content{
-
-
+    .user-profile-content {
         color: $main-dark-color;
         padding-left: 1.3rem;
-        
-        @include for-large-tablet{
+
+        @include for-large-tablet {
             padding-left: 0;
             text-align: center;
             color: $main-light-color;
-
         }
 
-
-
-        & h3{
-           font-size: 1.8rem;
+        & h3 {
+            font-size: 1.8rem;
         }
-        & h4{
-           font-size: 1.2rem;
-           color: rgb(153, 153, 153);
+        & h4 {
+            font-size: 1.2rem;
+            color: rgb(153, 153, 153);
         }
 
-
-        .user-stats{
+        .user-stats {
             position: absolute;
             bottom: -1rem;
             left: 0rem;
@@ -67,26 +45,24 @@
             align-items: center;
             font-size: 1.1rem;
             gap: 1rem;
-            .user-stats-icon{
+            .user-stats-icon {
                 font-size: 0.9rem;
                 display: flex;
                 justify-content: center;
-                align-content:center ;
-
+                align-content: center;
             }
 
-            
-            .saved-sites{
-                display: flex;
-                gap: 5px;
-            }
-            
-            .published-sites{
+            .saved-sites {
                 display: flex;
                 gap: 5px;
             }
 
-            @include for-large-tablet{
+            .published-sites {
+                display: flex;
+                gap: 5px;
+            }
+
+            @include for-large-tablet {
                 position: static;
             }
         }
