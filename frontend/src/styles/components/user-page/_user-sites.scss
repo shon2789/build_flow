@@ -1,14 +1,21 @@
 .user-sites{
-    width:70%;
+    width:80%;
     min-height: 100vh;
     margin-top: 2rem;
     margin: auto;
     display: flex;
-
+    
     align-items: center;
     flex-direction: column;
-
-    padding: 2rem;
+    
+    padding: 0.6rem;
+    
+ 
+    @include for-large-tablet{
+        
+        padding: 2rem;
+        width:70%;
+    }
 
 
    

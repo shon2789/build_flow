@@ -1,26 +1,34 @@
 .user-details{
+    position:relative;
     display: flex;
     // align-items: center;
     font-family: Roboto regular,sans-serif;
     align-items: center;
+    align-self: flex-start;
+    margin-bottom: 1.5rem;
+    
     // flex-direction: column;
     
     @include for-large-tablet{
+        position:static;
         color: $main-light-color;
         flex-direction: column;
 
     }
     
     .user-profile-img{
-        position:relative;
+       
         align-self: center;
-        width: 6rem;
-        background-color: #fff;
-        height: 6rem;
+        width: 4rem;
+        background-color: rgb(102, 102, 102);
+        height: 4rem;
         border-radius: 50%;
         margin-bottom: 1rem;
+        margin-top: 1rem;
         
+     
         @include for-large-tablet{
+          
             width: 11rem;
             height: 11rem;
         }
@@ -52,8 +60,8 @@
 
         .user-stats{
             position: absolute;
-            left:0;
-            bottom: -2rem;
+            bottom: -1rem;
+            left: 0rem;
             margin-top: 1rem;
             display: flex;
             align-items: center;
@@ -76,6 +84,10 @@
             .published-sites{
                 display: flex;
                 gap: 5px;
+            }
+
+            @include for-large-tablet{
+                position: static;
             }
         }
     }

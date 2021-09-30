@@ -17,23 +17,31 @@
     
         }
     }
-
+    
     .user-top-links{
         display: flex;
         gap: 15px;
-
+        
         & button{
             cursor: pointer;
             font-family: Roboto regular,sans-serif;
             padding: 0.3rem 1rem;
             border-radius: 20px;
             border: none;
-            font-size: 1.1rem;
-             color: inherit;
-             box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-
+            font-size: 0.8rem;
+            color: inherit;
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+            
+            
+            @include for-large-phone{
+                
+                font-size: 1.3rem;
+    
+        }
+            
         }
     }
+    
 
 
 }
