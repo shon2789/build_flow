@@ -7,9 +7,10 @@ import { MainEditor } from '../components/editor/MainEditor';
 import { WebAppContainer } from '../components/editor/WebAppContainer';
 import { cloneDeep } from 'lodash';
 import { loadCmps } from '../store/actions/cmp.action'
-import { loadWebApp, clearCurrWebApp } from '../store/actions/web-app.action'
+import { loadWebApp, clearCurrWebApp, setWebApp } from '../store/actions/web-app.action'
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
+import { webAppService } from '../services/web-app.service';
 
 
 // Draggable Components from backend, rendered into the accordion
@@ -33,29 +34,39 @@ export const EditorPage = () => {
         }
     };
 
-    const [columns, setColumns] = useState(dndColumns);
+    const [columns, setColumns] = useState(dndColumns)
 
     // Seperating the dnd columns for convinience
-    const dndAreas = Object.entries(columns);
-    const editor = dndAreas[0];
-    const editing = dndAreas[1];
+    const dndAreas = Object.entries(columns)
+    const editor = dndAreas[0]
+    const editing = dndAreas[1]
 
 
     useEffect(() => {
-        if (webAppId) {
+        const draftWebApp = JSON.parse(localStorage.getItem('draftWebApp'))
+        if(draftWebApp){
+            setWebApp(draftWebApp)
+            setColumns({
+                ...columns,
+                [editing[0]]: {
+                    name: 'Editing',
+                    items: draftWebApp.children.map(section => { return { id: section.id, cmp: section } })
+                }
+            })
+        } else if(webAppId) {
             if (currWebApp.length === 0) {
                 dispatch(loadWebApp(webAppId))
-                    .then((webApp) => {
-                        const clonnedWebApp = cloneDeep(webApp);
-                        cmpService.changeCmpIds(clonnedWebApp);
-                        setColumns({
-                            ...columns,
-                            [editing[0]]: {
-                                name: 'Editing',
-                                items: clonnedWebApp.children.map(section => { return { id: utilService.makeId(), cmp: section } })
-                            }
-                        })
+                .then((webApp) => {
+                    const clonnedWebApp = cloneDeep(webApp);
+                    cmpService.changeCmpIds(clonnedWebApp);
+                    setColumns({
+                        ...columns,
+                        [editing[0]]: {
+                            name: 'Editing',
+                            items: clonnedWebApp.children.map(section => { return { id: utilService.makeId(), cmp: section } })
+                        }
                     })
+            })
             }
         } else {
             setColumns({
@@ -96,16 +107,58 @@ export const EditorPage = () => {
     // Dispatcher for loading the cmps
     useEffect(() => {
         dispatch(loadCmps())
-    }, [columns])
+
+    }, []) //Deleted listening to columns, please notice (delete later)
+    
+    useEffect(() => {
+        
+        return () => {
+            const isSmart = window.confirm('Save your website U stupid russian??') // Dev only
+            if(isSmart) {
+                webAppService.save(JSON.parse(localStorage.getItem('draftWebApp')))
+                localStorage.removeItem('draftWebApp')
+            }
+
+            localStorage.removeItem('draftWebApp')
+        }
+    }, []) 
+
+
+
+    const _createNewWebApp = () => {
+        return  {
+            "image": "",
+            "title": "new project",
+            "isTemplate": false,
+            "isPublished": false,
+            "children": []
+          }
+    }
+    const history = useHistory();
+
+    // Save changes to the local storage 
+    // Todo: make Undo feature for WebApp editing
+    useEffect(() => {
+        const draftWebApp = JSON.parse(localStorage.getItem('draftWebApp')) || _createNewWebApp()
+
+        draftWebApp.children = editing[1].items.map(obj => obj.cmp);
+
+        localStorage.setItem('draftWebApp', JSON.stringify(draftWebApp));
+
+        history.push(`/editor`)
+
+    }, [columns]) 
+
+    
 
 
     // Drag&Drop onDragEnd function, reordering the dragged elements and trigger other functions
     const onDragEnd = async (result, setState) => {
+       
         if (!result.destination) return;
 
 
 
-        console.log(result);
 
         const { source, destination } = result;
 
@@ -190,8 +243,6 @@ export const EditorPage = () => {
     const onSetCurrCmp = (ev, cmp) => {
         ev.stopPropagation()
         setCurrCmp(cmp)
-        console.log(ev)
-
     }
 
     const onDuplicateCmp = (element) => {

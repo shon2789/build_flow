@@ -6,7 +6,9 @@ import { loadWebApps } from '../store/actions/web-app.action'
 export const TemplatePage = () => {
 
     const dispatch = useDispatch()
-    const templates = useSelector(state => state.webAppModule.webApps)
+    let templates = useSelector(state => state.webAppModule.webApps)
+    // Todo: filter locally the templates by isTemplate === true
+    templates = templates.filter(template => template.isTemplate)
 
     useEffect(() => {
         dispatch(loadWebApps())

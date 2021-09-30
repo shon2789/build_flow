@@ -32,12 +32,37 @@ export const loadWebApp = (webAppId) => {
     }
 }
 
+export const setWebApp = (webApp) => {
+    return dispatch => {
+        try {
+            dispatch({
+                type: "SET_WEBAPP",
+                webApp
+            })
+        } catch (err) {
+            console.log(err);
+        }
+    }
+}
+
+
+
 export const clearCurrWebApp = () => {
     return async dispatch => {
         try {
             dispatch({
                 type: "CLEAR_WEBAPP"
             })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+}
+
+export const saveWebApp = (webApp) => {
+    return async dispatch => {
+        try {
+            await webAppService.save(webApp)
         } catch (err) {
             console.log(err)
         }

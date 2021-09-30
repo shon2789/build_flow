@@ -1,4 +1,5 @@
 
+import { filter } from "lodash";
 import { storageService } from "./async-storage.service"
 import { utilService } from "./util.service";
 const KEY = 'template'
@@ -1906,8 +1907,7 @@ function query(filterBy) {
 }
 
 function save(webApp) {
-  webApp.id = utilService.makeId()
-
+  
   if (webApp.id) {
     return storageService.put(KEY, webApp)
   } else {
