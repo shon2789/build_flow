@@ -1,0 +1,22 @@
+.user-site-list{
+    display: grid;
+    gap: 2.3rem;
+    padding-top: 1.5rem;
+
+
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    
+    @include for-large-phone{
+        
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
+
+    @include for-large-tablet{
+        
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+}

@@ -96,8 +96,12 @@ export const EditorPage = () => {
 
 
     // Drag&Drop onDragEnd function, reordering the dragged elements and trigger other functions
-    const onDragEnd = async (result, columns, setColumns) => {
+    const onDragEnd = async (result, setState) => {
         if (!result.destination) return;
+
+
+
+        console.log(result);
 
         const { source, destination } = result;
 
@@ -150,7 +154,7 @@ export const EditorPage = () => {
     const onDragStart = () => {
         onToggleEditorMenu(false)
     }
-    
+
     const onChangeEditorSize = (width) => {
         setEditorWidth(width)
     }
@@ -236,7 +240,7 @@ export const EditorPage = () => {
     }
 
     return (
-        <DragDropContext onDragStart={result => onDragStart()} onDragEnd={result => onDragEnd(result, columns, setColumns)}>
+        <DragDropContext onDragStart={result => onDragStart()} onDragEnd={result => onDragEnd(result)}>
             <main className="editor-page-container">
                 <Screen isOpen={isEditorMenuToggled} exitScreen={onToggleEditorMenu} />
                 <div className={`${isEditorMenuToggled ? 'side-editor-mobile-active' : ''} side-editor-container`}>
