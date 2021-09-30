@@ -1,8 +1,16 @@
 .user-details{
     display: flex;
     // align-items: center;
-    flex-direction: column;
     font-family: Roboto regular,sans-serif;
+    align-items: center;
+    // flex-direction: column;
+    
+    @include for-large-tablet{
+        color: $main-light-color;
+        flex-direction: column;
+
+    }
+
     
     
     .user-profile-img{
@@ -15,8 +23,16 @@
     }
 
     .user-profile-content{
-        color: $main-light-color;
-        padding-inline-start: 2.5rem;
+
+
+        color: $main-dark-color;
+        text-align: center;
+        
+        @include for-large-tablet{
+            color: $main-light-color;
+
+        }
+
 
 
         & h3{
@@ -29,8 +45,10 @@
 
 
         .user-stats{
+          
             margin-top: 1rem;
             display: flex;
+            align-items: center;
             font-size: 1.1rem;
             gap: 1rem;
             .user-stats-icon{

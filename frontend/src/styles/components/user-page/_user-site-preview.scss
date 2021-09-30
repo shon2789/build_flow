@@ -1,7 +1,8 @@
 .user-site-preview{
   cursor: pointer;
-    width: 11rem;
-    height: 11rem;
+  width: 19rem;
+  height:11.4rem;
+
     background-color: #f0eeee;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
     font-family: Lato regular,sans-serif;
@@ -25,8 +26,7 @@
 
     }
     @include for-desktop{
-      
-
+    
         width: 20rem;
         height: 12rem;
 
