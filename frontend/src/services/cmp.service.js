@@ -2327,7 +2327,7 @@ const cmps = [
               },
               "style": {
                 "width": "fit-content",
-                "height": "2.8rem",
+                "height": "fit-content",
                 "background": "none",
                 "paddingTop": "0.5rem",
                 "paddingBottom": "0.5rem",
