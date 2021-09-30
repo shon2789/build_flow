@@ -35,6 +35,10 @@
         margin: auto;
         overflow-y: hidden;
 
+        @supports (-webkit-touch-callout: none) {
+            height: 85vh;
+        }
+
         .editor-menu-hamburger {
             cursor: pointer;
             font-size: 1.8rem;
@@ -78,7 +82,6 @@
                         opacity: 1;
                     }
                 }
-
                 @include for-large-tablet {
                     width: 70px;
                     height: 70px;
