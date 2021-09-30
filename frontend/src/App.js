@@ -15,6 +15,7 @@ export const App = () => {
         <Route path="/editor/:webAppId" component={EditorPage} />
         <Route path="/user" component={UserPage} />
         <Route path="/template" component={TemplatePage} />
+        <Route path="/user" component={UserPage} />
         <Route path="/editor" component={EditorPage} />
         <Route path="/" component={HomePage} />
       </Switch>

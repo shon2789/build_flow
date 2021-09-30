@@ -1,0 +1,17 @@
+.user-side-nav{
+    background-color: #2B3039;
+    min-height: 100vh;
+    width: 17rem;
+    .top-user-side-nav-div{
+        background-color: #383E47;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+        
+   & h4{
+       color: white;
+   }
+}
+}
