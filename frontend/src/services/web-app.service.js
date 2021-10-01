@@ -8,7 +8,8 @@ export const webAppService = {
   query,
   save,
   getById,
-  remove
+  remove,
+  createNewWebApp
 }
 
 const templates = [
@@ -1922,3 +1923,13 @@ function getById(webAppId) {
 function remove(webAppId) {
   return storageService.remove(KEY, webAppId)
 }
+
+function createNewWebApp() {
+  return  {
+      "image": "",
+      "title": "new project",
+      "isTemplate": false,
+      "isPublished": false,
+      "children": []
+    }
+  }

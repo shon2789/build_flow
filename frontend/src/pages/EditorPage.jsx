@@ -11,6 +11,7 @@ import { loadWebApp, clearCurrWebApp, setWebApp } from '../store/actions/web-app
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
 import { webAppService } from '../services/web-app.service';
+import { localStorageService } from '../services/storage.service';
 
 
 // Draggable Components from backend, rendered into the accordion
@@ -46,9 +47,9 @@ export const EditorPage = () => {
     // Initializing the webApp from the localStorage / loading from backend via ID / creates an empty webApp
     useEffect(() => {
         // If a draft exist in the local storage
-        const draftWebApp = JSON.parse(localStorage.getItem('draftWebApp'))
+        const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
         if(draftWebApp){
-            setWebApp(draftWebApp)
+            // setWebApp(draftWebApp)
             setColumns({
                 ...columns,
                 [editing[0]]: {
@@ -65,8 +66,10 @@ export const EditorPage = () => {
                     if(webApp.isTemplate){
                         clonnedWebApp = cloneDeep(webApp);
                         cmpService.changeCmpIds(clonnedWebApp);
-                        history.push(`/editor`)
+                    } else {
+                        localStorageService.saveToStorage('draftWebApp', webApp)
                     }
+                    history.push(`/editor`)
                     setColumns({
                         ...columns,
                         [editing[0]]: {
@@ -91,29 +94,14 @@ export const EditorPage = () => {
         }
     }, [])
 
-
-    // Only on create new project
-    const _createNewWebApp = () => {
-        return  {
-            "image": "",
-            "title": "new project",
-            "isTemplate": false,
-            "isPublished": false,
-            "children": []
-          }
-        }
-
         
-        // Save changes to the local storage for every change in the DnD columns
-        // Todo: make Undo feature for WebApp editing
+    // Save changes to the local storage for every change in the DnD columns
+    // Todo: make Undo feature for WebApp editing
     useEffect(() => {
-        const draftWebApp = JSON.parse(localStorage.getItem('draftWebApp')) || _createNewWebApp()
-
+        const draftWebApp = localStorageService.loadFromStorage('draftWebApp') || webAppService.createNewWebApp()
         draftWebApp.children = editing[1].items.map(obj => obj.cmp);
-
-        localStorage.setItem('draftWebApp', JSON.stringify(draftWebApp));
-
-    }, [columns, currWebApp]) 
+        localStorageService.saveToStorage('draftWebApp', draftWebApp)
+    }, [columns]) 
 
 
     // STATES
@@ -149,10 +137,10 @@ export const EditorPage = () => {
         return () => {
             const isSmart = window.confirm('Save your website ?') // Dev only
             if(isSmart) {
-                webAppService.save(JSON.parse(localStorage.getItem('draftWebApp')))
+                localStorageService.loadFromStorage('draftWebApp')
             }
 
-            localStorage.removeItem('draftWebApp')
+            localStorageService.removeFromStorage('draftWebApp')
         }
     }, []) 
 
