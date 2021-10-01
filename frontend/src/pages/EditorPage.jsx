@@ -7,7 +7,7 @@ import { MainEditor } from '../components/editor/MainEditor';
 import { WebAppContainer } from '../components/editor/WebAppContainer';
 import { cloneDeep } from 'lodash';
 import { loadCmps } from '../store/actions/cmp.action'
-import { loadWebApp, clearCurrWebApp, setWebApp } from '../store/actions/web-app.action'
+import { loadWebApp, clearLoadedWebApp, setWebApp } from '../store/actions/web-app.action'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
 import { webAppService } from '../services/web-app.service';
@@ -20,7 +20,7 @@ export const EditorPage = () => {
     const history = useHistory();
     const dispatch = useDispatch()
     const cmps = useSelector(state => state.cmpModule.cmps)
-    const currWebApp = useSelector(state => state.webAppModule.currWebApp)
+    const loadedWebApp = useSelector(state => state.webAppModule.loadedWebApp)
 
     const { webAppId } = useParams();
 
@@ -48,8 +48,7 @@ export const EditorPage = () => {
     useEffect(() => {
         // If a draft exist in the local storage
         const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
-        if(draftWebApp){
-            // setWebApp(draftWebApp)
+        if(draftWebApp && !webAppId){
             setColumns({
                 ...columns,
                 [editing[0]]: {
@@ -59,7 +58,7 @@ export const EditorPage = () => {
             })
         // If a webAppId has been passed through the query params
         } else if(webAppId) {
-            if (currWebApp.length === 0) {
+            if (loadedWebApp.length === 0) {
                 dispatch(loadWebApp(webAppId))
                 .then((webApp) => {
                     let clonnedWebApp = webApp;
@@ -90,7 +89,7 @@ export const EditorPage = () => {
             })
         }
         return () => {
-            dispatch(clearCurrWebApp())
+            dispatch(clearLoadedWebApp())
         }
     }, [])
 
@@ -275,7 +274,9 @@ export const EditorPage = () => {
     }
 
 
-    if (webAppId && (!currWebApp || currWebApp.length === 0)) {
+    console.log('webAppId:', webAppId)
+
+    if (webAppId && (!loadedWebApp || loadedWebApp.length === 0)) {
         return <h1>loading</h1>
     }
 

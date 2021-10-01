@@ -1,7 +1,7 @@
 
 const initialState = {
     webApps: [],
-    currWebApp: []
+    loadedWebApp: []
 }
 
 
@@ -11,9 +11,9 @@ export const webAppReducer = (state = initialState, action) => {
         case 'SET_WEBAPPS':
             return state = { ...state, webApps: action.webApps }
         case 'SET_WEBAPP':
-            return state = { ...state, currWebApp: action.webApp }
+            return state = { ...state, loadedWebApp: action.webApp }
         case 'CLEAR_WEBAPP':
-            return state = { ...state, currWebApp: [] }
+            return state = { ...state, loadedWebApp: [] }
         default:
             return state
     }

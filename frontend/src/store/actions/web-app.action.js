@@ -47,7 +47,7 @@ export const setWebApp = (webApp) => {
 
 
 
-export const clearCurrWebApp = () => {
+export const clearLoadedWebApp = () => {
     return async dispatch => {
         try {
             dispatch({
