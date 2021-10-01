@@ -11,7 +11,6 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
     const [cmpStyle, setCmpStyle] = useState(cmp.attributes.style);
     const [editorPosition, setEditorPosition] = useState(null)
     const [cmpInfo, setCmpInfo] = useState(cmp?.info)
-
     const ref = useRef()
     const isRightSpace = elCmpPos.right + 230 < window.innerWidth
 
