@@ -1,31 +1,26 @@
-.user-side-nav{
+.user-side-nav {
     display: none;
-    background-color: #2B3039;
+    background-color: #2b3039;
     min-height: 100vh;
 
-
-
-
-    @include for-large-tablet{
+    @include for-large-tablet {
         display: block;
 
         min-width: 16.5rem;
     }
-    @include for-desktop{
-
+    @include for-desktop {
         min-width: 20rem;
     }
 
-    .top-user-side-nav-div{
-        background-color: #383E47;
+    .top-user-side-nav-div {
+        background-color: #383e47;
         height: 2.5rem;
         display: flex;
         align-items: center;
         justify-content: center;
         margin-bottom: 2rem;
-        
     }
-    & h5{
+    & .top-user-side-nav-txt {
         color: $main-light-color;
         font-size: 1.245rem;
     }

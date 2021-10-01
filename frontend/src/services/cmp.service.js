@@ -26,7 +26,6 @@ async function query() {
 }
 
 function getMinifiedCmps(cmps) {
-  console.log(cmps);
   return cmps.map(cmp => {
     return {
       id: cmp.id,
