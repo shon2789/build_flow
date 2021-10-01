@@ -7,8 +7,9 @@ import Typography from "@material-ui/core/Typography";
 
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import { Draggable, Droppable } from "react-beautiful-dnd";
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import { cmpService } from "../../services/cmp.service";
+import { loadCmps } from "../../store/actions/cmp.action";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -39,6 +40,9 @@ export const EditorAccordion = ({ droppableId }) => {
     const [expanded, setExpanded] = React.useState(false);
 
     const [isMobile, setIsMobile] = useState(false);
+    const [minified, setMinified] = useState([])
+
+    const dispatch = useDispatch()
 
     useEffect(() => {
         window.addEventListener('touchstart', () => {
@@ -49,64 +53,85 @@ export const EditorAccordion = ({ droppableId }) => {
         })
 
 
+
+
         return () => {
             window.removeEventListener('touchstart', () => { console.log('bye bye') }, false)
             window.removeEventListener('touchend', () => { console.log('bye bye') }, false)
         };
     }, [])
+    const cmps = useSelector(state => state.cmpModule.cmps)
+    let minifiedCmps = []
+
+    useEffect(async () => {
+
+        const cmps = await dispatch(loadCmps())
+
+
+
+        minifiedCmps = cmpService.getMinifiedCmps(cmps)
+        minifiedCmps.forEach((item, idx) => item.idx = idx)
+        if (minified.length === 0) {
+            setMinified(minifiedCmps)
+        }
+
+    }, [minified])
 
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
 
-    const cmps = useSelector(state => state.cmpModule.cmps)
+    console.log(minifiedCmps, 'minifiedCmps');
 
-    // Adding idx for the DND library
-    cmps.map((item, idx) => item.idx = idx)
+    // let minifiedCmps = cmpService.getMinifiedCmps(cmps)
 
+    // console.log('minifiedCmps', minifiedCmps);
+
+    // // Adding idx for the DND library
+    // minifiedCmps = minifiedCmps.map((item, idx) => item.idx = idx)
     const data = [
         {
             id: "panel1",
             heading: "Headers",
             secondaryHeading: "this is panel 2",
-            details: cmps.filter(cmp => cmp.sectionType === 'header')
+            details: minified.filter(cmp => cmp.sectionType === 'header')
         },
         {
             id: "panel2",
             heading: "Main Sections",
             secondaryHeading: "this is panel 2",
-            details: cmps.filter(cmp => cmp.sectionType === 'section')
+            details: minified.filter(cmp => cmp.sectionType === 'section')
         },
 
         {
             id: "panel4",
             heading: "Cards",
             secondaryHeading: "this is panel 2",
-            details: cmps.filter(cmp => cmp.sectionType === 'card')
+            details: minified.filter(cmp => cmp.sectionType === 'card')
         },
         {
             id: "panel5",
             heading: "Contacts",
             secondaryHeading: "this is panel 2",
-            details: cmps.filter(cmp => cmp.sectionType === 'contact')
+            details: minified.filter(cmp => cmp.sectionType === 'contact')
         },
         {
             id: "panel6",
             heading: "Galleries",
             secondaryHeading: "this is panel 2",
-            details: cmps.filter(cmp => cmp.sectionType === 'img')
+            details: minified.filter(cmp => cmp.sectionType === 'img')
         },
         {
             id: "panel7",
             heading: "Text",
             secondaryHeading: "this is panel 2",
-            details: cmps.filter(cmp => cmp.sectionType === 'txt')
+            details: minified.filter(cmp => cmp.sectionType === 'txt')
         },
         {
             id: "panel8",
             heading: "Footers",
             secondaryHeading: "this is panel 2",
-            details: cmps.filter(cmp => cmp.sectionType === 'footer')
+            details: minified.filter(cmp => cmp.sectionType === 'footer')
         },
 
     ];

@@ -125,28 +125,26 @@ export const EditorPage = () => {
     }, [windowWidth])
 
     // Dispatcher for loading the cmps
-    useEffect(() => {
-        dispatch(loadCmps())
-
-    }, []) // reminder: Raz Deleted listening to columns, please notice (delete later)
+    // reminder: Raz Deleted listening to columns, please notice (delete later)
 
     // On component unmount - ask the user weather or not to save the project
     // Todo: make a great UI
-    useEffect(() => {
 
-        return () => {
-            const isSmart = window.confirm('Save your website ?') // Dev only
-            if (isSmart) {
-                const draft = localStorageService.loadFromStorage('draftWebApp')
-                webAppService.save(draft)
-            }
+    // useEffect(() => {
 
-            localStorageService.removeFromStorage('draftWebApp')
-        }
-    }, [])
+    //     return () => {
+    //         const isSmart = window.confirm('Save your website ?') // Dev only
+    //         if (isSmart) {
+    //             const draft = localStorageService.loadFromStorage('draftWebApp')
+    //             webAppService.save(draft)
+    //         }
+
+    //         localStorageService.removeFromStorage('draftWebApp')
+    //     }
+    // }, [])
 
     // Drag&Drop onDragEnd function, reordering the dragged elements and trigger other functions
-    const onDragEnd = async (result, setState) => {
+    const onDragEnd = (result, setState) => {
         if (!result.destination) return;
 
         const { source, destination } = result;
@@ -157,9 +155,15 @@ export const EditorPage = () => {
             const destColumn = columns[destination.droppableId];
             const sourceItems = [...sourceColumn.items];
             const destItems = [...destColumn.items];
-            const cmp = await cmpService.deepCloneCmp(result.draggableId)
 
-            destItems.splice(destination.index, 0, { id: utilService.makeId(), cmp });
+            // const cmp = await cmpService.deepCloneCmp(result.draggableId)
+            const cmp = cmps.filter(cmp => cmp.id === result.draggableId)
+            console.log('dragen bitch', cmp);
+            const clonedCmp = cmpService.deepCloneCmp(cmp)
+            console.log('onDragEndclonedCmpp', clonedCmp);
+
+
+            destItems.splice(destination.index, 0, { id: utilService.makeId(), cmp: clonedCmp });
             setColumns({
                 ...columns,
                 [source.droppableId]: {

@@ -8,11 +8,13 @@ export const TemplatePage = () => {
     const dispatch = useDispatch()
     let templates = useSelector(state => state.webAppModule.webApps)
     // Todo: filter locally the templates by isTemplate === true
-    templates = templates.filter(template => template.isTemplate)
-
     useEffect(() => {
-        dispatch(loadWebApps())
-    },[])
+        dispatch(loadWebApps()).then(templates => {
+
+            templates.filter(template => template.isTemplate)
+        })
+    }, [])
+
 
     if (window.innerWidth < 850) {
         window.scrollTo({ top: 0 })

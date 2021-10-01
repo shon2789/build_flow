@@ -3,11 +3,11 @@ import { TemplatePreview } from "./TemplatePreview"
 import { BsPlusCircle } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-export const TemplateList = ({templates}) => {
+export const TemplateList = ({ templates }) => {
 
     const miniTemplates = templates.map(template => {
         return {
-            id: template.id,
+            _id: template._id,
             title: template.title,
             image: template.image,
         }
@@ -29,7 +29,7 @@ export const TemplateList = ({templates}) => {
                         </div>
                     </Link>
                     {miniTemplates && miniTemplates.map(template => {
-                        return <TemplatePreview key={template.id} template={template}/>
+                        return <TemplatePreview key={template.id} template={template} />
                     })}
                 </div>
             </div>
