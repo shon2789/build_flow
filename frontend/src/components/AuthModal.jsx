@@ -100,14 +100,14 @@ export const AuthModal = ({ setIsAuthModalOpen }) => {
                             defaultValue=""
                             render={({ field: { onChange, value }, fieldState: { error } }) => (
                                 <TextField
-                                    label="User name"
+                                    label="Username"
                                     value={value}
                                     onChange={onChange}
                                     error={!!error}
                                     helperText={error ? error.message : null}
                                 />
                             )}
-                            rules={{ required: 'Username name required' }}
+                            rules={{ required: 'Username required' }}
                         />
                         <Controller
                             name="password"
