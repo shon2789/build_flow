@@ -123,7 +123,7 @@ export const AuthModal = ({ setIsAuthModalOpen }) => {
                                     type="password"
                                 />
                             )}
-                            rules={{ required: 'Password required (4-12 characters)', minLength: 4 }}
+                            rules={{ required: 'Password required (4-12 characters)', minLength: 4, maxLength: 12 }}
 
                         />
 
