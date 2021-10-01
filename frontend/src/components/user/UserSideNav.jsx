@@ -6,7 +6,7 @@ export const UserSideNav = ({ windowWidth }) => {
     return (
         <div className="user-side-nav">
             <div className="top-user-side-nav-div">
-                <h4>Your Profile</h4>
+                <h5>User Profile</h5>
             </div>
             <UserDetails windowWidth={windowWidth} />
         </div>

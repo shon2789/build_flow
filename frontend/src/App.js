@@ -5,7 +5,7 @@ import { EditorPage } from "./pages/EditorPage";
 import { HomePage } from "./pages/HomePage";
 import { TemplatePage } from "./pages/TemplatePage";
 import { UserPage } from "./pages/UserPage";
-
+import { AuthModal } from "./components/AuthModal";
 
 export const App = () => {
 
@@ -16,6 +16,7 @@ export const App = () => {
     <Router>
       <Switch>
         <Route path="/editor/:webAppId" component={EditorPage} />
+        <Route path="/login" component={AuthModal} />
         <Route path="/user" component={UserPage} />
         <Route path="/template" component={TemplatePage} />
         <Route path="/user" component={UserPage} />

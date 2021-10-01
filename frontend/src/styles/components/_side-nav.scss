@@ -1,11 +1,14 @@
 .side-nav {
+    display: flex;
     min-height: 100vh;
+    align-items: center;
+    flex-direction: column;
     width: 3rem;
     background-color: #141923;
     padding: 0 0.5rem;
     z-index: 10;
 
-    .side-nav-icons-container {
+    .side-nav-icons-container,.side-nav-bottom-icons {
         display: flex;
         flex-direction: column;
         font-size: 1.5rem;
@@ -13,7 +16,6 @@
         align-items: center;
         gap: 2rem;
         position: fixed;
-        transform: translateX(3.3px);
 
         & > * {
             cursor: pointer;
@@ -22,5 +24,16 @@
         &:first-child .icon-home {
             margin-top: 3rem;
         }
+    }
+
+    .side-nav-bottom-icons{
+           bottom: 4rem;
+           font-size: 1.8rem;
+
+           @include flex-center;
+
+           @include for-tablet{
+            bottom: 3.1rem;
+           }
     }
 }

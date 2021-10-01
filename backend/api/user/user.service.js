@@ -32,8 +32,37 @@ async function update(user) {
     }
 }
 
+async function add(user) {
+    try {
+
+        const userToAdd = {
+            username: user.username,
+            password: user.password,
+            fullName: user.fullname,
+        }
+        const collection = await dbService.getCollection('user')
+        await collection.insertOne(userToAdd)
+        return userToAdd
+    } catch (err) {
+        logger.error('cannot insert user', err)
+        throw err
+    }
+}
+
+async function getByUsername(username) {
+    try {
+        const collection = await dbService.getCollection('user')
+        const user = await collection.findOne({ username })
+        return user
+    } catch (err) {
+        logger.error(`while finding user ${username}`, err)
+        throw err
+    }
+}
 
 module.exports = {
     getById,
     update,
+    add,
+    getByUsername
 }

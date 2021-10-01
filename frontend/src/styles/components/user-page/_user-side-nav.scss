@@ -24,8 +24,9 @@
         justify-content: center;
         margin-bottom: 2rem;
         
-   & h4{
-       color: white;
-   }
-}
+    }
+    & h5{
+        color: $main-light-color;
+        font-size: 1.245rem;
+    }
 }

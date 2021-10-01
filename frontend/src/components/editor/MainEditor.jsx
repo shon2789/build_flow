@@ -16,8 +16,7 @@ export const MainEditor = ({ droppableId, onChangeEditorSize, windowWidth }) => 
             <SideNav />
             <div className="editor-section-container">
                 <div className="top-editor-toolbar">
-                    <FaEdit className="icon-btn" />
-                    <IoMdAddCircle className="icon-btn" />
+                    <h5>Drag from here</h5>
                 </div>
 
                 <div className="editor-elements-container">
