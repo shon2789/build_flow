@@ -48,7 +48,7 @@ export const EditorPage = () => {
     useEffect(() => {
         // If a draft exist in the local storage
         const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
-        if(draftWebApp && !webAppId){
+        if (draftWebApp && !webAppId) {
             setColumns({
                 ...columns,
                 [editing[0]]: {
@@ -56,29 +56,29 @@ export const EditorPage = () => {
                     items: draftWebApp.children.map(section => { return { id: section.id, cmp: section } })
                 }
             })
-        // If a webAppId has been passed through the query params
-        } else if(webAppId) {
+            // If a webAppId has been passed through the query params
+        } else if (webAppId) {
             if (loadedWebApp.length === 0) {
                 dispatch(loadWebApp(webAppId))
-                .then((webApp) => {
-                    let clonnedWebApp = webApp;
-                    if(webApp.isTemplate){
-                        clonnedWebApp = cloneDeep(webApp);
-                        cmpService.changeCmpIds(clonnedWebApp);
-                    } else {
-                        localStorageService.saveToStorage('draftWebApp', webApp)
-                    }
-                    history.push(`/editor`)
-                    setColumns({
-                        ...columns,
-                        [editing[0]]: {
-                            name: 'Editing',
-                            items: clonnedWebApp.children.map(section => { return { id: utilService.makeId(), cmp: section } })
+                    .then((webApp) => {
+                        let clonnedWebApp = webApp;
+                        if (webApp.isTemplate) {
+                            clonnedWebApp = cloneDeep(webApp);
+                            cmpService.changeCmpIds(clonnedWebApp);
+                        } else {
+                            localStorageService.saveToStorage('draftWebApp', webApp)
                         }
+                        history.push(`/editor`)
+                        setColumns({
+                            ...columns,
+                            [editing[0]]: {
+                                name: 'Editing',
+                                items: clonnedWebApp.children.map(section => { return { id: utilService.makeId(), cmp: section } })
+                            }
+                        })
                     })
-            })
             }
-        // If initializing a new project
+            // If initializing a new project
         } else {
             setColumns({
                 ...columns,
@@ -93,14 +93,15 @@ export const EditorPage = () => {
         }
     }, [])
 
-        
+
     // Save changes to the local storage for every change in the DnD columns
     // Todo: make Undo feature for WebApp editing
     useEffect(() => {
         const draftWebApp = localStorageService.loadFromStorage('draftWebApp') || webAppService.createNewWebApp()
         draftWebApp.children = editing[1].items.map(obj => obj.cmp);
         localStorageService.saveToStorage('draftWebApp', draftWebApp)
-    }, [columns]) 
+
+    }, [columns])
 
 
     // STATES
@@ -119,7 +120,7 @@ export const EditorPage = () => {
         })
 
         return () => {
-            window.removeEventListener('resize', () => {console.log('remove editor page window width resize event listener')}, false);
+            window.removeEventListener('resize', () => { console.log('remove editor page window width resize event listener') }, false);
         }
     }, [windowWidth])
 
@@ -128,20 +129,21 @@ export const EditorPage = () => {
         dispatch(loadCmps())
 
     }, []) // reminder: Raz Deleted listening to columns, please notice (delete later)
-    
+
     // On component unmount - ask the user weather or not to save the project
     // Todo: make a great UI
     useEffect(() => {
-        
+
         return () => {
             const isSmart = window.confirm('Save your website ?') // Dev only
-            if(isSmart) {
-                localStorageService.loadFromStorage('draftWebApp')
+            if (isSmart) {
+                const draft = localStorageService.loadFromStorage('draftWebApp')
+                webAppService.save(draft)
             }
 
             localStorageService.removeFromStorage('draftWebApp')
         }
-    }, []) 
+    }, [])
 
     // Drag&Drop onDragEnd function, reordering the dragged elements and trigger other functions
     const onDragEnd = async (result, setState) => {
