@@ -156,12 +156,8 @@ export const EditorPage = () => {
             const sourceItems = [...sourceColumn.items];
             const destItems = [...destColumn.items];
 
-            // const cmp = await cmpService.deepCloneCmp(result.draggableId)
-            const cmp = cmps.filter(cmp => cmp.id === result.draggableId)
-            console.log('dragen bitch', cmp);
+            const cmp = cmps.find(cmp => cmp.id === result.draggableId)
             const clonedCmp = cmpService.deepCloneCmp(cmp)
-            console.log('onDragEndclonedCmpp', clonedCmp);
-
 
             destItems.splice(destination.index, 0, { id: utilService.makeId(), cmp: clonedCmp });
             setColumns({
@@ -280,7 +276,6 @@ export const EditorPage = () => {
     }
 
 
-    console.log('webAppId:', webAppId)
 
     if (webAppId && (!loadedWebApp || loadedWebApp.length === 0)) {
         return <h1>loading</h1>

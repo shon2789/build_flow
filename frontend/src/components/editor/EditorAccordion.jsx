@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import { Draggable, Droppable } from "react-beautiful-dnd";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { cmpService } from "../../services/cmp.service";
 import { loadCmps } from "../../store/actions/cmp.action";
 
@@ -34,15 +34,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
 export const EditorAccordion = ({ droppableId }) => {
     const classes = useStyles();
+    const dispatch = useDispatch()
     const [expanded, setExpanded] = React.useState(false);
-
     const [isMobile, setIsMobile] = useState(false);
     const [minified, setMinified] = useState([])
-
-    const dispatch = useDispatch()
 
     useEffect(() => {
         window.addEventListener('touchstart', () => {
@@ -52,43 +49,29 @@ export const EditorAccordion = ({ droppableId }) => {
             setIsMobile(false);
         })
 
-
-
-
         return () => {
             window.removeEventListener('touchstart', () => { console.log('bye bye') }, false)
             window.removeEventListener('touchend', () => { console.log('bye bye') }, false)
         };
     }, [])
-    const cmps = useSelector(state => state.cmpModule.cmps)
+
     let minifiedCmps = []
-
-    useEffect(async () => {
-
-        const cmps = await dispatch(loadCmps())
-
-
-
-        minifiedCmps = cmpService.getMinifiedCmps(cmps)
-        minifiedCmps.forEach((item, idx) => item.idx = idx)
-        if (minified.length === 0) {
-            setMinified(minifiedCmps)
-        }
-
+    useEffect(() => {
+        (async () => {
+            const cmps = await dispatch(loadCmps())
+            minifiedCmps = cmpService.getMinifiedCmps(cmps)
+            minifiedCmps.forEach((item, idx) => item.idx = idx)
+            if (minified.length === 0) {
+                setMinified(minifiedCmps)
+            }
+        })()
     }, [minified])
 
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
 
-    console.log(minifiedCmps, 'minifiedCmps');
 
-    // let minifiedCmps = cmpService.getMinifiedCmps(cmps)
-
-    // console.log('minifiedCmps', minifiedCmps);
-
-    // // Adding idx for the DND library
-    // minifiedCmps = minifiedCmps.map((item, idx) => item.idx = idx)
     const data = [
         {
             id: "panel1",

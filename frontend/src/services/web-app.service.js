@@ -14,16 +14,7 @@ export const webAppService = {
 }
 
 
-
-
-// loadItemsToStorgae()
-// function loadItemsToStorgae() {
-//   const templatesFromStorage = JSON.parse(localStorage.getItem('template')) || localStorage.setItem("template", JSON.stringify(templates));
-// }
-
-
 async function query(filterBy) {
-  // return storageService.query(KEY)
   try {
     const webApps = await httpService.get(`/api/webApp`)
     return webApps
@@ -34,7 +25,6 @@ async function query(filterBy) {
 }
 
 function save(webApp) {
-
   if (webApp.id) {
     return storageService.put(KEY, webApp)
   } else {
@@ -43,8 +33,6 @@ function save(webApp) {
 }
 
 async function getById(webAppId) {
-  // return storageService.get(KEY, webAppId)
-  console.log(webAppId);
 
   try {
     const webApp = await httpService.get(`/api/webApp/${webAppId}`)

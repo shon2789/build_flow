@@ -29,6 +29,6 @@ export function DynamicCmp({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDuplicat
     }
 
     return (
-        getCmp(cmp[0].type)
+        getCmp(cmp.type)
     )
 }

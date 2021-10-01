@@ -16,30 +16,17 @@ export const cmpService = {
 }
 
 
-
-
-// loadItemsToStorgae()
-// function loadItemsToStorgae() {
-//   const cmpsFromStorage = JSON.parse(localStorage.getItem('cmp')) || localStorage.setItem("cmp", JSON.stringify(cmps));
-// }
-
 async function query() {
-
   try {
     const cmps = await httpService.get("/api/cmp")
-
     return cmps
-
   } catch (err) {
     console.log(err);
   }
-
 }
 
 function getMinifiedCmps(cmps) {
-
-  console.log(cmps, 'cmps from minifed func');
-
+  console.log(cmps);
   return cmps.map(cmp => {
     return {
       id: cmp.id,
@@ -48,26 +35,7 @@ function getMinifiedCmps(cmps) {
       content: <img alt="accordion-section-img" width="100%" src={cmp.img} />
     }
   })
-
 }
-// async function getMinifiedCmps() {
-
-//   try {
-
-//     const cmps = await httpService.get("/api/cmp")
-//     return cmps.map(cmp => {
-//       return {
-//         id: cmp.id,
-//         type: cmp.type,
-//         sectionType: cmp.sectionType,
-//         content: <img alt="accordion-section-img" width="100%" src={cmp.img} />
-//       }
-//     })
-//   } catch (err) {
-//     console.log(err);
-//   }
-
-// }
 
 async function getById(cmpId) {
   return await storageService.get("cmp", cmpId)
@@ -82,8 +50,7 @@ function getCmps() {
 function deepCloneCmp(cmp) {
   const coppiedCmp = cloneDeep(cmp);
 
-  changeCmpIds(coppiedCmp[0]);
-  console.log(coppiedCmp[0], 'coppiedCmp[0]');
+  changeCmpIds(coppiedCmp);
   return coppiedCmp;
 }
 

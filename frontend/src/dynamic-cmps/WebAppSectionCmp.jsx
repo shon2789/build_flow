@@ -3,7 +3,6 @@ import { ElementToolBar } from '../components/editor/ElementToolBar'
 import { DynamicCmp } from './DynamicCmp'
 
 export const WebAppSectionCmp = ({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDuplicateCmp, onUpdateCmp, editorWidth, onChangeEditorSize }) => {
-
     let cmpStyle = { ...cmp.attributes.style }
     if (editorWidth < 763) {
         const mobileStyle = cmp.attributes['style-mobile'];
