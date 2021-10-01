@@ -1,4 +1,4 @@
-.user-top-nav{
+.user-top-nav {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,42 +6,34 @@
     height: 80px;
     font-size: 1.3rem;
     color: #757575;
-    font-family: Roboto regular,sans-serif;
+    font-family: Roboto regular, sans-serif;
 
-    & h3{
+    & h3 {
         display: none;
 
-        @include for-large-tablet{
-
-                display: inline-block;
-    
+        @include for-large-tablet {
+            display: inline-block;
         }
     }
-    
-    .user-top-links{
+
+    .user-top-links {
         display: flex;
         gap: 15px;
-        
-        & button{
+
+        & button {
             cursor: pointer;
-            font-family: Roboto regular,sans-serif;
-            padding: 0.3rem 1rem;
+            font-family: Roboto regular, sans-serif;
+            padding: 0.5rem 1rem;
             border-radius: 20px;
             border: none;
             font-size: 0.8rem;
             color: inherit;
             box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-            
-            
-            @include for-large-phone{
-                
-                font-size: 1.3rem;
-    
-        }
-            
+
+            @include for-large-phone {
+                font-size: 1.1rem;
+                padding: 0.3rem 1rem;
+            }
         }
     }
-    
-
-
 }
