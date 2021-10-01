@@ -16,7 +16,6 @@ export const TemplateList = ({ templates }) => {
     return (
         <section className="templates-list">
             <SideNav />
-
             <div className="templates-content-container">
                 <h2 className="templates-page-title">Choose one and start building now!</h2>
                 <div className="templates-preview-container">
