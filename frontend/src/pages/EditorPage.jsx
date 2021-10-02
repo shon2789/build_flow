@@ -13,7 +13,6 @@ import { webAppService } from '../services/web-app.service';
 import { localStorageService } from '../services/storage.service';
 import { AuthModal } from '../components/AuthModal';
 import { setUser } from '../store/actions/user.action';
-import { uploadImg } from '../services/screen-shot.service'
 
 
 
@@ -341,9 +340,7 @@ export const EditorPage = () => {
         }
 
         const webApp = localStorageService.loadFromStorage('draftWebApp')
-        // webApp.image = imageUrl;
         const savedWebApp = await webAppService.save(webApp)
-        // console.log('savedWebApp_ID:', savedWebApp._id)
         dispatch(setUser())
         localStorageService.removeFromStorage('draftWebApp')
 

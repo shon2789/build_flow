@@ -14,13 +14,10 @@ export const SaveWebAppBtn = ({ onSaveWebApp }) => {
     const handle = () => {
         onSaveWebApp().then((webApp) => {
             const elWebAppBuilder = document.querySelector('.web-app-builder')
-            console.log('saved webapp first time')
             toPng(elWebAppBuilder, { cacheBust: true})
             .then((dataUrl) => {
-                console.log('got data url')
               uploadImg(dataUrl)
                .then(url => {
-                   console.log('updated url:', url)
                    webApp.image = url;
                    webAppService.save(webApp)
                    dispatch(setUser())

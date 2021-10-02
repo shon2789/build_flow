@@ -3,7 +3,6 @@ const ObjectId = require('mongodb').ObjectId
 
 // Verify that only the webApp owner can request it
 async function requireAuth(req, res, next) {
-
   const webAppId = req.params.webAppId;
   const webApp = await webAppService.getById(webAppId)
 

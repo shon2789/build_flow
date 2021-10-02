@@ -27,10 +27,12 @@ async function add(webApp) {
 
 async function update(webApp) {
     try {
+        const _id = webApp._id
         const id = ObjectId(webApp._id)
         delete webApp._id
         const collection = await dbService.getCollection('webApp')
         await collection.updateOne({ "_id": id }, { $set: { ...webApp } })
+        webApp._id = _id;
         return webApp
     } catch (err) {
         logger.error(`cannot update webApp ${webApp}`, err)

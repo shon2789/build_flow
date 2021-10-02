@@ -30,12 +30,12 @@ async function updateWebApp(req, res) {
         const webApp = await webAppService.update(req.body)
         const user = req.session.user
         const minifiedWebApp = {
-            _id: ObjectId(webApp._id),
+            _id: webApp._id,
             title: webApp.title,
             isPublished: webApp.isPublished,
             image: webApp.image 
         }
-        const idx = user.webApps.findIndex(miniWebApp => miniWebApp._id ===  ObjectId(webApp._id))
+        const idx = user.webApps.findIndex(miniWebApp => miniWebApp._id ===  webApp._id)
         user.webApps.splice(idx, 1, minifiedWebApp)
         userService.update(user)
         res.send(webApp)
@@ -54,6 +54,7 @@ async function addWebApp(req, res) {
             title: webApp.title,
             isPublished: webApp.isPublished,
             image: webApp.image 
+            // Todo: make the first save's image a demo image (something nice, until real image comes)
         }
         user.webApps.push(minifiedWebApp)
         userService.update(user)
