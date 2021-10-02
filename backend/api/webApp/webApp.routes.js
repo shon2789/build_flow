@@ -8,7 +8,7 @@ const router = express.Router()
 // router.use(requireAuth)
 
 router.get('/', getWebApps)
-router.get('/:webAppId', getWebAppById)
+router.get('/:webAppId', requireAuth, getWebAppById)
 router.put('/', updateWebApp)
 router.post('/', addWebApp)
 

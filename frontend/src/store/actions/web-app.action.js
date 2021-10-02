@@ -2,10 +2,10 @@
 import { webAppService } from "../../services/web-app.service";
 
 // TEMPLATES
-export const loadWebApps = (filterBy = {}) => {
+export const loadWebApps = () => {
     return async dispatch => {
         try {
-            const webApps = await webAppService.query(filterBy)
+            const webApps = await webAppService.query()
             dispatch({
                 type: "SET_WEBAPPS",
                 webApps

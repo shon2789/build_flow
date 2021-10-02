@@ -12,9 +12,9 @@ export const userService = {
 
 
 async function login(credentials) {
-
     try {
         const user = await httpService.post(`/api/auth/login`, credentials)
+        console.log('user, ', user)
         sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, JSON.stringify(user));
         return user
     } catch (err) {

@@ -6,7 +6,7 @@ const ObjectId = require('mongodb').ObjectId
 
 async function getWebApps(req, res) {
     try {
-        const webApps = await webAppService.query(req.query)
+        const webApps = await webAppService.query()
         res.send(webApps)
     } catch (err) {
         logger.error('Failed to get webApps')
@@ -37,7 +37,6 @@ async function updateWebApp(req, res) {
 }
 
 async function addWebApp(req, res) {
-
     try {
         const webApp = await webAppService.add(req.body)
         const user = req.session.user

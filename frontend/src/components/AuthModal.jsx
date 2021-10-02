@@ -34,23 +34,30 @@ const useStyles = makeStyles(theme => ({
 
 export const AuthModal = ({ onToggleAuthModal }) => {
 
-
     const [isLogin, setIsLogin] = useState(true)
     const dispatch = useDispatch()
-    const history = useHistory()
+    const history = useHistory();
 
     const classes = useStyles();
     const { handleSubmit, control } = useForm();
 
     const onSubmit = async data => {
 
+        let user = null;
         try {
             if (isLogin) {
-                const user = await userService.login(data)
+                user = await userService.login(data)
             } else {
-                const user = await userService.signup(data)
+                user = await userService.signup(data)
             }
+
+            if(!user){
+                console.log('stupid russian')
+            }
+
             dispatch(setUser())
+
+            // Add notification
             store.addNotification({
                 message: "Logged in Successfully!",
                 type: "success",
@@ -69,7 +76,6 @@ export const AuthModal = ({ onToggleAuthModal }) => {
         } catch (err) {
             console.log(err);
         }
-
     };
 
     const switchAuth = () => {
