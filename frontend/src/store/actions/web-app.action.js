@@ -24,13 +24,10 @@ export const loadWebApp = (webAppId) => {
     return async dispatch => {
         try {
             const webApp = await webAppService.getById(webAppId)
-
-
             dispatch({
                 type: "SET_WEBAPP",
                 webApp
             })
-            console.log(webApp, 'webApp action');
             return webApp;
         } catch (err) {
             console.log(err);

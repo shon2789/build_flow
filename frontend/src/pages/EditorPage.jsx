@@ -17,20 +17,23 @@ import { setUser } from '../store/actions/user.action';
 
 
 import { store } from 'react-notifications-component';
+import { AlertDialog } from '../components/AlertDialog';
 
 
 
 
 // Draggable Components from backend, rendered into the accordion
 export const EditorPage = () => {
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
+    const [dialogAns, setDialogAns] = useState(true)
 
-    const history = useHistory();
-    const dispatch = useDispatch()
     const cmps = useSelector(state => state.cmpModule.cmps)
     const loadedWebApp = useSelector(state => state.webAppModule.loadedWebApp)
     const user = useSelector(state => state.userModule.loggedInUser)
-    const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
+    const dispatch = useDispatch()
 
+    const history = useHistory();
     const { webAppId } = useParams();
 
     // Drag&Drop columns (Editor components && webApp builder)
@@ -73,10 +76,12 @@ export const EditorPage = () => {
                 isAuth = true;
             }
             if (isAuth) {
-                ans = window.confirm('Continue from where you left?')
+                setIsDialogOpen(true)
+                // ans = window.confirm('Continue from where you left?')
+
             }
 
-            if (ans && isAuth) {
+            if (dialogAns && isAuth) {
                 setColumns({
                     ...columns,
                     [editing[0]]: {
@@ -85,6 +90,7 @@ export const EditorPage = () => {
                     }
                 })
             } else {
+                setIsDialogOpen(false)
                 localStorageService.removeFromStorage('draftWebApp')
                 setColumns({
                     ...columns,
@@ -129,7 +135,7 @@ export const EditorPage = () => {
         return () => {
             dispatch(clearLoadedWebApp())
         }
-    }, [])
+    }, [dialogAns])
 
 
     // Save changes to the local storage for every change in the DnD columns
@@ -316,7 +322,7 @@ export const EditorPage = () => {
     const onSaveWebApp = async () => {
         if (!user) {
             setIsAuthModalOpen(true)
-            //TODO: add alert
+
 
             store.addNotification({
                 message: "Login first",
@@ -333,14 +339,14 @@ export const EditorPage = () => {
             });
             return
         }
-        //TODO: Saved successfully
+
         const webApp = localStorageService.loadFromStorage('draftWebApp')
         await webAppService.save(webApp)
         dispatch(setUser())
         localStorageService.removeFromStorage('draftWebApp')
 
         store.addNotification({
-            message: "Saved Successfully!",
+            message: "Saved Successfully, Check your profile page.",
             type: "success",
             insert: "top",
             container: "top-right",
@@ -348,7 +354,7 @@ export const EditorPage = () => {
             animationIn: ["animate__animated", "animate__backInRight"],
             animationOut: ["animate__animated", "animate__backOutRight"],
             dismiss: {
-                duration: 2500,
+                duration: 3000,
                 onScreen: true
             }
         });
@@ -356,7 +362,10 @@ export const EditorPage = () => {
     }
 
 
-
+    const handleDialog = (boolean) => {
+        setIsDialogOpen(false)
+        setDialogAns(boolean)
+    }
 
 
     if (webAppId && (!loadedWebApp || loadedWebApp.length === 0)) {
@@ -384,6 +393,7 @@ export const EditorPage = () => {
                     <Screen isOpen={isAuthModalOpen} exitScreen={setIsAuthModalOpen} />
                 </>
             }
+            <AlertDialog handleDialog={handleDialog} open={isDialogOpen} />
         </>
     )
 }
