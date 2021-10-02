@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Screen } from './Screen';
 import { AuthModal } from './AuthModal';
 import usePortal from 'react-useportal'
+import { store } from 'react-notifications-component';
 
 
 export const SideNav = () => {
@@ -24,6 +25,21 @@ export const SideNav = () => {
     const onLogOut = async () => {
         await userService.logout()
         dispatch(setUser())
+
+        store.addNotification({
+            message: "Logged out Successfully!",
+            type: "default",
+            insert: "top",
+            container: "top-right",
+            fontFamily: "Lato regular,sans-serif",
+            animationIn: ["animate__animated", "animate__backInRight"],
+            animationOut: ["animate__animated", "animate__backOutRight"],
+            dismiss: {
+                duration: 2000,
+                onScreen: true
+            }
+        });
+        onToggleAuthModal(false)
     }
 
     const onToggleAuthModal = (boolean) => {
@@ -37,7 +53,7 @@ export const SideNav = () => {
             <Portal>
                 <Screen isOpen={isAuthModalOpen} exitScreen={onToggleAuthModal} />
                 {isAuthModalOpen &&
-                    <AuthModal setIsAuthModalOpen={setIsAuthModalOpen} />
+                    <AuthModal onToggleAuthModal={onToggleAuthModal} />
                 }
             </Portal>
 

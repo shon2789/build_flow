@@ -7,6 +7,7 @@ import { userService } from '../services/user.service';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../store/actions/user.action';
 import { useHistory } from 'react-router';
+import { store } from 'react-notifications-component';
 
 
 
@@ -31,7 +32,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export const AuthModal = ({ setIsAuthModalOpen }) => {
+export const AuthModal = ({ onToggleAuthModal }) => {
 
 
     const [isLogin, setIsLogin] = useState(true)
@@ -50,8 +51,20 @@ export const AuthModal = ({ setIsAuthModalOpen }) => {
                 const user = await userService.signup(data)
             }
             dispatch(setUser())
-            history.push('/user')
-            setIsAuthModalOpen(false)
+            store.addNotification({
+                message: "Logged in Successfully!",
+                type: "success",
+                insert: "top",
+                container: "top-right",
+                fontFamily: "Lato regular,sans-serif",
+                animationIn: ["animate__animated", "animate__backInRight"],
+                animationOut: ["animate__animated", "animate__backOutRight"],
+                dismiss: {
+                    duration: 2000,
+                    onScreen: true
+                }
+            });
+            onToggleAuthModal(false)
 
         } catch (err) {
             console.log(err);

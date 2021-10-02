@@ -17,7 +17,7 @@ export const webAppService = {
 
 async function query(filterBy) {
   try {
-    const webApps = await httpService.get(`/api/webApp`)
+    const webApps = await httpService.get(`/api/webApp`, filterBy)
     return webApps
 
   } catch (err) {

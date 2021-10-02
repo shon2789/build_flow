@@ -1,10 +1,13 @@
 const dbService = require('../../services/db.service')
 const ObjectId = require('mongodb').ObjectId
 
-async function query() {
+async function query(filterBy) {
+
+    const criteria = _buildCriteria(filterBy)
+    console.log(criteria);
     try {
         const collection = await dbService.getCollection('webApp')
-        const webApps = await collection.find().toArray()
+        const webApps = await collection.find(criteria).toArray()
         return webApps
     } catch (err) {
         logger.error('cannot find webApp', err)
@@ -46,6 +49,15 @@ async function getById(webAppId) {
         logger.error(`while finding webApp ${webAppId}`, err)
         throw err
     }
+}
+
+function _buildCriteria(filterBy) {
+    const { isTemplate } = filterBy;
+    console.log(isTemplate);
+
+    const criteria = { isTemplate: isTemplate === "true" ? true : false };
+
+    return criteria;
 }
 
 module.exports = {

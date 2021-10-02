@@ -4,6 +4,7 @@ import { UserSiteList } from './UserSiteList'
 import { UserTopNav } from './UserTopNav'
 import Divider from "@material-ui/core/Divider";
 export const UserSites = ({ windowWidth, user }) => {
+
     return (
         <section className="user-sites">
             {(windowWidth < 1130) && <UserDetails windowWidth={windowWidth} />}

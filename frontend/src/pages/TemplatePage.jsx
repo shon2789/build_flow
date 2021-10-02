@@ -9,10 +9,7 @@ export const TemplatePage = () => {
     let templates = useSelector(state => state.webAppModule.webApps)
     // Todo: filter locally the templates by isTemplate === true
     useEffect(() => {
-        dispatch(loadWebApps()).then(templates => {
-
-            templates.filter(template => template.isTemplate)
-        })
+        dispatch(loadWebApps({ isTemplate: true }))
     }, [])
 
 

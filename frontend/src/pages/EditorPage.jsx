@@ -16,6 +16,10 @@ import { setUser } from '../store/actions/user.action';
 
 
 
+import { store } from 'react-notifications-component';
+
+
+
 
 // Draggable Components from backend, rendered into the accordion
 export const EditorPage = () => {
@@ -313,6 +317,20 @@ export const EditorPage = () => {
         if (!user) {
             setIsAuthModalOpen(true)
             //TODO: add alert
+
+            store.addNotification({
+                message: "Login first",
+                type: "danger",
+                insert: "top",
+                container: "top-right",
+                fontFamily: "Lato regular,sans-serif",
+                animationIn: ["animate__animated", "animate__backInRight"],
+                animationOut: ["animate__animated", "animate__backOutRight"],
+                dismiss: {
+                    duration: 2500,
+                    onScreen: true
+                }
+            });
             return
         }
         //TODO: Saved successfully
@@ -320,6 +338,21 @@ export const EditorPage = () => {
         await webAppService.save(webApp)
         dispatch(setUser())
         localStorageService.removeFromStorage('draftWebApp')
+
+        store.addNotification({
+            message: "Saved Successfully!",
+            type: "success",
+            insert: "top",
+            container: "top-right",
+            fontFamily: "Lato regular,sans-serif",
+            animationIn: ["animate__animated", "animate__backInRight"],
+            animationOut: ["animate__animated", "animate__backOutRight"],
+            dismiss: {
+                duration: 2500,
+                onScreen: true
+            }
+        });
+
     }
 
 
@@ -327,11 +360,13 @@ export const EditorPage = () => {
 
 
     if (webAppId && (!loadedWebApp || loadedWebApp.length === 0)) {
-        return <h1>loading</h1>
+        return <div>Loading...</div>
+
     }
 
     return (
         <>
+
             <DragDropContext onDragStart={result => onDragStart()} onDragEnd={result => onDragEnd(result)}>
                 <main className="editor-page-container">
                     <Screen isOpen={isEditorMenuToggled} exitScreen={onToggleEditorMenu} />

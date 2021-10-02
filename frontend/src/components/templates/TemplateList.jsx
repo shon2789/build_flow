@@ -13,6 +13,7 @@ export const TemplateList = ({ templates }) => {
         }
     })
 
+
     return (
         <section className="templates-list">
             <SideNav />

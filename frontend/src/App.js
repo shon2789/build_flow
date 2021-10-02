@@ -7,6 +7,9 @@ import { TemplatePage } from "./pages/TemplatePage";
 import { UserPage } from "./pages/UserPage";
 import { AuthModal } from "./components/AuthModal";
 
+
+
+
 export const App = () => {
 
   //Cancel the contextmenu
