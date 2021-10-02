@@ -17,7 +17,6 @@ async function login(credentials) {
         const user = await httpService.post(`/api/auth/login`, credentials)
         sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, JSON.stringify(user));
         return user
-
     } catch (err) {
         console.log(err);
     }
@@ -25,8 +24,6 @@ async function login(credentials) {
 
 
 async function signup(credentials) {
-    console.log("credentials", credentials);
-
     try {
         const user = await httpService.post(`/api/auth/signup`, credentials)
         sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, JSON.stringify(user));

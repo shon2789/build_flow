@@ -1,7 +1,5 @@
 import { userService } from "../../services/user.service"
 
-
-// COMPONENTS
 export const setUser = () => {
     return async dispatch => {
         try {

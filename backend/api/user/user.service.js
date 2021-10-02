@@ -34,11 +34,11 @@ async function update(user) {
 
 async function add(user) {
     try {
-
         const userToAdd = {
             username: user.username,
             password: user.password,
             fullName: user.fullname,
+            webApps: []
         }
         const collection = await dbService.getCollection('user')
         await collection.insertOne(userToAdd)
