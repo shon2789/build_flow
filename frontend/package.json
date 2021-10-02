@@ -18,6 +18,8 @@
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
+    "react-alert": "^7.0.3",
+    "react-alert-template-mui": "^1.0.7",
     "react-avatar": "^3.10.0",
     "react-awesome-loaders": "^0.1.37",
     "react-beautiful-dnd": "^13.1.0",

@@ -51,27 +51,39 @@ export const AuthModal = ({ onToggleAuthModal }) => {
                 user = await userService.signup(data)
             }
 
-            if(!user){
-                console.log('stupid russian')
+            if (!user) {
+                store.addNotification({
+                    message: "Invalid username or password",
+                    type: "danger",
+                    insert: "top",
+                    container: "top-right",
+                    fontFamily: "Lato regular,sans-serif",
+                    animationIn: ["animate__animated", "animate__backInRight"],
+                    animationOut: ["animate__animated", "animate__backOutRight"],
+                    dismiss: {
+                        duration: 2500,
+                        onScreen: true
+                    }
+                });
+            } else {
+                dispatch(setUser())
+
+                // Add notification
+                store.addNotification({
+                    message: "Logged in Successfully!",
+                    type: "success",
+                    insert: "top",
+                    container: "top-right",
+                    fontFamily: "Lato regular,sans-serif",
+                    animationIn: ["animate__animated", "animate__backInRight"],
+                    animationOut: ["animate__animated", "animate__backOutRight"],
+                    dismiss: {
+                        duration: 2000,
+                        onScreen: true
+                    }
+                });
+                onToggleAuthModal(false)
             }
-
-            dispatch(setUser())
-
-            // Add notification
-            store.addNotification({
-                message: "Logged in Successfully!",
-                type: "success",
-                insert: "top",
-                container: "top-right",
-                fontFamily: "Lato regular,sans-serif",
-                animationIn: ["animate__animated", "animate__backInRight"],
-                animationOut: ["animate__animated", "animate__backOutRight"],
-                dismiss: {
-                    duration: 2000,
-                    onScreen: true
-                }
-            });
-            onToggleAuthModal(false)
 
         } catch (err) {
             console.log(err);
