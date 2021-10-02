@@ -1,5 +1,8 @@
 const webAppService = require("./webApp.service")
+const userService = require("../user/user.service")
 const logger = require("../../services/logger.service")
+const ObjectId = require('mongodb').ObjectId
+
 
 async function getWebApps(req, res) {
     try {
@@ -25,7 +28,7 @@ async function getWebAppById(req, res) {
 
 async function updateWebApp(req, res) {
     try {
-        const webApp = await webAppService.update(req.query)
+        const webApp = await webAppService.update(req.body)
         res.send(webApp)
     } catch (err) {
         logger.error('Failed to update webApp')
@@ -34,8 +37,18 @@ async function updateWebApp(req, res) {
 }
 
 async function addWebApp(req, res) {
+
     try {
-        const webApp = await webAppService.add(req.query)
+        const webApp = await webAppService.add(req.body)
+        const user = req.session.user
+        const minifiedWebApp = {
+            _id: ObjectId(webApp._id),
+            title: webApp.title,
+            isPublished: webApp.isPublished,
+            image: webApp.image
+        }
+        user.webApps.push(minifiedWebApp)
+        userService.update(user)
         res.send(webApp)
     } catch (err) {
         logger.error('Failed to add webApp')

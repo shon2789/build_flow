@@ -38,8 +38,6 @@ async function update(webApp) {
 }
 
 async function getById(webAppId) {
-
-    console.log(webAppId, 'webAppId');
     try {
         const collection = await dbService.getCollection('webApp')
         const webApp = collection.findOne({ '_id': ObjectId(webAppId) })

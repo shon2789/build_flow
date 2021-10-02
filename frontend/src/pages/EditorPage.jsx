@@ -6,12 +6,15 @@ import { Screen } from '../components/Screen';
 import { MainEditor } from '../components/editor/MainEditor';
 import { WebAppContainer } from '../components/editor/WebAppContainer';
 import { cloneDeep } from 'lodash';
-import { loadCmps } from '../store/actions/cmp.action'
-import { loadWebApp, clearLoadedWebApp, setWebApp } from '../store/actions/web-app.action'
+import { loadWebApp, clearLoadedWebApp } from '../store/actions/web-app.action'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
 import { webAppService } from '../services/web-app.service';
 import { localStorageService } from '../services/storage.service';
+import { AuthModal } from '../components/AuthModal';
+import { setUser } from '../store/actions/user.action';
+
+
 
 
 // Draggable Components from backend, rendered into the accordion
@@ -21,6 +24,8 @@ export const EditorPage = () => {
     const dispatch = useDispatch()
     const cmps = useSelector(state => state.cmpModule.cmps)
     const loadedWebApp = useSelector(state => state.webAppModule.loadedWebApp)
+    const user = useSelector(state => state.userModule.loggedInUser)
+    const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
 
     const { webAppId } = useParams();
 
@@ -49,13 +54,25 @@ export const EditorPage = () => {
         // If a draft exist in the local storage
         const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
         if (draftWebApp && !webAppId) {
-            setColumns({
-                ...columns,
-                [editing[0]]: {
-                    name: 'Editing',
-                    items: draftWebApp.children.map(section => { return { id: section.id, cmp: section } })
-                }
-            })
+            const ans = window.confirm('Continue from where you left?')
+            if (ans) {
+                setColumns({
+                    ...columns,
+                    [editing[0]]: {
+                        name: 'Editing',
+                        items: draftWebApp.children.map(section => { return { id: section.id, cmp: section } })
+                    }
+                })
+            } else {
+                localStorageService.removeFromStorage('draftWebApp')
+                setColumns({
+                    ...columns,
+                    [editing[0]]: {
+                        name: 'Editing',
+                        items: []
+                    }
+                })
+            }
             // If a webAppId has been passed through the query params
         } else if (webAppId) {
             if (loadedWebApp.length === 0) {
@@ -275,6 +292,21 @@ export const EditorPage = () => {
         })
     }
 
+    const onSaveWebApp = async () => {
+        if (!user) {
+            setIsAuthModalOpen(true)
+            //TODO: add alert
+            return
+        }
+        //TODO: Saved successfully
+        const webApp = localStorageService.loadFromStorage('draftWebApp')
+        await webAppService.save(webApp)
+        dispatch(setUser())
+        localStorageService.removeFromStorage('draftWebApp')
+    }
+
+
+
 
 
     if (webAppId && (!loadedWebApp || loadedWebApp.length === 0)) {
@@ -282,17 +314,25 @@ export const EditorPage = () => {
     }
 
     return (
-        <DragDropContext onDragStart={result => onDragStart()} onDragEnd={result => onDragEnd(result)}>
-            <main className="editor-page-container">
-                <Screen isOpen={isEditorMenuToggled} exitScreen={onToggleEditorMenu} />
-                <div className={`${isEditorMenuToggled ? 'side-editor-mobile-active' : ''} side-editor-container`}>
-                    <MainEditor windowWidth={windowWidth} onChangeEditorSize={onChangeEditorSize} editorWidth={editorWidth} onToggleEditorMenu={onToggleEditorMenu} droppableId={editor[0]} />
-                </div>
-                <WebAppContainer setCurrCmp={setCurrCmp} editorWidth={editorWidth} onChangeEditorSize={onChangeEditorSize} onToggleEditorMenu={onToggleEditorMenu} webAppCmps={editing[1].items} droppableId={editing[0]}
-                    onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} onDuplicateCmp={onDuplicateCmp} currCmp={currCmp} onUpdateCmp={onUpdateCmp}
-                />
-            </main>
-        </DragDropContext>
+        <>
+            <DragDropContext onDragStart={result => onDragStart()} onDragEnd={result => onDragEnd(result)}>
+                <main className="editor-page-container">
+                    <Screen isOpen={isEditorMenuToggled} exitScreen={onToggleEditorMenu} />
+                    <div className={`${isEditorMenuToggled ? 'side-editor-mobile-active' : ''} side-editor-container`}>
+                        <MainEditor windowWidth={windowWidth} onChangeEditorSize={onChangeEditorSize} editorWidth={editorWidth} onToggleEditorMenu={onToggleEditorMenu} droppableId={editor[0]} />
+                    </div>
+                    <WebAppContainer setCurrCmp={setCurrCmp} editorWidth={editorWidth} onChangeEditorSize={onChangeEditorSize} onToggleEditorMenu={onToggleEditorMenu} webAppCmps={editing[1].items} droppableId={editing[0]}
+                        onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} onDuplicateCmp={onDuplicateCmp} currCmp={currCmp} onUpdateCmp={onUpdateCmp} onSaveWebApp={onSaveWebApp}
+                    />
+                </main>
+            </DragDropContext>
+            {isAuthModalOpen &&
+                <>
+                    <AuthModal />
+                    <Screen isOpen={isAuthModalOpen} exitScreen={setIsAuthModalOpen} />
+                </>
+            }
+        </>
     )
 }
 

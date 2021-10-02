@@ -44,6 +44,15 @@ async function logout() {
     }
 }
 
-function getLoggedinUser() {
-    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN));
+
+async function getLoggedinUser() {
+    const loggedInUser = JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN));
+    try {
+        const user = await httpService.get(`/api/user/${loggedInUser._id}`)
+        sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, JSON.stringify(user));
+        return user
+    } catch (err) {
+        console.log(err);
+    }
 }
+
