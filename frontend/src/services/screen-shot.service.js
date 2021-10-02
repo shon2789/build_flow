@@ -6,15 +6,13 @@ export function uploadImg(file) {
     formData.append('file', file)
     formData.append('upload_preset', 'kl5zc9qj');
 
-    console.log(formData)
-
     return fetch(UPLOAD_URL, {
         method: 'POST',
         body: formData
     })
-        .then(res => res.json())
-        .then(res => {
-            return res.url
-        })
-        .catch(err => console.error(err))
+    .then(res => res.json())
+    .then(res => {
+        return res.url
+    })
+    .catch(err => console.error(err))
 }

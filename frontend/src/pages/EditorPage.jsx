@@ -320,7 +320,7 @@ export const EditorPage = () => {
         })
     }
 
-    const onSaveWebApp = async (imageUrl) => {
+    const onSaveWebApp = async () => {
         if (!user) {
             setIsAuthModalOpen(true)
 
@@ -341,8 +341,9 @@ export const EditorPage = () => {
         }
 
         const webApp = localStorageService.loadFromStorage('draftWebApp')
-        webApp.image = imageUrl;
-        await webAppService.save(webApp)
+        // webApp.image = imageUrl;
+        const savedWebApp = await webAppService.save(webApp)
+        // console.log('savedWebApp_ID:', savedWebApp._id)
         dispatch(setUser())
         localStorageService.removeFromStorage('draftWebApp')
 
@@ -360,6 +361,7 @@ export const EditorPage = () => {
             }
         });
 
+        return savedWebApp;
     }
 
 
