@@ -15,6 +15,7 @@ export const WebAppContainer = ({ setCurrCmp, droppableId, webAppCmps, onToggleE
         setCurrCmp(null)
     };
 
+
     return (
 
         <div className="web-app-container">

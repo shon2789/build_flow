@@ -13,6 +13,7 @@ import { webAppService } from '../services/web-app.service';
 import { localStorageService } from '../services/storage.service';
 import { AuthModal } from '../components/AuthModal';
 import { setUser } from '../store/actions/user.action';
+import { uploadImg } from '../services/screen-shot.service'
 
 
 
@@ -319,10 +320,9 @@ export const EditorPage = () => {
         })
     }
 
-    const onSaveWebApp = async () => {
+    const onSaveWebApp = async (imageUrl) => {
         if (!user) {
             setIsAuthModalOpen(true)
-
 
             store.addNotification({
                 message: "Login first",
@@ -341,6 +341,7 @@ export const EditorPage = () => {
         }
 
         const webApp = localStorageService.loadFromStorage('draftWebApp')
+        webApp.image = imageUrl;
         await webAppService.save(webApp)
         dispatch(setUser())
         localStorageService.removeFromStorage('draftWebApp')
