@@ -30,6 +30,17 @@
             color: inherit;
             box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 
+            transition: .3s;
+
+            &:hover{
+              color: rgb(37, 37, 37);
+            }
+
+            &.active{
+              background-color: #2B3039;
+              color: white;
+            }
+
             @include for-large-phone {
                 font-size: 1.1rem;
                 padding: 0.3rem 1rem;

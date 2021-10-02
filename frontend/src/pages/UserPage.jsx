@@ -9,6 +9,7 @@ import { setUser } from '../store/actions/user.action'
 export const UserPage = () => {
 
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [filterBy, setFilterBy] = useState('all');
     const user = useSelector(state => state.userModule.loggedInUser)
     const dispatch = useDispatch()
 
@@ -28,12 +29,16 @@ export const UserPage = () => {
         }
     }, [windowWidth])
 
+    const filterUserSites = (filterBy = 'all') => {
+        setFilterBy(filterBy)
+    }
+
 
     return (
         <section className="user-page">
             <SideNav />
             <UserSideNav windowWidth={windowWidth} />
-            <UserSites user={user} windowWidth={windowWidth} />
+            <UserSites filterBy={filterBy} filterUserSites={filterUserSites} user={user} windowWidth={windowWidth} />
         </section>
     )
 }
