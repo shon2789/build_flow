@@ -10,7 +10,6 @@ export const UserDetails = ({ windowWidth }) => {
 
 
 
-    console.log("user", user);
 
     return (
         <div className="user-details">

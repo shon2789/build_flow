@@ -28,7 +28,7 @@ export const UserPage = () => {
         }
     }, [windowWidth])
 
-    if (!user) return <div>Loading..</div>
+
     return (
         <section className="user-page">
             <SideNav />
