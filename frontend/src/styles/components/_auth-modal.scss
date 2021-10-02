@@ -1,20 +1,17 @@
-
-.auth-modal-container{
+.auth-modal-container {
     z-index: 100;
-    background-color: #ffffff;
+    background-color: #2b3039;
 
     position: fixed;
     top: 35%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: fit-content;
     border-radius: 10px;
 
-    animation: opacity .5s;
+    animation: opacity 0.5s;
 
-
-    .auth-form-container{
-
+    .auth-form-container {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -25,30 +22,30 @@
         padding-bottom: 1rem;
         position: relative;
 
-        @include for-large-phone{
+        @include for-large-phone {
             min-width: 24rem;
-        } 
+        }
     }
 
-    .auth-form-txt{
+    .auth-form-txt {
         margin-top: 2rem;
-        color: rgb(100, 100, 100);
-        
-        span{
-            color: $main-dark-color;
+        color: #f2efe7;
+        font-family: Lato regular;
+
+        span {
+            color: #c9c9c9;
             cursor: pointer;
             margin-left: 0.5rem;
             text-decoration: underline;
         }
     }
-    
 }
 
 @keyframes opacity {
-
-    from{
+    from {
         opacity: 0;
-    }to{
+    }
+    to {
         opacity: 1;
     }
 }

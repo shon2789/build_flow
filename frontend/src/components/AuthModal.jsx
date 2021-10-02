@@ -6,7 +6,6 @@ import { useForm, Controller } from 'react-hook-form';
 import { userService } from '../services/user.service';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../store/actions/user.action';
-import { useHistory } from 'react-router';
 import { store } from 'react-notifications-component';
 
 
@@ -19,30 +18,32 @@ const useStyles = makeStyles(theme => ({
         alignItems: 'center',
         padding: theme.spacing(2),
 
-
         '& .MuiTextField-root': {
-            margin: theme.spacing(1),
+            margin: theme.spacing(2),
             width: '300px',
-            color: "white",
-
         },
         '& .MuiButtonBase-root': {
             margin: theme.spacing(5),
         },
+        '& .MuiInputBase-input': {
+            color: '#f0eeee'
+        },
+        '& .MuiFormHelperText-root': {
+            color: '#c6c6c6'
+        }
     },
 }));
+
+
 
 export const AuthModal = ({ onToggleAuthModal }) => {
 
     const [isLogin, setIsLogin] = useState(true)
     const dispatch = useDispatch()
-    const history = useHistory();
-
     const classes = useStyles();
     const { handleSubmit, control } = useForm();
 
     const onSubmit = async data => {
-
         let user = null;
         try {
             if (isLogin) {
@@ -50,13 +51,11 @@ export const AuthModal = ({ onToggleAuthModal }) => {
             } else {
                 user = await userService.signup(data)
             }
-
-            if(!user){
+            if (!user) {
                 console.log('stupid russian')
             }
 
             dispatch(setUser())
-
             // Add notification
             store.addNotification({
                 message: "Logged in Successfully!",
@@ -82,11 +81,8 @@ export const AuthModal = ({ onToggleAuthModal }) => {
         setIsLogin(!isLogin)
     }
 
-
     return (
-
         <div className="auth-modal-container">
-
             <div className="auth-form-container">
                 <form className={classes.root} onSubmit={handleSubmit(onSubmit)}>
                     <div style={{
@@ -94,7 +90,6 @@ export const AuthModal = ({ onToggleAuthModal }) => {
                         flexDirection: "column",
                         alignItems: "center",
                     }}>
-
                         {!isLogin &&
                             <Controller
                                 name="fullName"
@@ -102,6 +97,9 @@ export const AuthModal = ({ onToggleAuthModal }) => {
                                 defaultValue=""
                                 render={({ field: { onChange, value }, fieldState: { error } }) => (
                                     <TextField
+                                        InputLabelProps={{
+                                            style: { color: '#c6c6c6' },
+                                        }}
                                         label="Full name"
                                         value={value}
                                         color="success"
@@ -119,6 +117,9 @@ export const AuthModal = ({ onToggleAuthModal }) => {
                             defaultValue=""
                             render={({ field: { onChange, value }, fieldState: { error } }) => (
                                 <TextField
+                                    InputLabelProps={{
+                                        style: { color: '#c6c6c6' },
+                                    }}
                                     label="Username"
                                     value={value}
                                     onChange={onChange}
@@ -134,6 +135,9 @@ export const AuthModal = ({ onToggleAuthModal }) => {
                             defaultValue=""
                             render={({ field: { onChange, value }, fieldState: { error } }) => (
                                 <TextField
+                                    InputLabelProps={{
+                                        style: { color: '#c6c6c6' },
+                                    }}
                                     label="Password"
                                     value={value}
                                     onChange={onChange}
@@ -143,27 +147,18 @@ export const AuthModal = ({ onToggleAuthModal }) => {
                                 />
                             )}
                             rules={{ required: 'Password required (4-12 characters)', minLength: 4, maxLength: 12 }}
-
                         />
-
                     </div>
-
                     <div style={{
-
                         gap: "10px",
                         marginTop: "3rem",
                         position: "absolute",
                         bottom: "3rem",
-
                     }} >
-
                         <div style={{
                             display: "flex",
                             gap: "10px",
-
                         }}>
-
-
                             <Button style={{
                                 margin: "0",
                                 width: "12.5rem",
