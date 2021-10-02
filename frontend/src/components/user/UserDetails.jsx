@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { FaRegSave } from "react-icons/fa";
 import { CgExport } from "react-icons/cg";
 import Avatar from 'react-avatar';
@@ -7,11 +7,6 @@ import { useSelector } from 'react-redux';
 export const UserDetails = ({ windowWidth }) => {
 
     const user = useSelector(state => state.userModule.loggedInUser)
-
-
-
-    console.log("user", user);
-
     return (
         <div className="user-details">
             <div className="user-profile-img">

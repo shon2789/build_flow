@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { setUser } from '../../store/actions/user.action'
+import React from 'react'
 import { UserSitePreview } from './UserSitePreview'
 
 export const UserSiteList = ({ user }) => {

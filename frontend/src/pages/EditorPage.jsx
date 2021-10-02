@@ -58,17 +58,17 @@ export const EditorPage = () => {
             let ans = false;
 
             // If the draft contains an _id, authenticate by the user
-            if(draftWebApp._id){
-                if(user){
+            if (draftWebApp._id) {
+                if (user) {
                     isAuth = user.webApps.some(webApp => webApp._id === draftWebApp._id)
                 } else {
                     isAuth = false;
                 }
-            // Else - it's a guest
+                // Else - it's a guest
             } else {
                 isAuth = true;
             }
-            if(isAuth) {
+            if (isAuth) {
                 ans = window.confirm('Continue from where you left?')
             }
 
