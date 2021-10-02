@@ -11,12 +11,14 @@ import { setUser } from '../store/actions/user.action';
 import { useDispatch, useSelector } from 'react-redux';
 import { Screen } from './Screen';
 import { AuthModal } from './AuthModal';
+import usePortal from 'react-useportal'
 
 
 export const SideNav = () => {
 
     const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
     const user = useSelector(state => state.userModule.loggedInUser)
+    const { Portal } = usePortal()
     const dispatch = useDispatch()
 
     const onLogOut = async () => {
@@ -31,10 +33,13 @@ export const SideNav = () => {
 
     return (
         <>
-            <Screen isOpen={isAuthModalOpen} exitScreen={onToggleAuthModal} />
-            {isAuthModalOpen &&
-                <AuthModal setIsAuthModalOpen={setIsAuthModalOpen} />
-            }
+
+            <Portal>
+                <Screen isOpen={isAuthModalOpen} exitScreen={onToggleAuthModal} />
+                {isAuthModalOpen &&
+                    <AuthModal setIsAuthModalOpen={setIsAuthModalOpen} />
+                }
+            </Portal>
 
             <div className="side-nav">
                 <div className="side-nav-icons-container">
