@@ -54,8 +54,25 @@ export const EditorPage = () => {
         // If a draft exist in the local storage
         const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
         if (draftWebApp && !webAppId) {
-            const ans = window.confirm('Continue from where you left?')
-            if (ans) {
+            let isAuth = false;
+            let ans = false;
+
+            // If the draft contains an _id, authenticate by the user
+            if(draftWebApp._id){
+                if(user){
+                    isAuth = user.webApps.some(webApp => webApp._id === draftWebApp._id)
+                } else {
+                    isAuth = false;
+                }
+            // Else - it's a guest
+            } else {
+                isAuth = true;
+            }
+            if(isAuth) {
+                ans = window.confirm('Continue from where you left?')
+            }
+
+            if (ans && isAuth) {
                 setColumns({
                     ...columns,
                     [editing[0]]: {
