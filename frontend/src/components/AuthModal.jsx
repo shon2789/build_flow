@@ -51,29 +51,6 @@ export const AuthModal = ({ onToggleAuthModal }) => {
             } else {
                 user = await userService.signup(data)
             }
-<<<<<<< HEAD
-            if (!user) {
-                console.log('stupid russian')
-            }
-
-            dispatch(setUser())
-            // Add notification
-            store.addNotification({
-                message: "Logged in Successfully!",
-                type: "success",
-                insert: "top",
-                container: "top-right",
-                fontFamily: "Lato regular,sans-serif",
-                animationIn: ["animate__animated", "animate__backInRight"],
-                animationOut: ["animate__animated", "animate__backOutRight"],
-                dismiss: {
-                    duration: 2000,
-                    onScreen: true
-                }
-            });
-            onToggleAuthModal(false)
-
-=======
 
             if (!user) {
                 store.addNotification({
@@ -109,7 +86,6 @@ export const AuthModal = ({ onToggleAuthModal }) => {
                 onToggleAuthModal(false)
             }
 
->>>>>>> d111466df855d6d87d11864900e5a7d075cfad41
         } catch (err) {
             console.log(err);
         }
