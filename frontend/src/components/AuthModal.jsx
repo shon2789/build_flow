@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: theme.spacing(2),
+        padding: theme.spacing(1),
 
         '& .MuiTextField-root': {
             margin: theme.spacing(2),
@@ -165,10 +165,10 @@ export const AuthModal = ({ onToggleAuthModal }) => {
                         />
                     </div>
                     <div style={{
-                        gap: "10px",
+                        gap: "5px",
                         marginTop: "3rem",
                         position: "absolute",
-                        bottom: "3rem",
+                        bottom: "1rem",
                     }} >
                         <div style={{
                             display: "flex",
@@ -201,6 +201,9 @@ export const AuthModal = ({ onToggleAuthModal }) => {
 
                             }
                         </div>
+                        <div style={{ display: "flex", justifyContent: 'center', alignItems: "center", marginTop: "1rem" }}>
+                            <GoogleAuth onToggleAuthModal={onToggleAuthModal} />
+                        </div>
 
                         <div style={{
                             textAlign: "center"
@@ -215,7 +218,6 @@ export const AuthModal = ({ onToggleAuthModal }) => {
                     </div>
                 </form>
             </div>
-            <GoogleAuth onToggleAuthModal={onToggleAuthModal} />
 
         </div>
 

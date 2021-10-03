@@ -61,16 +61,15 @@ export const GoogleAuth = ({ onToggleAuthModal }) => {
     };
 
     return (
-        <div>
-            <GoogleLogin
-                clientId={clientId}
-                buttonText="Login"
-                onSuccess={onSuccess}
-                onFailure={onFailure}
-                cookiePolicy={'single_host_origin'}
-                style={{ marginTop: '100px' }}
-                isSignedIn={false}
-            />
-        </div>
+        <GoogleLogin
+            clientId={clientId}
+            theme="dark"
+            buttonText="Sign in with Google"
+            onSuccess={onSuccess}
+            onFailure={onFailure}
+            cookiePolicy={'single_host_origin'}
+            style={{ marginTop: '100px' }}
+            isSignedIn={false}
+        />
     );
 }
