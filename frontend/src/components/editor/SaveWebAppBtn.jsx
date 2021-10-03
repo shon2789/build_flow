@@ -21,7 +21,6 @@ export const SaveWebAppBtn = ({ onSaveWebApp }) => {
                 type: "success",
                 insert: "top",
                 container: "top-right",
-                fontFamily: "Lato regular,sans-serif",
                 animationIn: ["animate__animated", "animate__backInRight"],
                 animationOut: ["animate__animated", "animate__backOutRight"],
                 dismiss: {
@@ -36,7 +35,6 @@ export const SaveWebAppBtn = ({ onSaveWebApp }) => {
                 type: "info",
                 insert: "top",
                 container: "top-right",
-                fontFamily: "Lato regular,sans-serif",
                 animationIn: ["animate__animated", "animate__backInRight"],
                 animationOut: ["animate__animated", "animate__backOutRight"],
                 dismiss: {
@@ -64,7 +62,6 @@ export const SaveWebAppBtn = ({ onSaveWebApp }) => {
                    type: "success",
                    insert: "top",
                    container: "top-right",
-                   fontFamily: "Lato regular,sans-serif",
                    animationIn: ["animate__animated", "animate__backInRight"],
                    animationOut: ["animate__animated", "animate__backOutRight"],
                    dismiss: {

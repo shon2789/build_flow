@@ -123,6 +123,9 @@ function updateCmp(currCmp, webAppCmps, type) {
         cmp.attributes.style = currCmp.attributes.style
       } else if (type === 'info') {
         cmp.info = currCmp.info
+      } else if (type === 'attributes'){
+        cmp.attributes = currCmp.attributes
+        console.log('cmp.type: ', cmp.type)
       }
       return
     } else {

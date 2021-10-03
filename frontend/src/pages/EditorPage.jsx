@@ -296,6 +296,8 @@ export const EditorPage = () => {
             currCmpCopy.attributes.style = updatedProperty;
         } else if (type === 'info') {
             currCmpCopy.info = updatedProperty;
+        } else if( type === 'attributes'){
+            currCmpCopy.attributes = updatedProperty;
         }
 
         setCurrCmp(currCmpCopy);
@@ -323,7 +325,6 @@ export const EditorPage = () => {
                 type: "danger",
                 insert: "top",
                 container: "top-right",
-                fontFamily: "Lato regular,sans-serif",
                 animationIn: ["animate__animated", "animate__backInRight"],
                 animationOut: ["animate__animated", "animate__backOutRight"],
                 dismiss: {

@@ -31,7 +31,6 @@ export const SideNav = () => {
             type: "default",
             insert: "top",
             container: "top-right",
-            fontFamily: "Lato regular,sans-serif",
             animationIn: ["animate__animated", "animate__backInRight"],
             animationOut: ["animate__animated", "animate__backOutRight"],
             dismiss: {

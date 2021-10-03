@@ -3,14 +3,17 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import { FaBold, FaUnderline, FaItalic } from "react-icons/fa";
 import { IoEnterOutline } from "react-icons/io5";
+import { store } from 'react-notifications-component';
+import { uploadInputImg } from '../../services/screen-shot.service';
 
 
 
 export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdateCmp, event }) => {
 
     const [cmpStyle, setCmpStyle] = useState(cmp.attributes.style);
-    const [editorPosition, setEditorPosition] = useState(null)
     const [cmpInfo, setCmpInfo] = useState(cmp?.info)
+    const [cmpAttr, setCmpAttr] = useState(cmp.attributes)
+    const [editorPosition, setEditorPosition] = useState(null)
     const ref = useRef()
     const isRightSpace = elCmpPos.right + 230 < window.innerWidth
 
@@ -49,6 +52,55 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
 
     const updateCmpInfo = () => {
         onUpdateCmp(cmpInfo, 'info')
+    }
+
+    const updateCmpAttributes = (attr = null) => {
+        if(attr){
+            onUpdateCmp(attr, 'attributes')
+        } else{
+            onUpdateCmp(cmpAttr, 'attributes')
+        }
+    }
+
+    const handleImgUpload = async (ev, type) => {
+
+        const uploadingMsgId = store.addNotification({
+            message: "Uploading image to cloud...",
+            type: "default",
+            insert: "top",
+            container: "top-right",
+            animationIn: ["animate__animated", "animate__backInRight"],
+            animationOut: ["animate__animated", "animate__backOutRight"],
+            style: {
+                fontFamily: "Lato regular,sans-serif"
+            }
+         });
+
+        const url = await uploadInputImg(ev)
+        const copyAttr =cloneDeep(cmpAttr)
+        if(type === 'src'){
+            copyAttr.src = url;
+        } else if(type === 'backgroundImage'){
+            copyAttr.style.backgroundImage = `url(${url})`
+            copyAttr.style.backgroundSize = 'cover'
+            copyAttr.style.backgroundRepeat = 'no-repeat'
+        }
+        setCmpAttr({ ...copyAttr})
+        updateCmpAttributes(copyAttr)
+        store.removeNotification(uploadingMsgId)
+
+        store.addNotification({
+            message: "Image uploaded to cloud!",
+            type: "success",
+            insert: "top",
+            container: "top-right",
+            animationIn: ["animate__animated", "animate__backInRight"],
+            animationOut: ["animate__animated", "animate__backOutRight"],
+            dismiss: {
+                duration: 3000,
+                onScreen: true
+            }
+         });
     }
 
 
@@ -92,15 +144,31 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
                 <>
                     <div className="link-container editing-container">
                         <label style={labelsStyle} id="img-link" htmlFor="src">Link</label>
-                        <input name="src" onChange={(ev) => { setCmpInfo({ ...cmpInfo, action: { ...cmpInfo.action, link: ev.target.value } }) }} id="img-link" type="input" />
-                        <IoEnterOutline onClick={() => { updateCmpInfo() }} className="editing-submit-btn" />
+                        <input name="src" onChange={(ev) => { setCmpAttr({ ...cmpAttr, src: ev.target.value }) }} id="img-link" type="input" />
+                        <IoEnterOutline onClick={() => { updateCmpAttributes() }} className="editing-submit-btn" />
                     </div>
                     <div className="upload-container editing-container">
                         <label style={labelsStyle} id="upload" htmlFor="src">Upload</label>
-                        <input name="file" onChange={(ev) => { setCmpInfo({ ...cmpInfo, action: { ...cmpInfo.action, link: ev.target.value } }) }} id="upload" type="file" />
+                        <input name="file" onChange={(ev) => {handleImgUpload(ev, 'src')}} id="upload" type="file" />
                     </div>
                 </>
             }
+
+            {choosenTool === 'backgroundImg' &&
+                <>
+                    <div className="link-container editing-container">
+                        <label style={labelsStyle} id="img-link" htmlFor="src">Link</label>
+                        <input name="backgroundImage" onChange={(ev) => { setCmpAttr({...cmpAttr, style: {...cmpStyle, backgroundImage: `url(${ev.target.value})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}) }} id="img-link" type="input" />
+                        <IoEnterOutline onClick={() => { updateCmpAttributes() }} className="editing-submit-btn" />
+                    </div>
+                    <div className="upload-container editing-container">
+                        <label style={labelsStyle} id="upload" htmlFor="src">Upload</label>
+                        <input name="file" onChange={(ev) => {handleImgUpload(ev, 'backgroundImage')}} id="upload" type="file" />
+                    </div>
+                </>
+            }
+
+
 
             {choosenTool === 'link' &&
                 <div className="link-container editing-container">

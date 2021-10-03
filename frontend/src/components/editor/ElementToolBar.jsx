@@ -75,7 +75,7 @@ export const ElementToolBar = ({ cmp, onDeleteCmp, onDuplicateCmp, onUpdateCmp }
                 }
                 {cmp.type === 'section' &&
                     <>
-                        <Tooltip title="Image" arrow placement="top"><div className="element-tool" onClick={(ev) => { onToggleEditing(ev, 'img') }}><BsImage className="image-tool tool" /></div></Tooltip>
+                        <Tooltip title="Background image" arrow placement="top"><div className="element-tool" onClick={(ev) => { onToggleEditing(ev, 'backgroundImg') }}><BsImage className="image-tool tool" /></div></Tooltip>
                         <Tooltip title="Color" arrow placement="top"><div className="element-tool" onClick={(ev) => { onToggleEditing(ev, 'color') }}><IoMdColorPalette className="color-tool tool" /></div></Tooltip>
                     </>
                 }
