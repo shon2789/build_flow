@@ -41,10 +41,10 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
         let { value, name } = target
         const cmpStyleCopy = cloneDeep(cmpStyle);
         if (rems.includes(name)) {
-            cmpStyleCopy[name] = value + 'rem';
+            // cmpStyleCopy[name] = value + 'rem';
             setCmpStyle({ ...cmpStyleCopy, [name]: value + 'rem' })
         } else {
-            cmpStyleCopy[name] = value;
+            // cmpStyleCopy[name] = value;
             setCmpStyle({ ...cmpStyleCopy, [name]: value })
         }
         onUpdateCmp(cmpStyleCopy, 'style')
@@ -183,29 +183,33 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
 
             {choosenTool === 'size' &&
                 <>
-                    <div className="width-container editing-container">
-                        <label style={labelsStyle} id="width" htmlFor="width">Width</label>
-                        <input step="1" name="width" onChange={(ev) => { updateCmpStyle(ev) }} id="width" type="range" max='30' min='5' />
-                    </div>
-                    <div className="height-container editing-container">
-                        <label style={labelsStyle} id="height" htmlFor="height">Height</label>
-                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="height" id="height" type="range" step="1" max='30' min='1' defaultValue={cmp.attributes.style?.width} />
-                    </div>
+                    {cmp.type === 'section' || cmp.type === 'img' && 
+                    <>
+                        <div className="width-container editing-container">
+                            <label style={labelsStyle} id="width" htmlFor="width">Width</label>
+                            <input step="1" name="width" onChange={(ev) => { updateCmpStyle(ev) }} id="width" type="range" max='30' min='5' defaultValue={cmp.attributes.style?.width} />
+                        </div>
+                        <div className="height-container editing-container">
+                            <label style={labelsStyle} id="height" htmlFor="height">Height</label>
+                            <input onChange={(ev) => { updateCmpStyle(ev) }} name="height" id="height" type="range" step="0.5" max='30' min='1' defaultValue={cmp.attributes.style?.height} />
+                        </div>
+                    </>
+                    }
                     <div className="padding-top-container editing-container">
                         <label style={labelsStyle} id="padding-top" htmlFor="paddingTop">Top spacing</label>
-                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="paddingTop" id="padding-top" type="range" step="0.01" max='4' min='0' defaultValue="1" />
+                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="paddingTop" id="padding-top" type="range" step="1" max='25' min='0' defaultValue={cmp.attributes.style?.paddingTop.split('rem')[0]} />
                     </div>
                     <div className="padding-bottom-container editing-container">
                         <label style={labelsStyle} id="padding-bottom" htmlFor="paddingBottom">Bottom spacing </label>
-                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="paddingBottom" id="padding-bottom" type="range" step="0.01" max='4' min='0' defaultValue="1" />
+                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="paddingBottom" id="padding-bottom" type="range" step="1" max='25' min='0' defaultValue={cmp.attributes.style?.paddingBottom.split('rem')[0]} />
                     </div>
                     <div className="padding-right-container editing-container">
                         <label style={labelsStyle} id="padding-left" htmlFor="paddingLeft">Left spacing</label>
-                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="paddingLeft" id="padding-left" type="range" step="0.01" max='4' min='0' defaultValue="1" />
+                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="paddingLeft" id="padding-left" type="range" step="1" max='25' min='0' defaultValue={cmp.attributes.style?.paddingLeft.split('rem')[0]} />
                     </div>
                     <div className="padding-left-container editing-container">
                         <label style={labelsStyle} id="padding-right" htmlFor="paddingRight">Right spacing</label>
-                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="paddingRight" id="padding-right" type="range" step="0.01" max='4' min='0' defaultValue="1" />
+                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="paddingRight" id="padding-right" type="range" step="1" max='25' min='0' defaultValue={cmp.attributes.style?.paddingRight.split('rem')[0]} />
                     </div>
                 </>
             }
@@ -213,15 +217,15 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
                 <>
                     <div className="font-size-container editing-container">
                         <label style={labelsStyle} id="font-size" htmlFor="fontSize">Font size</label>
-                        <input defaultValue={cmp.attributes.style.fontSize?.split('rem')[0]} step="0.01" name="fontSize" onChange={(ev) => { updateCmpStyle(ev) }} id="font-size" type="range" max='3.3' min='0.8' />
+                        <input defaultValue={cmp.attributes.style.fontSize?.split('rem')[0]} name="fontSize" onChange={(ev) => { updateCmpStyle(ev) }} id="font-size" type="range" step="0.5" max='5' min='0.5' />
                     </div>
                     <div className="letter-spacing-container editing-container">
                         <label style={labelsStyle} id="letter-spacing" htmlFor="letterSpacing">Letter spacing</label>
-                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="letterSpacing" id="letter-spacing" type="range" step="0.05" max='1' min='0.1' defaultValue="1" />
+                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="letterSpacing" id="letter-spacing" type="range" step="0.1" max='1' min='0' defaultValue={cmp.attributes.style?.letterSpacing.split('rem')[0]} />
                     </div>
                     <div className="line-height-container editing-container">
                         <label style={labelsStyle} id="line-height" htmlFor="lineHeight">Line height</label>
-                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="lineHeight" id="line-height" type="range" step="0.05" max='5' min='1' defaultValue="1" />
+                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="lineHeight" id="line-height" type="range" step="0.5" max='5' min='1' defaultValue={cmp.attributes.style?.letterSpacing} />
                     </div>
                     <div className="style-container editing-container">
                         <label style={labelsStyle} id="style" htmlFor="">Style</label>
@@ -234,8 +238,8 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
                     <div className="font-type-container editing-container">
                         <label style={labelsStyle} id="font-type" htmlFor="">Font</label>
                         <select onChange={(ev) => { updateCmpStyle(ev) }} name="fontFamily" className="font-type-selector" id="font-type">
-                            <option style={{ fontFamily: "lato regular" }} value="lato regular">Lato</option>
-                            <option style={{ fontFamily: "lato light" }} value="lato light">Lato light</option>
+                            <option style={{ fontFamily: "Lato regular" }} value="Lato regular">Lato</option>
+                            <option style={{ fontFamily: "Lato light" }} value="Lato light">Lato light</option>
                             <option style={{ fontFamily: "Birthstone regular" }} value="Birthstone regular">Birthstone</option>
                             <option style={{ fontFamily: "Bree serif" }} value="Bree serif">Bree Serif</option>
                             <option style={{ fontFamily: "kalam regular" }} value="kalam regular">kalam</option>

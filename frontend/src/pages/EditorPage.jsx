@@ -292,16 +292,22 @@ export const EditorPage = () => {
         const mappedWebAppCmps = webAppCmps.map(section => section.cmp)
         const currCmpCopy = cloneDeep(currCmp);
 
+        let propPath = 'style';
         if (type === 'style') {
-            currCmpCopy.attributes.style = updatedProperty;
+            if(editorWidth < 1130) propPath = 'style-tablet'
+            if(editorWidth < 763) propPath = 'style-mobile'
+
+            currCmpCopy.attributes[propPath] = updatedProperty;
         } else if (type === 'info') {
+            propPath = 'info'
             currCmpCopy.info = updatedProperty;
         } else if( type === 'attributes'){
+            propPath = 'attributes'
             currCmpCopy.attributes = updatedProperty;
         }
 
         setCurrCmp(currCmpCopy);
-        cmpService.updateCmp(currCmpCopy, mappedWebAppCmps, type)
+        cmpService.updateCmp(currCmpCopy, mappedWebAppCmps, propPath)
 
         webAppCmps.forEach((item, idx) => {
             item.cmp = mappedWebAppCmps[idx]

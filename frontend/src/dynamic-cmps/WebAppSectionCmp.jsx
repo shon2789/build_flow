@@ -26,7 +26,7 @@ export const WebAppSectionCmp = ({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDu
     }
 
     return (
-        <section onMouseOut={(ev) => { ev.target.classList.remove('element-edit-hover') }} onMouseOver={(ev) => { ev.target.classList.add('element-edit-hover') }} id={cmp.id} style={cmpStyle} className={cmp.attributes.className} onClick={(ev) => { onSetCurrCmp(ev, cmp) }} >
+        <section onMouseOut={(ev) => { ev.target.classList.remove('element-edit-hover') }} onMouseOver={(ev) => { ev.target.classList.add('element-edit-hover') }} id={cmp.id} style={{...cmpStyle}} className={cmp.attributes.className} onClick={(ev) => { onSetCurrCmp(ev, cmp) }} >
             {cmp.children && cmp.children.map((child, idx) => <DynamicCmp key={idx} cmp={child} currCmp={currCmp} onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} onDuplicateCmp={onDuplicateCmp} onUpdateCmp={onUpdateCmp} onChangeEditorSize={onChangeEditorSize} editorWidth={editorWidth} />)}
         </section>
     )

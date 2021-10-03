@@ -115,22 +115,21 @@ function getParentElement(element, mappedWebAppCmps, webAppCmps) {
   })
 }
 
-function updateCmp(currCmp, webAppCmps, type) {
-
+function updateCmp(currCmp, webAppCmps, propPath) {
+  
   webAppCmps.forEach(cmp => {
     if (cmp.id === currCmp.id) {
-      if (type === 'style') {
-        cmp.attributes.style = currCmp.attributes.style
-      } else if (type === 'info') {
-        cmp.info = currCmp.info
-      } else if (type === 'attributes'){
-        cmp.attributes = currCmp.attributes
-        console.log('cmp.type: ', cmp.type)
+      if (propPath === 'style' || propPath === 'style-mobile' || propPath === 'style-tablet') {
+        cmp.attributes[propPath] = currCmp.attributes[propPath]
+      } else if (propPath === 'info') {
+        cmp[propPath] = currCmp[propPath]
+      } else if (propPath === 'attributes'){
+        cmp[propPath] = currCmp[propPath]
       }
       return
     } else {
       if (cmp.children.length > 0) {
-        updateCmp(currCmp, cmp.children, type)
+        updateCmp(currCmp, cmp.children, propPath)
       }
     }
   })
