@@ -5,6 +5,8 @@ import { store } from 'react-notifications-component';
 import { userService } from '../services/user.service';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../store/actions/user.action';
+import { FcGoogle } from "react-icons/fc";
+
 // refresh token
 
 const clientId =
@@ -43,6 +45,8 @@ export const GoogleAuth = ({ onToggleAuthModal }) => {
         }
     };
 
+
+
     const onFailure = (res) => {
 
         store.addNotification({
@@ -68,8 +72,11 @@ export const GoogleAuth = ({ onToggleAuthModal }) => {
             onSuccess={onSuccess}
             onFailure={onFailure}
             cookiePolicy={'single_host_origin'}
-            style={{ marginTop: '100px' }}
+            render={renderProps => (
+                <button className="google-login-btn" onClick={renderProps.onClick} disabled={renderProps.disabled}><FcGoogle style={{ fontSize: '1.2rem' }} /> Sign in with Google</button>
+            )}
             isSignedIn={false}
+
         />
     );
 }
