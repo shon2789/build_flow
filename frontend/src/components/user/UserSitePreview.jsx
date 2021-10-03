@@ -5,11 +5,11 @@ export const UserSitePreview = ({ webApp }) => {
 
     return (
         <Link to={`/editor/${webApp._id}`}>
-            <div className="user-site-preview">
-                <img className="create-template-preview-img" src={webApp.image} alt={webApp.title} />
-                <div className="create-template-preview-lower">{webApp.title}</div>
+            <div className="user-site-preview" style={{ backgroundImage: `url('${webApp.image}')`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center top' }}>
+                {/* <img className="create-template-preview-img" src={webApp.image} alt={webApp.title} /> */}
+                {/* <div className="create-template-preview-lower">{webApp.title}</div> */}
             </div>
-        </Link>
+        </Link >
     )
 }
 

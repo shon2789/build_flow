@@ -13,9 +13,6 @@ import { webAppService } from '../services/web-app.service';
 import { localStorageService } from '../services/storage.service';
 import { AuthModal } from '../components/AuthModal';
 import { setUser } from '../store/actions/user.action';
-
-
-
 import { store } from 'react-notifications-component';
 import { AlertDialog } from '../components/AlertDialog';
 
@@ -62,7 +59,6 @@ export const EditorPage = () => {
         const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
         if (draftWebApp && !webAppId) {
             let isAuth = false;
-            let ans = false;
 
             // If the draft contains an _id, authenticate by the user
             if (draftWebApp._id) {
@@ -80,7 +76,6 @@ export const EditorPage = () => {
                 // ans = window.confirm('Continue from where you left?')
 
             }
-
             if (dialogAns && isAuth) {
                 setColumns({
                     ...columns,
@@ -230,7 +225,6 @@ export const EditorPage = () => {
                 }
             });
         }
-
     };
 
     // Toggle editor menu on moblie
@@ -250,7 +244,7 @@ export const EditorPage = () => {
     const onDeleteCmp = (cmpId) => {
         const webAppCmps = editing[1].items;
         const mappedWebAppCmps = webAppCmps.map(section => section.cmp)
-
+        setCurrCmp(null)
         if (currCmp) {
             const idx = mappedWebAppCmps.findIndex(section => currCmp.id === section.id)
             if (idx === -1) {
@@ -268,6 +262,7 @@ export const EditorPage = () => {
                 items: webAppCmps
             }
         })
+
     }
 
     const onSetCurrCmp = (ev, cmp) => {
@@ -375,7 +370,6 @@ export const EditorPage = () => {
 
     return (
         <>
-
             <DragDropContext onDragStart={result => onDragStart()} onDragEnd={result => onDragEnd(result)}>
                 <main className="editor-page-container">
                     <Screen isOpen={isEditorMenuToggled} exitScreen={onToggleEditorMenu} />
