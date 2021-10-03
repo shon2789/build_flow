@@ -55,11 +55,12 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
     }
 
     const updateCmpAttributes = (attr = null) => {
-        if(attr){
+        if (attr) {
             onUpdateCmp(attr, 'attributes')
-        } else{
+        } else {
             onUpdateCmp(cmpAttr, 'attributes')
         }
+        setIsEditing(false)
     }
 
     const handleImgUpload = async (ev, type) => {
@@ -74,18 +75,18 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
             style: {
                 fontFamily: "Lato regular,sans-serif"
             }
-         });
+        });
 
         const url = await uploadInputImg(ev)
-        const copyAttr =cloneDeep(cmpAttr)
-        if(type === 'src'){
+        const copyAttr = cloneDeep(cmpAttr)
+        if (type === 'src') {
             copyAttr.src = url;
-        } else if(type === 'backgroundImage'){
+        } else if (type === 'backgroundImage') {
             copyAttr.style.backgroundImage = `url(${url})`
             copyAttr.style.backgroundSize = 'cover'
             copyAttr.style.backgroundRepeat = 'no-repeat'
         }
-        setCmpAttr({ ...copyAttr})
+        setCmpAttr({ ...copyAttr })
         updateCmpAttributes(copyAttr)
         store.removeNotification(uploadingMsgId)
 
@@ -100,7 +101,7 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
                 duration: 3000,
                 onScreen: true
             }
-         });
+        });
     }
 
 
@@ -149,7 +150,7 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
                     </div>
                     <div className="upload-container editing-container">
                         <label style={labelsStyle} id="upload" htmlFor="src">Upload</label>
-                        <input name="file" onChange={(ev) => {handleImgUpload(ev, 'src')}} id="upload" type="file" />
+                        <input name="file" onChange={(ev) => { handleImgUpload(ev, 'src') }} id="upload" type="file" />
                     </div>
                 </>
             }
@@ -158,12 +159,12 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
                 <>
                     <div className="link-container editing-container">
                         <label style={labelsStyle} id="img-link" htmlFor="src">Link</label>
-                        <input name="backgroundImage" onChange={(ev) => { setCmpAttr({...cmpAttr, style: {...cmpStyle, backgroundImage: `url(${ev.target.value})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}) }} id="img-link" type="input" />
+                        <input name="backgroundImage" onChange={(ev) => { setCmpAttr({ ...cmpAttr, style: { ...cmpStyle, backgroundImage: `url(${ev.target.value})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' } }) }} id="img-link" type="input" />
                         <IoEnterOutline onClick={() => { updateCmpAttributes() }} className="editing-submit-btn" />
                     </div>
                     <div className="upload-container editing-container">
                         <label style={labelsStyle} id="upload" htmlFor="src">Upload</label>
-                        <input name="file" onChange={(ev) => {handleImgUpload(ev, 'backgroundImage')}} id="upload" type="file" />
+                        <input name="file" onChange={(ev) => { handleImgUpload(ev, 'backgroundImage') }} id="upload" type="file" />
                     </div>
                 </>
             }
