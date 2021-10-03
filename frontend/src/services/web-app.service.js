@@ -28,10 +28,8 @@ async function query() {
 async function save(webApp) {
   if (webApp._id) {
     return await httpService.put(`/api/webApp/`, webApp)
-    // return storageService.put(KEY, webApp)
   } else {
     return await httpService.post(`/api/webApp`, webApp)
-    // return storageService.post(KEY, webApp)
   }
 }
 

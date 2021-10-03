@@ -1,4 +1,5 @@
 import { httpService } from "./http.service";
+import { localStorageService } from "./storage.service";
 
 
 const STORAGE_KEY_LOGGEDIN = "loggedinUser";
@@ -14,7 +15,7 @@ export const userService = {
 async function login(credentials) {
     try {
         const user = await httpService.post(`/api/auth/login`, credentials)
-        sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, JSON.stringify(user));
+        localStorageService.saveToStorage(STORAGE_KEY_LOGGEDIN, user);
         return user
     } catch (err) {
         console.log(err);
@@ -25,7 +26,7 @@ async function login(credentials) {
 async function signup(credentials) {
     try {
         const user = await httpService.post(`/api/auth/signup`, credentials)
-        sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, JSON.stringify(user));
+        localStorageService.saveToStorage(STORAGE_KEY_LOGGEDIN, user);
         return user
 
     } catch (err) {
@@ -36,7 +37,7 @@ async function signup(credentials) {
 async function logout() {
     try {
         await httpService.post(`/api/auth/logout`)
-        sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, null);
+        localStorageService.removeFromStorage(STORAGE_KEY_LOGGEDIN);
 
     } catch (err) {
         console.log(err);
@@ -45,10 +46,10 @@ async function logout() {
 
 
 async function getLoggedinUser() {
-    const loggedInUser = JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN));
+    const loggedInUser = localStorageService.loadFromStorage(STORAGE_KEY_LOGGEDIN)
     try {
         const user = await httpService.get(`/api/user/${loggedInUser._id}`)
-        sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, JSON.stringify(user));
+        localStorageService.saveToStorage(STORAGE_KEY_LOGGEDIN, user);
         return user
     } catch (err) {
         console.log(err);
