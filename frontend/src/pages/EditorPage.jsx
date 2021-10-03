@@ -339,20 +339,6 @@ export const EditorPage = () => {
         dispatch(setUser())
         localStorageService.removeFromStorage('draftWebApp')
 
-        store.addNotification({
-            message: "Saved Successfully, Check your profile page.",
-            type: "success",
-            insert: "top",
-            container: "top-right",
-            fontFamily: "Lato regular,sans-serif",
-            animationIn: ["animate__animated", "animate__backInRight"],
-            animationOut: ["animate__animated", "animate__backOutRight"],
-            dismiss: {
-                duration: 3000,
-                onScreen: true
-            }
-        });
-
         return savedWebApp;
     }
 

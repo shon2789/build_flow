@@ -4,6 +4,7 @@ import { uploadImg } from '../../services/screen-shot.service';
 import { webAppService } from '../../services/web-app.service';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../store/actions/user.action';
+import { store } from 'react-notifications-component';
 
 export const SaveWebAppBtn = ({ onSaveWebApp }) => {
 
@@ -13,6 +14,37 @@ export const SaveWebAppBtn = ({ onSaveWebApp }) => {
 
     const handle = () => {
         onSaveWebApp().then((webApp) => {
+
+            // Saved successfully msg
+            store.addNotification({
+                message: "Saved Successfully!",
+                type: "success",
+                insert: "top",
+                container: "top-right",
+                fontFamily: "Lato regular,sans-serif",
+                animationIn: ["animate__animated", "animate__backInRight"],
+                animationOut: ["animate__animated", "animate__backOutRight"],
+                dismiss: {
+                    duration: 3000,
+                    onScreen: true
+                }
+             });
+
+            //  Uploading msg
+            const uploadingId = store.addNotification({
+                message: "Uploading media to cloud...",
+                type: "info",
+                insert: "top",
+                container: "top-right",
+                fontFamily: "Lato regular,sans-serif",
+                animationIn: ["animate__animated", "animate__backInRight"],
+                animationOut: ["animate__animated", "animate__backOutRight"],
+                dismiss: {
+                    duration: 0,
+                    onScreen: true
+                }
+             });
+
             const elWebAppBuilder = document.querySelector('.web-app-builder')
             toPng(elWebAppBuilder, { cacheBust: true})
             .then((dataUrl) => {
@@ -21,7 +53,24 @@ export const SaveWebAppBtn = ({ onSaveWebApp }) => {
                    webApp.image = url;
                    webAppService.save(webApp)
                    dispatch(setUser())
-                 })
+
+                   store.removeNotification(uploadingId)
+                   
+                   // Success msg
+                  store.addNotification({
+                   message: "Your project is ready to view!",
+                   type: "success",
+                   insert: "top",
+                   container: "top-right",
+                   fontFamily: "Lato regular,sans-serif",
+                   animationIn: ["animate__animated", "animate__backInRight"],
+                   animationOut: ["animate__animated", "animate__backOutRight"],
+                   dismiss: {
+                       duration: 3000,
+                       onScreen: true
+                   }
+                });
+                })
              })
             .catch((err) => {
               console.log(err)
