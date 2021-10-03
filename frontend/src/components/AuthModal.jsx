@@ -107,7 +107,7 @@ export const AuthModal = ({ onToggleAuthModal }) => {
                     }}>
                         {!isLogin &&
                             <Controller
-                                name="fullName"
+                                name="fullname"
                                 control={control}
                                 defaultValue=""
                                 render={({ field: { onChange, value }, fieldState: { error } }) => (
@@ -215,7 +215,7 @@ export const AuthModal = ({ onToggleAuthModal }) => {
                     </div>
                 </form>
             </div>
-            <GoogleAuth />
+            <GoogleAuth onToggleAuthModal={onToggleAuthModal} />
 
         </div>
 

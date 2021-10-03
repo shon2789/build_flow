@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { GoogleLogin } from 'react-google-login';
 import { refreshTokenSetup } from '../services/refresh-token-setup.service';
 import { store } from 'react-notifications-component';
@@ -11,11 +10,10 @@ import { setUser } from '../store/actions/user.action';
 const clientId =
     '705339567682-tmahsuufu2r3kvk142ve3jcridnr7p0m.apps.googleusercontent.com';
 
-export const GoogleAuth = () => {
+export const GoogleAuth = ({ onToggleAuthModal }) => {
 
     const dispatch = useDispatch()
     const onSuccess = async (res) => {
-
         const credentials = {
             fullname: res.profileObj.name,
             username: res.profileObj.email,
@@ -23,6 +21,7 @@ export const GoogleAuth = () => {
             isGoogle: true
         }
         refreshTokenSetup(res);
+        onToggleAuthModal(false)
 
         const user = await userService.signup(credentials)
         if (user) {

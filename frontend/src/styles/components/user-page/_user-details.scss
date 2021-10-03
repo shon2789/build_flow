@@ -73,6 +73,7 @@
             @include for-large-tablet {
                 position: static;
                 font-size: 1.1rem;
+                width: unset;
             }
         }
     }
