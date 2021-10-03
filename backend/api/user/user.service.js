@@ -42,6 +42,7 @@ async function add(user) {
             webApps: []
         }
         const collection = await dbService.getCollection('user')
+
         await collection.insertOne(userToAdd)
         return userToAdd
     } catch (err) {
@@ -53,7 +54,7 @@ async function add(user) {
 async function getByUsername(username) {
     try {
         const collection = await dbService.getCollection('user')
-        const user = await collection.findOne({ username })
+        const user = await collection.findOne({ username: username })
         return user
     } catch (err) {
         logger.error(`while finding user ${username}`, err)

@@ -33,7 +33,7 @@ export const UserDetails = ({ windowWidth }) => {
     return (
         <div className="user-details">
             <div className="user-profile-img">
-                <Avatar color={Avatar.getRandomColor('sitebase', ['#462446', '#b05f6d', '#eb6b56', '#ffc153', '#47b39d'])} title="Avatar" round={true} size={`${windowWidth < 1130 ? '80' : '150'}`} name={user ? user.fullName : "Guest"} />
+                <Avatar googleId="106956622792030697469" color={Avatar.getRandomColor('sitebase', ['#462446', '#b05f6d', '#eb6b56', '#ffc153', '#47b39d'])} title="Avatar" round={true} size={`${windowWidth < 1130 ? '80' : '150'}`} name={user ? user.fullName : "Guest"} />
             </div>
             <div className="user-profile-content">
                 <h3>{user ? user.fullName : "Guest"}</h3>

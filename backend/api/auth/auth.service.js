@@ -15,14 +15,25 @@ async function login(username, password) {
     return user
 }
 
-async function signup(username, password, fullname) {
+async function signup(username, password, fullname, isGoogle = null) {
     const saltRounds = 10
+
+    console.log("hi google", fullname);
 
     logger.debug(`auth.service - signup with username: ${username}, fullname: ${fullname}`)
     if (!username || !password || !fullname) return Promise.reject('fullname, username and password are required!')
 
+    const isUser = await userService.getByUsername(username)
+
+    console.log(isUser, "isUser");
+    // Google user is already signedup. Redirects to login
+    if (isGoogle && isUser) {
+        login(username, password)
+        return
+
+    }
     const hash = await bcrypt.hash(password, saltRounds)
-    return userService.add({ username, password: hash, fullname })
+    return userService.add({ username, password: hash, fullname, isGoogle })
 }
 
 module.exports = {

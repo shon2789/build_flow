@@ -7,6 +7,7 @@ import { userService } from '../services/user.service';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../store/actions/user.action';
 import { store } from 'react-notifications-component';
+import { GoogleAuth } from './GoogleAuth';
 
 
 
@@ -214,6 +215,7 @@ export const AuthModal = ({ onToggleAuthModal }) => {
                     </div>
                 </form>
             </div>
+            <GoogleAuth />
 
         </div>
 
