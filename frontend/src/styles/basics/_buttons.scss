@@ -51,11 +51,13 @@
     transition: transform 0.5s;
     animation: opcaity 0.5s ease-in-out;
 
-    &:hover {
-        transform: translateY(-3px) scale(1.05);
-    }
-    &:active {
-        transform: translateY(3px) scale(0.9);
+    @include for-tablet {
+        &:hover {
+            transform: translateY(-3px) scale(1.05);
+        }
+        &:active {
+            transform: translateY(3px) scale(0.9);
+        }
     }
 }
 
@@ -84,6 +86,12 @@
 
     @include for-tablet {
         right: 30px;
+        &:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+        &:active {
+            transform: translateY(5px) scale(0.9);
+        }
     }
 
     .page-up {
@@ -94,12 +102,29 @@
             font-size: 2.5rem;
         }
     }
+}
 
-    &:hover {
-        transform: translateY(-5px) scale(1.1);
-    }
-    &:active {
-        transform: translateY(5px) scale(0.9);
+.google-login-btn {
+    background-color: #141923;
+    color: #f2efe7;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 4px;
+    border: none;
+    font-family: Lato regular;
+    font-size: 1rem;
+    transition: transform 0.5s;
+
+    @include for-tablet {
+        &:hover {
+            transform: translateY(-2px) scale(1.02);
+        }
+        &:active {
+            transform: translateY(2px) scale(1);
+        }
     }
 }
 

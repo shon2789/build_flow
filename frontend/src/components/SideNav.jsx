@@ -46,10 +46,20 @@ export const SideNav = () => {
         setIsAuthModalOpen(boolean)
     }
 
+    //Change user profile icon to green when logged in
+    let style;
+    if (user) {
+        style = {
+            color: '#20e3b2'
+        }
+    } else {
+        style = {
+            color: '#b4b4b4	'
+        }
+    }
 
     return (
         <>
-
             <Portal>
                 <Screen isOpen={isAuthModalOpen} exitScreen={onToggleAuthModal} />
                 {isAuthModalOpen &&
@@ -61,7 +71,7 @@ export const SideNav = () => {
                 <div className="side-nav-icons-container">
                     <Link to="/"><div className="icon-btn icon-home"><Tooltip type="button" title="Home" arrow placement="right"><div><IoHome /></div></Tooltip></div></Link>
                     <Link to="/template"> <Tooltip className="test-tooltip" title="Templates" arrow placement="right"><div><HiTemplate className="icon-btn" /></div></Tooltip></Link>
-                    <Link to="/user" >  <Tooltip type="button" title="Profile" arrow placement="right"><div><FaUser className="icon-btn" /></div></Tooltip>  </Link>
+                    <Link style={style} to="/user" >  <Tooltip type="button" title="Profile" arrow placement="right"><div><FaUser className="icon-btn" /></div></Tooltip>  </Link>
                 </div>
                 <div className="side-nav-bottom-icons" >
                     {user &&
