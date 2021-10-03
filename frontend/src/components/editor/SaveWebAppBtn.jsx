@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { toPng } from 'html-to-image';
 import { uploadImg } from '../../services/screen-shot.service';
 import { webAppService } from '../../services/web-app.service';
@@ -46,10 +46,12 @@ export const SaveWebAppBtn = ({ onSaveWebApp }) => {
              });
 
             const elWebAppBuilder = document.querySelector('.web-app-builder')
-            toPng(elWebAppBuilder, { cacheBust: true})
+
+            toPng(elWebAppBuilder, { cacheBust: true, quality: 0.5, style:{width: '100%', margin: '0', outline: 'none'}})
             .then((dataUrl) => {
               uploadImg(dataUrl)
                .then(url => {
+                   console.log(url)
                    webApp.image = url;
                    webAppService.save(webApp)
                    dispatch(setUser())
