@@ -48,18 +48,10 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
         }
     }
 
-    const rems = ['fontSize', 'letterSpacing', 'paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight', 'width', 'height']
-
     const updateCmpStyle = ({ target }) => {
         let { value, name } = target
         const cmpStyleCopy = cloneDeep(cmpStyle);
-        if (rems.includes(name)) {
-            // cmpStyleCopy[name] = value + 'rem';
-            setCmpStyle({ ...cmpStyleCopy, [name]: value + 'rem' })
-        } else {
-            // cmpStyleCopy[name] = value;
-            setCmpStyle({ ...cmpStyleCopy, [name]: value })
-        }
+        setCmpStyle({ ...cmpStyleCopy, [name]: value + setUnit(cmpStyle[name]) })
         onUpdateCmp(cmpStyleCopy, 'style')
     }
 
@@ -151,7 +143,9 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
     }
 
     const splitter = (cssProp) => {
+        console.log(cssProp)
         if(!cssProp) return '';
+
         if(cssProp.includes('rem')){
             return cssProp.split('rem')[0]
         } else if(cssProp.includes('%')){
@@ -159,6 +153,17 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
         } else{
             return cssProp
         }
+    }
+
+    const setUnit = (cssProp) => {
+        if(cssProp.includes('%')){
+            return '%'
+        } else if(cssProp.includes('rem')){
+            return 'rem'
+        } else {
+            return ''
+        }
+
     }
 
     return (
