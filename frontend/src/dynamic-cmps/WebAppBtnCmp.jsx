@@ -26,7 +26,7 @@ export const WebAppBtnCmp = ({ cmp, currCmp, onSetCurrCmp, onDeleteCmp, onDuplic
     if (currCmp && currCmp.id === cmp.id) {
         return (
             <button id={cmp.id} style={{ ...cmpStyle, position: 'relative', outline: '2px dashed #c6c6c6', outlineOffset: '-2px' }} className={cmp.attributes.className} onClick={(ev) => { onSetCurrCmp(ev, cmp) }}>
-                <ElementToolBar cmp={cmp} onDeleteCmp={onDeleteCmp} onDuplicateCmp={onDuplicateCmp} onUpdateCmp={onUpdateCmp} />
+                <ElementToolBar cmp={cmp} onDeleteCmp={onDeleteCmp} onDuplicateCmp={onDuplicateCmp} onUpdateCmp={onUpdateCmp} editorWidth={editorWidth} />
                 <ContentEditable html={currCmp.info.txt} onKeyUp={handleChange} />
             </button>
         )
