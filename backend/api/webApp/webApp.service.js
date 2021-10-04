@@ -1,11 +1,12 @@
 const dbService = require('../../services/db.service')
+const userService = require('../user/user.service')
 const ObjectId = require('mongodb').ObjectId
 
 // Returns only the template webApps
 async function query() {
     try {
         const collection = await dbService.getCollection('webApp')
-        const webApps = await collection.find({isTemplate: true}).toArray()
+        const webApps = await collection.find({ isTemplate: true }).toArray()
         return webApps
     } catch (err) {
         logger.error('cannot find webApp', err)
@@ -51,9 +52,27 @@ async function getById(webAppId) {
     }
 }
 
+async function remove(webAppId) {
+    try {
+        const collection = await dbService.getCollection('webApp')
+        const criteria = { _id: ObjectId(webAppId) }
+        await collection.deleteOne(criteria)
+
+    } catch (err) {
+        logger.error(`cannot remove review ${webAppId}`, err)
+        throw err
+    }
+}
+
+
+
+
+
+
 module.exports = {
     query,
     getById,
     add,
-    update
+    update,
+    remove
 }

@@ -19,6 +19,18 @@ async function requireAuth(req, res, next) {
   }
 }
 
+async function requireDeleteAuth(req, res, next) {
+  const webAppId = req.params.webAppId;
+
+  const userWebApps = req.session.user.webApps;
+  if (userWebApps.some(webApp => webApp._id === webAppId)) {
+    next()
+  } else {
+    res.status(401).end('Not authenticated, Please Login')
+  }
+}
+
 module.exports = {
   requireAuth,
+  requireDeleteAuth
 }

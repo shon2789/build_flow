@@ -1,0 +1,49 @@
+.user-element-tool-bar{
+
+    display: flex;
+    position: absolute;
+    top: -2rem;
+    right: 7px;
+    gap: 0.4rem;
+    animation: opacity 0.3s;
+
+    @include for-large-phone{
+        right: 0px;
+    }
+
+    .tool {
+        color: $main-dark-color;
+        opacity: 0.7;
+        transition: opacity 0.3s, color 0.3s;
+
+        &:hover {
+            color: black;
+            opacity: 1;
+        }
+    }
+
+    .delete-tool {
+        color: #ff4f4f;
+
+        &:hover {
+            color: #ff4040;
+        }
+    }
+    .edit-tool {
+        font-size: 1.15rem;
+
+    }
+
+ 
+
+    .element-tool {
+        background-color: #fff;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.24);
+        width: 27px;
+        height: 27px;
+        border-radius: 50%;
+        @include flex-center;
+        font-size: 0.9rem;
+        cursor: pointer;
+    }
+} 

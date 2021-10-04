@@ -1,7 +1,7 @@
 
 import { webAppService } from "../../services/web-app.service";
 
-// TEMPLATES
+// TEMPLATES ONLY
 export const loadWebApps = () => {
     return async dispatch => {
         try {
@@ -35,18 +35,18 @@ export const loadWebApp = (webAppId) => {
     }
 }
 
-export const setWebApp = (webApp) => {
-    return dispatch => {
-        try {
-            dispatch({
-                type: "SET_WEBAPP",
-                webApp
-            })
-        } catch (err) {
-            console.log(err);
-        }
-    }
-}
+// export const setWebApp = (webApp) => {
+//     return dispatch => {
+//         try {
+//             dispatch({
+//                 type: "SET_WEBAPP",
+//                 webApp
+//             })
+//         } catch (err) {
+//             console.log(err);
+//         }
+//     }
+// }
 
 
 
@@ -71,3 +71,4 @@ export const saveWebApp = (webApp) => {
         }
     }
 }
+

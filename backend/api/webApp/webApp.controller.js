@@ -33,9 +33,9 @@ async function updateWebApp(req, res) {
             _id: webApp._id,
             title: webApp.title,
             isPublished: webApp.isPublished,
-            image: webApp.image 
+            image: webApp.image
         }
-        const idx = user.webApps.findIndex(miniWebApp => miniWebApp._id ===  webApp._id)
+        const idx = user.webApps.findIndex(miniWebApp => miniWebApp._id === webApp._id)
         user.webApps.splice(idx, 1, minifiedWebApp)
         userService.update(user)
         res.send(webApp)
@@ -53,7 +53,7 @@ async function addWebApp(req, res) {
             _id: ObjectId(webApp._id),
             title: webApp.title,
             isPublished: webApp.isPublished,
-            image: webApp.image 
+            image: webApp.image
             // Todo: make the first save's image a demo image (something nice, until real image comes)
         }
         user.webApps.push(minifiedWebApp)
@@ -65,10 +65,33 @@ async function addWebApp(req, res) {
     }
 }
 
+
+async function deleteWebApp(req, res) {
+    try {
+
+        await webAppService.remove(req.params.webAppId)
+
+        const user = req.session.user
+        const idx = user.webApps.findIndex(webApp => webApp._id === req.params.webAppId)
+        user.webApps.splice(idx, 1)
+
+        userService.update(user)
+
+
+        res.send({ msg: 'Deleted successfully' })
+    } catch (err) {
+        logger.error('Failed to delete review', err)
+        res.status(500).send({ err: 'Failed to delete review' })
+    }
+}
+
+
+
 module.exports = {
     addWebApp,
     updateWebApp,
     getWebAppById,
-    getWebApps
+    getWebApps,
+    deleteWebApp
 
 }

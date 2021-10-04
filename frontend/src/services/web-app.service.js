@@ -34,7 +34,6 @@ async function save(webApp) {
 }
 
 async function getById(webAppId) {
-
   try {
     const webApp = await httpService.get(`/api/webApp/${webAppId}`)
     return webApp
@@ -44,8 +43,12 @@ async function getById(webAppId) {
   }
 }
 
-function remove(webAppId) {
-  return storageService.remove(KEY, webAppId)
+async function remove(webAppId) {
+  try {
+    await httpService.delete(`/api/webApp/${webAppId}`)
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 function createNewWebApp() {
