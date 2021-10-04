@@ -143,21 +143,21 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
     }
 
     const splitter = (cssProp) => {
-        if(!cssProp) return '';
-        if(cssProp.includes('rem')){
+        if (!cssProp) return '';
+        if (cssProp.includes('rem')) {
             return cssProp.split('rem')[0]
-        } else if(cssProp.includes('%')){
+        } else if (cssProp.includes('%')) {
             return cssProp.split('%')[0]
-        } else{
+        } else {
             return cssProp
         }
     }
-    
+
     const setUnit = (cssProp) => {
-        if(!cssProp) return '';
-        if(cssProp.includes('%')){
+        if (!cssProp) return '';
+        if (cssProp.includes('%')) {
             return '%'
-        } else if(cssProp.includes('rem')){
+        } else if (cssProp.includes('rem')) {
             return 'rem'
         } else {
             return ''
@@ -211,21 +211,21 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
 
             {choosenTool === 'size' &&
                 <>
-                    {((cmpStyle.width && !cmp.sectionType && cmpStyle.width !== 'fit-content')) && 
-                    <>
-                        <div className="width-container editing-container">
-                            <label style={labelsStyle} id="width" htmlFor="width">Width</label>
-                            <input step="1" name="width" onChange={(ev) => { updateCmpStyle(ev) }} id="width" type="range" max={splitter(cmpStyle.maxWidth)} min={splitter(cmpStyle.minWidth)} defaultValue={splitter(cmpStyle.width)} />
-                        </div>
-                    </>
+                    {((cmpStyle.width && !cmp.sectionType && cmpStyle.width !== 'fit-content')) &&
+                        <>
+                            <div className="width-container editing-container">
+                                <label style={labelsStyle} id="width" htmlFor="width">Width</label>
+                                <input step="1" name="width" onChange={(ev) => { updateCmpStyle(ev) }} id="width" type="range" max={splitter(cmpStyle.maxWidth)} min={splitter(cmpStyle.minWidth)} defaultValue={splitter(cmpStyle.width)} />
+                            </div>
+                        </>
                     }
-                    {(cmpStyle.height) && 
-                    <>
-                        <div className="height-container editing-container">
-                        <label style={labelsStyle} id="height" htmlFor="height">Height</label>
-                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="height" id="height" type="range" step="0.5" max={splitter(cmpStyle.maxHeight)} min={splitter(cmpStyle.minHeight)} defaultValue={splitter(cmpStyle.height)} />
-                        </div>
-                    </>
+                    {(cmpStyle.height && cmpStyle.height !== 'fit-content') &&
+                        <>
+                            <div className="height-container editing-container">
+                                <label style={labelsStyle} id="height" htmlFor="height">Height</label>
+                                <input onChange={(ev) => { updateCmpStyle(ev) }} name="height" id="height" type="range" step="0.5" max={splitter(cmpStyle.maxHeight)} min={splitter(cmpStyle.minHeight)} defaultValue={splitter(cmpStyle.height)} />
+                            </div>
+                        </>
                     }
                     <div className="padding-top-container editing-container">
                         <label style={labelsStyle} id="padding-top" htmlFor="paddingTop">Top spacing</label>
