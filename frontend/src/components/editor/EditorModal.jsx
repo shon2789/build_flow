@@ -211,7 +211,7 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
 
             {choosenTool === 'size' &&
                 <>
-                    {((cmpStyle.width && !cmp.sectionType) || (cmpStyle.width && cmpStyle.width === 'fit-content')) && 
+                    {((cmpStyle.width && !cmp.sectionType && cmpStyle.width !== 'fit-content')) && 
                     <>
                         <div className="width-container editing-container">
                             <label style={labelsStyle} id="width" htmlFor="width">Width</label>
