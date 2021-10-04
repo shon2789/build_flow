@@ -143,9 +143,7 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
     }
 
     const splitter = (cssProp) => {
-        console.log(cssProp)
         if(!cssProp) return '';
-
         if(cssProp.includes('rem')){
             return cssProp.split('rem')[0]
         } else if(cssProp.includes('%')){
@@ -154,8 +152,9 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
             return cssProp
         }
     }
-
+    
     const setUnit = (cssProp) => {
+        if(!cssProp) return '';
         if(cssProp.includes('%')){
             return '%'
         } else if(cssProp.includes('rem')){
