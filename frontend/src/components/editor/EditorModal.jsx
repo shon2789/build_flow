@@ -150,6 +150,17 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
         outline: 'none'
     }
 
+    const splitter = (cssProp) => {
+        if(!cssProp) return '';
+        if(cssProp.includes('rem')){
+            return cssProp.split('rem')[0]
+        } else if(cssProp.includes('%')){
+            return cssProp.split('%')[0]
+        } else{
+            return cssProp
+        }
+    }
+
     return (
         <div ref={ref} className="editor-modal" style={style}>
 
@@ -196,33 +207,37 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
 
             {choosenTool === 'size' &&
                 <>
-                    {(cmp.type === 'section' || cmp.type === 'img') && 
+                    {(cmpStyle.width && !cmp.sectionType) && 
                     <>
                         <div className="width-container editing-container">
                             <label style={labelsStyle} id="width" htmlFor="width">Width</label>
-                            <input step="1" name="width" onChange={(ev) => { updateCmpStyle(ev) }} id="width" type="range" max={cmpStyle.maxWidth} min={cmpStyle.minWidth} defaultValue={cmpStyle?.width} />
+                            <input step="1" name="width" onChange={(ev) => { updateCmpStyle(ev) }} id="width" type="range" max={splitter(cmpStyle.maxWidth)} min={splitter(cmpStyle.minWidth)} defaultValue={splitter(cmpStyle.width)} />
                         </div>
+                    </>
+                    }
+                    {(cmpStyle.height) && 
+                    <>
                         <div className="height-container editing-container">
-                            <label style={labelsStyle} id="height" htmlFor="height">Height</label>
-                            <input onChange={(ev) => { updateCmpStyle(ev) }} name="height" id="height" type="range" step="0.5" max={cmpStyle.maxHeight.split('rem')[0]} min={cmpStyle.minHeight.split('rem')[0]} defaultValue={cmpStyle?.height.split('rem')[0]} />
+                        <label style={labelsStyle} id="height" htmlFor="height">Height</label>
+                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="height" id="height" type="range" step="0.5" max={splitter(cmpStyle.maxHeight)} min={splitter(cmpStyle.minHeight)} defaultValue={splitter(cmpStyle.height)} />
                         </div>
                     </>
                     }
                     <div className="padding-top-container editing-container">
                         <label style={labelsStyle} id="padding-top" htmlFor="paddingTop">Top spacing</label>
-                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="paddingTop" id="padding-top" type="range" step="1" max='25' min='0' defaultValue={cmp.attributes.style?.paddingTop.split('rem')[0]} />
+                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="paddingTop" id="padding-top" type="range" step="1" max='25' min='0' defaultValue={splitter(cmp.attributes.style?.paddingTop)} />
                     </div>
                     <div className="padding-bottom-container editing-container">
                         <label style={labelsStyle} id="padding-bottom" htmlFor="paddingBottom">Bottom spacing </label>
-                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="paddingBottom" id="padding-bottom" type="range" step="1" max='25' min='0' defaultValue={cmp.attributes.style?.paddingBottom.split('rem')[0]} />
+                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="paddingBottom" id="padding-bottom" type="range" step="1" max='25' min='0' defaultValue={splitter(cmp.attributes.style?.paddingBottom)} />
                     </div>
                     <div className="padding-right-container editing-container">
                         <label style={labelsStyle} id="padding-left" htmlFor="paddingLeft">Left spacing</label>
-                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="paddingLeft" id="padding-left" type="range" step="1" max='25' min='0' defaultValue={cmp.attributes.style?.paddingLeft.split('rem')[0]} />
+                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="paddingLeft" id="padding-left" type="range" step="1" max='25' min='0' defaultValue={splitter(cmp.attributes.style?.paddingLeft)} />
                     </div>
                     <div className="padding-left-container editing-container">
                         <label style={labelsStyle} id="padding-right" htmlFor="paddingRight">Right spacing</label>
-                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="paddingRight" id="padding-right" type="range" step="1" max='25' min='0' defaultValue={cmp.attributes.style?.paddingRight.split('rem')[0]} />
+                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="paddingRight" id="padding-right" type="range" step="1" max='25' min='0' defaultValue={splitter(cmp.attributes.style?.paddingRight)} />
                     </div>
                 </>
             }
@@ -230,11 +245,11 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
                 <>
                     <div className="font-size-container editing-container">
                         <label style={labelsStyle} id="font-size" htmlFor="fontSize">Font size</label>
-                        <input defaultValue={cmp.attributes.style.fontSize?.split('rem')[0]} name="fontSize" onChange={(ev) => { updateCmpStyle(ev) }} id="font-size" type="range" step="0.5" max='5' min='0.5' />
+                        <input defaultValue={splitter(cmp.attributes.style.fontSize)} name="fontSize" onChange={(ev) => { updateCmpStyle(ev) }} id="font-size" type="range" step="0.5" max='5' min='0.5' />
                     </div>
                     <div className="letter-spacing-container editing-container">
                         <label style={labelsStyle} id="letter-spacing" htmlFor="letterSpacing">Letter spacing</label>
-                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="letterSpacing" id="letter-spacing" type="range" step="0.1" max='1' min='0' defaultValue={cmp.attributes.style?.letterSpacing.split('rem')[0]} />
+                        <input onChange={(ev) => { updateCmpStyle(ev) }} name="letterSpacing" id="letter-spacing" type="range" step="0.1" max='1' min='0' defaultValue={splitter(cmp.attributes.style?.letterSpacing)} />
                     </div>
                     <div className="line-height-container editing-container">
                         <label style={labelsStyle} id="line-height" htmlFor="lineHeight">Line height</label>
