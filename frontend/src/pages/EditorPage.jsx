@@ -294,14 +294,14 @@ export const EditorPage = () => {
 
         let propPath = 'style';
         if (type === 'style') {
-            if(editorWidth < 1130) propPath = 'style-tablet'
-            if(editorWidth < 763) propPath = 'style-mobile'
+            if (editorWidth < 1130) propPath = 'style-tablet'
+            if (editorWidth < 763) propPath = 'style-mobile'
 
             currCmpCopy.attributes[propPath] = updatedProperty;
         } else if (type === 'info') {
             propPath = 'info'
             currCmpCopy.info = updatedProperty;
-        } else if( type === 'attributes'){
+        } else if (type === 'attributes') {
             propPath = 'attributes'
             currCmpCopy.attributes = updatedProperty;
         }
@@ -323,24 +323,6 @@ export const EditorPage = () => {
     }
 
     const onSaveWebApp = async () => {
-        if (!user) {
-            setIsAuthModalOpen(true)
-
-            store.addNotification({
-                message: "Login first",
-                type: "danger",
-                insert: "top",
-                container: "top-right",
-                animationIn: ["animate__animated", "animate__backInRight"],
-                animationOut: ["animate__animated", "animate__backOutRight"],
-                dismiss: {
-                    duration: 2500,
-                    onScreen: true
-                }
-            });
-            return
-        }
-
         const webApp = localStorageService.loadFromStorage('draftWebApp')
         const savedWebApp = await webAppService.save(webApp)
         dispatch(setUser())
@@ -369,14 +351,14 @@ export const EditorPage = () => {
                     <div className={`${isEditorMenuToggled ? 'side-editor-mobile-active' : ''} side-editor-container`}>
                         <MainEditor windowWidth={windowWidth} onChangeEditorSize={onChangeEditorSize} editorWidth={editorWidth} onToggleEditorMenu={onToggleEditorMenu} droppableId={editor[0]} />
                     </div>
-                    <WebAppContainer setCurrCmp={setCurrCmp} editorWidth={editorWidth} onChangeEditorSize={onChangeEditorSize} onToggleEditorMenu={onToggleEditorMenu} webAppCmps={editing[1].items} droppableId={editing[0]}
+                    <WebAppContainer setIsAuthModalOpen={setIsAuthModalOpen} setCurrCmp={setCurrCmp} editorWidth={editorWidth} onChangeEditorSize={onChangeEditorSize} onToggleEditorMenu={onToggleEditorMenu} webAppCmps={editing[1].items} droppableId={editing[0]}
                         onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} onDuplicateCmp={onDuplicateCmp} currCmp={currCmp} onUpdateCmp={onUpdateCmp} onSaveWebApp={onSaveWebApp}
                     />
                 </main>
             </DragDropContext>
             {isAuthModalOpen &&
                 <>
-                    <AuthModal />
+                    <AuthModal onToggleAuthModal={setIsAuthModalOpen} />
                     <Screen isOpen={isAuthModalOpen} exitScreen={setIsAuthModalOpen} />
                 </>
             }
