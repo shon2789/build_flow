@@ -2,19 +2,38 @@ import React from 'react'
 import { toPng } from 'html-to-image';
 import { uploadImg } from '../../services/screen-shot.service';
 import { webAppService } from '../../services/web-app.service';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../../store/actions/user.action';
 import { store } from 'react-notifications-component';
 
-export const SaveWebAppBtn = ({ onSaveWebApp, editorWidth }) => {
+export const SaveWebAppBtn = ({ onSaveWebApp, setIsAuthModalOpen, editorWidth }) => {
 
-
-  
+    const user = useSelector(state => state.userModule.loggedInUser)
     const dispatch = useDispatch();
 
-    const handle = () => {
-        onSaveWebApp().then((webApp) => {
 
+
+    const handle = () => {
+
+        if (!user) {
+            setIsAuthModalOpen(true)
+            store.addNotification({
+                message: "Login first",
+                type: "danger",
+                insert: "top",
+                container: "top-right",
+                animationIn: ["animate__animated", "animate__backInRight"],
+                animationOut: ["animate__animated", "animate__backOutRight"],
+                dismiss: {
+                    duration: 2500,
+                    onScreen: true
+                }
+            });
+
+            return
+        }
+
+        onSaveWebApp().then((webApp) => {
             // Saved successfully msg
             store.addNotification({
                 message: "Saved Successfully!",
@@ -27,7 +46,7 @@ export const SaveWebAppBtn = ({ onSaveWebApp, editorWidth }) => {
                     duration: 3000,
                     onScreen: true
                 }
-             });
+            });
 
             //  Uploading msg
             const uploadingId = store.addNotification({
@@ -41,7 +60,7 @@ export const SaveWebAppBtn = ({ onSaveWebApp, editorWidth }) => {
                     duration: 0,
                     onScreen: true
                 }
-             });
+            });
 
             const elWebAppBuilder = document.querySelector('.web-app-builder')
 
@@ -54,26 +73,26 @@ export const SaveWebAppBtn = ({ onSaveWebApp, editorWidth }) => {
                    webAppService.save(webApp)
                    dispatch(setUser())
 
-                   store.removeNotification(uploadingId)
-                   
-                   // Success msg
-                  store.addNotification({
-                   message: "Your project is ready to view!",
-                   type: "success",
-                   insert: "top",
-                   container: "top-right",
-                   animationIn: ["animate__animated", "animate__backInRight"],
-                   animationOut: ["animate__animated", "animate__backOutRight"],
-                   dismiss: {
-                       duration: 3000,
-                       onScreen: true
-                   }
-                });
+                            store.removeNotification(uploadingId)
+
+                            // Success msg
+                            store.addNotification({
+                                message: "Your project is ready to view!",
+                                type: "success",
+                                insert: "top",
+                                container: "top-right",
+                                animationIn: ["animate__animated", "animate__backInRight"],
+                                animationOut: ["animate__animated", "animate__backOutRight"],
+                                dismiss: {
+                                    duration: 3000,
+                                    onScreen: true
+                                }
+                            });
+                        })
                 })
-             })
-            .catch((err) => {
-              console.log(err)
-            })
+                .catch((err) => {
+                    console.log(err)
+                })
         })
     }
 
