@@ -13,6 +13,8 @@ import { Screen } from './Screen';
 import { AuthModal } from './AuthModal';
 import usePortal from 'react-useportal'
 import { store } from 'react-notifications-component';
+import { VscCircleFilled } from "react-icons/vsc";
+
 
 
 export const SideNav = () => {
@@ -49,7 +51,7 @@ export const SideNav = () => {
     let style;
     if (user) {
         style = {
-            color: '#20e3b2'
+            color: '#98FB98'
         }
     } else {
         style = {
@@ -70,7 +72,7 @@ export const SideNav = () => {
                 <div className="side-nav-icons-container">
                     <Link to="/"><div className="icon-btn icon-home"><Tooltip type="button" title="Home" arrow placement="right"><div><IoHome /></div></Tooltip></div></Link>
                     <Link to="/template"> <Tooltip className="test-tooltip" title="Templates" arrow placement="right"><div><HiTemplate className="icon-btn" /></div></Tooltip></Link>
-                    <Link style={style} to="/user" >  <Tooltip type="button" title="Profile" arrow placement="right"><div><FaUser className="icon-btn" /></div></Tooltip>  </Link>
+                    <Link to="/user" style={style} >  <Tooltip type="button" title="Profile" arrow placement="right"><div className="user-profile-side-nav-container"><FaUser className="icon-btn" /></div></Tooltip>  </Link>
                 </div>
                 <div className="side-nav-bottom-icons" >
                     {user &&

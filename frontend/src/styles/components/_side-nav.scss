@@ -8,7 +8,8 @@
     padding: 0 0.5rem;
     z-index: 10;
 
-    .side-nav-icons-container,.side-nav-bottom-icons {
+    .side-nav-icons-container,
+    .side-nav-bottom-icons {
         display: flex;
         flex-direction: column;
         font-size: 1.5rem;
@@ -26,14 +27,25 @@
         }
     }
 
-    .side-nav-bottom-icons{
-           bottom: 4rem;
-           font-size: 1.8rem;
+    .side-nav-bottom-icons {
+        bottom: 4rem;
+        font-size: 1.8rem;
 
-           @include flex-center;
+        @include flex-center;
 
-           @include for-tablet{
+        @include for-tablet {
             bottom: 3.1rem;
-           }
+        }
+    }
+
+    .user-profile-side-nav-container {
+        position: relative;
+
+        .profile-green-dot {
+            position: absolute;
+            right: -10px;
+            top: -10px;
+            z-index: 1000;
+        }
     }
 }
