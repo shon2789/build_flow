@@ -7,7 +7,7 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
 
 
 
-export const WebAppContainer = ({ setIsAuthModalOpen, setCurrCmp, droppableId, webAppCmps, onToggleEditorMenu, editorWidth, onChangeEditorSize, onDeleteCmp, onSetCurrCmp, currCmp, onDuplicateCmp, onUpdateCmp, onSaveWebApp }) => {
+export const WebAppContainer = ({ setCurrCmp, droppableId, webAppCmps, onToggleEditorMenu, editorWidth, onChangeEditorSize, onDeleteCmp, onSetCurrCmp, currCmp, onDuplicateCmp, onUpdateCmp, onSaveWebApp, setIsPromptDialogOpen, setIsAuthModalOpen }) => {
 
     //When clicking on anything other than the editable component
     const handleClickAway = (ev) => {
@@ -44,7 +44,7 @@ export const WebAppContainer = ({ setIsAuthModalOpen, setCurrCmp, droppableId, w
                                     </Draggable>
                                 )
                             })}
-                            < SaveWebAppBtn setIsAuthModalOpen={setIsAuthModalOpen} onSaveWebApp={onSaveWebApp} editorWidth={editorWidth}/>
+                            < SaveWebAppBtn setIsPromptDialogOpen={setIsPromptDialogOpen} setIsAuthModalOpen={setIsAuthModalOpen} onSaveWebApp={onSaveWebApp} editorWidth={editorWidth}/>
                             {provided.placeholder}
                         </div>
                     )
