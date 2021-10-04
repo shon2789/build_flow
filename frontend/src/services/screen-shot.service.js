@@ -1,6 +1,14 @@
 export function uploadImg(file) {
     const CLOUD_NAME = 'dfj4zd14o'
     const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
+    
+        // Dev - download
+        // const link = document.createElement("a");
+        // link.href = file;
+        // link.download = "test.png";
+        // link.click();
+    
+
 
     const formData = new FormData();
     formData.append('file', file)

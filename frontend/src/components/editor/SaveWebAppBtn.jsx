@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { setUser } from '../../store/actions/user.action';
 import { store } from 'react-notifications-component';
 
-export const SaveWebAppBtn = ({ onSaveWebApp }) => {
+export const SaveWebAppBtn = ({ onSaveWebApp, editorWidth }) => {
 
 
   
@@ -45,7 +45,7 @@ export const SaveWebAppBtn = ({ onSaveWebApp }) => {
 
             const elWebAppBuilder = document.querySelector('.web-app-builder')
 
-            toPng(elWebAppBuilder, { cacheBust: true, quality: 0.2, style:{width: '100%', margin: '0', outline: 'none'}})
+            toPng(elWebAppBuilder, { cacheBust: true, style:{width: '100%', margin: '0', outline: 'none'}, width: editorWidth, height: 480, quality: 0.2})
             .then((dataUrl) => {
               uploadImg(dataUrl)
                .then(url => {

@@ -44,7 +44,7 @@ export const WebAppContainer = ({ setCurrCmp, droppableId, webAppCmps, onToggleE
                                     </Draggable>
                                 )
                             })}
-                            < SaveWebAppBtn onSaveWebApp={onSaveWebApp} />
+                            < SaveWebAppBtn onSaveWebApp={onSaveWebApp} editorWidth={editorWidth}/>
                             {provided.placeholder}
                         </div>
                     )
