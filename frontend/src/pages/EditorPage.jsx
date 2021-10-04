@@ -15,13 +15,17 @@ import { AuthModal } from '../components/AuthModal';
 import { setUser } from '../store/actions/user.action';
 import { store } from 'react-notifications-component';
 import { AlertDialog } from '../components/AlertDialog';
+import { PromptDialog } from '../components/PromptDialog';
+import { toPng } from 'html-to-image';
+import { uploadImg } from '../services/screen-shot.service'
 
 
 
 
 // Draggable Components from backend, rendered into the accordion
 export const EditorPage = () => {
-    const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const [isDialogOpen, setIsDialogOpen] = useState(false)
+    const [isPromptDialogOpen, setIsPromptDialogOpen] = useState(false)
     const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
     const [dialogAns, setDialogAns] = useState(true)
 
@@ -163,24 +167,6 @@ export const EditorPage = () => {
         }
     }, [windowWidth])
 
-    // Dispatcher for loading the cmps
-    // reminder: Raz Deleted listening to columns, please notice (delete later)
-
-    // On component unmount - ask the user weather or not to save the project
-    // Todo: make a great UI
-
-    // useEffect(() => {
-
-    //     return () => {
-    //         const isSmart = window.confirm('Save your website ?') // Dev only
-    //         if (isSmart) {
-    //             const draft = localStorageService.loadFromStorage('draftWebApp')
-    //             webAppService.save(draft)
-    //         }
-
-    //         localStorageService.removeFromStorage('draftWebApp')
-    //     }
-    // }, [])
 
     // Drag&Drop onDragEnd function, reordering the dragged elements and trigger other functions
     const onDragEnd = (result, setState) => {
@@ -322,22 +308,109 @@ export const EditorPage = () => {
         })
     }
 
-    const onSaveWebApp = async () => {
+    // Saving the current webApp (from the local storage)
+    const onSaveWebApp = async (webAppTitle = '') => {
         const webApp = localStorageService.loadFromStorage('draftWebApp')
+
+        // Sets the webApp title from input / default 
+        if(webAppTitle){
+            webApp.title = webAppTitle;
+        } else {
+            webApp.title = 'New project';
+        }
+
         const savedWebApp = await webAppService.save(webApp)
         dispatch(setUser())
+
+        // Todo: add a protection: when clicking the save button more than one, error occurs because no webApp is in the local storage
         localStorageService.removeFromStorage('draftWebApp')
 
         return savedWebApp;
     }
 
 
+    // Handles the dialog modal
+    // (If a previous work is detected in the local storage, ask user if to continue or discard the data)
     const handleDialog = (boolean) => {
         setIsDialogOpen(false)
         setDialogAns(boolean)
     }
 
+    // Handles the prompt dialog modal
+    // (When a user click the save webApp btn, prompt the user to enter the webApp title)
+    const handlePromptDialog = (webAppTitle) => {
+        // Close the prompt modal
+        setIsPromptDialogOpen(false);
 
+        // Todo: make a user msg service !
+
+        onSaveWebApp(webAppTitle).then((webApp) => {
+            // Saved successfully msg
+            store.addNotification({
+                message: "Saved Successfully!",
+                type: "success",
+                insert: "top",
+                container: "top-right",
+                animationIn: ["animate__animated", "animate__backInRight"],
+                animationOut: ["animate__animated", "animate__backOutRight"],
+                dismiss: {
+                    duration: 3000,
+                    onScreen: true
+                }
+            });
+            
+            //  Uploading msg
+            const uploadingId = store.addNotification({
+                message: "Uploading media to cloud...",
+                type: "info",
+                insert: "top",
+                container: "top-right",
+                animationIn: ["animate__animated", "animate__backInRight"],
+                animationOut: ["animate__animated", "animate__backOutRight"],
+                dismiss: {
+                    duration: 0,
+                    onScreen: true
+                }
+            });
+
+            const elWebAppBuilder = document.querySelector('.web-app-builder')
+            
+            // Save the screen shot of the webApp via the html-to-image library,
+            // Than save the webApp's image as the screen shot the was taken (saved in Cloudinary)
+            toPng(elWebAppBuilder, { cacheBust: true, style:{width: '100%', margin: '0', outline: 'none'}, width: editorWidth, height: 720, quality: 0.2})
+            .then((dataUrl) => {
+                uploadImg(dataUrl)
+                .then(url => {
+                    webApp.image = url;
+                    // Saves the webApp to the backend one more time, after got the url from Cloudinary
+                    webAppService.save(webApp)
+                    dispatch(setUser())
+                    
+                    store.removeNotification(uploadingId)
+                    
+                    // Success msg
+                    store.addNotification({
+                        message: "Your project is ready to view!",
+                        type: "success",
+                        insert: "top",
+                        container: "top-right",
+                        animationIn: ["animate__animated", "animate__backInRight"],
+                        animationOut: ["animate__animated", "animate__backOutRight"],
+                        dismiss: {
+                            duration: 3000,
+                            onScreen: true
+                        }
+                    });
+                })
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+        })
+    }
+
+
+    // If a webAppID is given in the url params, and no webApp has actually been loaded, return Loading modal
     if (webAppId && (!loadedWebApp || loadedWebApp.length === 0)) {
         return <div>Loading...</div>
 
@@ -351,7 +424,7 @@ export const EditorPage = () => {
                     <div className={`${isEditorMenuToggled ? 'side-editor-mobile-active' : ''} side-editor-container`}>
                         <MainEditor windowWidth={windowWidth} onChangeEditorSize={onChangeEditorSize} editorWidth={editorWidth} onToggleEditorMenu={onToggleEditorMenu} droppableId={editor[0]} />
                     </div>
-                    <WebAppContainer setIsAuthModalOpen={setIsAuthModalOpen} setCurrCmp={setCurrCmp} editorWidth={editorWidth} onChangeEditorSize={onChangeEditorSize} onToggleEditorMenu={onToggleEditorMenu} webAppCmps={editing[1].items} droppableId={editing[0]}
+                    <WebAppContainer setIsPromptDialogOpen={setIsPromptDialogOpen} setIsAuthModalOpen={setIsAuthModalOpen} setCurrCmp={setCurrCmp} editorWidth={editorWidth} onChangeEditorSize={onChangeEditorSize} onToggleEditorMenu={onToggleEditorMenu} webAppCmps={editing[1].items} droppableId={editing[0]}
                         onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} onDuplicateCmp={onDuplicateCmp} currCmp={currCmp} onUpdateCmp={onUpdateCmp} onSaveWebApp={onSaveWebApp}
                     />
                 </main>
@@ -363,6 +436,7 @@ export const EditorPage = () => {
                 </>
             }
             <AlertDialog handleDialog={handleDialog} open={isDialogOpen} />
+            <PromptDialog handleDialog={handlePromptDialog} open={isPromptDialogOpen} />
         </>
     )
 }
