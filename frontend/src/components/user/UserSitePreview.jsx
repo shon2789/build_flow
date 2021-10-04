@@ -5,6 +5,7 @@ import { webAppService } from '../../services/web-app.service';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../store/actions/user.action';
 import { store } from 'react-notifications-component';
+import { Tooltip } from '@material-ui/core';
 
 export const UserSitePreview = ({ webApp }) => {
 
@@ -78,16 +79,20 @@ export const UserSitePreview = ({ webApp }) => {
                 <div className="user-element-tool-bar" >
 
                     <Link to={`/editor/${webApp._id}`}>
-                        <div className="element-tool">
-                            <FaRegEdit className="edit-tool tool" />
-                        </div>
+                        <Tooltip title="Edit" arrow placement="top">
+                            <div className="element-tool">
+                                <FaRegEdit className="edit-tool tool" />
+                            </div>
+                        </Tooltip>
                     </Link >
-                    <div onClick={onDeleteWebApp} className="element-tool ">
-                        <FaTrashAlt className="delete-tool tool" />
-                    </div>
-                </div>
+                    <Tooltip title="Delete" arrow placement="top">
+                        <div onClick={onDeleteWebApp} className="element-tool ">
+                            <FaTrashAlt className="delete-tool tool" />
+                        </div>
+                    </Tooltip>
+                </div >
             }
-        </div>
+        </div >
     )
 }
 
