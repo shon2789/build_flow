@@ -10,7 +10,7 @@ import { EditorModal } from './EditorModal';
 
 
 
-export const ElementToolBar = ({ cmp, onDeleteCmp, onDuplicateCmp, onUpdateCmp }) => {
+export const ElementToolBar = ({ cmp, onDeleteCmp, onDuplicateCmp, onUpdateCmp, editorWidth }) => {
 
     const [isEditing, setIsEditing] = useState(false)
     const [event, setEvent] = useState(null)
@@ -55,7 +55,7 @@ export const ElementToolBar = ({ cmp, onDeleteCmp, onDuplicateCmp, onUpdateCmp }
 
     return (
         <>
-            {isEditing && <EditorModal setIsEditing={setIsEditing} event={event} cmp={cmp} elCmpPos={elCmpPos} onUpdateCmp={onUpdateCmp} choosenTool={choosenTool} />}
+            {isEditing && <EditorModal setIsEditing={setIsEditing} event={event} cmp={cmp} elCmpPos={elCmpPos} onUpdateCmp={onUpdateCmp} choosenTool={choosenTool} editorWidth={editorWidth} />}
             <div ref={ref} className="element-tool-bar" style={style}>
                 {cmp.type === 'btn' &&
                     <>

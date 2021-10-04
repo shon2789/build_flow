@@ -8,9 +8,22 @@ import { uploadInputImg } from '../../services/screen-shot.service';
 
 
 
-export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdateCmp, event }) => {
+export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdateCmp, event, editorWidth }) => {
 
-    const [cmpStyle, setCmpStyle] = useState(cmp.attributes.style);
+    let currentStyle = { ...cmp.attributes.style }
+    if (editorWidth < 763) {
+        const mobileStyle = cmp.attributes['style-mobile'];
+        for (const key in mobileStyle) {
+            currentStyle[key] = mobileStyle[key];
+        }
+    } else if (editorWidth < 1130) {
+        const tabletStyle = cmp.attributes['style-tablet'];
+        for (const key in tabletStyle) {
+            currentStyle[key] = tabletStyle[key];
+        }
+    }
+
+    const [cmpStyle, setCmpStyle] = useState(currentStyle);
     const [cmpInfo, setCmpInfo] = useState(cmp?.info)
     const [cmpAttr, setCmpAttr] = useState(cmp.attributes)
     const [editorPosition, setEditorPosition] = useState(null)
@@ -183,15 +196,15 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
 
             {choosenTool === 'size' &&
                 <>
-                    {cmp.type === 'section' || cmp.type === 'img' && 
+                    {(cmp.type === 'section' || cmp.type === 'img') && 
                     <>
                         <div className="width-container editing-container">
                             <label style={labelsStyle} id="width" htmlFor="width">Width</label>
-                            <input step="1" name="width" onChange={(ev) => { updateCmpStyle(ev) }} id="width" type="range" max='30' min='5' defaultValue={cmp.attributes.style?.width} />
+                            <input step="1" name="width" onChange={(ev) => { updateCmpStyle(ev) }} id="width" type="range" max={cmpStyle.maxWidth} min={cmpStyle.minWidth} defaultValue={cmpStyle?.width} />
                         </div>
                         <div className="height-container editing-container">
                             <label style={labelsStyle} id="height" htmlFor="height">Height</label>
-                            <input onChange={(ev) => { updateCmpStyle(ev) }} name="height" id="height" type="range" step="0.5" max='30' min='1' defaultValue={cmp.attributes.style?.height} />
+                            <input onChange={(ev) => { updateCmpStyle(ev) }} name="height" id="height" type="range" step="0.5" max={cmpStyle.maxHeight.split('rem')[0]} min={cmpStyle.minHeight.split('rem')[0]} defaultValue={cmpStyle?.height.split('rem')[0]} />
                         </div>
                     </>
                     }
