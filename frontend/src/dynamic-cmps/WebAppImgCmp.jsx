@@ -19,7 +19,7 @@ export const WebAppImgCmp = ({ cmp, currCmp, onSetCurrCmp, onDeleteCmp, onDuplic
     if (currCmp && currCmp.id === cmp.id) {
         return (
             <div className="nuetral-div" style={{ ...cmpStyle, position: 'relative' }} onClick={(ev) => onSetCurrCmp(ev, cmp)}>
-                <ElementToolBar cmp={cmp} onDeleteCmp={onDeleteCmp} onDuplicateCmp={onDuplicateCmp} onUpdateCmp={onUpdateCmp} />
+                <ElementToolBar cmp={cmp} onDeleteCmp={onDeleteCmp} onDuplicateCmp={onDuplicateCmp} onUpdateCmp={onUpdateCmp} editorWidth={editorWidth} />
                 <img id={cmp.id} style={{ width: '100%', height: '100%', outline: '2px dashed #c6c6c6', outlineOffset: '-2px', objectFit: 'cover' }} className={cmp.attributes.className + ' editable-image'} src={cmp.attributes.src} alt="sorry no img" />
             </div>
         )
