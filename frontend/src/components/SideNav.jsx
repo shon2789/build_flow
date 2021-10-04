@@ -13,7 +13,6 @@ import { Screen } from './Screen';
 import { AuthModal } from './AuthModal';
 import usePortal from 'react-useportal'
 import { store } from 'react-notifications-component';
-import { VscCircleFilled } from "react-icons/vsc";
 
 
 
