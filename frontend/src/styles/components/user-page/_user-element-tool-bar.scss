@@ -1,19 +1,14 @@
-.user-element-tool-bar{
-
+.user-element-tool-bar {
     display: flex;
     position: absolute;
-    top: -2rem;
+    justify-content: flex-end;
+    top: -2.1rem;
     right: 7px;
-    gap: 0.4rem;
+    gap: 0.5rem;
     animation: opacity 0.3s;
     width: 100%;
-        .user-site-name{
-            color: rgb(107, 107, 107);
-            align-self: flex-start;
-            flex:1;
-        }
 
-    @include for-large-phone{
+    @include for-large-phone {
         right: 0px;
     }
 
@@ -36,11 +31,8 @@
         }
     }
     .edit-tool {
-        font-size: 1.15rem;
-
+        font-size: 1.05rem;
     }
-
- 
 
     .element-tool {
         background-color: #fff;
@@ -52,4 +44,4 @@
         font-size: 0.9rem;
         cursor: pointer;
     }
-} 
+}

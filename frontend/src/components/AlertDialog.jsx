@@ -15,7 +15,6 @@ const Transition = forwardRef(function Transition(props, ref) {
 export const AlertDialog = ({ open, handleDialog }) => {
 
     return (
-
         <div>
             <Dialog
                 open={open}
@@ -24,7 +23,7 @@ export const AlertDialog = ({ open, handleDialog }) => {
                 aria-describedby="alert-dialog-slide-description"
             >
                 <DialogTitle>{"Unsaved project was found"}</DialogTitle>
-                <DialogContent>
+                <DialogContent >
                     <DialogContentText id="alert-dialog-slide-description">
                         Would you like to resume your project?
                     </DialogContentText>

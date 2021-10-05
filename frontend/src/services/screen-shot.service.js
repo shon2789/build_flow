@@ -1,3 +1,13 @@
+import { toJpeg } from 'html-to-image';
+
+export const createJpegFromElement = async (element, width) => {
+    const dataUrl = await toJpeg(element, { cacheBust: true, style: { width: '100%', margin: '0', outline: 'none' }, width, quality: 0.5 })
+    return await uploadImg(dataUrl)
+}
+
+
+
+
 export function uploadImg(file) {
     // Dev - download a pic for testing purposes
     // const link = document.createElement("a");
@@ -16,9 +26,9 @@ export function uploadImg(file) {
         method: 'POST',
         body: formData
     })
-    .then(res => res.json())
-    .then(res => {
-        return res.url
-    })
-    .catch(err => console.error(err))
+        .then(res => res.json())
+        .then(res => {
+            return res.url
+        })
+        .catch(err => console.error(err))
 }

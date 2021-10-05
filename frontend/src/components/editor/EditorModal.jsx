@@ -1,10 +1,11 @@
 import { cloneDeep } from 'lodash';
 import React, { useEffect, useRef, useState } from 'react'
-
+import { removeMessage, alertMessage } from '../../services/alert.service'
 import { FaBold, FaUnderline, FaItalic } from "react-icons/fa";
 import { IoEnterOutline } from "react-icons/io5";
-import { store } from 'react-notifications-component';
 import { uploadImg } from '../../services/screen-shot.service';
+
+
 
 
 
@@ -70,17 +71,8 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
 
     const handleImgUpload = async (ev, type) => {
 
-        const uploadingMsgId = store.addNotification({
-            message: "Uploading image to cloud...",
-            type: "default",
-            insert: "top",
-            container: "top-right",
-            animationIn: ["animate__animated", "animate__backInRight"],
-            animationOut: ["animate__animated", "animate__backOutRight"],
-            style: {
-                fontFamily: "Lato regular,sans-serif"
-            }
-        });
+
+        const uploadingMsgId = alertMessage('Uploading image to cloud...', 'default')
 
         const file = ev.target.files[0];
         const url = await uploadImg(file)
@@ -94,20 +86,8 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
         }
         setCmpAttr({ ...copyAttr })
         updateCmpAttributes(copyAttr)
-        store.removeNotification(uploadingMsgId)
-
-        store.addNotification({
-            message: "Image uploaded to cloud!",
-            type: "success",
-            insert: "top",
-            container: "top-right",
-            animationIn: ["animate__animated", "animate__backInRight"],
-            animationOut: ["animate__animated", "animate__backOutRight"],
-            dismiss: {
-                duration: 3000,
-                onScreen: true
-            }
-        });
+        removeMessage(uploadingMsgId)
+        alertMessage('Image uploaded to cloud!', 'success', 3000)
     }
 
     const onSetIsEditing = (boolean) => {

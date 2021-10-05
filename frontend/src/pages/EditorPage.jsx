@@ -13,11 +13,10 @@ import { webAppService } from '../services/web-app.service';
 import { localStorageService } from '../services/storage.service';
 import { AuthModal } from '../components/AuthModal';
 import { setUser } from '../store/actions/user.action';
-import { store } from 'react-notifications-component';
 import { AlertDialog } from '../components/AlertDialog';
 import { PromptDialog } from '../components/PromptDialog';
-import { toJpeg } from 'html-to-image';
-import { uploadImg } from '../services/screen-shot.service'
+import { createJpegFromElement } from '../services/screen-shot.service'
+import { removeMessage, alertMessage } from '../services/alert.service'
 
 
 
@@ -323,6 +322,7 @@ export const EditorPage = () => {
         }
 
         const savedWebApp = await webAppService.save(webApp)
+        localStorageService.saveToStorage('draftWebApp', savedWebApp)
         dispatch(setUser())
 
         // Todo: add a protection: when clicking the save button more than one, error occurs because no webApp is in the local storage
@@ -335,19 +335,7 @@ export const EditorPage = () => {
         // If no user is logged in (guest mode) display msg and open auth modal
         if (!user) {
             setIsAuthModalOpen(true)
-            store.addNotification({
-                message: "Login first",
-                type: "danger",
-                insert: "top",
-                container: "top-right",
-                animationIn: ["animate__animated", "animate__backInRight"],
-                animationOut: ["animate__animated", "animate__backOutRight"],
-                dismiss: {
-                    duration: 2500,
-                    onScreen: true
-                }
-            });
-
+            alertMessage('Login first', 'danger', 2500)
             return
         }
 
@@ -379,82 +367,42 @@ export const EditorPage = () => {
 
     // Handles the prompt dialog modal
     // (When a user click the save webApp btn, prompt the user to enter the webApp title)
-    const handlePromptDialog = (webAppTitle) => {
+    const handlePromptDialog = async (webAppTitle) => {
         // Close the prompt modal
         setIsPromptDialogOpen(false);
 
         // Todo: make a user msg service !
+        const elWebAppBuilder = document.querySelector('.web-app-builder')
+        const webApp = await onSaveWebApp(webAppTitle)
+        // Saved successfully msg
+        alertMessage('Saved successfully!', 'success', 3000)
 
-        onSaveWebApp(webAppTitle).then((webApp) => {
-            // Saved successfully msg
-            store.addNotification({
-                message: "Saved Successfully!",
-                type: "success",
-                insert: "top",
-                container: "top-right",
-                animationIn: ["animate__animated", "animate__backInRight"],
-                animationOut: ["animate__animated", "animate__backOutRight"],
-                dismiss: {
-                    duration: 3000,
-                    onScreen: true
-                }
-            });
 
-            //  Uploading msg
-            const uploadingId = store.addNotification({
-                message: "Uploading media to cloud...",
-                type: "info",
-                insert: "top",
-                container: "top-right",
-                animationIn: ["animate__animated", "animate__backInRight"],
-                animationOut: ["animate__animated", "animate__backOutRight"],
-                dismiss: {
-                    duration: 0,
-                    onScreen: true
-                }
-            });
+        //  Uploading msg
+        const uploadingId = alertMessage('Uploading media to cloud...', 'info')
 
-            const elWebAppBuilder = document.querySelector('.web-app-builder')
 
-            // Save the screen shot of the webApp via the html-to-image library,
-            // Than save the webApp's image as the screen shot the was taken (saved in Cloudinary)
-            toJpeg(elWebAppBuilder, { cacheBust: true, style: { width: '100%', margin: '0', outline: 'none' }, width: editorWidth, quality: 0.5 })
-                .then((dataUrl) => {
-                    uploadImg(dataUrl)
-                        .then(url => {
-                            webApp.image = url;
-                            // Saves the webApp to the backend one more time, after got the url from Cloudinary
-                            webAppService.save(webApp)
-                            dispatch(setUser())
+        const imageUrl = await createJpegFromElement(elWebAppBuilder, editorWidth)
+        webApp.image = imageUrl;
 
-                            store.removeNotification(uploadingId)
+        const savedWebApp = await webAppService.save(webApp)
+        localStorageService.saveToStorage('draftWebApp', savedWebApp)
 
-                            // Success msg
-                            store.addNotification({
-                                message: "Your project is ready to view!",
-                                type: "success",
-                                insert: "top",
-                                container: "top-right",
-                                animationIn: ["animate__animated", "animate__backInRight"],
-                                animationOut: ["animate__animated", "animate__backOutRight"],
-                                dismiss: {
-                                    duration: 3000,
-                                    onScreen: true
-                                }
-                            });
-                        })
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
-        })
+        dispatch(setUser())
+        removeMessage(uploadingId)
+
+        // Success msg
+        alertMessage('Your project is ready to view!', 'success', 3000)
+
+        // })
     }
 
     const onPublishWebApp = async () => {
         // handleSave(true)
         const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
         draftWebApp.isPublished = true
-        const savedWebApp = await webAppService.save(draftWebApp, true)
+        const savedWebApp = await webAppService.save(draftWebApp, user ? false : true)
+        localStorageService.saveToStorage('draftWebApp', savedWebApp)
         window.open(`/publish/${savedWebApp._id}`, "_blank")
     }
 

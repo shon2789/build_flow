@@ -1,50 +1,49 @@
-.user-site-preview{
-  cursor: pointer;
-  width: 19rem;
-  height:11.4rem;
-
+.user-site-preview {
+    cursor: pointer;
+    width: 19rem;
+    height: 11.4rem;
+    position: relative;
     background-color: #f0eeee;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
-    font-family: Lato regular,sans-serif;
-
-    
-
+    font-family: Lato regular, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: .3s;
-    
-    &.active{
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-        transform:scale(1.01) ;
+    transition: 0.3s;
+
+    .user-site-name {
+        color: $main-dark-color;
+        font-size: 1.2rem;
+        position: absolute;
+        left: 0;
+        bottom: -1.7rem;
     }
 
-    img{
+    &.active {
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+        transform: scale(1.01);
+    }
+
+    img {
         width: 100%;
         height: 68.6%;
     }
 
-   
-    @include for-large-phone{
+    @include for-large-phone {
         width: 17rem;
         height: 10.2rem;
-
     }
 
-    @include for-large-tablet{
+    @include for-large-tablet {
         width: 15rem;
         height: 9rem;
-
     }
-    @include for-desktop{
-    
+    @include for-desktop {
         width: 20rem;
         height: 12rem;
-
     }
-    @include for-large-desktop{
+    @include for-large-desktop {
         width: 25rem;
         height: 15rem;
-
     }
 }

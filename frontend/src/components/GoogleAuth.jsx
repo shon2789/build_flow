@@ -1,11 +1,12 @@
 import React from 'react';
 import { GoogleLogin } from 'react-google-login';
 import { refreshTokenSetup } from '../services/refresh-token-setup.service';
-import { store } from 'react-notifications-component';
 import { userService } from '../services/user.service';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../store/actions/user.action';
 import { FcGoogle } from "react-icons/fc";
+import { alertMessage } from '../services/alert.service'
+
 
 // refresh token
 
@@ -28,38 +29,13 @@ export const GoogleAuth = ({ onToggleAuthModal }) => {
         const user = await userService.signup(credentials)
         if (user) {
             dispatch(setUser())
-
-            store.addNotification({
-                message: "Logged in seccessfully!",
-                type: "success",
-                insert: "top",
-                container: "top-right",
-                animationIn: ["animate__animated", "animate__backInRight"],
-                animationOut: ["animate__animated", "animate__backOutRight"],
-                dismiss: {
-                    duration: 2000,
-                    onScreen: true
-                }
-            });
+            alertMessage('Logged in successfully', 'success', 2000)
         }
     };
 
 
-
-    const onFailure = (res) => {
-
-        store.addNotification({
-            message: "Something went wrong",
-            type: "danger",
-            insert: "top",
-            container: "top-right",
-            animationIn: ["animate__animated", "animate__backInRight"],
-            animationOut: ["animate__animated", "animate__backOutRight"],
-            dismiss: {
-                duration: 2000,
-                onScreen: true
-            }
-        });
+    const onFailure = () => {
+        alertMessage('Something went wrong', 'danger', 2000)
     };
 
     return (

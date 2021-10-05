@@ -6,8 +6,9 @@ import { useForm, Controller } from 'react-hook-form';
 import { userService } from '../services/user.service';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../store/actions/user.action';
-import { store } from 'react-notifications-component';
 import { GoogleAuth } from './GoogleAuth';
+import { alertMessage } from '../services/alert.service'
+
 
 
 
@@ -54,34 +55,12 @@ export const AuthModal = ({ onToggleAuthModal }) => {
             }
 
             if (!user) {
-                store.addNotification({
-                    message: "Invalid username or password",
-                    type: "danger",
-                    insert: "top",
-                    container: "top-right",
-                    animationIn: ["animate__animated", "animate__backInRight"],
-                    animationOut: ["animate__animated", "animate__backOutRight"],
-                    dismiss: {
-                        duration: 2500,
-                        onScreen: true
-                    }
-                });
+                alertMessage('Invalid username or password', 'danger', 2500)
+
             } else {
                 dispatch(setUser())
-
                 // Add notification
-                store.addNotification({
-                    message: "Logged in Successfully!",
-                    type: "success",
-                    insert: "top",
-                    container: "top-right",
-                    animationIn: ["animate__animated", "animate__backInRight"],
-                    animationOut: ["animate__animated", "animate__backOutRight"],
-                    dismiss: {
-                        duration: 2000,
-                        onScreen: true
-                    }
-                });
+                alertMessage('Logged in successfully', 'success', 2000)
                 onToggleAuthModal(false)
             }
 

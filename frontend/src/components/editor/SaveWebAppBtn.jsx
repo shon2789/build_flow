@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const SaveWebAppBtn = ({ setIsPromptDialogOpen, setIsAuthModalOpen, handlePromptDialog, handleSave }) => {
+export const SaveWebAppBtn = ({ handleSave }) => {
 
     return (
         <svg onClick={() => { handleSave() }} className="editor-save-btn" width="94" height="90" viewBox="0 0 94 90" fill="none" xmlns="http://www.w3.org/2000/svg">
