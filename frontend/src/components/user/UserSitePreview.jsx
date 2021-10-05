@@ -74,9 +74,10 @@ export const UserSitePreview = ({ webApp }) => {
 
     return (
         <div ref={ref} className="user-site-preview" style={{ position: "relative", backgroundImage: `url('${webApp.image}')`, backgroundSize: '101%', backgroundRepeat: 'no-repeat', backgroundPosition: '50% 0.2%' }}>
-            <h2>{webApp.title}</h2>
+
             {isToolBarToggle &&
                 <div className="user-element-tool-bar" >
+                    <h3 className="user-site-name">{webApp.title}</h3>
 
                     <Link to={`/editor/${webApp._id}`}>
                         <Tooltip title="Edit" arrow placement="top">

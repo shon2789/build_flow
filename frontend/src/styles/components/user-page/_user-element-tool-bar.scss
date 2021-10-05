@@ -6,6 +6,12 @@
     right: 7px;
     gap: 0.4rem;
     animation: opacity 0.3s;
+    width: 100%;
+        .user-site-name{
+            color: rgb(107, 107, 107);
+            align-self: flex-start;
+            flex:1;
+        }
 
     @include for-large-phone{
         right: 0px;
