@@ -23,26 +23,53 @@ export const WebAppBtnCmp = ({ cmp, currCmp, onSetCurrCmp, onDeleteCmp, onDuplic
         onUpdateCmp(newCmpInfo, 'info')
     };
 
+
+    const toolBarProps = {
+        onDeleteCmp,
+        onDuplicateCmp,
+        onUpdateCmp,
+        editorWidth
+    }
+
     if (isPublished) {
         return (
-            <button id={cmp.id} style={cmpStyle} className={cmp.attributes.className} >
+            <button
+                id={cmp.id}
+                style={cmpStyle}
+                className={cmp.attributes.className} >
+
                 {cmp.info.txt}
+
             </button>
         )
     }
 
     if (currCmp && currCmp.id === cmp.id) {
         return (
-            <button id={cmp.id} style={{ ...cmpStyle, position: 'relative', outline: '2px dashed #c6c6c6', outlineOffset: '-2px' }} className={cmp.attributes.className} onClick={(ev) => { onSetCurrCmp(ev, cmp) }}>
-                <ElementToolBar cmp={cmp} onDeleteCmp={onDeleteCmp} onDuplicateCmp={onDuplicateCmp} onUpdateCmp={onUpdateCmp} editorWidth={editorWidth} />
+            <button
+                id={cmp.id}
+                style={{ ...cmpStyle, position: 'relative', outline: '2px dashed #c6c6c6', outlineOffset: '-2px' }}
+                className={cmp.attributes.className}
+                onClick={(ev) => { onSetCurrCmp(ev, cmp) }}>
+
+                <ElementToolBar cmp={cmp} {...toolBarProps} />
                 <ContentEditable html={currCmp.info.txt} onKeyUp={handleChange} />
+
             </button>
         )
     }
 
     return (
-        <button onMouseOut={(ev) => { ev.target.classList.remove('element-edit-hover') }} onMouseOver={(ev) => { ev.target.classList.add('element-edit-hover') }} id={cmp.id} style={cmpStyle} className={cmp.attributes.className} onClick={(ev) => { onSetCurrCmp(ev, cmp) }}>
+        <button
+            onMouseOut={(ev) => { ev.target.classList.remove('element-edit-hover') }}
+            onMouseOver={(ev) => { ev.target.classList.add('element-edit-hover') }}
+            id={cmp.id}
+            style={cmpStyle}
+            className={cmp.attributes.className}
+            onClick={(ev) => { onSetCurrCmp(ev, cmp) }}>
+
             {cmp.info.txt}
+
         </button>
     )
 }

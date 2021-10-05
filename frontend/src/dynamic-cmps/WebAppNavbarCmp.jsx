@@ -37,33 +37,81 @@ export const WebAppNavbarCmp = ({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDup
         // console.dir(document.getElementById(cmp.id))
     }
 
+    const editingProps = {
+        currCmp,
+        onDeleteCmp,
+        onSetCurrCmp,
+        onDuplicateCmp,
+        onUpdateCmp,
+        editorWidth,
+        onChangeEditorSize
+    }
+
+    const publishedProps = {
+        onChangeEditorSize,
+        editorWidth,
+        isPublished
+    }
+
+    const toolBarProps = {
+        onDeleteCmp,
+        onDuplicateCmp,
+        onUpdateCmp,
+        editorWidth
+    }
+
     if (isPublished) {
         return (
 
-            <nav id={cmp.id} style={cmpStyle} className={cmp.attributes.className} >
+            <nav
+                id={cmp.id}
+                style={cmpStyle}
+                className={cmp.attributes.className} >
+
                 {showHamburgetMenu && <GiHamburgerMenu style={{ fontSize: "1.3rem", color: "#292929" }} />}
                 {/* {showHamburgetMenu && cmp.children.map((child, idx) => <DynamicCmp key={idx} cmp={child} currCmp={currCmp} onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} onDuplicateCmp={onDuplicateCmp} onUpdateCmp={onUpdateCmp} onChangeEditorSize={onChangeEditorSize} editorWidth={editorWidth} />) } */}
-                {(cmp.children && !showHamburgetMenu) && cmp.children.map((child, idx) => <DynamicCmp key={idx} cmp={child} onChangeEditorSize={onChangeEditorSize} editorWidth={editorWidth} isPublished={isPublished} />)}
+                {(cmp.children && !showHamburgetMenu) && cmp.children.map((child, idx) => <DynamicCmp key={idx} cmp={child} {...publishedProps} />)}
+
             </nav>
         )
     }
 
     if (currCmp && currCmp.id === cmp.id) {
         return (
-            <nav id={cmp.id} style={{ ...cmpStyle, position: 'relative', outline: '2px dashed #c6c6c6', outlineOffset: '-2px' }} className={cmp.attributes.className} onClick={(ev) => { if (showHamburgetMenu) { ev.stopPropagation(); return; }; onSetCurrCmp(ev, cmp) }}>
-                <ElementToolBar cmp={cmp} onDeleteCmp={onDeleteCmp} onDuplicateCmp={onDuplicateCmp} onUpdateCmp={onUpdateCmp} editorWidth={editorWidth} />
+            <nav
+                id={cmp.id}
+                style={{ ...cmpStyle, position: 'relative', outline: '2px dashed #c6c6c6', outlineOffset: '-2px' }}
+                className={cmp.attributes.className}
+                onClick={(ev) => {
+                    if (showHamburgetMenu) { ev.stopPropagation(); return; };
+                    onSetCurrCmp(ev, cmp)
+                }}>
+
+                <ElementToolBar cmp={cmp} {...toolBarProps} />
                 {showHamburgetMenu && <GiHamburgerMenu style={{ fontSize: "1.3rem", color: "#292929" }} />}
-                {(cmp.children && !showHamburgetMenu) && cmp.children.map((child, idx) => <DynamicCmp key={idx} cmp={child} currCmp={currCmp} onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} onDuplicateCmp={onDuplicateCmp} onUpdateCmp={onUpdateCmp} onChangeEditorSize={onChangeEditorSize} editorWidth={editorWidth} />)}
+                {(cmp.children && !showHamburgetMenu) && cmp.children.map((child, idx) => <DynamicCmp key={idx} cmp={child} {...editingProps} />)}
+
             </nav>
         )
     }
 
 
     return (
-        <nav onMouseOut={(ev) => { ev.target.classList.remove('element-edit-hover') }} onMouseOver={(ev) => { ev.target.classList.add('element-edit-hover') }} id={cmp.id} style={cmpStyle} className={cmp.attributes.className} onClick={(ev) => { if (showHamburgetMenu) { ev.stopPropagation(); return; }; onSetCurrCmp(ev, cmp) }}>
+        <nav
+            onMouseOut={(ev) => { ev.target.classList.remove('element-edit-hover') }}
+            onMouseOver={(ev) => { ev.target.classList.add('element-edit-hover') }}
+            id={cmp.id}
+            style={cmpStyle}
+            className={cmp.attributes.className}
+            onClick={(ev) => {
+                if (showHamburgetMenu) { ev.stopPropagation(); return; };
+                onSetCurrCmp(ev, cmp)
+            }}>
+
             {showHamburgetMenu && <GiHamburgerMenu style={{ fontSize: "1.3rem", color: "#292929" }} />}
             {/* {showHamburgetMenu && cmp.children.map((child, idx) => <DynamicCmp key={idx} cmp={child} currCmp={currCmp} onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} onDuplicateCmp={onDuplicateCmp} onUpdateCmp={onUpdateCmp} onChangeEditorSize={onChangeEditorSize} editorWidth={editorWidth} />) } */}
-            {(cmp.children && !showHamburgetMenu) && cmp.children.map((child, idx) => <DynamicCmp key={idx} cmp={child} currCmp={currCmp} onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} onDuplicateCmp={onDuplicateCmp} onUpdateCmp={onUpdateCmp} onChangeEditorSize={onChangeEditorSize} editorWidth={editorWidth} />)}
+            {(cmp.children && !showHamburgetMenu) && cmp.children.map((child, idx) => <DynamicCmp key={idx} cmp={child} {...editingProps} />)}
+
         </nav>
     )
 }
