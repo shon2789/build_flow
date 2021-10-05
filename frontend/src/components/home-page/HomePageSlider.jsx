@@ -62,9 +62,10 @@ export const HomePageSlider = ({ windowWidth }) => {
         <>
             <div ref={sliderContainer} className={`${inView ? 'opacity-animation' : ''} navigation-wrapper`}>
                 <div ref={sliderRef} className="keen-slider">
-                    <div className="keen-slider__slide number-slide1"><img width="100%" style={{ objectFit: 'contain' }} src="https://res.cloudinary.com/dfj4zd14o/image/upload/v1633426372/BuildFlow_assets/rettro_carusel_yywfog.jpg" alt="" /></div>
-                    <div className="keen-slider__slide number-slide2"><img width="100%" style={{ objectFit: 'contain' }} src="https://res.cloudinary.com/dfj4zd14o/image/upload/v1633426372/BuildFlow_assets/beauty_carusel_kwdj4a.jpg" alt="" /></div>
-                    <div className="keen-slider__slide number-slide3"><img width="100%" style={{ objectFit: 'contain' }} src="https://res.cloudinary.com/dfj4zd14o/image/upload/v1633426372/BuildFlow_assets/trainer_carusel_gkssvk.jpg" alt="" /></div>
+                    <div className="keen-slider__slide number-slide1"><img width="100%" style={{ objectFit: 'contain' }} src="https://res.cloudinary.com/dfj4zd14o/image/upload/v1633426372/BuildFlow_assets/rettro_carusel_yywfog.jpg" alt="template-image" /></div>
+                    <div className="keen-slider__slide number-slide2"><img width="100%" style={{ objectFit: 'contain' }} src="https://res.cloudinary.com/dfj4zd14o/image/upload/v1633426372/BuildFlow_assets/beauty_carusel_kwdj4a.jpg" alt="template-image" /></div>
+                    <div className="keen-slider__slide number-slide3"><img width="100%" style={{ objectFit: 'contain' }} src="https://res.cloudinary.com/dfj4zd14o/image/upload/v1633426372/BuildFlow_assets/trainer_carusel_gkssvk.jpg" alt="template-image" /></div>
+                    <div className="keen-slider__slide number-slide3"><img width="100%" style={{ objectFit: 'contain' }} src="https://res.cloudinary.com/dfj4zd14o/image/upload/v1633474977/BuildFlow_assets/juice_carusel_pics_bgxdgx.jpg" alt="template-image" /></div>
                 </div>
                 {slider && (
                     <>
