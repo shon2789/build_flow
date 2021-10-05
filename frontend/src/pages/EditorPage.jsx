@@ -155,21 +155,22 @@ export const EditorPage = () => {
     //Cmp States
     const [currCmp, setCurrCmp] = useState(null)
 
+    const resizeEditorWidth = () => {
+        setWindowWidth(window.innerWidth)
+    }
 
     // Event listener for the window width
     useEffect(() => {
-        window.addEventListener('resize', () => {
-            setWindowWidth(window.innerWidth)
-        })
+        window.addEventListener('resize', resizeEditorWidth)
 
         return () => {
-            window.removeEventListener('resize', () => { console.log('remove editor page window width resize event listener') }, false);
+            window.removeEventListener('resize', resizeEditorWidth);
         }
     }, [windowWidth])
 
 
     // Drag&Drop onDragEnd function, reordering the dragged elements and trigger other functions
-    const onDragEnd = (result, setState) => {
+    const onDragEnd = (result) => {
         if (!result.destination) return;
 
         const { source, destination } = result;

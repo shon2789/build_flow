@@ -19,13 +19,15 @@ export const UserPage = () => {
         }
     }, [user])
 
+    const onWindowWidthResize = () => {
+        setWindowWidth(window.innerWidth);
+    }
+
     useEffect(() => {
-        window.addEventListener('resize', () => {
-            setWindowWidth(window.innerWidth);
-        })
+        window.addEventListener('resize', onWindowWidthResize)
 
         return () => {
-            window.removeEventListener('resize', () => { console.log('remove user window width resize event listener') }, false)
+            window.removeEventListener('resize', onWindowWidthResize)
         }
     }, [windowWidth])
 

@@ -35,15 +35,14 @@ export const HomePageSlider = ({ windowWidth }) => {
         },
     });
 
+    const onSetPause = (boolean) => {
+        setPause(boolean)
+    }
+
     useEffect(() => {
-        sliderRef.current.addEventListener("mouseover", () => {
-            setPause(true)
-        })
+        sliderRef.current.addEventListener("mouseover", onSetPause, true)
 
-        sliderRef.current.addEventListener("mouseout", () => {
-            setPause(false)
-        })
-
+        sliderRef.current.addEventListener("mouseout", onSetPause, false)
 
     }, [sliderRef, windowWidth])
 

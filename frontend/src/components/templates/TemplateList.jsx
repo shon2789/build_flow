@@ -28,8 +28,8 @@ export const TemplateList = ({ templates }) => {
                             <div className="create-template-preview-lower">Start a new project</div>
                         </div>
                     </Link>
-                    {miniTemplates && miniTemplates.map(template => {
-                        return <TemplatePreview key={template.id} template={template} />
+                    {miniTemplates && miniTemplates.map((template, idx) => {
+                        return <TemplatePreview key={`${template.id}${idx}`} template={template} />
                     })}
                 </div>
             </div>

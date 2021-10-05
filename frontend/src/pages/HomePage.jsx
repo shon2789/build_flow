@@ -18,15 +18,15 @@ export const HomePage = () => {
         threshold: 0,
     })
 
+    const onSetWindowWidth = () => {
+        setWindowWidth(window.innerWidth)
+    }
 
     useEffect(() => {
-
-        window.addEventListener("resize", () => {
-            setWindowWidth(window.innerWidth)
-        })
+        window.addEventListener("resize", onSetWindowWidth)
 
         return () => {
-            window.removeEventListener('resize', () => {console.log('remove home page window width resize event listener')}, false);
+            window.removeEventListener('resize', onSetWindowWidth);
         }
 
     }, [windowWidth])
@@ -38,7 +38,7 @@ export const HomePage = () => {
     return (
         <div className="home-page-container">
             <Screen isOpen={isMenuToggled} exitScreen={toggleMenu} />
-            <div inView={inView} ref={ref}>
+            <div ref={ref}>
                 <Header isMenuToggled={isMenuToggled} toggleMenu={toggleMenu} />
             </div>
             {!inView && <div className="page-up-container"><IoMdArrowRoundUp onClick={() => window.location.href = '#'} className="page-up" /></div>}

@@ -16,7 +16,7 @@ export const App = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(setUser())
-  }, [])
+  }, [dispatch])
 
   //Cancel the contextmenu
   window.addEventListener('contextmenu', (ev) => { ev.preventDefault() })

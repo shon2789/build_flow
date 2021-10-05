@@ -4,10 +4,15 @@ import { WebAppTxtCmp } from "./WebAppTxtCmp.jsx"
 import { WebAppNavbarCmp } from "./WebAppNavbarCmp.jsx"
 import { WebAppBtnCmp } from "./WebAppBtnCmp.jsx"
 import { WebAppImgCmp } from "./WebAppImgCmp.jsx"
+import { useEffect } from "react"
 
 export function DynamicCmp({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDuplicateCmp, onUpdateCmp, editorWidth, onChangeEditorSize }) {
-    const elWebAppBuilder = document.querySelector('.web-app-builder')
-    onChangeEditorSize(elWebAppBuilder.clientWidth)
+    
+    useEffect(() => {
+        const elWebAppBuilder = document.querySelector('.web-app-builder')
+        onChangeEditorSize(elWebAppBuilder.clientWidth)
+
+    }, [])
 
     function getCmp(type) {
         switch (type) {

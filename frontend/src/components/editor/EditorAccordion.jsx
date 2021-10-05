@@ -34,6 +34,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
+
+
 export const EditorAccordion = ({ droppableId }) => {
     const classes = useStyles();
     const dispatch = useDispatch()
@@ -41,17 +43,17 @@ export const EditorAccordion = ({ droppableId }) => {
     const [isMobile, setIsMobile] = useState(false);
     const [minified, setMinified] = useState([])
 
+    const onSetIsMobile = (boolean) => {
+        setIsMobile(boolean);
+    }
+
     useEffect(() => {
-        window.addEventListener('touchstart', () => {
-            setIsMobile(true);
-        })
-        window.addEventListener('touchend', () => {
-            setIsMobile(false);
-        })
+        window.addEventListener('touchstart', onSetIsMobile, true)
+        window.addEventListener('touchend', onSetIsMobile, false)
 
         return () => {
-            window.removeEventListener('touchstart', () => { console.log('bye bye') }, false)
-            window.removeEventListener('touchend', () => { console.log('bye bye') }, false)
+            window.removeEventListener('touchstart', onSetIsMobile)
+            window.removeEventListener('touchend', onSetIsMobile)
         };
     }, [])
 

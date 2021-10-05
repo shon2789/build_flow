@@ -110,15 +110,18 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
         });
     }
 
+    const onSetIsEditing = (boolean) => {
+        setIsEditing(boolean)
+    }
 
     useEffect(() => {
         setEditorPosition(ref.current.getBoundingClientRect())
         document.addEventListener("mousedown", handleClick);
-        document.querySelector('.web-app-container').addEventListener("scroll", () => { setIsEditing(false) });
+        document.querySelector('.web-app-container').addEventListener("scroll", onSetIsEditing, false);
 
         return () => {
             document.removeEventListener("mousedown", handleClick);
-            window.removeEventListener("scroll", () => { setIsEditing(false) }, false);
+            window.removeEventListener("scroll", onSetIsEditing);
         };
     }, [])
 

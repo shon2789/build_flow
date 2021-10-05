@@ -78,7 +78,7 @@ export const HowWeWork = ({ windowWidth }) => {
                 <h3 className="how-we-work-sub-txt"> Use our awesome tools to make your dream come true</h3>
             </div>
 
-            <div inView={inView} ref={cardsContainer} className="cards-container">
+            <div ref={cardsContainer} className="cards-container">
                 <div ref={card1} onMouseOver={onHover} onMouseLeave={onStopHover} className={`${windowWidth < 1130 ? 'active' : ''} ${inView ? 'opacity-animation' : ''} home-page-card`}>
                     <h3 className="card-num">01</h3>
                     <h2 className="card-title">Design</h2>
