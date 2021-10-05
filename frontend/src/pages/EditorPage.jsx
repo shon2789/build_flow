@@ -402,7 +402,7 @@ export const EditorPage = () => {
         const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
         draftWebApp.isPublished = true
         const savedWebApp = await webAppService.save(draftWebApp, user ? false : true)
-        localStorageService.saveToStorage('draftWebApp', savedWebApp)
+        localStorageService.removeFromStorage('draftWebApp')
         window.open(`/publish/${savedWebApp._id}`, "_blank")
     }
 
