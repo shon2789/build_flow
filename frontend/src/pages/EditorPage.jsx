@@ -403,6 +403,8 @@ export const EditorPage = () => {
         draftWebApp.isPublished = true
         const savedWebApp = await webAppService.save(draftWebApp, user ? false : true)
         localStorageService.removeFromStorage('draftWebApp')
+
+        dispatch(setUser())
         window.open(`/publish/${savedWebApp._id}`, "_blank")
     }
 
