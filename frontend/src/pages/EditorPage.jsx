@@ -116,12 +116,22 @@ export const EditorPage = () => {
             const webApp = localStorageService.loadFromStorage('draftWebApp')
             let loadedWebApp
 
-            // If a webApp exists in the local storage - load it
+            // Make sure the webApp belongs to the logged in user
             if(webApp){
-                loadedWebApp = webApp;
-            // Else - start a new project
+                if(webApp._id){
+                    if(user){
+                        if(user.webApps.some(userWebApp => userWebApp._id === webApp._id)){
+                            loadedWebApp = webApp
+                        }
+                    } else{
+                        loadedWebApp = webAppService.createNewWebApp()
+                    }
+                } else{
+                    loadedWebApp = webApp
+                }
+                // If not authenticated: start new
             } else{
-                loadWebApp = webAppService.createNewWebApp();
+                loadedWebApp = webAppService.createNewWebApp()
             }
 
             setColumns({

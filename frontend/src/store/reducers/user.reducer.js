@@ -1,5 +1,7 @@
+import { localStorageService } from "../../services/storage.service"
+
 const initialState = {
-    loggedInUser: null,
+    loggedInUser: localStorageService.loadFromStorage('loggedinUser') || null,
 }
 
 export const userReducer = (state = initialState, action) => {
