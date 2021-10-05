@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { FaBold, FaUnderline, FaItalic } from "react-icons/fa";
 import { IoEnterOutline } from "react-icons/io5";
 import { store } from 'react-notifications-component';
-import { uploadInputImg } from '../../services/screen-shot.service';
+import { uploadImg } from '../../services/screen-shot.service';
 
 
 
@@ -82,7 +82,8 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
             }
         });
 
-        const url = await uploadInputImg(ev)
+        const file = ev.target.files[0];
+        const url = await uploadImg(file)
         const copyAttr = cloneDeep(cmpAttr)
         if (type === 'src') {
             copyAttr.src = url;

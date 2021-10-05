@@ -16,7 +16,7 @@ import { setUser } from '../store/actions/user.action';
 import { store } from 'react-notifications-component';
 import { AlertDialog } from '../components/AlertDialog';
 import { PromptDialog } from '../components/PromptDialog';
-import { toPng } from 'html-to-image';
+import { toJpeg } from 'html-to-image';
 import { uploadImg } from '../services/screen-shot.service'
 
 
@@ -312,12 +312,14 @@ export const EditorPage = () => {
     const onSaveWebApp = async (webAppTitle = '') => {
         const webApp = localStorageService.loadFromStorage('draftWebApp')
 
-        // Sets the webApp title from input / default 
-        if(webAppTitle){
-            webApp.title = webAppTitle;
-        } else {
-            webApp.title = 'New project';
-        }
+        // Sets the webApp title from input / default (if it's a new webApp - has no _id)
+        if(!webApp._id){
+            if(webAppTitle){
+                webApp.title = webAppTitle;
+            } else {
+                webApp.title = 'New project';
+            }
+        } 
 
         const savedWebApp = await webAppService.save(webApp)
         dispatch(setUser())
@@ -377,7 +379,7 @@ export const EditorPage = () => {
             
             // Save the screen shot of the webApp via the html-to-image library,
             // Than save the webApp's image as the screen shot the was taken (saved in Cloudinary)
-            toPng(elWebAppBuilder, { cacheBust: true, style:{width: '100%', margin: '0', outline: 'none'}, width: editorWidth, height: 720, quality: 0.2})
+            toJpeg(elWebAppBuilder, { cacheBust: true, style:{width: '100%', margin: '0', outline: 'none'}, width: editorWidth, quality: 0.5})
             .then((dataUrl) => {
                 uploadImg(dataUrl)
                 .then(url => {
@@ -425,7 +427,7 @@ export const EditorPage = () => {
                         <MainEditor windowWidth={windowWidth} onChangeEditorSize={onChangeEditorSize} editorWidth={editorWidth} onToggleEditorMenu={onToggleEditorMenu} droppableId={editor[0]} />
                     </div>
                     <WebAppContainer setIsPromptDialogOpen={setIsPromptDialogOpen} setIsAuthModalOpen={setIsAuthModalOpen} setCurrCmp={setCurrCmp} editorWidth={editorWidth} onChangeEditorSize={onChangeEditorSize} onToggleEditorMenu={onToggleEditorMenu} webAppCmps={editing[1].items} droppableId={editing[0]}
-                        onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} onDuplicateCmp={onDuplicateCmp} currCmp={currCmp} onUpdateCmp={onUpdateCmp} onSaveWebApp={onSaveWebApp}
+                        onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} onDuplicateCmp={onDuplicateCmp} currCmp={currCmp} onUpdateCmp={onUpdateCmp} onSaveWebApp={onSaveWebApp} handlePromptDialog={handlePromptDialog}
                     />
                 </main>
             </DragDropContext>

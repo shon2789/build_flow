@@ -1,8 +1,9 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { store } from 'react-notifications-component';
+import { localStorageService } from '../../services/storage.service';
 
-export const SaveWebAppBtn = ({ setIsPromptDialogOpen, setIsAuthModalOpen }) => {
+export const SaveWebAppBtn = ({ setIsPromptDialogOpen, setIsAuthModalOpen, handlePromptDialog }) => {
 
     const user = useSelector(state => state.userModule.loggedInUser)
 
@@ -29,7 +30,16 @@ export const SaveWebAppBtn = ({ setIsPromptDialogOpen, setIsAuthModalOpen }) => 
         }
 
         // If a user is logged in, open the prompt dialog (ask for webApp title)
-        setIsPromptDialogOpen(true);
+        const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
+
+        // Only if a webApp in editing exists && the webApp has no id, ask the user to give a name
+        if(draftWebApp){
+            if(!draftWebApp._id){
+                setIsPromptDialogOpen(true);
+            } else {
+                handlePromptDialog();
+            }
+        }
         
     }
 
