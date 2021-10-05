@@ -25,11 +25,11 @@ async function query() {
   }
 }
 
-async function save(webApp) {
+async function save(webApp, isGuest = false) {
   if (webApp._id) {
     return await httpService.put(`/api/webApp/`, webApp)
   } else {
-    return await httpService.post(`/api/webApp`, webApp)
+    return await httpService.post(`/api/webApp`, { webApp, isGuest })
   }
 }
 

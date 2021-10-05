@@ -47,17 +47,19 @@ async function updateWebApp(req, res) {
 
 async function addWebApp(req, res) {
     try {
-        const webApp = await webAppService.add(req.body)
-        const user = req.session.user
-        const minifiedWebApp = {
-            _id: ObjectId(webApp._id),
-            title: webApp.title,
-            isPublished: webApp.isPublished,
-            image: webApp.image
-            // Todo: make the first save's image a demo image (something nice, until real image comes)
+        const webApp = await webAppService.add(req.body.webApp)
+        if (!req.body.isGuest) {
+            const user = req.session.user
+            const minifiedWebApp = {
+                _id: ObjectId(webApp._id),
+                title: webApp.title,
+                isPublished: webApp.isPublished,
+                image: webApp.image
+                // Todo: make the first save's image a demo image (something nice, until real image comes)
+            }
+            user.webApps.push(minifiedWebApp)
+            userService.update(user)
         }
-        user.webApps.push(minifiedWebApp)
-        userService.update(user)
         res.send(webApp)
     } catch (err) {
         logger.error('Failed to add webApp')

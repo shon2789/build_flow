@@ -10,7 +10,7 @@ import { SideNav } from '../SideNav';
 
 
 
-export const MainEditor = ({ droppableId, onChangeEditorSize, windowWidth }) => {
+export const MainEditor = ({ droppableId, onChangeEditorSize, windowWidth, onPublishWebApp }) => {
     return (
         <div className="main-editor ">
             <SideNav />
@@ -28,10 +28,8 @@ export const MainEditor = ({ droppableId, onChangeEditorSize, windowWidth }) => 
                         <AiOutlineTablet onClick={() => onChangeEditorSize(windowWidth < 1440 ? '100%' : '768px')} className="icon-btn tablet" />
                         <IoPhonePortraitOutline onClick={() => onChangeEditorSize('375px')} className="icon-btn phone" />
                     </div>
-                    <div className="editor-publish-btn">Publish</div>
+                    <div onClick={() => { onPublishWebApp() }} className="editor-publish-btn">Publish</div>
                 </div>
-
-
             </div>
         </div>
     )

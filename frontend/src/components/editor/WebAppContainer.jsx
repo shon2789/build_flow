@@ -7,14 +7,13 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
 
 
 
-export const WebAppContainer = ({ setCurrCmp, droppableId, webAppCmps, onToggleEditorMenu, editorWidth, onChangeEditorSize, onDeleteCmp, onSetCurrCmp, currCmp, onDuplicateCmp, onUpdateCmp, onSaveWebApp, setIsPromptDialogOpen, setIsAuthModalOpen, handlePromptDialog }) => {
+export const WebAppContainer = ({ setCurrCmp, droppableId, webAppCmps, onToggleEditorMenu, editorWidth, onChangeEditorSize, onDeleteCmp, onSetCurrCmp, currCmp, onDuplicateCmp, onUpdateCmp, onSaveWebApp, setIsPromptDialogOpen, setIsAuthModalOpen, handlePromptDialog, handleSave }) => {
 
     //When clicking on anything other than the editable component
     const handleClickAway = (ev) => {
         if (ev.type === 'touchend') return
         setCurrCmp(null)
     };
-
 
     return (
 
@@ -44,8 +43,8 @@ export const WebAppContainer = ({ setCurrCmp, droppableId, webAppCmps, onToggleE
                                     </Draggable>
                                 )
                             })}
-                            < SaveWebAppBtn setIsPromptDialogOpen={setIsPromptDialogOpen} setIsAuthModalOpen={setIsAuthModalOpen} onSaveWebApp={onSaveWebApp} editorWidth={editorWidth} handlePromptDialog={handlePromptDialog} />
-                            {provided.placeholder} 
+                            < SaveWebAppBtn setIsPromptDialogOpen={setIsPromptDialogOpen} setIsAuthModalOpen={setIsAuthModalOpen} onSaveWebApp={onSaveWebApp} editorWidth={editorWidth} handlePromptDialog={handlePromptDialog} handleSave={handleSave} />
+                            {provided.placeholder}
                         </div>
                     )
                 }}

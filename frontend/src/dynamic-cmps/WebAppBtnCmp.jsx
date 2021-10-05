@@ -2,7 +2,7 @@ import React from 'react'
 import { ElementToolBar } from '../components/editor/ElementToolBar'
 import ContentEditable from "react-contenteditable";
 
-export const WebAppBtnCmp = ({ cmp, currCmp, onSetCurrCmp, onDeleteCmp, onDuplicateCmp, onUpdateCmp, editorWidth }) => {
+export const WebAppBtnCmp = ({ cmp, currCmp, onSetCurrCmp, onDeleteCmp, onDuplicateCmp, onUpdateCmp, editorWidth, isPublished }) => {
 
     let cmpStyle = { ...cmp.attributes.style }
     if (editorWidth < 763) {
@@ -22,6 +22,14 @@ export const WebAppBtnCmp = ({ cmp, currCmp, onSetCurrCmp, onDeleteCmp, onDuplic
         const newCmpInfo = { ...currCmp.info, txt }
         onUpdateCmp(newCmpInfo, 'info')
     };
+
+    if (isPublished) {
+        return (
+            <button id={cmp.id} style={cmpStyle} className={cmp.attributes.className} >
+                {cmp.info.txt}
+            </button>
+        )
+    }
 
     if (currCmp && currCmp.id === cmp.id) {
         return (

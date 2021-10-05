@@ -1,7 +1,7 @@
 import React from 'react'
 import { ElementToolBar } from '../components/editor/ElementToolBar'
 
-export const WebAppImgCmp = ({ cmp, currCmp, onSetCurrCmp, onDeleteCmp, onDuplicateCmp, onUpdateCmp, editorWidth }) => {
+export const WebAppImgCmp = ({ cmp, currCmp, onSetCurrCmp, onDeleteCmp, onDuplicateCmp, onUpdateCmp, editorWidth, isPublished }) => {
 
     let cmpStyle = { ...cmp.attributes.style }
     if (editorWidth < 763) {
@@ -14,6 +14,15 @@ export const WebAppImgCmp = ({ cmp, currCmp, onSetCurrCmp, onDeleteCmp, onDuplic
         for (const key in tabletStyle) {
             cmpStyle[key] = tabletStyle[key];
         }
+    }
+
+
+    if (isPublished) {
+        return (
+            <div className="nuetral-div" style={cmpStyle} >
+                <img id={cmp.id} style={{ width: '100%', height: '100%', objectFit: 'cover' }} className={cmp.attributes.className} src={cmp.attributes.src} alt="sorry no img" />
+            </div>
+        )
     }
 
     if (currCmp && currCmp.id === cmp.id) {

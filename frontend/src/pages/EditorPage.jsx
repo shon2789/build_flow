@@ -314,13 +314,13 @@ export const EditorPage = () => {
         const webApp = localStorageService.loadFromStorage('draftWebApp')
 
         // Sets the webApp title from input / default (if it's a new webApp - has no _id)
-        if(!webApp._id){
-            if(webAppTitle){
+        if (!webApp._id) {
+            if (webAppTitle) {
                 webApp.title = webAppTitle;
             } else {
                 webApp.title = 'New project';
             }
-        } 
+        }
 
         const savedWebApp = await webAppService.save(webApp)
         dispatch(setUser())
@@ -331,6 +331,44 @@ export const EditorPage = () => {
         return savedWebApp;
     }
 
+    const handleSave = (toPublish = false) => {
+        // If no user is logged in (guest mode) display msg and open auth modal
+        if (!user) {
+            setIsAuthModalOpen(true)
+            store.addNotification({
+                message: "Login first",
+                type: "danger",
+                insert: "top",
+                container: "top-right",
+                animationIn: ["animate__animated", "animate__backInRight"],
+                animationOut: ["animate__animated", "animate__backOutRight"],
+                dismiss: {
+                    duration: 2500,
+                    onScreen: true
+                }
+            });
+
+            return
+        }
+
+        // If a user is logged in, open the prompt dialog (ask for webApp title)
+        const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
+
+        if (toPublish) {
+            draftWebApp.isPublished = true
+            localStorageService.saveToStorage('draftWebApp', draftWebApp)
+        }
+
+        // Only if a webApp in editing exists && the webApp has no id, ask the user to give a name
+        if (draftWebApp) {
+            if (!draftWebApp._id) {
+                setIsPromptDialogOpen(true)
+            } else {
+                handlePromptDialog()
+            }
+        }
+
+    }
 
     // Handles the dialog modal
     // (If a previous work is detected in the local storage, ask user if to continue or discard the data)
@@ -361,7 +399,7 @@ export const EditorPage = () => {
                     onScreen: true
                 }
             });
-            
+
             //  Uploading msg
             const uploadingId = store.addNotification({
                 message: "Uploading media to cloud...",
@@ -377,39 +415,47 @@ export const EditorPage = () => {
             });
 
             const elWebAppBuilder = document.querySelector('.web-app-builder')
-            
+
             // Save the screen shot of the webApp via the html-to-image library,
             // Than save the webApp's image as the screen shot the was taken (saved in Cloudinary)
-            toJpeg(elWebAppBuilder, { cacheBust: true, style:{width: '100%', margin: '0', outline: 'none'}, width: editorWidth, quality: 0.5})
-            .then((dataUrl) => {
-                uploadImg(dataUrl)
-                .then(url => {
-                    webApp.image = url;
-                    // Saves the webApp to the backend one more time, after got the url from Cloudinary
-                    webAppService.save(webApp)
-                    dispatch(setUser())
-                    
-                    store.removeNotification(uploadingId)
-                    
-                    // Success msg
-                    store.addNotification({
-                        message: "Your project is ready to view!",
-                        type: "success",
-                        insert: "top",
-                        container: "top-right",
-                        animationIn: ["animate__animated", "animate__backInRight"],
-                        animationOut: ["animate__animated", "animate__backOutRight"],
-                        dismiss: {
-                            duration: 3000,
-                            onScreen: true
-                        }
-                    });
+            toJpeg(elWebAppBuilder, { cacheBust: true, style: { width: '100%', margin: '0', outline: 'none' }, width: editorWidth, quality: 0.5 })
+                .then((dataUrl) => {
+                    uploadImg(dataUrl)
+                        .then(url => {
+                            webApp.image = url;
+                            // Saves the webApp to the backend one more time, after got the url from Cloudinary
+                            webAppService.save(webApp)
+                            dispatch(setUser())
+
+                            store.removeNotification(uploadingId)
+
+                            // Success msg
+                            store.addNotification({
+                                message: "Your project is ready to view!",
+                                type: "success",
+                                insert: "top",
+                                container: "top-right",
+                                animationIn: ["animate__animated", "animate__backInRight"],
+                                animationOut: ["animate__animated", "animate__backOutRight"],
+                                dismiss: {
+                                    duration: 3000,
+                                    onScreen: true
+                                }
+                            });
+                        })
                 })
-            })
-            .catch((err) => {
-                console.log(err)
-            })
+                .catch((err) => {
+                    console.log(err)
+                })
         })
+    }
+
+    const onPublishWebApp = async () => {
+        // handleSave(true)
+        const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
+        draftWebApp.isPublished = true
+        const savedWebApp = await webAppService.save(draftWebApp, true)
+        window.open(`/publish/${savedWebApp._id}`, "_blank")
     }
 
 
@@ -419,17 +465,44 @@ export const EditorPage = () => {
 
     }
 
+
+    const webAppContainerProps = {
+        setIsPromptDialogOpen,
+        setIsAuthModalOpen,
+        setCurrCmp,
+        editorWidth,
+        onChangeEditorSize,
+        onToggleEditorMenu,
+        webAppCmps: editing[1].items,
+        droppableId: editing[0],
+        onDeleteCmp,
+        onSetCurrCmp,
+        onDuplicateCmp,
+        currCmp,
+        onUpdateCmp,
+        onSaveWebApp,
+        handlePromptDialog,
+        handleSave
+    }
+
+    const mainEditorProps = {
+        windowWidth,
+        onChangeEditorSize,
+        editorWidth,
+        onToggleEditorMenu,
+        droppableId: editor[0],
+        onPublishWebApp
+    }
+
     return (
         <>
             <DragDropContext onDragStart={result => onDragStart()} onDragEnd={result => onDragEnd(result)}>
                 <main className="editor-page-container">
                     <Screen isOpen={isEditorMenuToggled} exitScreen={onToggleEditorMenu} />
                     <div className={`${isEditorMenuToggled ? 'side-editor-mobile-active' : ''} side-editor-container`}>
-                        <MainEditor windowWidth={windowWidth} onChangeEditorSize={onChangeEditorSize} editorWidth={editorWidth} onToggleEditorMenu={onToggleEditorMenu} droppableId={editor[0]} />
+                        <MainEditor {...mainEditorProps} />
                     </div>
-                    <WebAppContainer setIsPromptDialogOpen={setIsPromptDialogOpen} setIsAuthModalOpen={setIsAuthModalOpen} setCurrCmp={setCurrCmp} editorWidth={editorWidth} onChangeEditorSize={onChangeEditorSize} onToggleEditorMenu={onToggleEditorMenu} webAppCmps={editing[1].items} droppableId={editing[0]}
-                        onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} onDuplicateCmp={onDuplicateCmp} currCmp={currCmp} onUpdateCmp={onUpdateCmp} onSaveWebApp={onSaveWebApp} handlePromptDialog={handlePromptDialog}
-                    />
+                    <WebAppContainer {...webAppContainerProps} />
                 </main>
             </DragDropContext>
             {isAuthModalOpen &&

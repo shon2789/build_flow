@@ -3,7 +3,7 @@ import { ElementToolBar } from '../components/editor/ElementToolBar'
 import { DynamicCmp } from './DynamicCmp'
 import { GiHamburgerMenu } from "react-icons/gi";
 
-export const WebAppNavbarCmp = ({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDuplicateCmp, onUpdateCmp, editorWidth, onChangeEditorSize }) => {
+export const WebAppNavbarCmp = ({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDuplicateCmp, onUpdateCmp, editorWidth, onChangeEditorSize, isPublished }) => {
 
     let cmpStyle = { ...cmp.attributes.style }
     if (editorWidth < 763) {
@@ -35,6 +35,17 @@ export const WebAppNavbarCmp = ({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDup
         // hamburgerStyle.border = '2px solid black'
         // console.dir(document.querySelector('.web-app-builder'))
         // console.dir(document.getElementById(cmp.id))
+    }
+
+    if (isPublished) {
+        return (
+
+            <nav id={cmp.id} style={cmpStyle} className={cmp.attributes.className} >
+                {showHamburgetMenu && <GiHamburgerMenu style={{ fontSize: "1.3rem", color: "#292929" }} />}
+                {/* {showHamburgetMenu && cmp.children.map((child, idx) => <DynamicCmp key={idx} cmp={child} currCmp={currCmp} onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} onDuplicateCmp={onDuplicateCmp} onUpdateCmp={onUpdateCmp} onChangeEditorSize={onChangeEditorSize} editorWidth={editorWidth} />) } */}
+                {(cmp.children && !showHamburgetMenu) && cmp.children.map((child, idx) => <DynamicCmp key={idx} cmp={child} onChangeEditorSize={onChangeEditorSize} editorWidth={editorWidth} isPublished={isPublished} />)}
+            </nav>
+        )
     }
 
     if (currCmp && currCmp.id === cmp.id) {

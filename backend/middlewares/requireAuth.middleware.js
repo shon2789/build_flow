@@ -6,7 +6,7 @@ async function requireAuth(req, res, next) {
   const webAppId = req.params.webAppId;
   const webApp = await webAppService.getById(webAppId)
 
-  if (webApp.isTemplate) {
+  if (webApp.isTemplate || webApp.isPublished) {
     next()
     return
   }
