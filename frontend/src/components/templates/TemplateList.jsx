@@ -20,7 +20,7 @@ export const TemplateList = ({ templates }) => {
             <div className="templates-content-container">
                 <h2 className="templates-page-title">Choose one and start building now!</h2>
                 <div className="templates-preview-container">
-                    <Link to="/editor">
+                    <Link to={`/editor/startNew`} >
                         <div className="create-template-preview">
                             <div className="create-template-preview-upper">
                                 <BsPlusCircle />

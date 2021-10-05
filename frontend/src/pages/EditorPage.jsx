@@ -6,14 +6,13 @@ import { Screen } from '../components/Screen';
 import { MainEditor } from '../components/editor/MainEditor';
 import { WebAppContainer } from '../components/editor/WebAppContainer';
 import { cloneDeep } from 'lodash';
-import { loadWebApp, clearLoadedWebApp } from '../store/actions/web-app.action'
+import { loadWebApp } from '../store/actions/web-app.action'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
 import { webAppService } from '../services/web-app.service';
 import { localStorageService } from '../services/storage.service';
 import { AuthModal } from '../components/AuthModal';
 import { setUser } from '../store/actions/user.action';
-import { AlertDialog } from '../components/AlertDialog';
 import { PromptDialog } from '../components/PromptDialog';
 import { createJpegFromElement } from '../services/screen-shot.service'
 import { removeMessage, alertMessage } from '../services/alert.service'
@@ -23,10 +22,10 @@ import { removeMessage, alertMessage } from '../services/alert.service'
 
 // Draggable Components from backend, rendered into the accordion
 export const EditorPage = () => {
-    const [isDialogOpen, setIsDialogOpen] = useState(false)
+    // const [isDialogOpen, setIsDialogOpen] = useState(false)
     const [isPromptDialogOpen, setIsPromptDialogOpen] = useState(false)
     const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
-    const [dialogAns, setDialogAns] = useState(true)
+    // const [dialogAns, setDialogAns] = useState(true)
 
     const cmps = useSelector(state => state.cmpModule.cmps)
     const loadedWebApp = useSelector(state => state.webAppModule.loadedWebApp)
@@ -35,6 +34,7 @@ export const EditorPage = () => {
 
     const history = useHistory();
     const { webAppId } = useParams();
+
 
     // Drag&Drop columns (Editor components && webApp builder)
     const dndColumns = {
@@ -58,38 +58,13 @@ export const EditorPage = () => {
 
     // Initializing the webApp from the localStorage / loading from backend via ID / creates an empty webApp
     useEffect(() => {
-        // If a draft exist in the local storage
-        const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
-        if (draftWebApp && !webAppId) {
-            let isAuth = false;
 
-            // If the draft contains an _id, authenticate by the user
-            if (draftWebApp._id) {
-                if (user) {
-                    isAuth = user.webApps.some(webApp => webApp._id === draftWebApp._id)
-                } else {
-                    isAuth = false;
-                }
-                // Else - it's a guest
-            } else {
-                isAuth = true;
-            }
-            if (isAuth) {
-                setIsDialogOpen(true)
-                // ans = window.confirm('Continue from where you left?')
+        const onEditorMount = async () => {
 
-            }
-            if (dialogAns && isAuth) {
-                setColumns({
-                    ...columns,
-                    [editing[0]]: {
-                        name: 'Editing',
-                        items: draftWebApp.children.map(section => { return { id: section.id, cmp: section } })
-                    }
-                })
-            } else {
-                setIsDialogOpen(false)
-                localStorageService.removeFromStorage('draftWebApp')
+        // If a webAppID was received in the URL params:
+        if(webAppId){
+            // Case user clicked on start new project (Templates page)
+            if(webAppId === 'startNew'){
                 setColumns({
                     ...columns,
                     [editing[0]]: {
@@ -97,43 +72,76 @@ export const EditorPage = () => {
                         items: []
                     }
                 })
-            }
-            // If a webAppId has been passed through the query params
-        } else if (webAppId) {
-            if (loadedWebApp.length === 0) {
-                dispatch(loadWebApp(webAppId))
-                    .then((webApp) => {
-                        let clonnedWebApp = webApp;
-                        if (webApp.isTemplate) {
-                            clonnedWebApp = cloneDeep(webApp);
-                            cmpService.changeCmpIds(clonnedWebApp);
-                        } else {
-                            localStorageService.saveToStorage('draftWebApp', webApp)
+                localStorageService.saveToStorage('draftWebApp', webAppService.createNewWebApp())
+
+            // Case user loaded a Template / WebApp from user page
+            } else {
+                const webApp = await dispatch(loadWebApp(webAppId))
+                let loadedWebApp;
+
+                // If the webApp is a template - Clone deep and change the id's
+                if(webApp.isTemplate){
+                    loadedWebApp = cloneDeep(webApp);
+                    cmpService.changeCmpIds(loadedWebApp);
+                    loadedWebApp.isTemplate = false
+                    delete loadedWebApp._id
+                    delete loadedWebApp.id
+                // If the webApp is a user's webApp (Editing)
+                } else{
+                    // Make sure the webApp belongs to the logged in user
+                    if(user){
+                        if(user.webApps.some(userWebApp => userWebApp._id === webApp._id)){
+                            loadedWebApp = webApp;
+                        // If not authenticated: start new
+                        } else{
+                            loadedWebApp = webAppService.createNewWebApp();
                         }
-                        history.push(`/editor`)
-                        setColumns({
-                            ...columns,
-                            [editing[0]]: {
-                                name: 'Editing',
-                                items: clonnedWebApp.children.map(section => { return { id: utilService.makeId(), cmp: section } })
-                            }
-                        })
-                    })
+
+                    }
+                    
+                }
+                
+                setColumns({
+                    ...columns,
+                    [editing[0]]: {
+                        name: 'Editing',
+                        items: loadedWebApp.children.map(section => { return { id: utilService.makeId(), cmp: section } })
+                    }
+                })
+
+                localStorageService.saveToStorage('draftWebApp', loadedWebApp)
             }
-            // If initializing a new project
+        // No webAppID was received in the URL params (Refresh)
         } else {
+            const webApp = localStorageService.loadFromStorage('draftWebApp')
+            let loadedWebApp
+
+            // If a webApp exists in the local storage - load it
+            if(webApp){
+                loadedWebApp = webApp;
+            // Else - start a new project
+            } else{
+                loadWebApp = webAppService.createNewWebApp();
+            }
+
             setColumns({
                 ...columns,
                 [editing[0]]: {
                     name: 'Editing',
-                    items: []
+                    items: loadedWebApp.children.map(section => { return { id: utilService.makeId(), cmp: section } })
                 }
             })
+            localStorageService.saveToStorage('draftWebApp', loadedWebApp)
+            
         }
-        return () => {
-            dispatch(clearLoadedWebApp())
+
         }
-    }, [dialogAns])
+
+        onEditorMount()
+
+        // Delete remaining of URL params
+        history.push('/editor')
+    }, [])
 
 
     // Save changes to the local storage for every change in the DnD columns
@@ -326,7 +334,7 @@ export const EditorPage = () => {
         dispatch(setUser())
 
         // Todo: add a protection: when clicking the save button more than one, error occurs because no webApp is in the local storage
-        localStorageService.removeFromStorage('draftWebApp')
+        // localStorageService.removeFromStorage('draftWebApp')//Delete!!!
 
         return savedWebApp;
     }
@@ -360,10 +368,10 @@ export const EditorPage = () => {
 
     // Handles the dialog modal
     // (If a previous work is detected in the local storage, ask user if to continue or discard the data)
-    const handleDialog = (boolean) => {
-        setIsDialogOpen(false)
-        setDialogAns(boolean)
-    }
+    // const handleDialog = (boolean) => {
+    //     setIsDialogOpen(false)
+    //     setDialogAns(boolean)
+    // }
 
     // Handles the prompt dialog modal
     // (When a user click the save webApp btn, prompt the user to enter the webApp title)
@@ -398,11 +406,11 @@ export const EditorPage = () => {
     }
 
     const onPublishWebApp = async () => {
-        // handleSave(true)
         const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
         draftWebApp.isPublished = true
         const savedWebApp = await webAppService.save(draftWebApp, user ? false : true)
         localStorageService.saveToStorage('draftWebApp', savedWebApp)
+        dispatch(setUser());
         window.open(`/publish/${savedWebApp._id}`, "_blank")
     }
 
@@ -459,7 +467,7 @@ export const EditorPage = () => {
                     <Screen isOpen={isAuthModalOpen} exitScreen={setIsAuthModalOpen} />
                 </>
             }
-            <AlertDialog handleDialog={handleDialog} open={isDialogOpen} />
+            {/* <AlertDialog handleDialog={handleDialog} open={isDialogOpen} /> */}
             <PromptDialog handleDialog={handlePromptDialog} open={isPromptDialogOpen} />
         </>
     )
