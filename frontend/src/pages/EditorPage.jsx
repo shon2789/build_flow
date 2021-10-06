@@ -6,7 +6,7 @@ import { Screen } from '../components/Screen';
 import { MainEditor } from '../components/editor/MainEditor';
 import { WebAppContainer } from '../components/editor/WebAppContainer';
 import { cloneDeep } from 'lodash';
-import { loadWebApp } from '../store/actions/web-app.action'
+import { clearLoadedWebApp, loadWebApp } from '../store/actions/web-app.action'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
 import { webAppService } from '../services/web-app.service';
@@ -33,6 +33,7 @@ export const EditorPage = () => {
 
     const history = useHistory();
     const { webAppId } = useParams();
+    const [isNewProject, setIsNewProject] = useState(webAppId === 'startNew' ? true : false)
 
 
     // Drag&Drop columns (Editor components && webApp builder)
@@ -72,6 +73,8 @@ export const EditorPage = () => {
                         }
                     })
                     localStorageService.saveToStorage('draftWebApp', webAppService.createNewWebApp())
+
+                    dispatch(clearLoadedWebApp())
 
                     // Case user loaded a Template / WebApp from user page
                 } else {
@@ -392,7 +395,7 @@ export const EditorPage = () => {
 
         // First webApp save
         const webApp = await onSaveWebApp(webAppTitle)
-        
+
         // Saved successfully msg
         alertMessage('Saved successfully!', 'success', 3000)
 
@@ -428,11 +431,6 @@ export const EditorPage = () => {
 
 
     // If a webAppID is given in the url params, and no webApp has actually been loaded, return Loading modal
-    if (!loadedWebApp) {
-        console.log("fuck my life");
-        return <div>Loading...</div>
-
-    }
 
 
     const webAppContainerProps = {
@@ -451,7 +449,8 @@ export const EditorPage = () => {
         onUpdateCmp,
         onSaveWebApp,
         handlePromptDialog,
-        handleSave
+        handleSave,
+        isNewProject
     }
 
     const mainEditorProps = {
