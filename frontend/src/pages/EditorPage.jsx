@@ -20,12 +20,11 @@ import { removeMessage, alertMessage } from '../services/alert.service'
 
 
 
-// Draggable Components from backend, rendered into the accordion
 export const EditorPage = () => {
-    // const [isDialogOpen, setIsDialogOpen] = useState(false)
+
     const [isPromptDialogOpen, setIsPromptDialogOpen] = useState(false)
     const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
-    // const [dialogAns, setDialogAns] = useState(true)
+
 
     const cmps = useSelector(state => state.cmpModule.cmps)
     const loadedWebApp = useSelector(state => state.webAppModule.loadedWebApp)
@@ -61,46 +60,79 @@ export const EditorPage = () => {
 
         const onEditorMount = async () => {
 
-        // If a webAppID was received in the URL params:
-        if(webAppId){
-            // Case user clicked on start new project (Templates page)
-            if(webAppId === 'startNew'){
-                setColumns({
-                    ...columns,
-                    [editing[0]]: {
-                        name: 'Editing',
-                        items: []
-                    }
-                })
-                localStorageService.saveToStorage('draftWebApp', webAppService.createNewWebApp())
+            // If a webAppID was received in the URL params:
+            if (webAppId) {
+                // Case user clicked on start new project (Templates page)
+                if (webAppId === 'startNew') {
+                    setColumns({
+                        ...columns,
+                        [editing[0]]: {
+                            name: 'Editing',
+                            items: []
+                        }
+                    })
+                    localStorageService.saveToStorage('draftWebApp', webAppService.createNewWebApp())
 
-            // Case user loaded a Template / WebApp from user page
-            } else {
-                const webApp = await dispatch(loadWebApp(webAppId))
-                let loadedWebApp;
+                    // Case user loaded a Template / WebApp from user page
+                } else {
+                    const webApp = await dispatch(loadWebApp(webAppId))
+                    let loadedWebApp;
 
-                // If the webApp is a template - Clone deep and change the id's
-                if(webApp.isTemplate){
-                    loadedWebApp = cloneDeep(webApp);
-                    cmpService.changeCmpIds(loadedWebApp);
-                    loadedWebApp.isTemplate = false
-                    delete loadedWebApp._id
-                    delete loadedWebApp.id
-                // If the webApp is a user's webApp (Editing)
-                } else{
-                    // Make sure the webApp belongs to the logged in user
-                    if(user){
-                        if(user.webApps.some(userWebApp => userWebApp._id === webApp._id)){
-                            loadedWebApp = webApp;
-                        // If not authenticated: start new
-                        } else{
-                            loadedWebApp = webAppService.createNewWebApp();
+                    // If the webApp is a template - Clone deep and change the id's
+                    if (webApp.isTemplate) {
+                        loadedWebApp = cloneDeep(webApp);
+                        cmpService.changeCmpIds(loadedWebApp);
+                        loadedWebApp.isTemplate = false
+                        delete loadedWebApp._id
+                        delete loadedWebApp.id
+                        // If the webApp is a user's webApp (Editing)
+                    } else {
+                        // Make sure the webApp belongs to the logged in user
+                        if (user) {
+                            if (user.webApps.some(userWebApp => userWebApp._id === webApp._id)) {
+                                loadedWebApp = webApp;
+                                // If not authenticated: start new
+                            } else {
+                                loadedWebApp = webAppService.createNewWebApp();
+                            }
+
                         }
 
                     }
-                    
+
+                    setColumns({
+                        ...columns,
+                        [editing[0]]: {
+                            name: 'Editing',
+                            items: loadedWebApp.children.map(section => { return { id: utilService.makeId(), cmp: section } })
+                        }
+                    })
+
+                    localStorageService.saveToStorage('draftWebApp', loadedWebApp)
                 }
-                
+                // No webAppID was received in the URL params (Refresh)
+            } else {
+                const webApp = localStorageService.loadFromStorage('draftWebApp')
+                let loadedWebApp
+
+                // Make sure the webApp belongs to the logged in user
+                if (webApp) {
+                    if (webApp._id) {
+                        if (user) {
+                            if (user.webApps.some(userWebApp => userWebApp._id === webApp._id)) {
+                                loadedWebApp = webApp
+                            }
+                        } else {
+                            loadedWebApp = webAppService.createNewWebApp()
+                        }
+                    } else {
+                        loadedWebApp = webApp
+                    }
+                    // If not authenticated: start new
+                } else {
+                    loadedWebApp = webAppService.createNewWebApp()
+                }
+
                 setColumns({
                     ...columns,
                     [editing[0]]: {
@@ -108,42 +140,9 @@ export const EditorPage = () => {
                         items: loadedWebApp.children.map(section => { return { id: utilService.makeId(), cmp: section } })
                     }
                 })
-
                 localStorageService.saveToStorage('draftWebApp', loadedWebApp)
-            }
-        // No webAppID was received in the URL params (Refresh)
-        } else {
-            const webApp = localStorageService.loadFromStorage('draftWebApp')
-            let loadedWebApp
 
-            // Make sure the webApp belongs to the logged in user
-            if(webApp){
-                if(webApp._id){
-                    if(user){
-                        if(user.webApps.some(userWebApp => userWebApp._id === webApp._id)){
-                            loadedWebApp = webApp
-                        }
-                    } else{
-                        loadedWebApp = webAppService.createNewWebApp()
-                    }
-                } else{
-                    loadedWebApp = webApp
-                }
-                // If not authenticated: start new
-            } else{
-                loadedWebApp = webAppService.createNewWebApp()
             }
-
-            setColumns({
-                ...columns,
-                [editing[0]]: {
-                    name: 'Editing',
-                    items: loadedWebApp.children.map(section => { return { id: utilService.makeId(), cmp: section } })
-                }
-            })
-            localStorageService.saveToStorage('draftWebApp', loadedWebApp)
-            
-        }
 
         }
 
@@ -425,7 +424,8 @@ export const EditorPage = () => {
 
 
     // If a webAppID is given in the url params, and no webApp has actually been loaded, return Loading modal
-    if (webAppId && (!loadedWebApp || loadedWebApp.length === 0)) {
+    if (!loadedWebApp) {
+        console.log("fuck my life");
         return <div>Loading...</div>
 
     }

@@ -25,6 +25,14 @@ export const WebAppContainer = ({ setCurrCmp, droppableId, webAppCmps, onToggleE
                         <div style={{ width: `${editorWidth}` }} className="web-app-builder" provided={provided} {...provided.droppableProps}
                             ref={provided.innerRef}  >
 
+                            {webAppCmps.length === 0 &&
+                                <div className="drag-here-txt">
+                                    <h1>
+                                        Drop here and see the magic happen.
+                                    </h1>
+                                </div>
+                            }
+
                             {webAppCmps.map((item, idx) => {
                                 return (
                                     <Draggable key={item.id} draggableId={item.id} index={idx}>
