@@ -9,6 +9,7 @@ import { setUser } from '../../store/actions/user.action';
 import { Tooltip } from '@material-ui/core';
 import { alertMessage } from '../../services/alert.service'
 import desktopSvg from "./../../assets/images/desktop.svg"
+import { FiLink } from "react-icons/fi";
 
 
 export const UserSitePreview = ({ webApp }) => {
@@ -58,6 +59,16 @@ export const UserSitePreview = ({ webApp }) => {
         window.open(`/publish/${webApp._id}`)
     }
 
+    const onCopyUrlLink = () => {
+        const el = document.createElement('input')
+        el.value = `${window.location.href.split("user")[0]}publish/${webApp._id}`
+        document.body.appendChild(el)
+        el.select()
+        document.execCommand("copy");
+        document.body.removeChild(el)
+        alertMessage("Copied to clipboard!", "info", 2000)
+    }
+
     return (
         <div ref={ref} className="user-site-preview" style={{ position: "relative", backgroundImage: `url('${webApp.image}')`, backgroundSize: '101%', backgroundRepeat: 'no-repeat', backgroundPosition: '50% 0.2%' }}>
             {!webApp.image &&
@@ -68,12 +79,18 @@ export const UserSitePreview = ({ webApp }) => {
                     <h3 className="user-site-name">{webApp.title}</h3>
                     <div className="user-element-tool-bar" >
                         {webApp.isPublished &&
-
-                            <Tooltip title="Preview" arrow placement="top">
-                                <div onClick={() => { onOpenPublished() }} className="element-tool">
-                                    <ImEye className="edit-tool tool" />
-                                </div>
-                            </Tooltip>
+                            <>
+                                <Tooltip title="Copy link" arrow placement="top">
+                                    <div onClick={() => { onCopyUrlLink() }} className="element-tool">
+                                        <FiLink className="edit-tool tool" />
+                                    </div>
+                                </Tooltip>
+                                <Tooltip title="Preview" arrow placement="top">
+                                    <div onClick={() => { onOpenPublished() }} className="element-tool">
+                                        <ImEye className="edit-tool tool" />
+                                    </div>
+                                </Tooltip>
+                            </>
                         }
                         <Tooltip title="Edit title" arrow placement="top">
                             <div className="element-tool ">
