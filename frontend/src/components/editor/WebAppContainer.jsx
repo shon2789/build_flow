@@ -13,25 +13,19 @@ export const WebAppContainer = ({ setCurrCmp, droppableId, webAppCmps, onToggleE
 
     const dispatch = useDispatch()
 
+    const loadedWebApp = useSelector(state => state.webAppModule.loadedWebApp)
+
+    useEffect(() => {
+        return () => {
+            dispatch(clearLoadedWebApp())
+        }
+    }, [])
+
     //When clicking on anything other than the editable component
     const handleClickAway = (ev) => {
         if (ev.type === 'touchend') return
         setCurrCmp(null)
     };
-
-    const loadedWebApp = useSelector(state => state.webAppModule.loadedWebApp)
-
-    
-    
-    
-    useEffect(() => {
-        console.log(loadedWebApp)
-
-        return () => {
-            console.log('got here')
-            dispatch(clearLoadedWebApp())
-        }
-    }, [])
 
     return (
 
@@ -65,16 +59,6 @@ export const WebAppContainer = ({ setCurrCmp, droppableId, webAppCmps, onToggleE
                                 }
                                 </>
                             }
-
-
-
-                            {/* {(webAppCmps.length === 0 ) &&
-                                <div className="drag-here-txt">
-                                    <h1>
-                                        Drop here and see the magic happen.
-                                    </h1>
-                                </div>
-                            } */}
 
                             {webAppCmps.map((item, idx) => {
                                 return (

@@ -27,7 +27,6 @@ export const EditorPage = () => {
 
 
     const cmps = useSelector(state => state.cmpModule.cmps)
-    const loadedWebApp = useSelector(state => state.webAppModule.loadedWebApp)
     const user = useSelector(state => state.userModule.loggedInUser)
     const dispatch = useDispatch()
 
