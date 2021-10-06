@@ -32,7 +32,7 @@ export const EditorPage = () => {
 
     const history = useHistory();
     const { webAppId } = useParams();
-    const [isNewProject, setIsNewProject] = useState(webAppId === 'startNew' ? true : false)
+    const [isNewProject, setIsNewProject] = useState(false)
 
 
     // Drag&Drop columns (Editor components && webApp builder)
@@ -71,6 +71,7 @@ export const EditorPage = () => {
                             items: []
                         }
                     })
+                    setIsNewProject(true)
                     localStorageService.saveToStorage('draftWebApp', webAppService.createNewWebApp())
 
                     dispatch(clearLoadedWebApp())
