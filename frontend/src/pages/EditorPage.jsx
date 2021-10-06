@@ -47,37 +47,43 @@ export const EditorPage = () => {
     };
 
     const [columns, setColumns] = useState(dndColumns)
+    const [roomId, setRoomId] = useState(uuid())
 
     // Seperating the dnd columns for convinience
     const dndAreas = Object.entries(columns)
     const editor = dndAreas[0]
     const editing = dndAreas[1]
 
-    const [roomId, setRoomId] = useState(uuid())
 
     useEffect(() => {
 
+        // Add socket listener
         socketService.setup()
+        //Listening to 'webApp return' event
         socketService.on('webApp return', onUpdateSocketWebApp)
 
+        // Refresh - keep the same socket room id after refresh
         if (!webAppId && sessionStorage.getItem('roomId')) {
-            socketService.emit("editorId", `${sessionStorage.getItem('roomId')}`)
+            socketService.emit("roomId", `${sessionStorage.getItem('roomId')}`)
         }
 
         if (webAppId) {
+            // User get into another user room via URL (project)
             if (webAppId.startsWith('room')) {
                 console.log("from another pc to here", webAppId);
                 setRoomId(webAppId)
-                socketService.emit("editorId", webAppId)
+                socketService.emit("roomId", webAppId)
                 sessionStorage.setItem("roomId", webAppId)
 
+                // In case it's a regular URL (not socket) create a new socket room id
             } else {
-                socketService.emit('editorId', `room-${roomId}`)
+                socketService.emit('roomId', `room-${roomId}`)
                 console.log("new room, created", `room-${roomId}`);
                 sessionStorage.setItem("roomId", `room-${roomId}`)
             }
         }
         return () => {
+            // Remove socket listener
             socketService.off('webApp return')
         }
     }, [])

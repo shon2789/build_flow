@@ -16,13 +16,13 @@ function connectSockets(http, session) {
         socket.on('disconnect', socket => {
             console.log('Someone disconnected')
         })
-        socket.on('editorId', editorId => {
-            if (socket.myRoom === editorId) return;
+        socket.on('roomId', roomId => {
+            if (socket.myRoom === roomId) return;
             if (socket.myRoom) {
                 socket.leave(socket.myRoom)
             }
-            socket.join(editorId)
-            socket.myRoom = editorId
+            socket.join(roomId)
+            socket.myRoom = roomId
         })
         // socket.on('webApp', webApp => {
         //     console.log(webApp)
