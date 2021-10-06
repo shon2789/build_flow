@@ -33,6 +33,7 @@ export const EditorPage = () => {
     const [isNewProject, setIsNewProject] = useState(webAppId === 'startNew' ? true : false)
 
 
+
     // Drag&Drop columns (Editor components && webApp builder)
     const dndColumns = {
         [utilService.makeId()]: {
@@ -54,11 +55,28 @@ export const EditorPage = () => {
 
     const [roomId, setRoomId] = useState(uuid())
 
-
     useEffect(() => {
+
         socketService.setup()
         socketService.on('webApp return', onUpdateSocketWebApp)
-        socketService.emit('editorId', 'room1')
+
+        if (!webAppId && sessionStorage.getItem('roomId')) {
+            socketService.emit("editorId", `${sessionStorage.getItem('roomId')}`)
+        }
+
+        if (webAppId) {
+            if (webAppId.startsWith('room')) {
+                console.log("from another pc to here", webAppId);
+                setRoomId(webAppId)
+                socketService.emit("editorId", webAppId)
+                sessionStorage.setItem("roomId", webAppId)
+
+            } else {
+                socketService.emit('editorId', `room-${roomId}`)
+                console.log("new room, created", `room-${roomId}`);
+                sessionStorage.setItem("roomId", `room-${roomId}`)
+            }
+        }
         return () => {
             socketService.off('webApp return')
         }
@@ -81,6 +99,7 @@ export const EditorPage = () => {
         const onEditorMount = async () => {
             // If a webAppID was received in the URL params:
             if (webAppId) {
+
                 // Case user clicked on start new project (Templates page)
                 if (webAppId === 'startNew') {
                     setColumns({
