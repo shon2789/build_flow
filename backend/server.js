@@ -34,6 +34,8 @@ const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
 const webAppRoutes = require('./api/webApp/webApp.routes')
 const cmpRoutes = require('./api/cmp/cmp.routes')
+const { connectSockets } = require('./services/socket.service')
+
 
 // Routes
 
@@ -41,6 +43,7 @@ app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/webApp', webAppRoutes)
 app.use('/api/cmp', cmpRoutes)
+connectSockets(http, session)
 
 
 app.get('/**', (req, res) => {

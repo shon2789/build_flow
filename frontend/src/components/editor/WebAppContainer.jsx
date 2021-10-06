@@ -13,7 +13,7 @@ export const WebAppContainer = ({ setCurrCmp, droppableId, webAppCmps, onToggleE
 
     const dispatch = useDispatch()
 
-    const loadedWebApp = useSelector(state => state.webAppModule.loadedWebApp)
+    // const loadedWebApp = useSelector(state => state.webAppModule.loadedWebApp)
 
     useEffect(() => {
         return () => {
@@ -36,8 +36,8 @@ export const WebAppContainer = ({ setCurrCmp, droppableId, webAppCmps, onToggleE
                     return (
                         <div style={{ width: `${editorWidth}` }} className="web-app-builder" provided={provided} {...provided.droppableProps}
                             ref={provided.innerRef}  >
-                           
-                            {(!loadedWebApp && isNewProject) ? 
+
+                            {/* {(!loadedWebApp && isNewProject) ? 
                                 <>
                                 { webAppCmps.length === 0 &&
                                     
@@ -58,7 +58,7 @@ export const WebAppContainer = ({ setCurrCmp, droppableId, webAppCmps, onToggleE
                                     </div> 
                                 }
                                 </>
-                            }
+                            } */}
 
                             {webAppCmps.map((item, idx) => {
                                 return (

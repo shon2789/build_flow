@@ -16,9 +16,8 @@ import { setUser } from '../store/actions/user.action';
 import { PromptDialog } from '../components/PromptDialog';
 import { createJpegFromElement } from '../services/screen-shot.service'
 import { removeMessage, alertMessage } from '../services/alert.service'
-
-
-
+import { socketService } from '../services/socket.service';
+import { uuid } from 'uuidv4';
 
 export const EditorPage = () => {
 
@@ -32,7 +31,7 @@ export const EditorPage = () => {
 
     const history = useHistory();
     const { webAppId } = useParams();
-    const [isNewProject, setIsNewProject] = useState(false)
+    const [isNewProject, setIsNewProject] = useState(webAppId === 'startNew' ? true : false)
 
 
     // Drag&Drop columns (Editor components && webApp builder)
@@ -54,12 +53,25 @@ export const EditorPage = () => {
     const editor = dndAreas[0]
     const editing = dndAreas[1]
 
+    const [roomId, setRoomId] = useState(uuid())
+
+
+    useEffect(() => {
+        socketService.setup()
+        socketService.on('webApp return', (webApp) => { console.log('webApp from backend', webApp) })
+        socketService.emit('editorId', roomId)
+        console.log(roomId)
+        return () => {
+            socketService.off('webApp')
+        }
+    }, [])
+
+
+
 
     // Initializing the webApp from the localStorage / loading from backend via ID / creates an empty webApp
     useEffect(() => {
-
         const onEditorMount = async () => {
-
             // If a webAppID was received in the URL params:
             if (webAppId) {
                 // Case user clicked on start new project (Templates page)
@@ -71,7 +83,6 @@ export const EditorPage = () => {
                             items: []
                         }
                     })
-                    setIsNewProject(true)
                     localStorageService.saveToStorage('draftWebApp', webAppService.createNewWebApp())
 
                     dispatch(clearLoadedWebApp())
@@ -162,7 +173,7 @@ export const EditorPage = () => {
         const draftWebApp = localStorageService.loadFromStorage('draftWebApp') || webAppService.createNewWebApp()
         draftWebApp.children = editing[1].items.map(obj => obj.cmp);
         localStorageService.saveToStorage('draftWebApp', draftWebApp)
-
+        socketService.emit('webApp', draftWebApp)
     }, [columns])
 
 
@@ -291,6 +302,7 @@ export const EditorPage = () => {
     }
 
     const onUpdateCmp = (updatedProperty, type) => {
+
 
         const webAppCmps = editing[1].items;
 
