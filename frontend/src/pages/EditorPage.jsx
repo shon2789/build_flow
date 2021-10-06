@@ -389,7 +389,10 @@ export const EditorPage = () => {
         setIsPromptDialogOpen(false);
 
         const elWebAppBuilder = document.querySelector('.web-app-builder')
+
+        // First webApp save
         const webApp = await onSaveWebApp(webAppTitle)
+        
         // Saved successfully msg
         alertMessage('Saved successfully!', 'success', 3000)
 
@@ -401,6 +404,7 @@ export const EditorPage = () => {
         const imageUrl = await createJpegFromElement(elWebAppBuilder, editorWidth)
         webApp.image = imageUrl;
 
+        // Second webApp save after image uploaded to cloudinary
         const savedWebApp = await webAppService.save(webApp)
         localStorageService.saveToStorage('draftWebApp', savedWebApp)
 
