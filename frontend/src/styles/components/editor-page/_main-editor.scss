@@ -5,6 +5,30 @@
     background-color: #2b3039;
     display: flex;
 
+    
+    .work-together-container{
+        margin-top: 1.5rem;
+        color: $main-light-color;
+        cursor: pointer;
+        font-family: Roboto regular,sans-serif;
+        display: flex;
+        gap: 10px;
+        transition: .3s;
+
+        &:hover{
+            color: rgb(177, 177, 177);
+        }
+    }
+
+        .work-together-icon{
+            font-size: 1.4rem;
+            align-self: flex-end;
+    }
+
+    .editor-publish-btn{
+        margin:1rem 3rem 3rem 3rem;
+    }
+
     .editor-section-container {
         display: flex;
         flex-direction: column;

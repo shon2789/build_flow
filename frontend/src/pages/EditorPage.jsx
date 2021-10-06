@@ -116,7 +116,6 @@ export const EditorPage = () => {
                         }
                     })
                     localStorageService.saveToStorage('draftWebApp', webAppService.createNewWebApp())
-
                     dispatch(clearLoadedWebApp())
 
                     // Case user loaded a Template / WebApp from user page

@@ -1,16 +1,29 @@
 import React from 'react'
 
-import { IoMdAddCircle } from "react-icons/io";
 import { IoPhonePortraitOutline } from "react-icons/io5";
-import { FaEdit } from "react-icons/fa";
 import { RiComputerLine } from "react-icons/ri";
 import { AiOutlineTablet } from "react-icons/ai";
 import { EditorAccordion } from './EditorAccordion';
 import { SideNav } from '../SideNav';
+import { HiUserGroup } from "react-icons/hi";
+import { workTogetherMessage } from '../../services/alert.service';
 
 
 
 export const MainEditor = ({ droppableId, onChangeEditorSize, windowWidth, onPublishWebApp }) => {
+
+
+    const onCopyRoomIdUrl = () => {
+        const el = document.createElement('input')
+        const roomId = sessionStorage.getItem("roomId")
+        el.value = `${window.location.href}/${roomId}`
+        document.body.appendChild(el)
+        el.select()
+        document.execCommand("copy");
+        document.body.removeChild(el)
+        workTogetherMessage()
+    }
+
     return (
         <div className="main-editor ">
             <SideNav />
@@ -27,6 +40,10 @@ export const MainEditor = ({ droppableId, onChangeEditorSize, windowWidth, onPub
                         <RiComputerLine onClick={() => onChangeEditorSize('100%')} className="icon-btn computer" />
                         <AiOutlineTablet onClick={() => onChangeEditorSize(windowWidth < 1440 ? '100%' : '768px')} className="icon-btn tablet" />
                         <IoPhonePortraitOutline onClick={() => onChangeEditorSize('375px')} className="icon-btn phone" />
+                    </div>
+                    <div onClick={onCopyRoomIdUrl} className="work-together-container">
+                        <h3 className="work-together-link">Work together</h3>
+                        <HiUserGroup className="work-together-icon" />
                     </div>
                     <div onClick={() => { onPublishWebApp() }} className="editor-publish-btn">Publish</div>
                 </div>
