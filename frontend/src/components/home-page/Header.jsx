@@ -11,7 +11,7 @@ export const Header = ({ isMenuToggled, toggleMenu }) => {
                 <Link to="/"><div className="logo">&#60;BuildFlow /&#62;</div></Link>
                 <nav className={`${isMenuToggled ? 'mobile-nav-bar-active' : ''} nav-container `}>
                     <div onClick={() => toggleMenu(false)} className="nav-btn-container"><NavLink className="header-home-btn" exact to="/">Home</NavLink></div>
-                    <div onClick={() => toggleMenu(false)} className="nav-btn-container"><a className="header-hww-btn" href="#how-we-work">How we work</a></div>
+                    <div onClick={() => toggleMenu(false)} className="nav-btn-container"><a className="header-hww-btn" href="#how-we-work">How it works</a></div>
                     <div onClick={() => toggleMenu(false)} className="nav-btn-container"><a className="header-templates-btn" href="#home-page-templates">Templates</a></div>
                 </nav>
                 <Link to="/template"> <div className="get-started-btn">Get started</div></Link>
