@@ -29,11 +29,11 @@ function connectSockets(http, session) {
         //     socket.emit('webApp return', webApp)
         // })
         socket.on('webApp', webApp => {
-            console.log('Emitting Chat msg', webApp);
+            console.log('Emitting webApp', webApp);
             // emits to all sockets:
             // gIo.emit('chat addMsg', msg)
             // emits only to sockets in the same room
-            gIo.to(socket.myRoom).emit('webApp return', webApp)
+            socket.to(socket.myRoom).emit('webApp return', webApp)
         })
         socket.on('user-watch', userId => {
             socket.join('watching:' + userId)

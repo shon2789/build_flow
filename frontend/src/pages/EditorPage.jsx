@@ -24,7 +24,6 @@ export const EditorPage = () => {
     const [isPromptDialogOpen, setIsPromptDialogOpen] = useState(false)
     const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
 
-
     const cmps = useSelector(state => state.cmpModule.cmps)
     const user = useSelector(state => state.userModule.loggedInUser)
     const dispatch = useDispatch()
@@ -58,15 +57,23 @@ export const EditorPage = () => {
 
     useEffect(() => {
         socketService.setup()
-        socketService.on('webApp return', (webApp) => { console.log('webApp from backend', webApp) })
-        socketService.emit('editorId', roomId)
-        console.log(roomId)
+        socketService.on('webApp return', onUpdateSocketWebApp)
+        socketService.emit('editorId', 'room1')
         return () => {
-            socketService.off('webApp')
+            socketService.off('webApp return')
         }
     }, [])
 
-
+    const onUpdateSocketWebApp = (webApp) => {
+        console.log('webApp from backend', webApp)
+        setColumns({
+            ...columns,
+            [editing[0]]: {
+                name: 'Editing',
+                items: webApp.children.map(section => { return { id: utilService.makeId(), cmp: section } })
+            }
+        })
+    }
 
 
     // Initializing the webApp from the localStorage / loading from backend via ID / creates an empty webApp
@@ -109,11 +116,8 @@ export const EditorPage = () => {
                             } else {
                                 loadedWebApp = webAppService.createNewWebApp();
                             }
-
                         }
-
                     }
-
                     setColumns({
                         ...columns,
                         [editing[0]]: {
@@ -121,8 +125,8 @@ export const EditorPage = () => {
                             items: loadedWebApp.children.map(section => { return { id: utilService.makeId(), cmp: section } })
                         }
                     })
-
                     localStorageService.saveToStorage('draftWebApp', loadedWebApp)
+                    socketService.emit('webApp', loadedWebApp)
                 }
                 // No webAppID was received in the URL params (Refresh)
             } else {
@@ -155,11 +159,8 @@ export const EditorPage = () => {
                     }
                 })
                 localStorageService.saveToStorage('draftWebApp', loadedWebApp)
-
             }
-
         }
-
         onEditorMount()
 
         // Delete remaining of URL params
@@ -173,7 +174,6 @@ export const EditorPage = () => {
         const draftWebApp = localStorageService.loadFromStorage('draftWebApp') || webAppService.createNewWebApp()
         draftWebApp.children = editing[1].items.map(obj => obj.cmp);
         localStorageService.saveToStorage('draftWebApp', draftWebApp)
-        socketService.emit('webApp', draftWebApp)
     }, [columns])
 
 
@@ -227,6 +227,9 @@ export const EditorPage = () => {
                     items: destItems
                 }
             });
+            const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
+            draftWebApp.children = destItems.map(section => { return section.cmp })
+            socketService.emit('webApp', draftWebApp)
 
             // Reordering items in the page editing
         } else {
@@ -241,7 +244,11 @@ export const EditorPage = () => {
                     items: copiedItems
                 }
             });
+            const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
+            draftWebApp.children = copiedItems.map(section => { return section.cmp })
+            socketService.emit('webApp', draftWebApp)
         }
+
     };
 
     // Toggle editor menu on moblie
@@ -279,6 +286,9 @@ export const EditorPage = () => {
                 items: webAppCmps
             }
         })
+        const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
+        draftWebApp.children = webAppCmps.map(section => { return section.cmp })
+        socketService.emit('webApp', draftWebApp)
 
     }
 
@@ -299,10 +309,12 @@ export const EditorPage = () => {
                 items: webAppCmps
             }
         })
+        const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
+        draftWebApp.children = webAppCmps.map(section => { return section.cmp })
+        socketService.emit('webApp', draftWebApp)
     }
 
-    const onUpdateCmp = (updatedProperty, type) => {
-
+    const onUpdateCmp = (updatedProperty = null, type = null) => {
 
         const webAppCmps = editing[1].items;
 
@@ -338,7 +350,12 @@ export const EditorPage = () => {
                 items: webAppCmps
             }
         })
+        const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
+        draftWebApp.children = webAppCmps.map(section => { return section.cmp })
+        socketService.emit('webApp', draftWebApp)
     }
+
+
 
     // Saving the current webApp (from the local storage)
     const onSaveWebApp = async (webAppTitle = '') => {
