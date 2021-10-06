@@ -55,7 +55,6 @@ async function addWebApp(req, res) {
                 title: webApp.title,
                 isPublished: webApp.isPublished,
                 image: webApp.image
-                // Todo: make the first save's image a demo image (something nice, until real image comes)
             }
             user.webApps.push(minifiedWebApp)
             userService.update(user)

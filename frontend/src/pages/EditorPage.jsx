@@ -310,8 +310,8 @@ export const EditorPage = () => {
             currCmpCopy.attributes = updatedProperty;
         }
 
-        setCurrCmp(currCmpCopy);
         cmpService.updateCmp(currCmpCopy, mappedWebAppCmps, propPath)
+        setCurrCmp(currCmpCopy);
 
         webAppCmps.forEach((item, idx) => {
             item.cmp = mappedWebAppCmps[idx]
@@ -389,7 +389,6 @@ export const EditorPage = () => {
         // Close the prompt modal
         setIsPromptDialogOpen(false);
 
-        // Todo: make a user msg service !
         const elWebAppBuilder = document.querySelector('.web-app-builder')
         const webApp = await onSaveWebApp(webAppTitle)
         // Saved successfully msg

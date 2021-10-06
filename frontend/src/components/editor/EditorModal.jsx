@@ -52,7 +52,8 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
     const updateCmpStyle = ({ target }) => {
         let { value, name } = target
         const cmpStyleCopy = cloneDeep(cmpStyle);
-        setCmpStyle({ ...cmpStyleCopy, [name]: value + setUnit(cmpStyle[name]) })
+        cmpStyleCopy[name] = value + setUnit(cmpStyle[name]);
+        setCmpStyle({ ...cmpStyleCopy})
         onUpdateCmp(cmpStyleCopy, 'style')
     }
 
@@ -117,7 +118,7 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
 
 
     // Text B U I toggeling
-    const isBold = cmpStyle.fontWeight === '700';
+    const isBold = cmpStyle.fontWeight === '700' || cmpStyle.fontWeight === 'bold';
     const isUnderLine = cmpStyle.textDecoration === 'underline';
     const isItalic = cmpStyle.fontStyle === 'italic';
 
@@ -246,7 +247,7 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
                     <div className="style-container editing-container">
                         <label style={labelsStyle} id="style" htmlFor="">Style</label>
                         <div className="bui-container">
-                            <FaBold className={isBold ? 'active' : ''} onClick={() => { isBold ? updateCmpStyle({ target: { name: "fontWeight", value: "200" } }) : updateCmpStyle({ target: { name: "fontWeight", value: "700" } }) }} />
+                            <FaBold className={isBold ? 'active' : ''} onClick={() => { isBold ? updateCmpStyle({ target: { name: "fontWeight", value: "unset" } }) : updateCmpStyle({ target: { name: "fontWeight", value: "700" } }) }} />
                             <FaUnderline className={isUnderLine ? 'active' : ''} onClick={() => { isUnderLine ? updateCmpStyle({ target: { name: "textDecoration", value: "unset" } }) : updateCmpStyle({ target: { name: "textDecoration", value: "underline" } }) }} />
                             <FaItalic className={isItalic ? 'active' : ''} onClick={() => { isItalic ? updateCmpStyle({ target: { name: "fontStyle", value: "normal" } }) : updateCmpStyle({ target: { name: "fontStyle", value: "italic" } }) }} />
                         </div>
