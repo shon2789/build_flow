@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { setUser } from '../../store/actions/user.action';
 import { Tooltip } from '@material-ui/core';
 import { alertMessage } from '../../services/alert.service'
+import desktopSvg from "./../../assets/images/desktop.svg"
 
 
 export const UserSitePreview = ({ webApp }) => {
@@ -59,7 +60,9 @@ export const UserSitePreview = ({ webApp }) => {
 
     return (
         <div ref={ref} className="user-site-preview" style={{ position: "relative", backgroundImage: `url('${webApp.image}')`, backgroundSize: '101%', backgroundRepeat: 'no-repeat', backgroundPosition: '50% 0.2%' }}>
-
+            {!webApp.image &&
+                <img src={desktopSvg} style={{ width: "100%", height: "100%" }} />
+            }
             {isToolBarToggle &&
                 <>
                     <h3 className="user-site-name">{webApp.title}</h3>
