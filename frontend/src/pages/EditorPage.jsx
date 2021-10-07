@@ -18,6 +18,7 @@ import { createJpegFromElement } from '../services/screen-shot.service'
 import { removeMessage, alertMessage } from '../services/alert.service'
 import { socketService } from '../services/socket.service';
 import { uuid } from 'uuidv4';
+import { UserCursor } from '../components/editor/UserCursor';
 
 export const EditorPage = () => {
 
@@ -31,6 +32,12 @@ export const EditorPage = () => {
     const history = useHistory();
     const { webAppId } = useParams();
     const [isNewProject, setIsNewProject] = useState(webAppId === 'startNew' ? true : false)
+
+    const [pointers, setPointers] = useState([])
+
+    // Set Users ID and Color for the UserCursor socket
+    const myUserID = user?._id || uuid();
+    const userCursorColor = utilService.getRandomColor()
 
 
 
@@ -61,6 +68,9 @@ export const EditorPage = () => {
         socketService.setup()
         //Listening to 'webApp return' event
         socketService.on('webApp return', onUpdateSocketWebApp)
+        socketService.on('show-pointers', utilService.debounce(onUpdatePointers))
+
+        document.body.addEventListener('mousemove', emitMyMousePointer)
 
         // Refresh - keep the same socket room id after refresh
         if (!webAppId && sessionStorage.getItem('roomId')) {
@@ -83,18 +93,33 @@ export const EditorPage = () => {
         }
         return () => {
             // Remove socket listener
+            const userIdx = pointers.findIndex(pointer => pointer.userId === myUserID);
+            pointers.splice(userIdx, 1);
+
+            socketService.off('user-joined')
+            socketService.off('show-pointers')
+            socketService.off('update-pointers')
             socketService.off('webApp return')
+            document.body.removeEventListener('mousemove', emitMyMousePointer)
         }
     }, [])
 
     const updateNewUser = () => {
         const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
         socketService.emit('webApp', draftWebApp)
-        console.log('got here')
+    }
+
+    // Emit my mouse position and data to the other users
+    const emitMyMousePointer = (ev) => {
+        socketService.emit('update-pointers', {pointers, userId: myUserID, color: userCursorColor ,x: ev.pageX, y: ev.pageY})
+    }
+
+    // Update the pointers state from the data that received from backend
+    const onUpdatePointers = (pointers) => {
+        setPointers(pointers)
     }
 
     const onUpdateSocketWebApp = (webApp) => {
-        console.log('webApp from backend', webApp)
         setColumns({
             ...columns,
             [editing[0]]: {
@@ -519,7 +544,7 @@ export const EditorPage = () => {
         droppableId: editor[0],
         onPublishWebApp
     }
-
+    
     return (
         <>
             <DragDropContext onDragStart={result => onDragStart()} onDragEnd={result => onDragEnd(result)}>
@@ -539,6 +564,7 @@ export const EditorPage = () => {
             }
             {/* <AlertDialog handleDialog={handleDialog} open={isDialogOpen} /> */}
             <PromptDialog handleDialog={handlePromptDialog} open={isPromptDialogOpen} />
+            {pointers.map(pointer =>  <UserCursor pointer={pointer} />)}
         </>
     )
 }

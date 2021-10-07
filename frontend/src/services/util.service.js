@@ -1,7 +1,9 @@
 
 export const utilService = {
     makeId,
-    resolve
+    resolve,
+    debounce,
+    getRandomColor
 }
 
 
@@ -22,3 +24,21 @@ function resolve(path, obj) {
         return prev ? prev[curr] : null
     }, obj)
 }
+
+function debounce(func, timeout = 0.75){
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => { func.apply(this, args); }, timeout);
+    };
+}
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+  

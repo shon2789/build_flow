@@ -12,10 +12,11 @@ function connectSockets(http, session) {
         }
     })
     gIo.on('connection', socket => {
-        console.log('New socket', socket.id)
+
         socket.on('disconnect', socket => {
-            console.log('Someone disconnected')
+            
         })
+        // Signing in a room / creating a new room
         socket.on('roomId', roomId => {
             if (socket.myRoom === roomId) return;
             if (socket.myRoom) {
@@ -25,17 +26,27 @@ function connectSockets(http, session) {
             socket.myRoom = roomId
             socket.to(socket.myRoom).emit('user-joined')
         })
-        // socket.on('webApp', webApp => {
-        //     console.log(webApp)
-        //     socket.emit('webApp return', webApp)
-        // })
+
+        // Emit the webApp to all the users on an update from frontend
         socket.on('webApp', webApp => {
-            console.log('Emitting webApp', webApp);
-            // emits to all sockets:
-            // gIo.emit('chat addMsg', msg)
-            // emits only to sockets in the same room
             socket.to(socket.myRoom).emit('webApp return', webApp)
         })
+        
+        // When a pointer data received, emit to all users
+        socket.on('update-pointers', ({pointers, userId, color, x ,y}) => {
+                const currentPointer = pointers.findIndex(pointer => pointer.userId === userId)
+                // Not found, add new to the pointers array
+                if(currentPointer === -1){
+                    pointers.push({userId, color, x ,y})
+                    // Update the array with the existing user's new data
+                } else {
+                    pointers[currentPointer].x = x;
+                    pointers[currentPointer].y = y;
+                }
+            // Emit all, except the sender
+            socket.broadcast.to(socket.myRoom).emit('show-pointers', pointers)
+        })
+
         socket.on('user-watch', userId => {
             socket.join('watching:' + userId)
         })
