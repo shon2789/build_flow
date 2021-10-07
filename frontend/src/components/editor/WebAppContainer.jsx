@@ -6,6 +6,7 @@ import { DynamicCmp } from '../../dynamic-cmps/DynamicCmp';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearLoadedWebApp } from '../../store/actions/web-app.action';
+import { GridLoader } from 'react-spinners';
 
 
 
@@ -13,7 +14,7 @@ export const WebAppContainer = ({ setCurrCmp, droppableId, webAppCmps, onToggleE
 
     const dispatch = useDispatch()
 
-    // const loadedWebApp = useSelector(state => state.webAppModule.loadedWebApp)
+    const loadedWebApp = useSelector(state => state.webAppModule.loadedWebApp)
 
     useEffect(() => {
         return () => {
@@ -37,28 +38,26 @@ export const WebAppContainer = ({ setCurrCmp, droppableId, webAppCmps, onToggleE
                         <div style={{ width: `${editorWidth}` }} className="web-app-builder" provided={provided} {...provided.droppableProps}
                             ref={provided.innerRef}  >
 
-                            {/* {(!loadedWebApp && isNewProject) ? 
+                            {(!loadedWebApp && isNewProject) ?
                                 <>
-                                { webAppCmps.length === 0 &&
-                                    
-                                    <div className="drag-here-txt">
-                                        <h1>
-                                            Drop here and see the magic happen.
-                                        </h1>
-                                    </div>
-                                }
+                                    {webAppCmps.length === 0 &&
+
+                                        <div className="drag-here-txt">
+                                            <h1>
+                                                Drop here and see the magic happen.
+                                            </h1>
+                                        </div>
+                                    }
                                 </>
                                 :
                                 <>
-                                {!loadedWebApp && 
-                                    <div className="drag-here-txt">
-                                        <h1>
-                                            Loading...
-                                        </h1>
-                                    </div> 
-                                }
+                                    {(!loadedWebApp && webAppCmps.length === 0) &&
+                                        <div className="drag-here-txt">
+                                            <GridLoader size="20" margin="10px" color="#4A90E2" />
+                                        </div>
+                                    }
                                 </>
-                            } */}
+                            }
 
                             {webAppCmps.map((item, idx) => {
                                 return (

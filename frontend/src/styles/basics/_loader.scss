@@ -1,0 +1,18 @@
+.template-loader {
+    height: fit-content;
+    width: 7.5rem;
+    display: inline-block;
+    position: fixed;
+    top: 65%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+
+    @include for-large-phone {
+        top: 45%;
+        left: 52.5%;
+    }
+
+    @include for-tablet {
+        left: 50%;
+    }
+}

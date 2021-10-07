@@ -2,6 +2,10 @@ import { SideNav } from "../SideNav"
 import { TemplatePreview } from "./TemplatePreview"
 import { BsPlusCircle } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { GridLoader } from 'react-spinners';
+
+
+
 
 export const TemplateList = ({ templates }) => {
 
@@ -14,12 +18,15 @@ export const TemplateList = ({ templates }) => {
     })
 
 
+
     return (
         <section className="templates-list">
             <SideNav />
             <div className="templates-content-container">
                 <h2 className="templates-page-title">Choose one and start building now!</h2>
-                <div className="templates-preview-container">
+                <div className="templates-preview-container" >
+
+
                     <Link to={`/editor/startNew`} >
                         <div className="create-template-preview">
                             <div className="create-template-preview-upper">
@@ -32,7 +39,14 @@ export const TemplateList = ({ templates }) => {
                         return <TemplatePreview key={`${template.id}${idx}`} template={template} />
                     })}
                 </div>
+                {
+                    templates.length === 0 &&
+                    <div className="template-loader" >
+                        <GridLoader size="20" margin="10px" color="#4A90E2" />
+                    </div>
+                }
             </div>
+
         </section>
     )
 }
