@@ -9,17 +9,16 @@ import TextField from '@mui/material/TextField';
 
 export const PromptDialog = ({ open, handleDialog }) => {
 
-    const [ans, setAns] = useState('');
+  const [ans, setAns] = useState('');
 
-    const handleChange = (ev) => {
-        setAns(ev.target.value)
-    }
+  const handleChange = (ev) => {
+    setAns(ev.target.value)
+  }
 
-    return (
-
-        <div>
-    <Dialog open={open}>
-        <DialogTitle>Name your new project</DialogTitle>
+  return (
+    <div>
+      <Dialog open={open}>
+        <DialogTitle>Name your project</DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
@@ -33,10 +32,10 @@ export const PromptDialog = ({ open, handleDialog }) => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => {handleDialog(ans)}}>Confirm</Button>
+          <Button onClick={() => { handleDialog(ans) }}>Confirm</Button>
         </DialogActions>
       </Dialog>
-        </div>
+    </div>
 
-    );
+  );
 }

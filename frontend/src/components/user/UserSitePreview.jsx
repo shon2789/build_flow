@@ -73,19 +73,15 @@ export const UserSitePreview = ({ webApp }) => {
 
 
     const handlePromptDialog = async (webAppTitle) => {
-        console.log(webApp)
         try {
             // Close the prompt modal
             setIsPromptDialogOpen(false)
             webApp.title = webAppTitle
-
-            const webApp = await webAppService.save(webApp)
-
+            await webAppService.save(webApp)
             alertMessage('Title changed', 'success', 2000)
             dispatch(setUser())
         } catch {
             alertMessage('Something went wrong', 'danger', 2500)
-
         }
     }
 
