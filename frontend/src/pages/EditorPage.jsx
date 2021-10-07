@@ -29,6 +29,9 @@ export const EditorPage = () => {
     const user = useSelector(state => state.userModule.loggedInUser)
     const dispatch = useDispatch()
 
+    const [editHistory, setEditHistory] = useState([])
+    const [isSavingHistory, setIsSavingHistory] = useState(true)
+
     const history = useHistory();
     const { webAppId } = useParams();
     const [isNewProject, setIsNewProject] = useState(webAppId === 'startNew' ? true : false)
@@ -240,10 +243,45 @@ export const EditorPage = () => {
     // Save changes to the local storage for every change in the DnD columns
     // Todo: make Undo feature for WebApp editing
     useEffect(() => {
+        const newUpdate = editing[1].items.map(obj => obj.cmp);
+
+        if(isSavingHistory){
+            const currentHistory = cloneDeep(editHistory);
+            const newNewUpdate = cloneDeep(newUpdate)
+            currentHistory.push(newNewUpdate);
+            setEditHistory(currentHistory)
+        } else {
+            setIsSavingHistory(true);
+        }
+
         const draftWebApp = localStorageService.loadFromStorage('draftWebApp') || webAppService.createNewWebApp()
-        draftWebApp.children = editing[1].items.map(obj => obj.cmp);
+        draftWebApp.children = newUpdate;
         localStorageService.saveToStorage('draftWebApp', draftWebApp)
     }, [columns])
+
+
+    const undo = () => {
+        if(editHistory.length === 1 ) return
+        setIsSavingHistory(false);
+
+        const newEditHistory = cloneDeep(editHistory)
+        newEditHistory.pop()
+
+        setEditHistory(newEditHistory);
+        const latestEdit = newEditHistory[newEditHistory.length - 1]
+
+        // Items are not updating immediately, because state isn't updated fast enough
+        setTimeout(() => {
+            setColumns({
+                ...columns,
+                [editing[0]]: {
+                    name: 'Editing',
+                    items: latestEdit.map(section => { return { id: section.id, cmp: section } })
+                }
+            })
+        }, 0)
+
+    }
 
 
     // STATES
@@ -358,7 +396,6 @@ export const EditorPage = () => {
         const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
         draftWebApp.children = webAppCmps.map(section => { return section.cmp })
         socketService.emit('webApp', draftWebApp)
-
     }
 
     const onSetCurrCmp = (ev, cmp) => {
@@ -560,8 +597,10 @@ export const EditorPage = () => {
         onPublishWebApp
     }
 
+
     return (
         <>
+            <button onClick={undo}>UNDO IT</button>
             <DragDropContext onDragStart={result => onDragStart()} onDragEnd={result => onDragEnd(result)}>
                 <main className="editor-page-container">
                     <Screen isOpen={isEditorMenuToggled} exitScreen={onToggleEditorMenu} />
