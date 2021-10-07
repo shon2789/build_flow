@@ -33,19 +33,32 @@ function connectSockets(http, session) {
         })
 
         // When a pointer data received, emit to all users
-        socket.on('update-pointers', ({ pointers, userId, name, color, x, y }) => {
-            const currentPointer = pointers.findIndex(pointer => pointer.userId === userId)
-            // Not found, add new to the pointers array
-            if (currentPointer === -1) {
-                pointers.push({ userId, name, color, x, y })
-                // Update the array with the existing user's new data
-            } else {
-                pointers[currentPointer].x = x;
-                pointers[currentPointer].y = y;
-            }
-            // Emit all, except the sender
-            socket.broadcast.to(socket.myRoom).emit('show-pointers', pointers)
+        socket.on('update-pointers', (data) => {
+            // const currentPointer = pointers.findIndex(pointer => pointer.userId === userId)
+            // // Not found, add new to the pointers array
+            // if (currentPointer === -1) {
+            //     pointers.push({ userId, name, color, x, y })
+            //     // Update the array with the existing user's new data
+            // } else {
+            //     pointers[currentPointer].x = x;
+            //     pointers[currentPointer].y = y;
+            // }
+
+            socket.broadcast.to(socket.myRoom).emit('show-pointers', data);
         })
+        // socket.on('update-pointers', ({ pointers, userId, name, color, x, y }) => {
+        //     const currentPointer = pointers.findIndex(pointer => pointer.userId === userId)
+        //     // Not found, add new to the pointers array
+        //     if (currentPointer === -1) {
+        //         pointers.push({ userId, name, color, x, y })
+        //         // Update the array with the existing user's new data
+        //     } else {
+        //         pointers[currentPointer].x = x;
+        //         pointers[currentPointer].y = y;
+        //     }
+        //     //Emit all, except the sender
+        //     socket.to(socket.myRoom).emit('show-pointers', pointers)
+        // })
 
         socket.on('user-watch', userId => {
             socket.join('watching:' + userId)

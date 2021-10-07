@@ -1,6 +1,8 @@
 const dbService = require('../../services/db.service')
 const userService = require('../user/user.service')
 const ObjectId = require('mongodb').ObjectId
+const logger = require('../../services/logger.service')
+
 
 // Returns only the template webApps
 async function query() {

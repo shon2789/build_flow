@@ -108,16 +108,30 @@ export const EditorPage = () => {
     const updateNewUser = () => {
         const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
         socketService.emit('webApp', draftWebApp)
+
     }
 
     // Emit my mouse position and data to the other users
     const emitMyMousePointer = (ev) => {
-        socketService.emit('update-pointers', { pointers, userId: myUserID, name: myUserName, color: userCursorColor, x: ev.pageX, y: ev.pageY })
+        socketService.emit('update-pointers', { userId: myUserID, name: myUserName, color: userCursorColor, x: ev.pageX, y: ev.pageY })
     }
 
     // Update the pointers state from the data that received from backend
-    const onUpdatePointers = (pointers) => {
-        setPointers(pointers)
+    const onUpdatePointers = ({ userId, name, color, x, y }) => {
+        const copyPointers = JSON.parse(JSON.stringify(pointers))
+        console.log('userid', userId)
+        const pointerIdx = copyPointers.findIndex(pointer => pointer.userId === userId)
+        // Not found, add new to the pointers array
+        if (pointerIdx === -1) {
+            copyPointers.push({ userId, name, color, x, y })
+            // Update the array with the existing user's new data
+        } else {
+            console.log('got to else')
+            copyPointers[pointerIdx].x = x;
+            copyPointers[pointerIdx].y = y;
+        }
+        setPointers(copyPointers)
+        console.log('copyPointers', pointers)
     }
 
     const onUpdateSocketWebApp = (webApp) => {
@@ -563,7 +577,6 @@ export const EditorPage = () => {
                     <Screen isOpen={isAuthModalOpen} exitScreen={setIsAuthModalOpen} />
                 </>
             }
-            {/* <AlertDialog handleDialog={handleDialog} open={isDialogOpen} /> */}
             <PromptDialog handleDialog={handlePromptDialog} open={isPromptDialogOpen} />
             {pointers.map(pointer => <UserCursor pointer={pointer} />)}
         </>
