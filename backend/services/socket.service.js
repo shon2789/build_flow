@@ -13,18 +13,20 @@ function connectSockets(http, session) {
     })
     gIo.on('connection', socket => {
 
-        socket.on('disconnect', socket => {
+        socket.on('disconnect', () => {
+
+            socket.to(socket.myRoom).emit('user-left')
 
         })
         // Signing in a room / creating a new room
-        socket.on('roomId', roomId => {
+        socket.on('roomId', ({ roomId, myUserName }) => {
             if (socket.myRoom === roomId) return;
             if (socket.myRoom) {
                 socket.leave(socket.myRoom)
             }
             socket.join(roomId)
             socket.myRoom = roomId
-            socket.to(socket.myRoom).emit('user-joined')
+            socket.to(socket.myRoom).emit('user-joined', myUserName)
         })
 
         // Emit the webApp to all the users on an update from frontend
@@ -34,16 +36,6 @@ function connectSockets(http, session) {
 
         // When a pointer data received, emit to all users
         socket.on('update-pointers', (data) => {
-            // const currentPointer = pointers.findIndex(pointer => pointer.userId === userId)
-            // // Not found, add new to the pointers array
-            // if (currentPointer === -1) {
-            //     pointers.push({ userId, name, color, x, y })
-            //     // Update the array with the existing user's new data
-            // } else {
-            //     pointers[currentPointer].x = x;
-            //     pointers[currentPointer].y = y;
-            // }
-
             socket.broadcast.to(socket.myRoom).emit('show-pointers', data);
         })
         // socket.on('update-pointers', ({ pointers, userId, name, color, x, y }) => {
@@ -59,18 +51,6 @@ function connectSockets(http, session) {
         //     //Emit all, except the sender
         //     socket.to(socket.myRoom).emit('show-pointers', pointers)
         // })
-
-        socket.on('user-watch', userId => {
-            socket.join('watching:' + userId)
-        })
-        socket.on('set-user-socket', userId => {
-            logger.debug(`Setting (${socket.id}) socket.userId = ${userId}`)
-            socket.userId = userId
-        })
-        socket.on('unset-user-socket', () => {
-            delete socket.userId
-        })
-
     })
 }
 

@@ -7,7 +7,10 @@ import { EditorAccordion } from './EditorAccordion';
 import { SideNav } from '../SideNav';
 import { HiUserGroup } from "react-icons/hi";
 import { workTogetherMessage } from '../../services/alert.service';
-import { BsSkipBackwardFill } from "react-icons/bs";
+import {
+    GrUndo
+} from "react-icons/gr";
+
 import { Tooltip } from '@material-ui/core';
 
 
@@ -34,7 +37,8 @@ export const MainEditor = ({ droppableId, onChangeEditorSize, windowWidth, onPub
                     <h5>Drag from here</h5>
                     <Tooltip title="Undo" arrow placement="right">
                         <div onClick={undo} className="undo-icon">
-                            <BsSkipBackwardFill />
+                            <GrUndo
+                            />
                         </div>
                     </Tooltip>
 

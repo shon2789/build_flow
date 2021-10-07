@@ -1,26 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Draggable, Droppable } from 'react-beautiful-dnd'
 import { SaveWebAppBtn } from './SaveWebAppBtn'
 import { GiHamburgerMenu } from "react-icons/gi";
 import { DynamicCmp } from '../../dynamic-cmps/DynamicCmp';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
-import { useDispatch, useSelector } from 'react-redux';
-import { clearLoadedWebApp } from '../../store/actions/web-app.action';
-import { GridLoader } from 'react-spinners';
-
-
 
 export const WebAppContainer = ({ setCurrCmp, droppableId, webAppCmps, onToggleEditorMenu, editorWidth, onChangeEditorSize, onDeleteCmp, onSetCurrCmp, currCmp, onDuplicateCmp, onUpdateCmp, onSaveWebApp, setIsPromptDialogOpen, setIsAuthModalOpen, handlePromptDialog, handleSave, isNewProject }) => {
-
-    const dispatch = useDispatch()
-
-    const loadedWebApp = useSelector(state => state.webAppModule.loadedWebApp)
-
-    useEffect(() => {
-        return () => {
-            dispatch(clearLoadedWebApp())
-        }
-    }, [])
 
     //When clicking on anything other than the editable component
     const handleClickAway = (ev) => {
@@ -36,29 +21,16 @@ export const WebAppContainer = ({ setCurrCmp, droppableId, webAppCmps, onToggleE
                 {provided => {
                     return (
                         <div style={{ width: `${editorWidth}` }} className="web-app-builder" provided={provided} {...provided.droppableProps}
+
                             ref={provided.innerRef}  >
+                            {webAppCmps.length === 0 &&
 
-                            {(!loadedWebApp && isNewProject) ?
-                                <>
-                                    {webAppCmps.length === 0 &&
-
-                                        <div className="drag-here-txt">
-                                            <h1>
-                                                Drop here and see the magic happen.
-                                            </h1>
-                                        </div>
-                                    }
-                                </>
-                                :
-                                <>
-                                    {(!loadedWebApp && webAppCmps.length === 0) &&
-                                        <div className="drag-here-txt">
-                                            <GridLoader size="20" margin="10px" color="#4A90E2" />
-                                        </div>
-                                    }
-                                </>
+                                <div className="drag-here-txt">
+                                    <h1>
+                                        Drop here and see the magic happen.
+                                    </h1>
+                                </div>
                             }
-
                             {webAppCmps.map((item, idx) => {
                                 return (
                                     <Draggable key={item.id} draggableId={item.id} index={idx}>

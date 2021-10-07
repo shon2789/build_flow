@@ -73,6 +73,9 @@ export const EditorPage = () => {
         //Listening to 'webApp return' event
         socketService.on('webApp return', onUpdateSocketWebApp)
         socketService.on('show-pointers', utilService.debounce(onUpdatePointers))
+        socketService.on('user-left', () => {
+            alertMessage("User disconnected", "danger", 2500)
+        })
 
         document.body.addEventListener('mousemove', emitMyMousePointer)
 
@@ -85,12 +88,11 @@ export const EditorPage = () => {
             // User get into another user room via URL (project)
             if (webAppId.startsWith('room')) {
                 setRoomId(webAppId)
-                socketService.emit("roomId", webAppId)
+                socketService.emit("roomId", { roomId: webAppId, myUserName })
                 sessionStorage.setItem("roomId", webAppId)
-
                 // In case it's a regular URL (not socket) create a new socket room id
             } else {
-                socketService.emit('roomId', `room-${roomId}`)
+                socketService.emit('roomId', ({ roomId: `room-${roomId}`, myUserName }))
                 socketService.on('user-joined', updateNewUser)
                 sessionStorage.setItem("roomId", `room-${roomId}`)
             }
@@ -101,6 +103,7 @@ export const EditorPage = () => {
             pointers.splice(userIdx, 1);
 
             socketService.off('user-joined')
+            socketService.off('user-left')
             socketService.off('show-pointers')
             socketService.off('update-pointers')
             socketService.off('webApp return')
@@ -108,10 +111,11 @@ export const EditorPage = () => {
         }
     }, [])
 
-    const updateNewUser = () => {
+    const updateNewUser = (userName) => {
         const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
         socketService.emit('webApp', draftWebApp)
 
+        alertMessage(`${userName} has connected`, "info", 3000)
     }
 
     // Emit my mouse position and data to the other users
