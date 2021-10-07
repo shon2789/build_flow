@@ -261,7 +261,10 @@ export const EditorPage = () => {
 
 
     const undo = () => {
+        const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
+
         if (editHistory.length <= 2) return
+        if (draftWebApp.children.length === 0) return
 
         // After undo is done, it doesen't save to history
         setIsSavingHistory(false);
@@ -284,7 +287,6 @@ export const EditorPage = () => {
         }, 0)
 
         //Emit the undo changes to all the other users
-        const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
         draftWebApp.children = latestEdit
         socketService.emit("webApp", draftWebApp)
     }
