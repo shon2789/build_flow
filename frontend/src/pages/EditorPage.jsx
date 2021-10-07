@@ -37,6 +37,7 @@ export const EditorPage = () => {
 
     // Set Users ID and Color for the UserCursor socket
     const myUserID = user?._id || uuid();
+    const myUserName = user?.fullname || 'Guest'
     const userCursorColor = utilService.getRandomColor()
 
 
@@ -111,7 +112,7 @@ export const EditorPage = () => {
 
     // Emit my mouse position and data to the other users
     const emitMyMousePointer = (ev) => {
-        socketService.emit('update-pointers', {pointers, userId: myUserID, color: userCursorColor ,x: ev.pageX, y: ev.pageY})
+        socketService.emit('update-pointers', { pointers, userId: myUserID, name: myUserName, color: userCursorColor, x: ev.pageX, y: ev.pageY })
     }
 
     // Update the pointers state from the data that received from backend
@@ -544,7 +545,7 @@ export const EditorPage = () => {
         droppableId: editor[0],
         onPublishWebApp
     }
-    
+
     return (
         <>
             <DragDropContext onDragStart={result => onDragStart()} onDragEnd={result => onDragEnd(result)}>
@@ -564,7 +565,7 @@ export const EditorPage = () => {
             }
             {/* <AlertDialog handleDialog={handleDialog} open={isDialogOpen} /> */}
             <PromptDialog handleDialog={handlePromptDialog} open={isPromptDialogOpen} />
-            {pointers.map(pointer =>  <UserCursor pointer={pointer} />)}
+            {pointers.map(pointer => <UserCursor pointer={pointer} />)}
         </>
     )
 }

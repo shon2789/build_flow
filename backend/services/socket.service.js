@@ -14,7 +14,7 @@ function connectSockets(http, session) {
     gIo.on('connection', socket => {
 
         socket.on('disconnect', socket => {
-            
+
         })
         // Signing in a room / creating a new room
         socket.on('roomId', roomId => {
@@ -31,18 +31,18 @@ function connectSockets(http, session) {
         socket.on('webApp', webApp => {
             socket.to(socket.myRoom).emit('webApp return', webApp)
         })
-        
+
         // When a pointer data received, emit to all users
-        socket.on('update-pointers', ({pointers, userId, color, x ,y}) => {
-                const currentPointer = pointers.findIndex(pointer => pointer.userId === userId)
-                // Not found, add new to the pointers array
-                if(currentPointer === -1){
-                    pointers.push({userId, color, x ,y})
-                    // Update the array with the existing user's new data
-                } else {
-                    pointers[currentPointer].x = x;
-                    pointers[currentPointer].y = y;
-                }
+        socket.on('update-pointers', ({ pointers, userId, name, color, x, y }) => {
+            const currentPointer = pointers.findIndex(pointer => pointer.userId === userId)
+            // Not found, add new to the pointers array
+            if (currentPointer === -1) {
+                pointers.push({ userId, name, color, x, y })
+                // Update the array with the existing user's new data
+            } else {
+                pointers[currentPointer].x = x;
+                pointers[currentPointer].y = y;
+            }
             // Emit all, except the sender
             socket.broadcast.to(socket.myRoom).emit('show-pointers', pointers)
         })
