@@ -245,7 +245,7 @@ export const EditorPage = () => {
     useEffect(() => {
         const newUpdate = editing[1].items.map(obj => obj.cmp);
 
-        if(isSavingHistory){
+        if (isSavingHistory) {
             const currentHistory = cloneDeep(editHistory);
             const newNewUpdate = cloneDeep(newUpdate)
             currentHistory.push(newNewUpdate);
@@ -261,7 +261,9 @@ export const EditorPage = () => {
 
 
     const undo = () => {
-        if(editHistory.length === 1 ) return
+        if (editHistory.length <= 2) return
+
+        // After undo is done, it doesen't save to history
         setIsSavingHistory(false);
 
         const newEditHistory = cloneDeep(editHistory)
@@ -281,6 +283,10 @@ export const EditorPage = () => {
             })
         }, 0)
 
+        //Emit the undo changes to all the other users
+        const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
+        draftWebApp.children = latestEdit
+        socketService.emit("webApp", draftWebApp)
     }
 
 
@@ -594,13 +600,13 @@ export const EditorPage = () => {
         editorWidth,
         onToggleEditorMenu,
         droppableId: editor[0],
-        onPublishWebApp
+        onPublishWebApp,
+        undo
     }
 
 
     return (
         <>
-            <button onClick={undo}>UNDO IT</button>
             <DragDropContext onDragStart={result => onDragStart()} onDragEnd={result => onDragEnd(result)}>
                 <main className="editor-page-container">
                     <Screen isOpen={isEditorMenuToggled} exitScreen={onToggleEditorMenu} />

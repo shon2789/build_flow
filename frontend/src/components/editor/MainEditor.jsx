@@ -7,10 +7,12 @@ import { EditorAccordion } from './EditorAccordion';
 import { SideNav } from '../SideNav';
 import { HiUserGroup } from "react-icons/hi";
 import { workTogetherMessage } from '../../services/alert.service';
+import { BsSkipBackwardFill } from "react-icons/bs";
+import { Tooltip } from '@material-ui/core';
 
 
 
-export const MainEditor = ({ droppableId, onChangeEditorSize, windowWidth, onPublishWebApp }) => {
+export const MainEditor = ({ droppableId, onChangeEditorSize, windowWidth, onPublishWebApp, undo }) => {
 
 
     const onCopyRoomIdUrl = () => {
@@ -30,6 +32,12 @@ export const MainEditor = ({ droppableId, onChangeEditorSize, windowWidth, onPub
             <div className="editor-section-container">
                 <div className="top-editor-toolbar">
                     <h5>Drag from here</h5>
+                    <Tooltip title="Undo" arrow placement="right">
+                        <div onClick={undo} className="undo-icon">
+                            <BsSkipBackwardFill />
+                        </div>
+                    </Tooltip>
+
                 </div>
 
                 <div className="editor-elements-container">
@@ -48,6 +56,6 @@ export const MainEditor = ({ droppableId, onChangeEditorSize, windowWidth, onPub
                     <div onClick={() => { onPublishWebApp() }} className="editor-publish-btn">Publish</div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
