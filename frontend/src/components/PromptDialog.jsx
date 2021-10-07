@@ -16,7 +16,7 @@ export const PromptDialog = ({ open, handleDialog }) => {
   }
 
   return (
-    <div>
+    <div >
       <Dialog open={open}>
         <DialogTitle>Name your project</DialogTitle>
         <DialogContent>
@@ -32,7 +32,7 @@ export const PromptDialog = ({ open, handleDialog }) => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => { handleDialog(ans) }}>Confirm</Button>
+          <Button style={{ color: "#5289bd" }} onClick={() => { handleDialog(ans) }}>Confirm</Button>
         </DialogActions>
       </Dialog>
     </div>
