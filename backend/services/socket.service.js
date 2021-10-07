@@ -23,6 +23,7 @@ function connectSockets(http, session) {
             }
             socket.join(roomId)
             socket.myRoom = roomId
+            socket.to(socket.myRoom).emit('user-joined')
         })
         // socket.on('webApp', webApp => {
         //     console.log(webApp)

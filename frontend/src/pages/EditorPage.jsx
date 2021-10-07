@@ -70,7 +70,6 @@ export const EditorPage = () => {
         if (webAppId) {
             // User get into another user room via URL (project)
             if (webAppId.startsWith('room')) {
-                console.log("from another pc to here", webAppId);
                 setRoomId(webAppId)
                 socketService.emit("roomId", webAppId)
                 sessionStorage.setItem("roomId", webAppId)
@@ -78,7 +77,7 @@ export const EditorPage = () => {
                 // In case it's a regular URL (not socket) create a new socket room id
             } else {
                 socketService.emit('roomId', `room-${roomId}`)
-                console.log("new room, created", `room-${roomId}`);
+                socketService.on('user-joined', updateNewUser)
                 sessionStorage.setItem("roomId", `room-${roomId}`)
             }
         }
@@ -87,6 +86,12 @@ export const EditorPage = () => {
             socketService.off('webApp return')
         }
     }, [])
+
+    const updateNewUser = () => {
+        const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
+        socketService.emit('webApp', draftWebApp)
+        console.log('got here')
+    }
 
     const onUpdateSocketWebApp = (webApp) => {
         console.log('webApp from backend', webApp)
