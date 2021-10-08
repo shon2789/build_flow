@@ -83,9 +83,15 @@ export const EditorAccordion = ({ droppableId }) => {
         },
         {
             id: "panel2",
-            heading: "Main Sections",
+            heading: "Landing Sections",
             secondaryHeading: "this is panel 2",
             details: minified.filter(cmp => cmp.sectionType === 'section')
+        },
+        {
+            id: "panel3",
+            heading: "Sections",
+            secondaryHeading: "this is panel 2",
+            details: minified.filter(cmp => cmp.sectionType === 'subSection')
         },
 
         {
