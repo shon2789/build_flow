@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { setUser } from '../store/actions/user.action';
 import { GoogleAuth } from './GoogleAuth';
 import { alertMessage } from '../services/alert.service'
+import { utilService } from '../services/util.service';
 
 
 
@@ -46,6 +47,8 @@ export const AuthModal = ({ onToggleAuthModal }) => {
     const { handleSubmit, control } = useForm();
 
     const onSubmit = async data => {
+
+
         let user = null;
         try {
             if (isLogin) {
@@ -71,6 +74,34 @@ export const AuthModal = ({ onToggleAuthModal }) => {
 
     const switchAuth = () => {
         setIsLogin(!isLogin)
+    }
+
+    const guestSignUp = async (ev) => {
+
+        ev.preventDefault()
+
+        const data = {
+            username: `guest-${utilService.makeId(5)}`,
+            password: utilService.makeId(10),
+            fullname: "Guest Ghost"
+        }
+
+        let user = null;
+        try {
+            user = await userService.signup(data)
+
+            if (!user) {
+                alertMessage('Something went wront', 'danger', 2500)
+
+            } else {
+                dispatch(setUser())
+                alertMessage('Logged in successfully as guest', 'success', 2500)
+                onToggleAuthModal(false)
+            }
+
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     return (
@@ -155,7 +186,7 @@ export const AuthModal = ({ onToggleAuthModal }) => {
                                 margin: "0",
                                 width: "12.5rem",
                                 backgroundColor: "#141923",
-                            }} type="submit" variant="contained" color="primary">
+                            }} type="submit" variant="contained" color="primary" onClick={guestSignUp}>
                                 Continue As Guest
                             </Button>
                             {isLogin ?

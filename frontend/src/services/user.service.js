@@ -25,6 +25,8 @@ async function login(credentials) {
 
 
 async function signup(credentials) {
+
+    console.log(credentials);
     try {
         const user = await httpService.post(`/api/auth/signup`, credentials)
         // localStorageService.saveToStorage(STORAGE_KEY_LOGGEDIN, user)
