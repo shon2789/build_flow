@@ -1,10 +1,6 @@
 
-import { storageService } from "./async-storage.service"
 import { httpService } from "./http.service";
 
-
-
-const KEY = 'template'
 
 export const webAppService = {
   query,

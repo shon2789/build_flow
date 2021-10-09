@@ -1,4 +1,3 @@
-import { localStorageService } from "../../services/storage.service"
 
 const initialState = {
     loggedInUser: JSON.parse(sessionStorage.getItem("loggedinUser")) || null,

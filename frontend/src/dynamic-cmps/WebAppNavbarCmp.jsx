@@ -19,7 +19,6 @@ export const WebAppNavbarCmp = ({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDup
     }
 
     let showHamburgetMenu = false;
-    let hamburgerStyle = { ...cmp.attributes.style }
     if (editorWidth === '375px' || editorWidth < 600) {
         showHamburgetMenu = true;
     }

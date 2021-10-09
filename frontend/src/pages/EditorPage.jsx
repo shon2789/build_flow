@@ -666,7 +666,7 @@ export const EditorPage = () => {
                 </>
             }
             <PromptDialog handleDialog={handlePromptDialog} open={isPromptDialogOpen} />
-            {pointers.map(pointer => <UserCursor pointer={pointer} />)}
+            {pointers.map(pointer => <UserCursor key={pointer.userId} pointer={pointer} />)}
         </>
     )
 }
