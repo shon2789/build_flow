@@ -81,7 +81,7 @@ export const EditorPage = () => {
 
         // Refresh - keep the same socket room id after refresh
         if (!webAppId && sessionStorage.getItem('roomId')) {
-            socketService.emit("roomId", `${sessionStorage.getItem('roomId')}`)
+            socketService.emit("roomId", { roomId: `${sessionStorage.getItem('roomId')}`, myUserName })
         }
 
         if (webAppId) {

@@ -1,9 +1,13 @@
 
+const cursorColors = ['#A8E6CE', '#DCEDC2', '#FFD3B5', '#FFAAA6', '#FF8C94']
+
+
 export const utilService = {
     makeId,
     resolve,
     debounce,
-    getRandomColor
+    getRandomColor,
+    getRandomInt
 }
 
 
@@ -25,20 +29,21 @@ function resolve(path, obj) {
     }, obj)
 }
 
-function debounce(func, timeout = 0.75){
+function debounce(func, timeout = 0.75) {
     let timer;
     return (...args) => {
-      clearTimeout(timer);
-      timer = setTimeout(() => { func.apply(this, args); }, timeout);
+        clearTimeout(timer);
+        timer = setTimeout(() => { func.apply(this, args); }, timeout);
     };
 }
 
-function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
 }
-  
+
+
+function getRandomColor() {
+    return cursorColors[getRandomInt(0, 4)]
+}
