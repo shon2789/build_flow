@@ -4,6 +4,8 @@ import { WebAppTxtCmp } from "./WebAppTxtCmp.jsx"
 import { WebAppNavbarCmp } from "./WebAppNavbarCmp.jsx"
 import { WebAppBtnCmp } from "./WebAppBtnCmp.jsx"
 import { WebAppImgCmp } from "./WebAppImgCmp.jsx"
+import { WebAppInputCmp } from "./WebAppInputCmp.jsx"
+import { WebAppTextAreaCmp } from "./WebAppTextAreaCmp.jsx"
 import { useEffect } from "react"
 
 export function DynamicCmp({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDuplicateCmp, onUpdateCmp, editorWidth, onChangeEditorSize, isPublished = false }) {
@@ -47,6 +49,10 @@ export function DynamicCmp({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDuplicat
                 return <WebAppBtnCmp cmp={cmp} isPublished={isPublished}  {...props} />
             case 'img':
                 return <WebAppImgCmp cmp={cmp} isPublished={isPublished}  {...props} />
+            case 'input':
+                return <WebAppInputCmp cmp={cmp} isPublished={isPublished}  {...props} />
+            case 'text-area':
+                return <WebAppTextAreaCmp cmp={cmp} isPublished={isPublished}  {...props} />
             default:
                 console.log('if U got here, things got messed up')
         }
