@@ -126,19 +126,16 @@ export const EditorPage = () => {
     // Update the pointers state from the data that received from backend
     const onUpdatePointers = ({ userId, name, color, x, y }) => {
         const copyPointers = JSON.parse(JSON.stringify(pointers))
-        console.log('userid', userId)
         const pointerIdx = copyPointers.findIndex(pointer => pointer.userId === userId)
         // Not found, add new to the pointers array
         if (pointerIdx === -1) {
             copyPointers.push({ userId, name, color, x, y })
             // Update the array with the existing user's new data
         } else {
-            console.log('got to else')
             copyPointers[pointerIdx].x = x;
             copyPointers[pointerIdx].y = y;
         }
         setPointers(copyPointers)
-        console.log('copyPointers', pointers)
     }
 
     const onUpdateSocketWebApp = (webApp) => {
