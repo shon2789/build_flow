@@ -111,9 +111,6 @@ export const EditorPage = () => {
         }
         socketService.on('user-joined', updateNewUser)
         return () => {
-            // Remove socket listener
-            // const userIdx = pointers.findIndex(pointer => pointer.userId === myUserID);
-            // pointers.splice(userIdx, 1);
 
             if (!isTouchDevice()) {
                 socketService.off('show-pointers')
@@ -157,7 +154,6 @@ export const EditorPage = () => {
     }
 
     const onUpdateSocketWebApp = (webApp) => {
-        // setCurrCmp(null)
         setColumns({
             ...columns,
             [editing[0]]: {
@@ -282,7 +278,6 @@ export const EditorPage = () => {
 
 
     // Save changes to the local storage for every change in the DnD columns
-    // Todo: make Undo feature for WebApp editing
     useEffect(() => {
         const newUpdate = editing[1].items.map(obj => obj.cmp);
 
@@ -529,9 +524,6 @@ export const EditorPage = () => {
         localStorageService.saveToStorage('draftWebApp', savedWebApp)
         dispatch(setUser())
 
-        // Todo: add a protection: when clicking the save button more than one, error occurs because no webApp is in the local storage
-        // localStorageService.removeFromStorage('draftWebApp')//Delete!!!
-
         return savedWebApp;
     }
 
@@ -561,13 +553,6 @@ export const EditorPage = () => {
         }
 
     }
-
-    // Handles the dialog modal
-    // (If a previous work is detected in the local storage, ask user if to continue or discard the data)
-    // const handleDialog = (boolean) => {
-    //     setIsDialogOpen(false)
-    //     setDialogAns(boolean)
-    // }
 
     // Handles the prompt dialog modal
     // (When a user click the save webApp btn, prompt the user to enter the webApp title)
@@ -601,7 +586,6 @@ export const EditorPage = () => {
         // Success msg
         alertMessage('Your project is ready to view!', 'success', 3000)
 
-        // })
     }
 
     const onPublishWebApp = async () => {

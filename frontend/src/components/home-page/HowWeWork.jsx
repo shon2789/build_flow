@@ -1,4 +1,3 @@
-// import cardImg1 from '../assets/images/design.png'
 import cardImg1 from '../../assets/images/design.png'
 import cardImg2 from '../../assets/images/fitallplatforms.png'
 import cardImg3 from '../../assets/images/teamwork.png'

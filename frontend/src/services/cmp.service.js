@@ -1,11 +1,9 @@
 import { utilService } from './util.service'
 import { cloneDeep } from 'lodash';
-import { storageService } from './async-storage.service';
 import { httpService } from './http.service';
 
 export const cmpService = {
   getCmps,
-  getById,
   deepCloneCmp,
   deleteCmp,
   changeCmpIds,
@@ -14,7 +12,6 @@ export const cmpService = {
   query,
   getMinifiedCmps
 }
-
 
 async function query() {
   try {
@@ -34,11 +31,6 @@ function getMinifiedCmps(cmps) {
       content: <img alt="accordion-section-img" width="100%" src={cmp.img} />
     }
   })
-}
-
-async function getById(cmpId) {
-  return await storageService.get("cmp", cmpId)
-
 }
 
 function getCmps() {
@@ -116,14 +108,14 @@ function getParentElement(element, mappedWebAppCmps, webAppCmps) {
 }
 
 function updateCmp(currCmp, webAppCmps, propPath) {
-  
+
   webAppCmps.forEach(cmp => {
     if (cmp.id === currCmp.id) {
       if (propPath === 'style' || propPath === 'style-mobile' || propPath === 'style-tablet') {
         cmp.attributes[propPath] = currCmp.attributes[propPath]
       } else if (propPath === 'info') {
         cmp[propPath] = currCmp[propPath]
-      } else if (propPath === 'attributes'){
+      } else if (propPath === 'attributes') {
         cmp[propPath] = currCmp[propPath]
       }
       return
