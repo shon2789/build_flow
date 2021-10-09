@@ -1,7 +1,7 @@
 import React from 'react'
 import { ElementToolBar } from '../components/editor/ElementToolBar';
 
-export const WebAppInputCmp = ({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDuplicateCmp, onUpdateCmp, editorWidth, isPublished }) => {
+export const WebAppInputCmp = ({ cmp, currCmp, onDeleteCmp, onDuplicateCmp, onUpdateCmp, editorWidth, isPublished }) => {
 
     let cmpStyle = { ...cmp.attributes.style }
     if (editorWidth < 763) {
@@ -45,7 +45,6 @@ export const WebAppInputCmp = ({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDupl
                     id={cmp.id}
                     style={{ ...cmpStyle, position: 'relative', outline: '2px dashed #c6c6c6', outlineOffset: '-2px' }}
                     className={cmp.attributes.className}
-                    onClick={(ev) => { ev.preventDefault(); onSetCurrCmp(ev, cmp) }}
                 />
                 <ElementToolBar cmp={cmp} {...toolBarProps} />
             </>
@@ -60,7 +59,6 @@ export const WebAppInputCmp = ({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDupl
             onMouseOut={(ev) => { ev.target.classList.remove('element-edit-hover') }}
             onMouseOver={(ev) => { ev.target.classList.add('element-edit-hover') }}
             id={cmp.id}
-            onClick={(ev) => { ev.preventDefault(); onSetCurrCmp(ev, cmp) }}
             style={cmpStyle}
             className={cmp.attributes.className}
         />

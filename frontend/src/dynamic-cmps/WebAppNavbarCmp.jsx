@@ -21,20 +21,7 @@ export const WebAppNavbarCmp = ({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDup
     let showHamburgetMenu = false;
     let hamburgerStyle = { ...cmp.attributes.style }
     if (editorWidth === '375px' || editorWidth < 600) {
-        // document.querySelector('.web-app-builder').appendChild(document.getElementById(cmp.id))
-
         showHamburgetMenu = true;
-        // hamburgerStyle.position = 'absolute';
-        // hamburgerStyle.flexDirection = 'column';
-        // hamburgerStyle.backgroundColor = 'red'
-        // hamburgerStyle.height = '100%'
-        // hamburgerStyle.right = 0;
-        // hamburgerStyle.top = 0;
-        // hamburgerStyle.bottom = 0;
-        // hamburgerStyle.backgroundColor = 'white';
-        // hamburgerStyle.border = '2px solid black'
-        // console.dir(document.querySelector('.web-app-builder'))
-        // console.dir(document.getElementById(cmp.id))
     }
 
     const editingProps = {
@@ -69,7 +56,6 @@ export const WebAppNavbarCmp = ({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDup
                 className={cmp.attributes.className} >
 
                 {showHamburgetMenu && <GiHamburgerMenu style={{ fontSize: "1.3rem", color: "#292929" }} />}
-                {/* {showHamburgetMenu && cmp.children.map((child, idx) => <DynamicCmp key={idx} cmp={child} currCmp={currCmp} onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} onDuplicateCmp={onDuplicateCmp} onUpdateCmp={onUpdateCmp} onChangeEditorSize={onChangeEditorSize} editorWidth={editorWidth} />) } */}
                 {(cmp.children && !showHamburgetMenu) && cmp.children.map((child, idx) => <DynamicCmp key={idx} cmp={child} {...publishedProps} />)}
 
             </nav>
@@ -109,7 +95,6 @@ export const WebAppNavbarCmp = ({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDup
             }}>
 
             {showHamburgetMenu && <GiHamburgerMenu style={{ fontSize: "1.3rem", color: "#292929" }} />}
-            {/* {showHamburgetMenu && cmp.children.map((child, idx) => <DynamicCmp key={idx} cmp={child} currCmp={currCmp} onDeleteCmp={onDeleteCmp} onSetCurrCmp={onSetCurrCmp} onDuplicateCmp={onDuplicateCmp} onUpdateCmp={onUpdateCmp} onChangeEditorSize={onChangeEditorSize} editorWidth={editorWidth} />) } */}
             {(cmp.children && !showHamburgetMenu) && cmp.children.map((child, idx) => <DynamicCmp key={idx} cmp={child} {...editingProps} />)}
 
         </nav>
