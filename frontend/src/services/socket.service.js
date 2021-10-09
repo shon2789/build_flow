@@ -30,6 +30,9 @@ function createSocketService() {
     },
     terminate() {
       socket = null
+    },
+    disconnect(user) {
+      socket.emit('end', user);
     }
   }
   return socketService

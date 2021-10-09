@@ -42,7 +42,7 @@ export const TemplateList = ({ templates }) => {
                 {
                     templates.length === 0 &&
                     <div className="template-loader" >
-                        <GridLoader size="20" margin="10px" color="#4A90E2" />
+                        <GridLoader size="20px" margin="10px" color="#4A90E2" />
                     </div>
                 }
             </div>

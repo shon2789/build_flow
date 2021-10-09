@@ -1,5 +1,5 @@
 
-const cursorColors = ['#A8E6CE', '#DCEDC2', '#FFD3B5', '#FFAAA6', '#FF8C94']
+const cursorColors = ['#A8E6CE', '#DCEDC2', '#FFD3B5', '#FFAAA6', '#FF8C94', '#FAD02C', '#FFA384', '#74BDCB', '#EEB5EB', '#FBAA60', '#FBC490']
 
 
 export const utilService = {
@@ -45,5 +45,5 @@ function getRandomInt(min, max) {
 
 
 function getRandomColor() {
-    return cursorColors[getRandomInt(0, 4)]
+    return cursorColors[getRandomInt(0, cursorColors.length - 1)]
 }

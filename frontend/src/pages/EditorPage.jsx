@@ -21,7 +21,7 @@ import { uuid } from 'uuidv4';
 import { UserCursor } from '../components/editor/UserCursor';
 
 export const EditorPage = () => {
-
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
     const [isPromptDialogOpen, setIsPromptDialogOpen] = useState(false)
     const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
 
@@ -66,20 +66,31 @@ export const EditorPage = () => {
     const editor = dndAreas[0]
     const editing = dndAreas[1]
 
+    const isTouchDevice = () => {
+        return (('ontouchstart' in window) ||
+            (navigator.maxTouchPoints > 0) ||
+            (navigator.msMaxTouchPoints > 0));
+    }
+
 
     useEffect(() => {
 
         // Add socket listener
         socketService.setup()
         //Listening to 'webApp return' event
+        if (!isTouchDevice()) {
+            socketService.on('show-pointers', utilService.debounce(onUpdatePointers))
+            socketService.on('remove-pointer', onDeletePointer)
+            socketService.on('remove-all-pointers', deleteAllPointers)
+        }
         socketService.on('webApp return', onUpdateSocketWebApp)
-        socketService.on('show-pointers', utilService.debounce(onUpdatePointers))
-        socketService.on('user-left', () => {
+        socketService.on('user-left', (username) => {
+            alertMessage(`${username ? username : 'User'} disconnected`, "danger", 2500)
+        })
 
-            alertMessage("User disconnected", "danger", 2500)
-        }) 
-
-        document.body.addEventListener('mousemove', emitMyMousePointer)
+        if (!isTouchDevice()) {
+            document.body.addEventListener('mousemove', emitMyMousePointer)
+        }
 
         // Refresh - keep the same socket room id after refresh
         if (!webAppId && sessionStorage.getItem('roomId')) {
@@ -101,21 +112,25 @@ export const EditorPage = () => {
         socketService.on('user-joined', updateNewUser)
         return () => {
             // Remove socket listener
-            const userIdx = pointers.findIndex(pointer => pointer.userId === myUserID);
-            pointers.splice(userIdx, 1);
+            // const userIdx = pointers.findIndex(pointer => pointer.userId === myUserID);
+            // pointers.splice(userIdx, 1);
+
+            if (!isTouchDevice()) {
+                socketService.off('show-pointers')
+                socketService.off('update-pointers')
+                socketService.off('remove-pointer')
+                document.body.removeEventListener('mousemove', emitMyMousePointer)
+            }
             socketService.off('user-joined')
             socketService.off('user-left')
-            socketService.off('show-pointers')
-            socketService.off('update-pointers')
             socketService.off('webApp return')
-            document.body.removeEventListener('mousemove', emitMyMousePointer)
+            socketService.disconnect({ name: myUserName, id: myUserID })
         }
     }, [])
 
     const updateNewUser = (userName) => {
         const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
         socketService.emit('webApp', draftWebApp)
-
         alertMessage(`${userName} has connected`, "info", 3000)
     }
 
@@ -152,6 +167,23 @@ export const EditorPage = () => {
         })
     }
 
+    const deleteAllPointers = () => {
+        setPointers([])
+        sessionStorage.removeItem('pointers')
+    }
+
+    //If some of the users in the room leave, their pointer will be deleted
+    const onDeletePointer = (userId) => {
+        const pointers = JSON.parse(sessionStorage.getItem('pointers'))
+        if (!pointers) return
+        const pointerIdx = pointers.findIndex(pointer => pointer.userId === userId)
+        if (pointerIdx !== -1) {
+            pointers.splice(pointerIdx, 1)
+            setPointers(pointers)
+            sessionStorage.setItem('pointers', JSON.stringify(pointers))
+        }
+    }
+
 
     // Initializing the webApp from the localStorage / loading from backend via ID / creates an empty webApp
     useEffect(() => {
@@ -172,9 +204,9 @@ export const EditorPage = () => {
                     })
                     localStorageService.saveToStorage('draftWebApp', webAppService.createNewWebApp())
                     dispatch(clearLoadedWebApp())
-                    
+
                     // Case user loaded a Template / WebApp from user page
-                } else if(!webAppId.startsWith('room')) {
+                } else if (!webAppId.startsWith('room')) {
                     sessionStorage.removeItem('pointers')
                     setPointers([])
                     const webApp = await dispatch(loadWebApp(webAppId))
@@ -304,7 +336,7 @@ export const EditorPage = () => {
     // STATES
     const [isEditorMenuToggled, setIsEditorMenuToggled] = useState(false)
     const [editorWidth, setEditorWidth] = useState('100%')
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+
 
     //Cmp States
     const [currCmp, setCurrCmp] = useState(null)

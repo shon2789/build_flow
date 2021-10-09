@@ -14,8 +14,7 @@ function connectSockets(http, session) {
     gIo.on('connection', socket => {
 
         socket.on('disconnect', () => {
-            socket.to(socket.myRoom).emit('user-left')
-
+            socket.to(socket.myRoom).emit('remove-all-pointers')
         })
         // Signing in a room / creating a new room
         socket.on('roomId', ({ roomId, myUserName }) => {
@@ -33,12 +32,16 @@ function connectSockets(http, session) {
         socket.on('webApp', webApp => {
             socket.to(socket.myRoom).emit('webApp return', webApp)
         })
+        socket.on('end', (user) => {
+            socket.to(socket.myRoom).emit('user-left', user.name)
+            socket.broadcast.to(socket.myRoom).emit('remove-pointer', user.id);
+            socket.disconnect(0);
+        }),
+            // When a pointer data received, emit to all users
+            socket.on('update-pointers', (data) => {
+                socket.broadcast.to(socket.myRoom).emit('show-pointers', data);
+            })
 
-        // When a pointer data received, emit to all users
-        socket.on('update-pointers', (data) => {
-            socket.broadcast.to(socket.myRoom).emit('show-pointers', data);
-        })
-        
     })
 }
 
