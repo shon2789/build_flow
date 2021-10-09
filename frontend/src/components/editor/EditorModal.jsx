@@ -4,6 +4,7 @@ import { removeMessage, alertMessage } from '../../services/alert.service'
 import { FaBold, FaUnderline, FaItalic } from "react-icons/fa";
 import { IoEnterOutline } from "react-icons/io5";
 import { uploadImg } from '../../services/screen-shot.service';
+import { utilService } from '../../services/util.service';
 
 
 
@@ -150,6 +151,8 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
 
     }
 
+    const debounceColor = utilService.debounce(updateCmpStyle, 1);
+
     return (
         <div ref={ref} className="editor-modal" style={style}>
 
@@ -272,12 +275,12 @@ export const EditorModal = ({ setIsEditing, choosenTool, cmp, elCmpPos, onUpdate
                 <>
                     <div className="background-color-picker-container editing-container">
                         <label style={labelsStyle} id="font-type" htmlFor="backgroundColor">Background Color</label>
-                        <input defaultValue={cmp.attributes.style?.backgroundColor} name="backgroundColor" onChange={(ev) => { updateCmpStyle(ev) }} type="color" />
+                        <input defaultValue={cmp.attributes.style?.backgroundColor} name="backgroundColor" onChange={debounceColor} type="color" />
                     </div>
 
                     <div className="color-picker-container editing-container">
                         <label style={labelsStyle} id="font-type" htmlFor="color">Color</label>
-                        <input defaultValue={cmp.attributes.style?.color} name="color" onChange={(ev) => { updateCmpStyle(ev) }} type="color" />
+                        <input defaultValue={cmp.attributes.style?.color} name="color" onChange={debounceColor} type="color" />
                     </div>
                 </>
             }
