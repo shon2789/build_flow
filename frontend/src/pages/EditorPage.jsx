@@ -142,6 +142,7 @@ export const EditorPage = () => {
     }
 
     const onUpdateSocketWebApp = (webApp) => {
+        // setCurrCmp(null)
         setColumns({
             ...columns,
             [editing[0]]: {
@@ -171,7 +172,7 @@ export const EditorPage = () => {
                     dispatch(clearLoadedWebApp())
 
                     // Case user loaded a Template / WebApp from user page
-                } else {
+                } else if(!webAppId.startsWith('room')) {
                     const webApp = await dispatch(loadWebApp(webAppId))
                     let loadedWebApp;
 

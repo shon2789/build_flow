@@ -19,11 +19,27 @@ export const ElementToolBar = ({ cmp, onDeleteCmp, onDuplicateCmp, onUpdateCmp, 
 
     const ref = useRef(null)
 
+    useEffect(() => {
+        setToolBarPosition(ref.current?.getBoundingClientRect())
+    }, [])
+
+    const onToggleEditing = (ev, tool) => {
+        ev.stopPropagation()
+        setEvent(ev)
+        setIsEditing(!isEditing)
+        setChoosenTool(tool)
+    }
+
     // Setting the position of the toolbar (Bottom / Top - depends on the available space)
-    const elCmpPos = document.getElementById(cmp.id).getBoundingClientRect();
+    const elCmp = document.getElementById(cmp.id);
 
+    if(!elCmp) {
+        return null;
+    }
+
+    const elCmpPos = elCmp.getBoundingClientRect();
     // const isLeftSpace = elCmpPos.left < 440
-
+    
     let style = {};
     if (window.innerWidth > 850) {
         if (elCmpPos.top < 230) {
@@ -42,16 +58,6 @@ export const ElementToolBar = ({ cmp, onDeleteCmp, onDuplicateCmp, onUpdateCmp, 
     }
 
 
-    useEffect(() => {
-        setToolBarPosition(ref.current.getBoundingClientRect())
-    }, [])
-
-    const onToggleEditing = (ev, tool) => {
-        ev.stopPropagation()
-        setEvent(ev)
-        setIsEditing(!isEditing)
-        setChoosenTool(tool)
-    }
 
     return (
         <>
