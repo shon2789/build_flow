@@ -93,10 +93,10 @@ export const EditorPage = () => {
                 // In case it's a regular URL (not socket) create a new socket room id
             } else {
                 socketService.emit('roomId', ({ roomId: `room-${roomId}`, myUserName }))
-                socketService.on('user-joined', updateNewUser)
                 sessionStorage.setItem("roomId", `room-${roomId}`)
             }
         }
+        socketService.on('user-joined', updateNewUser)
         return () => {
             // Remove socket listener
             const userIdx = pointers.findIndex(pointer => pointer.userId === myUserID);
