@@ -36,7 +36,8 @@ export const EditorPage = () => {
     const { webAppId } = useParams();
     const [isNewProject, setIsNewProject] = useState(webAppId === 'startNew' ? true : false)
 
-    const [pointers, setPointers] = useState([])
+
+    const [pointers, setPointers] = useState(JSON.parse(sessionStorage.getItem('pointers')) || [])
 
     // Set Users ID and Color for the UserCursor socket
     const myUserID = user?._id || uuid();
@@ -74,8 +75,9 @@ export const EditorPage = () => {
         socketService.on('webApp return', onUpdateSocketWebApp)
         socketService.on('show-pointers', utilService.debounce(onUpdatePointers))
         socketService.on('user-left', () => {
+
             alertMessage("User disconnected", "danger", 2500)
-        })
+        }) 
 
         document.body.addEventListener('mousemove', emitMyMousePointer)
 
@@ -101,7 +103,6 @@ export const EditorPage = () => {
             // Remove socket listener
             const userIdx = pointers.findIndex(pointer => pointer.userId === myUserID);
             pointers.splice(userIdx, 1);
-
             socketService.off('user-joined')
             socketService.off('user-left')
             socketService.off('show-pointers')
@@ -125,8 +126,9 @@ export const EditorPage = () => {
 
     // Update the pointers state from the data that received from backend
     const onUpdatePointers = ({ userId, name, color, x, y }) => {
-        const copyPointers = JSON.parse(JSON.stringify(pointers))
+        const copyPointers = JSON.parse(sessionStorage.getItem('pointers')) || []
         const pointerIdx = copyPointers.findIndex(pointer => pointer.userId === userId)
+
         // Not found, add new to the pointers array
         if (pointerIdx === -1) {
             copyPointers.push({ userId, name, color, x, y })
@@ -135,6 +137,7 @@ export const EditorPage = () => {
             copyPointers[pointerIdx].x = x;
             copyPointers[pointerIdx].y = y;
         }
+        sessionStorage.setItem('pointers', JSON.stringify(copyPointers))
         setPointers(copyPointers)
     }
 
@@ -152,10 +155,12 @@ export const EditorPage = () => {
 
     // Initializing the webApp from the localStorage / loading from backend via ID / creates an empty webApp
     useEffect(() => {
+        sessionStorage.removeItem('pointers')
+        setPointers([])
         const onEditorMount = async () => {
             // If a webAppID was received in the URL params:
             if (webAppId) {
-
+                setPointers([])
                 // Case user clicked on start new project (Templates page)
                 if (webAppId === 'startNew') {
                     setColumns({
@@ -167,9 +172,11 @@ export const EditorPage = () => {
                     })
                     localStorageService.saveToStorage('draftWebApp', webAppService.createNewWebApp())
                     dispatch(clearLoadedWebApp())
-
+                    
                     // Case user loaded a Template / WebApp from user page
                 } else if(!webAppId.startsWith('room')) {
+                    sessionStorage.removeItem('pointers')
+                    setPointers([])
                     const webApp = await dispatch(loadWebApp(webAppId))
                     let loadedWebApp;
 

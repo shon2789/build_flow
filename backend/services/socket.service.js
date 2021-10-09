@@ -14,7 +14,6 @@ function connectSockets(http, session) {
     gIo.on('connection', socket => {
 
         socket.on('disconnect', () => {
-
             socket.to(socket.myRoom).emit('user-left')
 
         })
@@ -39,19 +38,7 @@ function connectSockets(http, session) {
         socket.on('update-pointers', (data) => {
             socket.broadcast.to(socket.myRoom).emit('show-pointers', data);
         })
-        // socket.on('update-pointers', ({ pointers, userId, name, color, x, y }) => {
-        //     const currentPointer = pointers.findIndex(pointer => pointer.userId === userId)
-        //     // Not found, add new to the pointers array
-        //     if (currentPointer === -1) {
-        //         pointers.push({ userId, name, color, x, y })
-        //         // Update the array with the existing user's new data
-        //     } else {
-        //         pointers[currentPointer].x = x;
-        //         pointers[currentPointer].y = y;
-        //     }
-        //     //Emit all, except the sender
-        //     socket.to(socket.myRoom).emit('show-pointers', pointers)
-        // })
+        
     })
 }
 
@@ -97,11 +84,6 @@ async function _getAllSockets() {
     const sockets = await gIo.fetchSockets();
     return sockets;
 }
-// function _getAllSockets() {
-//     const socketIds = Object.keys(gIo.sockets.sockets)
-//     const sockets = socketIds.map(socketId => gIo.sockets.sockets[socketId])
-//     return sockets;
-// }
 
 async function _printSockets() {
     const sockets = await _getAllSockets()
