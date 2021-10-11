@@ -11,6 +11,10 @@
     align-items: center;
     transition: 0.3s;
 
+    &:last-child {
+        margin-bottom: 2rem;
+    }
+
     .user-site-name {
         color: $main-dark-color;
         font-size: 1.2rem;
