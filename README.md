@@ -2,7 +2,7 @@
 
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://buildflow.herokuapp.com/">
     <img src="https://res.cloudinary.com/dfj4zd14o/image/upload/v1633970697/BuildFlow_assets/buildflow_logo_hyarpd.png" alt="Logo" width="260" >
   </a>
 
