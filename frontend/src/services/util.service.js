@@ -7,7 +7,8 @@ export const utilService = {
     resolve,
     debounce,
     getRandomColor,
-    getRandomInt
+    getRandomInt,
+    isTouchDevice
 }
 
 
@@ -46,4 +47,10 @@ function getRandomInt(min, max) {
 
 function getRandomColor() {
     return cursorColors[getRandomInt(0, cursorColors.length - 1)]
+}
+
+function isTouchDevice(){
+    return (('ontouchstart' in window) ||
+        (navigator.maxTouchPoints > 0) ||
+        (navigator.msMaxTouchPoints > 0));
 }

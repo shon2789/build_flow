@@ -21,29 +21,44 @@ import { uuid } from 'uuidv4';
 import { UserCursor } from '../components/editor/UserCursor';
 
 export const EditorPage = () => {
+    const dispatch = useDispatch()
+    const history = useHistory();
+    const { webAppId } = useParams();
+    
+    // STATES
+    // Resize state
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+    const [editorWidth, setEditorWidth] = useState('100%')
+
+    // User input modals state
     const [isPromptDialogOpen, setIsPromptDialogOpen] = useState(false)
     const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
-
+    
+    // Global state
     const cmps = useSelector(state => state.cmpModule.cmps)
     const user = useSelector(state => state.userModule.loggedInUser)
-    const dispatch = useDispatch()
-
+    
+    // Undo feature related state
     const [editHistory, setEditHistory] = useState([])
     const [isSavingHistory, setIsSavingHistory] = useState(true)
 
-    const history = useHistory();
-    const { webAppId } = useParams();
+
     const [isNewProject, setIsNewProject] = useState(webAppId === 'startNew' ? true : false)
 
-
+    // Main editor menu on mobile state
+    const [isEditorMenuToggled, setIsEditorMenuToggled] = useState(false)
+    
+    // Curr cmp state (in editing)
+    const [currCmp, setCurrCmp] = useState(null)
+    
+    // Sockets related state
+    const [roomId, setRoomId] = useState(uuid())
     const [pointers, setPointers] = useState(JSON.parse(sessionStorage.getItem('pointers')) || [])
 
     // Set Users ID and Color for the UserCursor socket
     const myUserID = user?._id || uuid();
     const myUserName = user?.fullname || 'Guest'
     const userCursorColor = utilService.getRandomColor()
-
 
 
     // Drag&Drop columns (Editor components && webApp builder)
@@ -58,27 +73,24 @@ export const EditorPage = () => {
         }
     };
 
+    // Columns state (Editor accordion & webApp builder)
     const [columns, setColumns] = useState(dndColumns)
-    const [roomId, setRoomId] = useState(uuid())
-
+    
     // Seperating the dnd columns for convinience
     const dndAreas = Object.entries(columns)
     const editor = dndAreas[0]
     const editing = dndAreas[1]
 
-    const isTouchDevice = () => {
-        return (('ontouchstart' in window) ||
-            (navigator.maxTouchPoints > 0) ||
-            (navigator.msMaxTouchPoints > 0));
-    }
 
-
+    // Initializing the sockets
     useEffect(() => {
 
         // Add socket listener
         socketService.setup()
-        //Listening to 'webApp return' event
-        if (!isTouchDevice()) {
+
+        //Listening to events
+        // (pointer events are disabled in touch devices)
+        if (!utilService.isTouchDevice()) {
             socketService.on('show-pointers', utilService.debounce(onUpdatePointers))
             socketService.on('remove-pointer', onDeletePointer)
             socketService.on('remove-all-pointers', deleteAllPointers)
@@ -88,7 +100,7 @@ export const EditorPage = () => {
             alertMessage(`${username ? username : 'User'} disconnected`, "danger", 2500)
         })
 
-        if (!isTouchDevice()) {
+        if (!utilService.isTouchDevice()) {
             document.body.addEventListener('mousemove', emitMyMousePointer)
         }
 
@@ -112,7 +124,7 @@ export const EditorPage = () => {
         socketService.on('user-joined', updateNewUser)
         return () => {
 
-            if (!isTouchDevice()) {
+            if (!utilService.isTouchDevice()) {
                 socketService.off('show-pointers')
                 socketService.off('update-pointers')
                 socketService.off('remove-pointer')
@@ -125,6 +137,7 @@ export const EditorPage = () => {
         }
     }, [])
 
+    // When a new user connects to the editing room, the host emits the current webApp to him
     const updateNewUser = (userName) => {
         const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
         socketService.emit('webApp', draftWebApp)
@@ -153,16 +166,6 @@ export const EditorPage = () => {
         setPointers(copyPointers)
     }
 
-    const onUpdateSocketWebApp = (webApp) => {
-        setColumns({
-            ...columns,
-            [editing[0]]: {
-                name: 'Editing',
-                items: webApp.children.map(section => { return { id: utilService.makeId(), cmp: section } })
-            }
-        })
-    }
-
     const deleteAllPointers = () => {
         setPointers([])
         sessionStorage.removeItem('pointers')
@@ -178,6 +181,16 @@ export const EditorPage = () => {
             setPointers(pointers)
             sessionStorage.setItem('pointers', JSON.stringify(pointers))
         }
+    }
+
+    const onUpdateSocketWebApp = (webApp) => {
+        setColumns({
+            ...columns,
+            [editing[0]]: {
+                name: 'Editing',
+                items: webApp.children.map(section => { return { id: utilService.makeId(), cmp: section } })
+            }
+        })
     }
 
 
@@ -281,6 +294,7 @@ export const EditorPage = () => {
     useEffect(() => {
         const newUpdate = editing[1].items.map(obj => obj.cmp);
 
+        // Handling with editing history
         if (isSavingHistory) {
             const currentHistory = cloneDeep(editHistory);
             const newNewUpdate = cloneDeep(newUpdate)
@@ -327,14 +341,6 @@ export const EditorPage = () => {
         socketService.emit("webApp", draftWebApp)
     }
 
-
-    // STATES
-    const [isEditorMenuToggled, setIsEditorMenuToggled] = useState(false)
-    const [editorWidth, setEditorWidth] = useState('100%')
-
-
-    //Cmp States
-    const [currCmp, setCurrCmp] = useState(null)
 
     const resizeEditorWidth = () => {
         setWindowWidth(window.innerWidth)
@@ -407,6 +413,7 @@ export const EditorPage = () => {
         setIsEditorMenuToggled(boolean)
     }
 
+    // Closing the editor menu on mobile on drag start
     const onDragStart = () => {
         onToggleEditorMenu(false)
     }
@@ -505,8 +512,6 @@ export const EditorPage = () => {
         socketService.emit('webApp', draftWebApp)
     }
 
-
-
     // Saving the current webApp (from the local storage)
     const onSaveWebApp = async (webAppTitle = '') => {
         const webApp = localStorageService.loadFromStorage('draftWebApp')
@@ -598,9 +603,6 @@ export const EditorPage = () => {
     }
 
 
-    // If a webAppID is given in the url params, and no webApp has actually been loaded, return Loading modal
-
-
     const webAppContainerProps = {
         setIsPromptDialogOpen,
         setIsAuthModalOpen,
@@ -630,7 +632,6 @@ export const EditorPage = () => {
         onPublishWebApp,
         undo
     }
-
 
     return (
         <>
