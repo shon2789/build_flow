@@ -29,15 +29,17 @@ async function updateWebApp(req, res) {
     try {
         const webApp = await webAppService.update(req.body)
         const user = req.session.user
-        const minifiedWebApp = {
-            _id: webApp._id,
-            title: webApp.title,
-            isPublished: webApp.isPublished,
-            image: webApp.image
+        if(user){
+            const minifiedWebApp = {
+                _id: webApp._id,
+                title: webApp.title,
+                isPublished: webApp.isPublished,
+                image: webApp.image
+            }
+            const idx = user.webApps.findIndex(miniWebApp => miniWebApp._id === webApp._id)
+            user.webApps.splice(idx, 1, minifiedWebApp)
+            userService.update(user)
         }
-        const idx = user.webApps.findIndex(miniWebApp => miniWebApp._id === webApp._id)
-        user.webApps.splice(idx, 1, minifiedWebApp)
-        userService.update(user)
         res.send(webApp)
     } catch (err) {
         logger.error('Failed to update webApp')

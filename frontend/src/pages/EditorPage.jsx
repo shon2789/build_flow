@@ -606,24 +606,26 @@ export const EditorPage = () => {
 
         window.open(`/publish/${savedWebApp._id}`, "_blank")
 
-        //  Uploading msg
-        const uploadingId = alertMessage('Uploading media to cloud...', 'info')
-
-        const elWebAppBuilder = document.querySelector('.web-app-builder')
-
-        const imageUrl = await createJpegFromElement(elWebAppBuilder, editorWidth)
-        savedWebApp.image = imageUrl;
-
-        // Second webApp save after image uploaded to cloudinary
-        savedWebApp = await webAppService.save(savedWebApp, user ? false : true)
-
-        removeMessage(uploadingId)
-
-        // Success msg
-        alertMessage('Your project is ready to view in your profile', 'success', 3000)
-
+        if(user){
+            //  Uploading msg
+            const uploadingId = alertMessage('Uploading media to cloud...', 'info')
+            
+            const elWebAppBuilder = document.querySelector('.web-app-builder')
+            
+            const imageUrl = await createJpegFromElement(elWebAppBuilder, editorWidth)
+            savedWebApp.image = imageUrl;
+            
+            // Second webApp save after image uploaded to cloudinary
+            savedWebApp = await webAppService.save(savedWebApp, user ? false : true)
+            
+            removeMessage(uploadingId)
+            
+            // Success msg
+            alertMessage('Your project is ready to view in your profile', 'success', 3000)
+            
+            dispatch(setUser());
+        }
         localStorageService.saveToStorage('draftWebApp', savedWebApp)
-        dispatch(setUser());
     }
 
 
