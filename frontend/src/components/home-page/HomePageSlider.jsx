@@ -40,9 +40,18 @@ export const HomePageSlider = ({ windowWidth }) => {
     }
 
     useEffect(() => {
-        sliderRef.current.addEventListener("mouseover", onSetPause, true)
 
-        sliderRef.current.addEventListener("mouseout", onSetPause, false)
+        const sliderRefObj = sliderRef.current;
+
+        sliderRefObj.addEventListener("mouseover", onSetPause, true)
+
+        sliderRefObj.addEventListener("mouseout", onSetPause, false)
+        
+        return () => {
+            sliderRefObj.removeEventListener("mouseover", onSetPause)
+    
+            sliderRefObj.removeEventListener("mouseout", onSetPause)
+        }
 
     }, [sliderRef, windowWidth])
 
@@ -63,13 +72,13 @@ export const HomePageSlider = ({ windowWidth }) => {
             <div ref={sliderContainer} className={`${inView ? 'opacity-animation' : ''} navigation-wrapper`}>
                 <div ref={sliderRef} className="keen-slider">
                     <div className="keen-slider__slide number-slide1">
-                        <img width="100%" style={{ objectFit: 'contain' }} src="https://res.cloudinary.com/dfj4zd14o/image/upload/v1633785297/BuildFlow_assets/barber_oumolc.jpg" alt="template-image" /></div>
+                        <img width="100%" style={{ objectFit: 'contain' }} src="https://res.cloudinary.com/dfj4zd14o/image/upload/v1633785297/BuildFlow_assets/barber_oumolc.jpg" alt="template" /></div>
                     <div className="keen-slider__slide number-slide2">
-                        <img width="100%" style={{ objectFit: 'contain' }} src="https://res.cloudinary.com/dfj4zd14o/image/upload/v1633785296/BuildFlow_assets/shoes_gnhas5.jpg" alt="template-image" /></div>
+                        <img width="100%" style={{ objectFit: 'contain' }} src="https://res.cloudinary.com/dfj4zd14o/image/upload/v1633785296/BuildFlow_assets/shoes_gnhas5.jpg" alt="template" /></div>
                     <div className="keen-slider__slide number-slide3">
-                        <img width="100%" style={{ objectFit: 'contain' }} src="https://res.cloudinary.com/dfj4zd14o/image/upload/v1633785297/BuildFlow_assets/resturant_evurat.jpg" alt="template-image" /></div>
+                        <img width="100%" style={{ objectFit: 'contain' }} src="https://res.cloudinary.com/dfj4zd14o/image/upload/v1633785297/BuildFlow_assets/resturant_evurat.jpg" alt="template" /></div>
                     <div className="keen-slider__slide number-slide3">
-                        <img width="100%" style={{ objectFit: 'contain' }} src="https://res.cloudinary.com/dfj4zd14o/image/upload/v1633474977/BuildFlow_assets/juice_carusel_pics_bgxdgx.jpg" alt="template-image" /></div>
+                        <img width="100%" style={{ objectFit: 'contain' }} src="https://res.cloudinary.com/dfj4zd14o/image/upload/v1633474977/BuildFlow_assets/juice_carusel_pics_bgxdgx.jpg" alt="template" /></div>
                 </div>
                 {slider && (
                     <>

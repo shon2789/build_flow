@@ -1,6 +1,7 @@
 import { utilService } from './util.service'
 import { cloneDeep } from 'lodash';
 import { httpService } from './http.service';
+import { alertMessage } from './alert.service';
 
 export const cmpService = {
   getCmps,
@@ -18,7 +19,7 @@ async function query() {
     const cmps = await httpService.get("/api/cmp")
     return cmps
   } catch (err) {
-    console.log(err);
+    alertMessage('Oops, something went wrong', 'danger', 2000)
   }
 }
 

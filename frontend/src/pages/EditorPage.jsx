@@ -17,7 +17,7 @@ import { PromptDialog } from '../components/PromptDialog';
 import { createJpegFromElement } from '../services/screen-shot.service'
 import { removeMessage, alertMessage } from '../services/alert.service'
 import { socketService } from '../services/socket.service';
-import { uuid } from 'uuidv4';
+import { v4 as uuid } from "uuid";
 import { UserCursor } from '../components/editor/UserCursor';
 
 export const EditorPage = () => {
@@ -43,7 +43,8 @@ export const EditorPage = () => {
     const [isSavingHistory, setIsSavingHistory] = useState(true)
 
 
-    const [isNewProject, setIsNewProject] = useState(webAppId === 'startNew' ? true : false)
+    const [isNewProject, setIsNewProject] = useState(false)
+    
 
     // Main editor menu on mobile state
     const [isEditorMenuToggled, setIsEditorMenuToggled] = useState(false)
@@ -128,8 +129,8 @@ export const EditorPage = () => {
                 socketService.off('show-pointers')
                 socketService.off('update-pointers')
                 socketService.off('remove-pointer')
-                document.body.removeEventListener('mousemove', emitMyMousePointer)
             }
+            document.body.removeEventListener('mousemove', emitMyMousePointer)
             socketService.off('user-joined')
             socketService.off('user-left')
             socketService.off('webApp return')
@@ -196,6 +197,8 @@ export const EditorPage = () => {
 
     // Initializing the webApp from the localStorage / loading from backend via ID / creates an empty webApp
     useEffect(() => {
+        setIsNewProject(webAppId === 'startNew' ? true : false)
+
         sessionStorage.removeItem('pointers')
         setPointers([])
         const onEditorMount = async () => {
@@ -596,10 +599,31 @@ export const EditorPage = () => {
     const onPublishWebApp = async () => {
         const draftWebApp = localStorageService.loadFromStorage('draftWebApp')
         draftWebApp.isPublished = true
-        const savedWebApp = await webAppService.save(draftWebApp, user ? false : true)
+        let savedWebApp = await webAppService.save(draftWebApp, user ? false : true)
+
+        // Saved successfully msg
+        alertMessage('Published successfully!', 'success', 3000)
+
+        window.open(`/publish/${savedWebApp._id}`, "_blank")
+
+        //  Uploading msg
+        const uploadingId = alertMessage('Uploading media to cloud...', 'info')
+
+        const elWebAppBuilder = document.querySelector('.web-app-builder')
+
+        const imageUrl = await createJpegFromElement(elWebAppBuilder, editorWidth)
+        savedWebApp.image = imageUrl;
+
+        // Second webApp save after image uploaded to cloudinary
+        savedWebApp = await webAppService.save(savedWebApp, user ? false : true)
+
+        removeMessage(uploadingId)
+
+        // Success msg
+        alertMessage('Your project is ready to view in your profile', 'success', 3000)
+
         localStorageService.saveToStorage('draftWebApp', savedWebApp)
         dispatch(setUser());
-        window.open(`/publish/${savedWebApp._id}`, "_blank")
     }
 
 

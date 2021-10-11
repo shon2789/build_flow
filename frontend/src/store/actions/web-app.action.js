@@ -35,21 +35,6 @@ export const loadWebApp = (webAppId) => {
     }
 }
 
-// export const setWebApp = (webApp) => {
-//     return dispatch => {
-//         try {
-//             dispatch({
-//                 type: "SET_WEBAPP",
-//                 webApp
-//             })
-//         } catch (err) {
-//             console.log(err);
-//         }
-//     }
-// }
-
-
-
 export const clearLoadedWebApp = () => {
     return async dispatch => {
         try {

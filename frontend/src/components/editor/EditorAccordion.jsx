@@ -34,8 +34,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
-
 export const EditorAccordion = ({ droppableId }) => {
     const classes = useStyles();
     const dispatch = useDispatch()
@@ -57,9 +55,9 @@ export const EditorAccordion = ({ droppableId }) => {
         };
     }, [])
 
-    let minifiedCmps = []
     useEffect(() => {
         (async () => {
+            let minifiedCmps = []
             const cmps = await dispatch(loadCmps())
             minifiedCmps = cmpService.getMinifiedCmps(cmps)
             minifiedCmps.forEach((item, idx) => item.idx = idx)

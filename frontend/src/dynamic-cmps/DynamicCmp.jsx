@@ -54,7 +54,7 @@ export function DynamicCmp({ cmp, currCmp, onDeleteCmp, onSetCurrCmp, onDuplicat
             case 'text-area':
                 return <WebAppTextAreaCmp cmp={cmp} isPublished={isPublished}  {...props} />
             default:
-                console.log('if U got here, things got messed up')
+                console.log('If you got here, things got messed up')
         }
     }
     return (

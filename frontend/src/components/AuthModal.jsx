@@ -68,7 +68,7 @@ export const AuthModal = ({ onToggleAuthModal }) => {
             }
 
         } catch (err) {
-            console.log(err);
+            alertMessage('Oops, something went wrong', 'danger', 2000)
         }
     };
 

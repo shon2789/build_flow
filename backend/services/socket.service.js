@@ -18,7 +18,6 @@ function connectSockets(http, session) {
         })
         // Signing in a room / creating a new room
         socket.on('roomId', ({ roomId, myUserName }) => {
-            console.log(roomId, 'roomId')
             if (socket.myRoom === roomId) return;
             if (socket.myRoom) {
                 socket.leave(socket.myRoom)
