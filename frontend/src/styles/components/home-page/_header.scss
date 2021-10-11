@@ -8,6 +8,10 @@
         font-family: kalam regular;
         font-size: 1.5rem;
         color: $main-dark-color;
+
+        @include for-tablet {
+            font-size: 1.8rem;
+        }
     }
 
     .nav-container {
@@ -26,7 +30,6 @@
         z-index: 10;
         background-color: $main-dark-color;
         color: $main-light-color;
-        
 
         &.mobile-nav-bar-active {
             transform: translateX(0);
@@ -59,8 +62,8 @@
                 color: $main-dark-color;
             }
 
-            a{
-                transition: .5s;
+            a {
+                transition: 0.5s;
                 color: rgb(126, 126, 126);
             }
 
